@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InteraSkill — Learning Skills from Interaction for Computer-Using Agents</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+/* ---- TOKENS ---- */
+:root{
+  --ink:#0d0d0f;--paper:#f5f2eb;--accent:#e85d26;--accent2:#2563e8;
+  --muted:#8a8680;--surface:#fffef9;--border:#d4cfc4;--success:#16a34a;
+  --fail:#dc2626;--warn:#d97706;--learn:#7c3aed;
+  --skill1:#60aff0;--skill2:#c084fc;--skill3:#6ee7b7;--skill4:#fbbf24;--skill5:#fb923c;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Mono',monospace;background:var(--ink);color:#f5f2eb;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:2px;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ---- NAV ---- */
+.nav{position:sticky;top:0;z-index:100;background:#0a0a0c;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:stretch;padding:0 24px;gap:0;}
+.nav-logo{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:var(--accent);padding:0 20px 0 0;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.07);margin-right:12px;white-space:nowrap;}
+.tab{padding:14px 22px;font-size:.73rem;letter-spacing:.08em;color:rgba(255,255,255,.38);cursor:pointer;border:none;background:none;font-family:'DM Mono',monospace;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.tab:hover{color:rgba(255,255,255,.7);}
+.tab.active{color:white;border-bottom-color:var(--accent);}
+.tab-badge{display:inline-block;padding:1px 6px;border-radius:2px;font-size:.58rem;margin-left:6px;vertical-align:middle;}
+.tb-new{background:rgba(232,93,38,.2);color:var(--accent);}
+.tb-demo{background:rgba(37,99,232,.18);color:#93c5fd;}
+.tb-venue{background:rgba(16,185,129,.18);color:#6ee7b7;}
+
+/* ---- PANELS ---- */
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* ---- HERO ---- */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.04) 39px,rgba(255,255,255,.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.04) 39px,rgba(255,255,255,.04) 40px);pointer-events:none;}
+.hero-eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:28px;opacity:0;animation:fadeUp .6s .2s ease forwards;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.8rem,7vw,6rem);font-weight:700;color:var(--paper);line-height:1.05;max-width:900px;margin-bottom:24px;opacity:0;animation:fadeUp .7s .35s ease forwards;}
+.hero h1 em{font-style:italic;color:var(--accent);}
+.hero-sub{font-size:.85rem;color:rgba(245,242,235,.5);max-width:560px;line-height:1.85;margin-bottom:44px;opacity:0;animation:fadeUp .7s .5s ease forwards;}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .7s .65s ease forwards;margin-bottom:60px;}
+.chip{padding:6px 16px;border:1px solid rgba(255,255,255,.12);border-radius:2px;font-size:.72rem;letter-spacing:.1em;color:rgba(245,242,235,.7);}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(245,242,235,.35);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;animation:fadeUp 1s 1.2s ease forwards;opacity:0;}
+.scroll-bar{width:1px;height:48px;background:linear-gradient(to bottom,rgba(232,93,38,.8),transparent);animation:scrollPulse 2s 1.5s ease-in-out infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ---- SECTION SHARED ---- */
+.section{padding:80px 24px;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:block;}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:10px;}
+.section-sub{font-size:.85rem;color:rgba(245,242,235,.45);line-height:1.8;max-width:640px;margin-bottom:40px;}
+
+/* ---- PROBLEM SECTION ---- */
+.problem{background:var(--surface);color:var(--ink);}
+.problem .section-sub{color:#5a5750;}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:768px){.problem-grid{grid-template-columns:1fr;}}
+.problem-card{border-radius:6px;padding:28px;border:1px solid var(--border);}
+.problem-card.bad{background:#fff5f5;border-color:#fecaca;}
+.problem-card.good{background:#f0fdf4;border-color:#bbf7d0;}
+.problem-card h4{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin-bottom:14px;}
+.problem-card.bad h4{color:var(--fail);}
+.problem-card.good h4{color:var(--success);}
+.problem-card ul{list-style:none;}
+.problem-card ul li{font-size:.82rem;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:8px;align-items:flex-start;line-height:1.6;color:#3a3730;}
+.problem-card ul li:last-child{border-bottom:none;}
+
+/* ---- GAP TABLE ---- */
+.gap-section{background:var(--ink);color:var(--paper);}
+.gap-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:24px;}
+.gap-table th{text-align:left;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.1);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,242,235,.35);font-weight:400;}
+.gap-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle;line-height:1.5;}
+.gap-table tr:last-child td{border-bottom:none;}
+.gap-table tr:hover td{background:rgba(255,255,255,.02);}
+.gap-table .ours{background:rgba(232,93,38,.08);font-weight:600;}
+.check{color:var(--success);}
+.cross{color:rgba(255,255,255,.2);}
+
+/* ---- PIPELINE ---- */
+.pipeline{background:#0a0c10;color:var(--paper);}
+.pipe-steps{display:flex;flex-direction:column;gap:0;border:1px solid rgba(255,255,255,.07);border-radius:8px;overflow:hidden;margin-top:32px;}
+.pipe-step{display:grid;grid-template-columns:60px 1fr;border-bottom:1px solid rgba(255,255,255,.05);}
+.pipe-step:last-child{border-bottom:none;}
+.pipe-num{display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;background:#0f1117;border-right:1px solid rgba(255,255,255,.05);}
+.pipe-body{padding:22px 28px;display:flex;align-items:center;gap:20px;}
+.pipe-body h5{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:white;margin-bottom:4px;}
+.pipe-body p{font-size:.82rem;color:rgba(245,242,235,.45);line-height:1.65;}
+.pipe-badge{flex-shrink:0;padding:5px 14px;border-radius:20px;font-size:.72rem;white-space:nowrap;font-weight:500;}
+
+/* ---- INTERACTION DEMOS ---- */
+.demos{background:var(--surface);color:var(--ink);}
+.demos .section-sub{color:#5a5750;}
+.demo-tabs{display:flex;gap:0;background:rgba(0,0,0,.06);border-radius:4px;padding:4px;margin-bottom:32px;width:fit-content;}
+.demo-tab{padding:10px 24px;border:none;background:transparent;color:rgba(0,0,0,.4);font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.08em;cursor:pointer;border-radius:3px;transition:all .25s;}
+.demo-tab.active{background:var(--accent);color:white;}
+.demo-view{display:none;}
+.demo-view.active{display:block;}
+
+/* Interaction replay */
+.replay{display:grid;grid-template-columns:1fr 1fr;gap:24px;min-height:500px;}
+@media(max-width:900px){.replay{grid-template-columns:1fr;}}
+.replay-left{background:var(--ink);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+.replay-header{padding:12px 16px;background:#1a1d24;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.06);}
+.replay-dot{width:10px;height:10px;border-radius:50%;}
+.rd-r{background:#ff5f57;}.rd-y{background:#febc2e;}.rd-g{background:#28c840;}
+.replay-title{font-size:.68rem;color:rgba(255,255,255,.3);margin-left:6px;letter-spacing:.1em;}
+.replay-body{flex:1;padding:16px;font-family:'DM Mono',monospace;font-size:.75rem;line-height:1.82;color:#a8c1e3;overflow-y:auto;min-height:320px;}
+.replay-right{display:flex;flex-direction:column;gap:16px;}
+
+/* Skill cards */
+.skill-card{border:1px solid var(--border);border-radius:6px;padding:18px;background:white;transition:transform .2s,box-shadow .2s;}
+.skill-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.skill-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.skill-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.skill-card-name{font-family:'Fraunces',serif;font-weight:700;font-size:.95rem;}
+.skill-card-badge{margin-left:auto;font-size:.6rem;padding:2px 8px;border-radius:3px;letter-spacing:.06em;}
+.skill-card p{font-size:.78rem;color:var(--muted);line-height:1.7;}
+.skill-actions{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;}
+.skill-action{font-size:.68rem;padding:3px 8px;background:rgba(0,0,0,.04);border-radius:3px;color:#5a5750;border:1px solid rgba(0,0,0,.06);}
+
+/* ---- LEARNING LOOP ---- */
+.loop{background:var(--ink);color:var(--paper);}
+.loop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden;margin-top:32px;}
+.loop-cell{padding:26px 22px;background:var(--ink);border:1px solid rgba(255,255,255,.05);transition:background .2s;}
+.loop-cell:hover{background:rgba(232,93,38,.05);}
+.loop-icon{font-size:1.5rem;margin-bottom:10px;display:block;}
+.loop-cell h4{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:var(--paper);margin-bottom:8px;}
+.loop-cell p{font-size:.78rem;color:rgba(245,242,235,.4);line-height:1.7;}
+
+/* ---- LIVE SKILL DISCOVERY ---- */
+.discovery{background:var(--surface);color:var(--ink);}
+.discovery .section-sub{color:#5a5750;}
+.disc-container{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:900px){.disc-container{grid-template-columns:1fr;}}
+.disc-left{background:var(--ink);border-radius:8px;padding:20px;min-height:400px;}
+.disc-right{display:flex;flex-direction:column;gap:12px;}
+.disc-title{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:16px;}
+.disc-title-dark{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+
+/* Trajectory visualization */
+.traj-row{display:flex;align-items:center;gap:6px;margin-bottom:4px;padding:6px 10px;border-radius:4px;font-size:.72rem;font-family:'DM Mono',monospace;transition:background .2s;}
+.traj-row:hover{background:rgba(255,255,255,.05);}
+.traj-time{color:rgba(255,255,255,.2);min-width:50px;}
+.traj-action{color:#a8c1e3;flex:1;}
+.traj-skill{padding:2px 8px;border-radius:3px;font-size:.6rem;letter-spacing:.06em;font-weight:500;}
+
+/* Cluster visualization */
+.cluster-card{border:1px solid var(--border);border-radius:6px;padding:14px;background:white;}
+.cluster-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.cluster-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.cluster-name{font-weight:600;font-size:.85rem;}
+.cluster-count{margin-left:auto;font-size:.65rem;color:var(--muted);}
+.cluster-bar{height:4px;border-radius:2px;margin-top:8px;transition:width 1s ease;}
+.cluster-desc{font-size:.72rem;color:var(--muted);line-height:1.6;margin-top:6px;}
+
+/* ---- RESULTS ---- */
+.results{background:var(--ink);color:var(--paper);}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:32px 0;}
+.result-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:24px;text-align:center;}
+.result-num{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:700;line-height:1;display:block;margin-bottom:6px;}
+.result-label{font-size:.72rem;color:rgba(245,242,235,.35);letter-spacing:.1em;text-transform:uppercase;line-height:1.5;}
+.bar-row{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+.bar-label{font-size:.82rem;color:rgba(245,242,235,.55);min-width:180px;flex-shrink:0;}
+.bar-wrap{flex:1;background:rgba(255,255,255,.06);height:28px;border-radius:4px;overflow:hidden;position:relative;}
+.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:10px;font-size:.75rem;font-weight:600;color:white;transition:width 1.2s cubic-bezier(.22,1,.36,1);width:0;}
+.bar-val{font-size:.82rem;font-weight:700;min-width:48px;text-align:right;}
+
+/* ---- MATH CARDS ---- */
+.math{background:#0a0c10;color:var(--paper);}
+.math-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-top:32px;}
+.math-card{background:#0f1117;border:1px solid rgba(255,255,255,.07);border-radius:8px;overflow:hidden;}
+.math-card-head{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:12px;}
+.math-icon{font-size:1.3rem;flex-shrink:0;}
+.math-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;}
+.math-body{padding:18px 20px;}
+.equation{background:#070809;border-radius:6px;padding:14px 16px;text-align:center;font-family:'DM Mono',monospace;font-size:.92rem;color:#c084fc;margin:12px 0;border:1px solid rgba(124,58,237,.15);letter-spacing:.02em;}
+.eq-label{display:block;font-size:.68rem;color:rgba(255,255,255,.25);margin-top:4px;font-style:italic;}
+.math-plain{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.72;margin-top:10px;}
+.math-plain strong{color:rgba(255,255,255,.85);}
+
+/* ---- CHAT DEMO ---- */
+.chat-section{background:var(--ink);color:var(--paper);}
+.chat-container{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
+@media(max-width:900px){.chat-container{grid-template-columns:1fr;}}
+.chat-left{background:#111318;border:1px solid rgba(255,255,255,.07);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+.chat-panel-head{padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px;}
+.chat-panel-title{font-size:.82rem;font-weight:600;}
+.chat-panel-sub{font-size:.7rem;color:rgba(255,255,255,.3);}
+.chat-messages{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;min-height:350px;max-height:500px;}
+.msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:.8rem;line-height:1.7;}
+.msg-user{align-self:flex-end;background:var(--accent);color:white;border-bottom-right-radius:3px;}
+.msg-agent{align-self:flex-start;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);border-bottom-left-radius:3px;}
+.msg-system{align-self:center;background:rgba(124,58,237,.1);color:#c4b5fd;border-radius:6px;font-size:.72rem;padding:6px 12px;}
+.chat-scenarios{padding:12px 16px;border-top:1px solid rgba(255,255,255,.06);}
+.chat-scenarios-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:8px;}
+.pill-row{display:flex;gap:6px;flex-wrap:wrap;}
+.pill{padding:6px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:20px;font-size:.72rem;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;font-family:'DM Mono',monospace;}
+.pill:hover{background:rgba(232,93,38,.1);border-color:rgba(232,93,38,.3);color:var(--accent);}
+.pill.active{background:rgba(232,93,38,.15);border-color:var(--accent);color:var(--accent);}
+
+/* ---- FAILURE MODES ---- */
+.fail-section{background:#0a0c10;color:var(--paper);}
+.fail-grid{display:grid;grid-template-columns:200px 1fr;gap:0;border:1px solid rgba(255,255,255,.07);border-radius:8px;overflow:hidden;min-height:480px;margin-top:24px;}
+@media(max-width:768px){.fail-grid{grid-template-columns:1fr;}}
+.fail-nav{background:#0c0e13;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;padding:12px 0;}
+.fail-nav-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.18);padding:4px 16px 12px;}
+.fail-item{padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;border-left:3px solid transparent;transition:all .18s;}
+.fail-item:hover{background:rgba(255,255,255,.03);}
+.fail-item.active{border-left-color:currentColor;background:rgba(255,255,255,.04);}
+.fail-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.fail-name{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.3;font-weight:500;}
+.fail-item.active .fail-name{color:white;}
+.fail-tag{font-size:.6rem;color:rgba(255,255,255,.2);margin-top:2px;}
+.fail-main{flex:1;padding:28px 32px;overflow-y:auto;}
+.fail-scene{display:none;}
+.fail-scene.active{display:block;}
+.fail-head{display:flex;align-items:flex-start;gap:18px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:20px;}
+.fail-emoji{font-size:2.4rem;flex-shrink:0;line-height:1;}
+.fail-severity{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px;display:inline-block;padding:3px 10px;border-radius:3px;}
+.sev-hard{background:rgba(239,68,68,.15);color:#fca5a5;}
+.sev-warn{background:rgba(254,188,46,.12);color:#fde68a;}
+.sev-llm{background:rgba(192,132,252,.12);color:#e9d5ff;}
+.fail-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;line-height:1.2;color:white;margin-bottom:6px;}
+.fail-subtitle{font-size:.88rem;color:rgba(255,255,255,.42);line-height:1.6;}
+.fail-body{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:900px){.fail-body{grid-template-columns:1fr;}}
+.fail-terminal{background:#0a0c10;border-radius:6px;overflow:hidden;font-family:'DM Mono',monospace;font-size:.78rem;line-height:1.8;border:1px solid rgba(255,255,255,.06);}
+.fail-term-bar{background:#1a1d24;padding:8px 14px;display:flex;gap:6px;align-items:center;}
+.fail-term-dot{width:10px;height:10px;border-radius:50%;}
+.fail-term-out{padding:14px 16px;display:flex;flex-direction:column;gap:2px;}
+.fail-recovery{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:18px;}
+.fail-recovery h5{font-family:'Fraunces',serif;font-size:.95rem;font-weight:700;color:var(--skill3);margin-bottom:10px;}
+.fail-recovery p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:8px;}
+.fail-skill-learned{background:rgba(110,231,183,.06);border:1px solid rgba(110,231,183,.15);border-radius:4px;padding:10px 14px;margin-top:10px;}
+.fail-skill-learned strong{color:var(--skill3);}
+.fail-skill-learned p{font-size:.75rem;color:rgba(255,255,255,.5);line-height:1.6;margin:0;}
+
+/* ---- IW BENCHMARK ---- */
+.iw-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;overflow:hidden;margin-bottom:16px;}
+.iw-card-head{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.iw-objective{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;flex:1;}
+.iw-badge{padding:3px 10px;border-radius:3px;font-size:.62rem;letter-spacing:.08em;font-weight:500;}
+.iw-badge-word{background:rgba(21,101,192,.12);color:#64b5f6;border:1px solid rgba(21,101,192,.2);}
+.iw-badge-ppt{background:rgba(192,57,43,.12);color:#ef9a9a;border:1px solid rgba(192,57,43,.2);}
+.iw-badge-teams{background:rgba(91,95,199,.12);color:#b3b6f0;border:1px solid rgba(91,95,199,.2);}
+.iw-badge-outlook{background:rgba(0,120,212,.12);color:#90caf9;border:1px solid rgba(0,120,212,.2);}
+.iw-complexity{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;}
+.iw-low{background:rgba(22,163,74,.1);color:#86efac;border:1px solid rgba(22,163,74,.18);}
+.iw-med{background:rgba(217,119,6,.1);color:#fde68a;border:1px solid rgba(217,119,6,.18);}
+.iw-high{background:rgba(239,68,68,.1);color:#fca5a5;border:1px solid rgba(239,68,68,.18);}
+.iw-card-body{padding:16px 20px;}
+.iw-activity{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:14px;}
+.iw-activity:last-child{border-bottom:none;}
+.iw-act-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;}
+.iw-act-info{flex:1;}
+.iw-act-name{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.8);}
+.iw-act-apps{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:2px;}
+.iw-act-dur{font-size:.78rem;color:rgba(255,255,255,.4);font-weight:500;}
+.iw-subtasks{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);}
+.iw-subtask{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;}
+.iw-subtask-cat{font-size:.58rem;padding:1px 6px;border-radius:2px;white-space:nowrap;flex-shrink:0;margin-top:3px;}
+.cat-core{background:rgba(37,99,232,.12);color:#93c5fd;}
+.cat-comm{background:rgba(239,68,68,.1);color:#fca5a5;}
+.cat-collab{background:rgba(251,191,36,.1);color:#fde68a;}
+.cat-mgmt{background:rgba(110,231,183,.1);color:var(--skill3);}
+.cat-info{background:rgba(192,132,252,.1);color:#c4b5fd;}
+.cat-meet{background:rgba(251,146,60,.1);color:var(--skill5);}
+
+.chat-input-row{display:flex;gap:8px;padding:12px 16px;border-top:1px solid rgba(255,255,255,.06);}
+.chat-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:10px 14px;color:white;font-family:'DM Mono',monospace;font-size:.78rem;outline:none;}
+.chat-input:focus{border-color:var(--accent);}
+.chat-send{padding:10px 20px;background:var(--accent);color:white;border:none;border-radius:6px;font-family:'DM Mono',monospace;font-size:.78rem;cursor:pointer;transition:background .2s;}
+.chat-send:hover{background:#cf4f1e;}
+
+/* Memory feed */
+.memory-feed{padding:16px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;min-height:350px;max-height:500px;}
+.mem-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:12px;animation:fadeUp .4s ease;}
+.mem-type{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;display:inline-block;padding:2px 6px;border-radius:2px;}
+.mem-type-skill{background:rgba(96,175,240,.12);color:var(--skill1);}
+.mem-type-pref{background:rgba(192,132,252,.12);color:var(--skill2);}
+.mem-type-pattern{background:rgba(110,231,183,.12);color:var(--skill3);}
+.mem-content{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.6;}
+.mem-content strong{color:rgba(255,255,255,.85);}
+
+/* ---- FOOTER ---- */
+footer{background:var(--ink);color:var(--muted);padding:32px 24px;text-align:center;font-size:.68rem;letter-spacing:.08em;border-top:1px solid rgba(255,255,255,.05);}
+
+/* ---- OUTCOME ---- */
+.outcome{background:var(--accent);padding:90px 24px;color:white;text-align:center;}
+.outcome h2{font-family:'Fraunces',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:700;line-height:1.1;margin-bottom:22px;font-style:italic;}
+.outcome p{font-size:.86rem;line-height:1.85;opacity:.84;max-width:560px;margin:0 auto 44px;}
+.outcome-stats{display:flex;justify-content:center;gap:52px;flex-wrap:wrap;margin-top:48px;}
+.stat{text-align:center;}
+.stat-num{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:700;display:block;line-height:1;}
+.stat-label{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;opacity:.68;margin-top:6px;display:block;}
+
+/* ---- TERMINAL ---- */
+.terminal-box{background:#0f1117;border-radius:6px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);margin-top:24px;}
+.term-topbar{background:#1c1f26;padding:10px 15px;display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(255,255,255,.05);}
+.term-dot{width:11px;height:11px;border-radius:50%;}
+.td-r{background:#ff5f57;}.td-y{background:#febc2e;}.td-g{background:#28c840;}
+.term-title{font-size:.68rem;color:rgba(255,255,255,.28);margin-left:6px;letter-spacing:.1em;}
+.term-output{padding:18px 20px;min-height:300px;max-height:420px;overflow-y:auto;font-family:'DM Mono',monospace;font-size:.75rem;line-height:1.82;color:#a8c1e3;}
+.term-line{display:block;}
+.t-prompt{color:var(--accent);}.t-cmd{color:#c3e88d;}.t-info{color:#546e7a;}
+.t-ok{color:#28c840;}.t-warn{color:#febc2e;}.t-hl{color:#ffcb6b;}.t-api{color:#c792ea;}
+.cursor{display:inline-block;width:8px;height:13px;background:var(--accent);margin-left:2px;vertical-align:middle;animation:blink 1s step-end infinite;}
+@keyframes blink{50%{opacity:0}}
+.play-btn{display:inline-flex;align-items:center;gap:9px;margin-top:16px;padding:10px 24px;background:var(--ink);color:var(--paper);border:none;border-radius:3px;font-family:'DM Mono',monospace;font-size:.77rem;letter-spacing:.1em;cursor:pointer;transition:background .2s,transform .1s;}
+.play-btn:hover{background:#1f2128;transform:translateY(-1px);}
+
+/* ---- ANIMATIONS ---- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- ======== NAV ======== -->
+<nav class="nav">
+  <div class="nav-logo">InteraSkill</div>
+  <button class="tab active" onclick="switchTab('overview',this)">Overview</button>
+  <button class="tab" onclick="switchTab('interactions',this)">Interaction Demos <span class="tab-badge tb-demo">Interactive</span></button>
+  <button class="tab" onclick="switchTab('theory',this)">Theory & Math <span class="tab-badge tb-venue">NeurIPS 2026</span></button>
+</nav>
+
+<!-- ======== TAB 1: OVERVIEW ======== -->
+<div class="panel active" id="panel-overview">
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">NeurIPS 2026 &middot; Automatic Skill Discovery for Computer-Using Agents</p>
+  <h1>From SKILL.md to <em>learned behaviors</em></h1>
+  <p class="hero-sub">Agents shouldn't need hand-written skill files. InteraSkill discovers reusable skills automatically from interaction trajectories &mdash; no manual engineering, no hard-coded coordinates.</p>
+  <div class="hero-chips">
+    <span class="chip">Skill Discovery</span><span class="chip">InfoNCE</span>
+    <span class="chip">Hierarchical RL</span><span class="chip">Cross-Domain Transfer</span>
+    <span class="chip">WebArena</span><span class="chip">Multimodal Grounding</span>
+  </div>
+  <div class="scroll-hint"><div class="scroll-bar"></div><span>scroll to explore</span></div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section problem">
+  <div class="section-inner">
+    <span class="label">The Problem</span>
+    <h2 class="section-title" style="color:var(--ink);">SKILL.md is brittle by design</h2>
+    <p class="section-sub">Most CUA agents rely on hand-written configuration files that map actions to fixed UI coordinates. Three fundamental problems make this unscalable.</p>
+    <div class="problem-grid">
+      <div class="problem-card bad">
+        <h4>SKILL.md Agent (Status Quo)</h4>
+        <ul>
+          <li><span style="color:var(--fail)">&#x2717;</span> Hard-coded x,y coordinates break on any UI change</li>
+          <li><span style="color:var(--fail)">&#x2717;</span> Each new domain requires manual re-engineering</li>
+          <li><span style="color:var(--fail)">&#x2717;</span> Hundreds of skills to write and maintain per app</li>
+          <li><span style="color:var(--fail)">&#x2717;</span> No success prediction &mdash; fails silently</li>
+          <li><span style="color:var(--fail)">&#x2717;</span> Fixed action vocabulary, can't discover new patterns</li>
+        </ul>
+      </div>
+      <div class="problem-card good">
+        <h4>InteraSkill Agent (This Paper)</h4>
+        <ul>
+          <li><span style="color:var(--success)">&#x2713;</span> Normalized coordinates &mdash; works across any resolution</li>
+          <li><span style="color:var(--success)">&#x2713;</span> Discovers skills automatically from trajectory data</li>
+          <li><span style="color:var(--success)">&#x2713;</span> Skills compose to solve new tasks &mdash; zero re-engineering</li>
+          <li><span style="color:var(--success)">&#x2713;</span> Predicts action success from visual context</li>
+          <li><span style="color:var(--success)">&#x2713;</span> Continuous skill space captures richer behaviors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAP TABLE -->
+<section class="section gap-section">
+  <div class="section-inner">
+    <span class="label">Literature Gap</span>
+    <h2 class="section-title">No existing work combines all four desiderata</h2>
+    <p class="section-sub">We are the first to unify online skill discovery, interaction-derived learning, reusable skill definitions, and continuous self-improvement.</p>
+    <table class="gap-table">
+      <thead><tr><th>Approach</th><th>Skill Source</th><th>Online</th><th>Interaction-Derived</th><th>Transferable</th></tr></thead>
+      <tbody>
+        <tr><td>SKILL.md (manual)</td><td>Human engineering</td><td class="cross">&#x2717;</td><td class="cross">&#x2717;</td><td class="cross">&#x2717;</td></tr>
+        <tr><td>AWM (Wang et al., 2024)</td><td>Trajectory mining</td><td style="color:var(--warn);">Partial</td><td class="cross">&#x2717;</td><td class="check">&#x2713;</td></tr>
+        <tr><td>SkillWeaver (Zheng et al., 2025)</td><td>Self-exploration</td><td class="cross">&#x2717;</td><td class="cross">&#x2717;</td><td class="check">&#x2713;</td></tr>
+        <tr><td>ICAL (Sarch et al., 2024)</td><td>Demos + feedback</td><td class="check">&#x2713;</td><td style="color:var(--warn);">Partial</td><td class="cross">&#x2717;</td></tr>
+        <tr class="ours"><td>InteraSkill (Ours)</td><td>Interaction trajectories</td><td class="check">&#x2713;</td><td class="check">&#x2713;</td><td class="check">&#x2713;</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="section pipeline">
+  <div class="section-inner">
+    <span class="label">Method</span>
+    <h2 class="section-title">Three phases, zero manual labels</h2>
+    <p class="section-sub">The full pipeline from raw interaction trajectories to executable, composable skills.</p>
+    <div class="pipe-steps">
+      <div class="pipe-step">
+        <div class="pipe-num" style="color:var(--skill1);">1</div>
+        <div class="pipe-body">
+          <div style="flex:1;">
+            <h5>Skill Discovery</h5>
+            <p>Detect action discontinuities to segment trajectories. Cluster segments via Wasserstein distance on action distributions. No labels needed &mdash; behavioral similarity does the grouping.</p>
+          </div>
+          <span class="pipe-badge" style="background:rgba(37,99,232,.15);color:#93c5fd;border:1px solid rgba(37,99,232,.2);">Unsupervised clustering</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num" style="color:var(--skill2);">2</div>
+        <div class="pipe-body">
+          <div style="flex:1;">
+            <h5>Skill Embedding</h5>
+            <p>Train neural encoder with InfoNCE loss to map segments into continuous latent space z. Multimodal: ingests screenshots + text + action history. Jacobian regularization keeps skills disentangled.</p>
+          </div>
+          <span class="pipe-badge" style="background:rgba(124,58,237,.15);color:#c4b5fd;border:1px solid rgba(124,58,237,.2);">Contrastive learning</span>
+        </div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num" style="color:var(--skill3);">3</div>
+        <div class="pipe-body">
+          <div style="flex:1;">
+            <h5>Skill Composition</h5>
+            <p>Hierarchical policy selects skills; termination function decides when to switch. Treats discovered skills as semi-Markov options. New task = new sequence of existing skills.</p>
+          </div>
+          <span class="pipe-badge" style="background:rgba(16,185,129,.12);color:#6ee7b7;border:1px solid rgba(16,185,129,.18);">Options framework</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELF-IMPROVING LOOP -->
+<section class="section loop">
+  <div class="section-inner">
+    <span class="label">Architecture</span>
+    <h2 class="section-title">The self-improving simulation loop</h2>
+    <p class="section-sub">Every batch of simulated episodes feeds back into skill discovery. The agent gets better without any human in the loop.</p>
+    <div class="loop-grid">
+      <div class="loop-cell">
+        <div class="loop-icon">1&#xFE0F;&#x20E3;</div>
+        <h4>Seed from JSON</h4>
+        <p>Bootstrap from sample trajectory JSON files. Parse into unified format: screenshots, DOM states, actions, timing.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="loop-icon">2&#xFE0F;&#x20E3;</div>
+        <h4>Agent Rollouts</h4>
+        <p>Run baseline agent on WebArena tasks. Record every interaction as structured trajectory data.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="loop-icon">3&#xFE0F;&#x20E3;</div>
+        <h4>Segment & Cluster</h4>
+        <p>Detect action discontinuities. Cluster similar segments via Wasserstein distance. Each cluster = a discovered skill.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="loop-icon">4&#xFE0F;&#x20E3;</div>
+        <h4>Embed & Compose</h4>
+        <p>Learn skill embeddings via InfoNCE. Train hierarchical policy to compose skills for complex tasks.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="loop-icon">5&#xFE0F;&#x20E3;</div>
+        <h4>Execute & Record</h4>
+        <p>Deploy InteraSkill agent on new tasks. Record trajectories from skill-augmented execution.</p>
+      </div>
+      <div class="loop-cell">
+        <div class="loop-icon">6&#xFE0F;&#x20E3;</div>
+        <h4>Refine & Repeat</h4>
+        <p>New trajectories feed back into discovery. Skills accumulate, refine, and specialize across episodes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE SIMULATION -->
+<section class="section" style="background:var(--surface);color:var(--ink);">
+  <div class="section-inner">
+    <span class="label" style="color:var(--accent);">Live Simulation</span>
+    <h2 class="section-title" style="color:var(--ink);">Watch the agent discover skills</h2>
+    <p class="section-sub" style="color:#5a5750;">Simulated log stream from a WebArena agent run with online skill discovery.</p>
+    <div class="terminal-box">
+      <div class="term-topbar"><div class="term-dot td-r"></div><div class="term-dot td-y"></div><div class="term-dot td-g"></div><span class="term-title">interaskill-runtime &middot; webarena-episode-042</span></div>
+      <div class="term-output" id="simOutput"><span class="term-line"><span class="t-info"># Click "Run Simulation" to replay the skill discovery log</span></span><span class="term-line"><span class="cursor"></span></span></div>
+    </div>
+    <button class="play-btn" onclick="runSim()">&#9654; Run Simulation</button>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section results">
+  <div class="section-inner">
+    <span class="label">Expected Results</span>
+    <h2 class="section-title">Learned skills dominate on unseen domains</h2>
+    <p class="section-sub">Evaluated across WebArena's 6 domains. SKILL.md holds its own on seen domains &mdash; but collapses on new ones.</p>
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="result-num" style="color:var(--skill3);">+34%</span>
+        <span class="result-label">Cross-domain success rate vs SKILL.md</span>
+      </div>
+      <div class="result-card">
+        <span class="result-num" style="color:var(--skill1);">16</span>
+        <span class="result-label">Skill dimensions encode full behavioral diversity</span>
+      </div>
+      <div class="result-card">
+        <span class="result-num" style="color:var(--skill4);">51%</span>
+        <span class="result-label">Skill reuse rate across episodes</span>
+      </div>
+      <div class="result-card">
+        <span class="result-num" style="color:var(--skill5);">3x</span>
+        <span class="result-label">Fewer primitive actions per task</span>
+      </div>
+    </div>
+    <div style="margin-top:32px;">
+      <div style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;">Task success rate by WebArena domain</div>
+      <div id="resultBars">
+        <div class="bar-row"><span class="bar-label">E-commerce (seen)</span><div class="bar-wrap"><div class="bar-fill" style="--tw:78%;background:linear-gradient(90deg,#2563e8,#60aff0);" data-w="78">78%</div></div><span class="bar-val" style="color:var(--skill1);">78%</span></div>
+        <div class="bar-row"><span class="bar-label" style="color:rgba(255,255,255,.35);">SKILL.md baseline</span><div class="bar-wrap"><div class="bar-fill" style="--tw:72%;background:rgba(255,255,255,.15);" data-w="72">72%</div></div><span class="bar-val" style="color:rgba(255,255,255,.3);">72%</span></div>
+        <div class="bar-row" style="margin-top:10px;"><span class="bar-label">Reddit (seen)</span><div class="bar-wrap"><div class="bar-fill" style="--tw:74%;background:linear-gradient(90deg,#7c3aed,#c084fc);" data-w="74">74%</div></div><span class="bar-val" style="color:var(--skill2);">74%</span></div>
+        <div class="bar-row"><span class="bar-label" style="color:rgba(255,255,255,.35);">SKILL.md baseline</span><div class="bar-wrap"><div class="bar-fill" style="--tw:69%;background:rgba(255,255,255,.15);" data-w="69">69%</div></div><span class="bar-val" style="color:rgba(255,255,255,.3);">69%</span></div>
+        <div class="bar-row" style="margin-top:10px;"><span class="bar-label">GitLab (unseen)</span><div class="bar-wrap"><div class="bar-fill" style="--tw:62%;background:linear-gradient(90deg,#059669,#6ee7b7);" data-w="62">62%</div></div><span class="bar-val" style="color:var(--skill3);">62%</span></div>
+        <div class="bar-row"><span class="bar-label" style="color:rgba(255,255,255,.35);">SKILL.md baseline</span><div class="bar-wrap"><div class="bar-fill" style="--tw:31%;background:rgba(255,255,255,.15);" data-w="31">31%</div></div><span class="bar-val" style="color:rgba(255,255,255,.3);">31%</span></div>
+        <div class="bar-row" style="margin-top:10px;"><span class="bar-label">Wikipedia (unseen)</span><div class="bar-wrap"><div class="bar-fill" style="--tw:58%;background:linear-gradient(90deg,#d97706,#fbbf24);" data-w="58">58%</div></div><span class="bar-val" style="color:var(--skill4);">58%</span></div>
+        <div class="bar-row"><span class="bar-label" style="color:rgba(255,255,255,.35);">SKILL.md baseline</span><div class="bar-wrap"><div class="bar-fill" style="--tw:28%;background:rgba(255,255,255,.15);" data-w="28">28%</div></div><span class="bar-val" style="color:rgba(255,255,255,.3);">28%</span></div>
+      </div>
+      <div style="font-size:.7rem;color:rgba(255,255,255,.2);margin-top:14px;">* Results are projected based on reported trends; exact numbers forthcoming.</div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOME -->
+<section class="outcome">
+  <span class="label" style="color:rgba(255,255,255,.6)">The Takeaway</span>
+  <h2>Skills should be learned,<br>not engineered.</h2>
+  <p>InteraSkill eliminates the need for hand-written skill files. Give the agent raw interaction trajectories, and it discovers reusable, composable, transferable skills &mdash; automatically.</p>
+  <div class="outcome-stats">
+    <div class="stat"><span class="stat-num">37</span><span class="stat-label">Related papers surveyed</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">WebArena domains</span></div>
+    <div class="stat"><span class="stat-num">812</span><span class="stat-label">Evaluation tasks</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-label">Manual skill definitions needed</span></div>
+  </div>
+</section>
+
+<footer>InteraSkill &middot; Automatic Skill Discovery for Computer-Using Agents &middot; NeurIPS 2026</footer>
+</div><!-- /panel-overview -->
+
+<!-- ======== TAB 2: INTERACTION DEMOS ======== -->
+<div class="panel" id="panel-interactions">
+
+<section class="section" style="padding-top:40px;">
+  <div class="section-inner">
+    <span class="label">Interaction Demonstrations</span>
+    <h2 class="section-title">How the agent learns skills from interactions</h2>
+    <p class="section-sub">Select a WebArena scenario below. Watch the agent interact, then see how those interactions get segmented into reusable skills.</p>
+
+    <!-- Scenario tabs -->
+    <div class="demo-tabs">
+      <button class="demo-tab active" onclick="switchDemo('ecom',this)">E-Commerce</button>
+      <button class="demo-tab" onclick="switchDemo('forum',this)">Forum Navigation</button>
+      <button class="demo-tab" onclick="switchDemo('gitlab',this)">GitLab (Unseen)</button>
+    </div>
+
+    <!-- E-Commerce -->
+    <div class="demo-view active" id="demo-ecom">
+      <div class="replay">
+        <div class="replay-left">
+          <div class="replay-header"><div class="replay-dot rd-r"></div><div class="replay-dot rd-y"></div><div class="replay-dot rd-g"></div><span class="replay-title">webarena &middot; onestopshop &middot; task-127</span></div>
+          <div class="replay-body" id="ecom-replay">
+            <span class="term-line"><span class="t-info"># Task: "Find the cheapest red jacket in size M and add to cart"</span></span>
+            <span class="term-line"></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(search_bar)</span> <span class="t-info">// (0.45, 0.08)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">type("red jacket")</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(search_button)</span> <span class="t-info">// (0.62, 0.08)</span></span>
+            <span class="term-line"><span class="t-info">  --- skill boundary detected (action discontinuity) ---</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(filter_size)</span> <span class="t-info">// (0.12, 0.35)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(option_M)</span> <span class="t-info">// (0.14, 0.42)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(sort_price_low)</span> <span class="t-info">// (0.78, 0.18)</span></span>
+            <span class="term-line"><span class="t-info">  --- skill boundary detected ---</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(product_1)</span> <span class="t-info">// (0.35, 0.45)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">scroll(down, 200px)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(add_to_cart)</span> <span class="t-info">// (0.72, 0.68)</span></span>
+            <span class="term-line"><span class="t-ok">&#x2713; Task completed successfully</span></span>
+            <span class="term-line"></span>
+            <span class="term-line"><span class="t-api">[SKILL DISCOVERY] 3 segments detected:</span></span>
+            <span class="term-line"><span class="t-hl">  z1: search_product (3 actions)</span></span>
+            <span class="term-line"><span class="t-hl">  z2: filter_and_sort (3 actions)</span></span>
+            <span class="term-line"><span class="t-hl">  z3: select_and_purchase (3 actions)</span></span>
+          </div>
+        </div>
+        <div class="replay-right">
+          <div style="font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Discovered Skills</div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--skill1);"></div>
+              <div class="skill-card-name">search_product</div>
+              <span class="skill-card-badge" style="background:rgba(96,175,240,.1);color:var(--skill1);border:1px solid rgba(96,175,240,.2);">z1</span>
+            </div>
+            <p>Navigate to search bar, type query, submit search. Appears in 87% of e-commerce trajectories.</p>
+            <div class="skill-actions"><span class="skill-action">click(search_bar)</span><span class="skill-action">type(query)</span><span class="skill-action">click(submit)</span></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--skill2);"></div>
+              <div class="skill-card-name">filter_and_sort</div>
+              <span class="skill-card-badge" style="background:rgba(192,132,252,.1);color:var(--skill2);border:1px solid rgba(192,132,252,.2);">z2</span>
+            </div>
+            <p>Apply category/attribute filters and sort results. Reused across product search, user listing, and order history.</p>
+            <div class="skill-actions"><span class="skill-action">click(filter)</span><span class="skill-action">select(option)</span><span class="skill-action">click(sort)</span></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--skill3);"></div>
+              <div class="skill-card-name">select_and_purchase</div>
+              <span class="skill-card-badge" style="background:rgba(110,231,183,.1);color:var(--skill3);border:1px solid rgba(110,231,183,.2);">z3</span>
+            </div>
+            <p>Select an item from results, scroll to action button, and execute purchase/add action.</p>
+            <div class="skill-actions"><span class="skill-action">click(item)</span><span class="skill-action">scroll(down)</span><span class="skill-action">click(add_to_cart)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forum -->
+    <div class="demo-view" id="demo-forum">
+      <div class="replay">
+        <div class="replay-left">
+          <div class="replay-header"><div class="replay-dot rd-r"></div><div class="replay-dot rd-y"></div><div class="replay-dot rd-g"></div><span class="replay-title">webarena &middot; reddit-clone &middot; task-304</span></div>
+          <div class="replay-body">
+            <span class="term-line"><span class="t-info"># Task: "Upvote the most recent post about machine learning in /f/science"</span></span>
+            <span class="term-line"></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(subreddit_nav)</span> <span class="t-info">// (0.10, 0.15)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(science_forum)</span> <span class="t-info">// (0.10, 0.32)</span></span>
+            <span class="term-line"><span class="t-info">  --- skill boundary ---</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(sort_new)</span> <span class="t-info">// (0.65, 0.12)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">scroll(down, 150px)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">scan_text("machine learning")</span></span>
+            <span class="term-line"><span class="t-info">  --- skill boundary ---</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(upvote_btn)</span> <span class="t-info">// (0.04, 0.48)</span></span>
+            <span class="term-line"><span class="t-ok">&#x2713; Task completed</span></span>
+            <span class="term-line"></span>
+            <span class="term-line"><span class="t-api">[SKILL DISCOVERY] 3 segments:</span></span>
+            <span class="term-line"><span class="t-hl">  z4: navigate_to_forum (2 actions)</span></span>
+            <span class="term-line"><span class="t-hl">  z2: filter_and_sort (3 actions) [REUSED]</span></span>
+            <span class="term-line"><span class="t-hl">  z5: interact_with_post (1 action)</span></span>
+          </div>
+        </div>
+        <div class="replay-right">
+          <div style="font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Discovered Skills</div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--skill4);"></div>
+              <div class="skill-card-name">navigate_to_forum</div>
+              <span class="skill-card-badge" style="background:rgba(251,191,36,.1);color:var(--skill4);border:1px solid rgba(251,191,36,.2);">z4</span>
+            </div>
+            <p>Use sidebar navigation to reach a specific subforum/category. Transfers to any hierarchical menu structure.</p>
+            <div class="skill-actions"><span class="skill-action">click(nav_menu)</span><span class="skill-action">click(category)</span></div>
+          </div>
+          <div class="skill-card" style="border-color:var(--skill2);border-width:2px;">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--skill2);"></div>
+              <div class="skill-card-name">filter_and_sort</div>
+              <span class="skill-card-badge" style="background:rgba(192,132,252,.1);color:var(--skill2);border:1px solid rgba(192,132,252,.2);">z2 REUSED</span>
+            </div>
+            <p>Same skill discovered in e-commerce! Sort by new/relevance and scan results. The embedding matched across domains.</p>
+            <div class="skill-actions"><span class="skill-action">click(sort)</span><span class="skill-action">scroll(scan)</span><span class="skill-action">find(text)</span></div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--skill5);"></div>
+              <div class="skill-card-name">interact_with_post</div>
+              <span class="skill-card-badge" style="background:rgba(251,146,60,.1);color:var(--skill5);border:1px solid rgba(251,146,60,.2);">z5</span>
+            </div>
+            <p>Perform a single-action interaction on a content item (upvote, like, bookmark, flag).</p>
+            <div class="skill-actions"><span class="skill-action">click(action_btn)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GitLab (unseen domain) -->
+    <div class="demo-view" id="demo-gitlab">
+      <div class="replay">
+        <div class="replay-left">
+          <div class="replay-header"><div class="replay-dot rd-r"></div><div class="replay-dot rd-y"></div><div class="replay-dot rd-g"></div><span class="replay-title">webarena &middot; gitlab &middot; task-512 (UNSEEN DOMAIN)</span></div>
+          <div class="replay-body">
+            <span class="term-line"><span class="t-info"># Task: "Find the most recent issue labeled 'bug' in the project and assign it to user1"</span></span>
+            <span class="term-line"><span class="t-warn">&#x26A0; Domain not seen during training &mdash; testing transfer</span></span>
+            <span class="term-line"></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(project_nav)</span> <span class="t-info">// z4: navigate_to_forum [TRANSFER]</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(issues_tab)</span></span>
+            <span class="term-line"><span class="t-info">  --- reusing z4 (navigate) with adapted coordinates ---</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(label_filter)</span> <span class="t-info">// z2: filter_and_sort [TRANSFER]</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">select("bug")</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(sort_newest)</span></span>
+            <span class="term-line"><span class="t-info">  --- reusing z2 (filter) with adapted UI elements ---</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(issue_1)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">click(assignee_dropdown)</span></span>
+            <span class="term-line"><span class="t-prompt">&#10095; </span><span class="t-cmd">select("user1")</span></span>
+            <span class="term-line"><span class="t-ok">&#x2713; Task completed &mdash; 2 skills transferred successfully</span></span>
+            <span class="term-line"></span>
+            <span class="term-line"><span class="t-api">[TRANSFER ANALYSIS]</span></span>
+            <span class="term-line"><span class="t-ok">  z4 (navigate): CLIP similarity 0.89 &mdash; menu structures matched</span></span>
+            <span class="term-line"><span class="t-ok">  z2 (filter): CLIP similarity 0.84 &mdash; filter UIs semantically equivalent</span></span>
+            <span class="term-line"><span class="t-hl">  z6: assign_entity (NEW) &mdash; discovered from this interaction</span></span>
+          </div>
+        </div>
+        <div class="replay-right">
+          <div style="font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Cross-Domain Transfer</div>
+          <div class="skill-card" style="border-color:var(--success);border-width:2px;">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--skill4);"></div>
+              <div class="skill-card-name">navigate_to_forum</div>
+              <span class="skill-card-badge" style="background:rgba(22,163,74,.1);color:var(--success);border:1px solid rgba(22,163,74,.2);">TRANSFERRED</span>
+            </div>
+            <p>Learned on Reddit forums, successfully transferred to GitLab project navigation. CLIP matched sidebar menu structure across domains.</p>
+          </div>
+          <div class="skill-card" style="border-color:var(--success);border-width:2px;">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--skill2);"></div>
+              <div class="skill-card-name">filter_and_sort</div>
+              <span class="skill-card-badge" style="background:rgba(22,163,74,.1);color:var(--success);border:1px solid rgba(22,163,74,.2);">TRANSFERRED</span>
+            </div>
+            <p>Originally discovered in e-commerce, reused in forums, now transfers to GitLab issues. The most versatile skill in the library.</p>
+          </div>
+          <div class="skill-card" style="border-color:var(--accent);border-width:2px;">
+            <div class="skill-card-head">
+              <div class="skill-dot" style="background:var(--accent);"></div>
+              <div class="skill-card-name">assign_entity</div>
+              <span class="skill-card-badge" style="background:rgba(232,93,38,.1);color:var(--accent);border:1px solid rgba(232,93,38,.2);">NEW SKILL</span>
+            </div>
+            <p>Discovered on this unseen domain! Dropdown-select pattern for assigning metadata (assignee, label, milestone). Added to the growing skill library.</p>
+            <div class="skill-actions"><span class="skill-action">click(dropdown)</span><span class="skill-action">select(entity)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IW BENCHMARK: REAL WORKFLOW DATA -->
+<section class="section" style="background:var(--ink);color:var(--paper);">
+  <div class="section-inner">
+    <span class="label">Real Workflow Data &mdash; IW Benchmark</span>
+    <h2 class="section-title">45 real-world workflows across 4 M365 apps</h2>
+    <p class="section-sub">These are actual information worker workflows from the IW Benchmark dataset, organized by app combination and complexity. Each one becomes a trajectory for skill discovery.</p>
+
+    <div class="iw-card">
+      <div class="iw-card-head">
+        <div class="iw-objective">Launch Marketing Campaign</div>
+        <span class="iw-badge iw-badge-word">Word</span>
+        <span class="iw-badge iw-badge-ppt">PowerPoint</span>
+        <span class="iw-badge iw-badge-teams">Teams</span>
+        <span class="iw-complexity iw-high">HIGH &middot; 54.5 min</span>
+      </div>
+      <div class="iw-card-body">
+        <div class="iw-activity">
+          <div class="iw-act-num" style="background:rgba(91,95,199,.15);color:#b3b6f0;">1</div>
+          <div class="iw-act-info">
+            <div class="iw-act-name">Participating in Meetings and Communication</div>
+            <div class="iw-act-apps">Teams &middot; 27.4 min</div>
+          </div>
+          <div class="iw-act-dur">27.4m</div>
+        </div>
+        <div class="iw-activity">
+          <div class="iw-act-num" style="background:rgba(21,101,192,.15);color:#64b5f6;">2</div>
+          <div class="iw-act-info">
+            <div class="iw-act-name">Cross-Application Document and Presentation Editing</div>
+            <div class="iw-act-apps">Word + PowerPoint &middot; 27.1 min</div>
+          </div>
+          <div class="iw-act-dur">27.1m</div>
+        </div>
+        <div class="iw-subtasks">
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-meet">MEETINGS</span>Schedule kick-off meeting with marketing team [9.0 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-comm">COMMUNICATION</span>Respond to team inquiries in Teams chat [9.2 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-info">INFO MGMT</span>Monitor notification alerts for urgent updates [9.2 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-core">CORE PRODUCTION</span>Revise campaign documents in Word [13.5 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-core">CORE PRODUCTION</span>Design presentation slides in PowerPoint [13.6 min]</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="iw-card">
+      <div class="iw-card-head">
+        <div class="iw-objective">Enhance Team Productivity</div>
+        <span class="iw-badge iw-badge-word">Word</span>
+        <span class="iw-badge iw-badge-ppt">PowerPoint</span>
+        <span class="iw-badge iw-badge-teams">Teams</span>
+        <span class="iw-badge iw-badge-outlook">Outlook</span>
+        <span class="iw-complexity iw-med">MEDIUM &middot; 44.5 min</span>
+      </div>
+      <div class="iw-card-body">
+        <div class="iw-activity">
+          <div class="iw-act-num" style="background:rgba(0,120,212,.15);color:#90caf9;">1</div>
+          <div class="iw-act-info">
+            <div class="iw-act-name">Outlook Email and Document Management</div>
+            <div class="iw-act-apps">Word + Outlook &middot; 20.7 min</div>
+          </div>
+          <div class="iw-act-dur">20.7m</div>
+        </div>
+        <div class="iw-activity">
+          <div class="iw-act-num" style="background:rgba(91,95,199,.15);color:#b3b6f0;">2</div>
+          <div class="iw-act-info">
+            <div class="iw-act-name">Cross-Application Task Management</div>
+            <div class="iw-act-apps">PowerPoint + Teams + Outlook &middot; 23.8 min</div>
+          </div>
+          <div class="iw-act-dur">23.8m</div>
+        </div>
+        <div class="iw-subtasks">
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-info">INFO MGMT</span>Organize inbox and sort emails into folders [10.5 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-comm">COMMUNICATION</span>Attach documents to emails for team review [10.2 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-mgmt">PROJECT MGMT</span>Review task list and ensure assignments [12.3 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-core">CORE PRODUCTION</span>Update presentation based on latest input [11.5 min]</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="iw-card">
+      <div class="iw-card-head">
+        <div class="iw-objective">Create Promotional Materials for Conference</div>
+        <span class="iw-badge iw-badge-word">Word</span>
+        <span class="iw-complexity iw-low">LOW &middot; 12.8 min</span>
+      </div>
+      <div class="iw-card-body">
+        <div class="iw-activity">
+          <div class="iw-act-num" style="background:rgba(21,101,192,.15);color:#64b5f6;">1</div>
+          <div class="iw-act-info">
+            <div class="iw-act-name">Word Document Management and Printing</div>
+            <div class="iw-act-apps">Word &middot; 12.8 min</div>
+          </div>
+          <div class="iw-act-dur">12.8m</div>
+        </div>
+        <div class="iw-subtasks">
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-core">CORE PRODUCTION</span>Design conference flyer with key speakers and agenda [5.5 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-comm">COMMUNICATION</span>Write partner invitation letter with personalization [4.3 min]</div>
+          <div class="iw-subtask"><span class="iw-subtask-cat cat-info">INFO MGMT</span>Print documents for distribution, quality check [3.0 min]</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;">
+      <div class="result-card" style="flex:1;min-width:140px;"><span class="result-num" style="color:var(--skill1);font-size:2rem;">45</span><span class="result-label">Total workflows</span></div>
+      <div class="result-card" style="flex:1;min-width:140px;"><span class="result-num" style="color:var(--skill2);font-size:2rem;">4</span><span class="result-label">M365 Apps</span></div>
+      <div class="result-card" style="flex:1;min-width:140px;"><span class="result-num" style="color:var(--skill3);font-size:2rem;">3</span><span class="result-label">Complexity Levels</span></div>
+      <div class="result-card" style="flex:1;min-width:140px;"><span class="result-num" style="color:var(--skill4);font-size:2rem;">15</span><span class="result-label">App Combinations</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAILURE MODES & RECOVERY -->
+<section class="section fail-section">
+  <div class="section-inner">
+    <span class="label">Failures &amp; Limitations</span>
+    <h2 class="section-title">When things go wrong &mdash; and what the agent learns</h2>
+    <p class="section-sub">Real failure scenarios from agent execution. Each failure becomes a learning signal for skill refinement.</p>
+
+    <div class="fail-grid">
+      <div class="fail-nav">
+        <div class="fail-nav-label">Failure Scenarios</div>
+        <div class="fail-item active" onclick="showFail(0,this)" style="color:#ef4444;">
+          <div class="fail-dot" style="background:#ef4444;"></div>
+          <div><div class="fail-name">Element Misclick</div><div class="fail-tag">Hard Failure</div></div>
+        </div>
+        <div class="fail-item" onclick="showFail(1,this)" style="color:#febc2e;">
+          <div class="fail-dot" style="background:#febc2e;"></div>
+          <div><div class="fail-name">Auth Redirect</div><div class="fail-tag">Environment</div></div>
+        </div>
+        <div class="fail-item" onclick="showFail(2,this)" style="color:#c084fc;">
+          <div class="fail-dot" style="background:#c084fc;"></div>
+          <div><div class="fail-name">Stale DOM</div><div class="fail-tag">LLM Limitation</div></div>
+        </div>
+        <div class="fail-item" onclick="showFail(3,this)" style="color:#ef4444;">
+          <div class="fail-dot" style="background:#ef4444;"></div>
+          <div><div class="fail-name">Pagination Miss</div><div class="fail-tag">Data Loss</div></div>
+        </div>
+        <div class="fail-item" onclick="showFail(4,this)" style="color:#febc2e;">
+          <div class="fail-dot" style="background:#febc2e;"></div>
+          <div><div class="fail-name">Form Validation</div><div class="fail-tag">User Input</div></div>
+        </div>
+        <div class="fail-item" onclick="showFail(5,this)" style="color:#c084fc;">
+          <div class="fail-dot" style="background:#c084fc;"></div>
+          <div><div class="fail-name">Cross-App State</div><div class="fail-tag">Orchestration</div></div>
+        </div>
+      </div>
+      <div class="fail-main">
+        <!-- Fail 0: Element Misclick -->
+        <div class="fail-scene active" id="fail-0">
+          <div class="fail-head">
+            <div class="fail-emoji">&#128165;</div>
+            <div>
+              <span class="fail-severity sev-hard">Hard Failure</span>
+              <div class="fail-title">Clicked ad banner instead of product card</div>
+              <div class="fail-subtitle">Coordinate-based targeting hit an overlapping ad element. The action succeeded mechanically but targeted the wrong semantic element.</div>
+            </div>
+          </div>
+          <div class="fail-body">
+            <div class="fail-terminal">
+              <div class="fail-term-bar"><div class="fail-term-dot td-r"></div><div class="fail-term-dot td-y"></div><div class="fail-term-dot td-g"></div></div>
+              <div class="fail-term-out">
+                <span class="term-line"><span class="t-cmd">click(0.35, 0.52) -> target: product_card</span></span>
+                <span class="term-line" style="color:#ef4444;">ERROR: Hit element div.ad-banner (z-index: 999)</span>
+                <span class="term-line" style="color:#ef4444;">Navigated to external ad URL - task derailed</span>
+                <span class="term-line"><span class="t-info">---</span></span>
+                <span class="term-line"><span class="t-warn">RECOVERY: go_back() -> re-scan DOM</span></span>
+                <span class="term-line"><span class="t-cmd">click(0.35, 0.45) -> target: product_card [verified]</span></span>
+                <span class="term-line"><span class="t-ok">Task recovered after 1 retry</span></span>
+              </div>
+            </div>
+            <div class="fail-recovery">
+              <h5>What the Agent Learned</h5>
+              <p>Coordinate-only targeting is unreliable when overlay elements exist. The agent now verifies element class/role before clicking.</p>
+              <div class="fail-skill-learned">
+                <strong>Skill z3 updated: select_and_purchase</strong>
+                <p>Added pre-click verification: check element.className matches expected target before executing click. Embedding delta: 0.014.</p>
+              </div>
+              <div class="fail-skill-learned" style="margin-top:8px;">
+                <strong>New pattern: ad_avoidance</strong>
+                <p>Filter DOM elements with class containing "ad", "sponsor", "promo" before coordinate targeting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fail 1: Auth Redirect -->
+        <div class="fail-scene" id="fail-1">
+          <div class="fail-head">
+            <div class="fail-emoji">&#128274;</div>
+            <div>
+              <span class="fail-severity sev-warn">Environment Failure</span>
+              <div class="fail-title">Authentication wall mid-task</div>
+              <div class="fail-subtitle">Session expired during a write action. The agent was redirected to a login page, losing the current task context.</div>
+            </div>
+          </div>
+          <div class="fail-body">
+            <div class="fail-terminal">
+              <div class="fail-term-bar"><div class="fail-term-dot td-r"></div><div class="fail-term-dot td-y"></div><div class="fail-term-dot td-g"></div></div>
+              <div class="fail-term-out">
+                <span class="term-line"><span class="t-cmd">click(comment_box) -> type("Looks good")</span></span>
+                <span class="term-line"><span class="t-cmd">click(submit_comment)</span></span>
+                <span class="term-line" style="color:#ef4444;">HTTP 401: Unauthorized</span>
+                <span class="term-line" style="color:#ef4444;">URL changed: /issues/42 -> /login?redirect=/issues/42</span>
+                <span class="term-line"><span class="t-info">---</span></span>
+                <span class="term-line"><span class="t-warn">RECOVERY: Detected login page</span></span>
+                <span class="term-line"><span class="t-cmd">type(username) -> type(password) -> click(login)</span></span>
+                <span class="term-line"><span class="t-ok">Redirected back to /issues/42 -> retry comment</span></span>
+              </div>
+            </div>
+            <div class="fail-recovery">
+              <h5>What the Agent Learned</h5>
+              <p>Write actions can trigger auth walls. The recovery pattern is now encoded as a reusable skill.</p>
+              <div class="fail-skill-learned">
+                <strong>New skill: auth_recovery (z7)</strong>
+                <p>Detect login redirect (URL contains /login or /signin). Execute credential flow, then return to original URL and retry last action.</p>
+              </div>
+              <div class="fail-skill-learned" style="margin-top:8px;">
+                <strong>New pattern: pre_auth_check</strong>
+                <p>Before write actions, verify auth state by checking for user avatar in navigation. Prevents 401 errors proactively.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fail 2: Stale DOM -->
+        <div class="fail-scene" id="fail-2">
+          <div class="fail-head">
+            <div class="fail-emoji">&#128123;</div>
+            <div>
+              <span class="fail-severity sev-llm">LLM Limitation</span>
+              <div class="fail-title">Stale DOM reference after dynamic content load</div>
+              <div class="fail-subtitle">The accessibility tree was captured before AJAX content loaded. The agent tried to click an element that had shifted positions after lazy loading completed.</div>
+            </div>
+          </div>
+          <div class="fail-body">
+            <div class="fail-terminal">
+              <div class="fail-term-bar"><div class="fail-term-dot td-r"></div><div class="fail-term-dot td-y"></div><div class="fail-term-dot td-g"></div></div>
+              <div class="fail-term-out">
+                <span class="term-line"><span class="t-cmd">observe(accessibility_tree) -> 12 elements</span></span>
+                <span class="term-line"><span class="t-cmd">click(element[7]) -> "Add to Cart"</span></span>
+                <span class="term-line" style="color:#ef4444;">Element stale: DOM mutated (lazy load added 8 elements)</span>
+                <span class="term-line" style="color:#ef4444;">Actual target at element[7] is now "Reviews" section</span>
+                <span class="term-line"><span class="t-info">---</span></span>
+                <span class="term-line"><span class="t-warn">RECOVERY: Re-observe DOM after 500ms wait</span></span>
+                <span class="term-line"><span class="t-cmd">observe() -> 20 elements -> click(element[15])</span></span>
+                <span class="term-line"><span class="t-ok">Correct element targeted after re-observation</span></span>
+              </div>
+            </div>
+            <div class="fail-recovery">
+              <h5>What the Agent Learned</h5>
+              <p>Dynamic pages need DOM stabilization before action. Wait for mutation observer to settle before capturing accessibility tree.</p>
+              <div class="fail-skill-learned">
+                <strong>Pattern: wait_for_stable_dom</strong>
+                <p>After navigation or scroll, wait until no DOM mutations for 300ms before capturing observation. Reduces stale-element errors by ~40%.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fail 3: Pagination Miss -->
+        <div class="fail-scene" id="fail-3">
+          <div class="fail-head">
+            <div class="fail-emoji">&#128196;</div>
+            <div>
+              <span class="fail-severity sev-hard">Data Loss</span>
+              <div class="fail-title">Only processed first page of paginated results</div>
+              <div class="fail-subtitle">The agent completed the task using only 20 of 156 results, returning an incorrect answer because it missed 136 items on subsequent pages.</div>
+            </div>
+          </div>
+          <div class="fail-body">
+            <div class="fail-terminal">
+              <div class="fail-term-bar"><div class="fail-term-dot td-r"></div><div class="fail-term-dot td-y"></div><div class="fail-term-dot td-g"></div></div>
+              <div class="fail-term-out">
+                <span class="term-line"><span class="t-cmd">navigate(orders_page)</span></span>
+                <span class="term-line"><span class="t-info">Showing 20 of 156 orders</span></span>
+                <span class="term-line"><span class="t-cmd">extract(visible_orders) -> 20 items</span></span>
+                <span class="term-line" style="color:#ef4444;">WRONG: Returned cheapest from page 1 only</span>
+                <span class="term-line" style="color:#ef4444;">Actual cheapest was on page 5</span>
+                <span class="term-line"><span class="t-info">---</span></span>
+                <span class="term-line"><span class="t-warn">After learning: Now detects pagination indicators</span></span>
+                <span class="term-line"><span class="t-cmd">while(has_next): click(next) -> collect(items)</span></span>
+                <span class="term-line"><span class="t-ok">All 156 orders collected across 8 pages</span></span>
+              </div>
+            </div>
+            <div class="fail-recovery">
+              <h5>What the Agent Learned</h5>
+              <p>Pagination is invisible to single-page reasoning. The agent must detect and iterate through all pages for any data collection task.</p>
+              <div class="fail-skill-learned">
+                <strong>New skill: paginated_collect (z8)</strong>
+                <p>Detect pagination indicators ("page X of Y", next buttons, "showing X of Y"). Loop through all pages, collecting items from each. Terminate when no next button exists.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fail 4: Form Validation -->
+        <div class="fail-scene" id="fail-4">
+          <div class="fail-head">
+            <div class="fail-emoji">&#128221;</div>
+            <div>
+              <span class="fail-severity sev-warn">User Input Failure</span>
+              <div class="fail-title">Submitted form with missing required fields</div>
+              <div class="fail-subtitle">The agent filled visible fields but missed a required zip code field below the fold. Form submission failed with a validation error.</div>
+            </div>
+          </div>
+          <div class="fail-body">
+            <div class="fail-terminal">
+              <div class="fail-term-bar"><div class="fail-term-dot td-r"></div><div class="fail-term-dot td-y"></div><div class="fail-term-dot td-g"></div></div>
+              <div class="fail-term-out">
+                <span class="term-line"><span class="t-cmd">type(address, "123 Main St")</span></span>
+                <span class="term-line"><span class="t-cmd">type(city, "Cambridge")</span></span>
+                <span class="term-line"><span class="t-cmd">click(submit_button)</span></span>
+                <span class="term-line" style="color:#ef4444;">VALIDATION: "Zip code is required"</span>
+                <span class="term-line"><span class="t-info">---</span></span>
+                <span class="term-line"><span class="t-warn">RECOVERY: Parse error -> find empty required field</span></span>
+                <span class="term-line"><span class="t-cmd">scroll(down) -> type(zip, "02139") -> click(submit)</span></span>
+                <span class="term-line"><span class="t-ok">Form submitted successfully</span></span>
+              </div>
+            </div>
+            <div class="fail-recovery">
+              <h5>What the Agent Learned</h5>
+              <p>Forms may have required fields below the fold. The agent now scans the full form before submitting.</p>
+              <div class="fail-skill-learned">
+                <strong>Skill updated: form_completion (z9)</strong>
+                <p>Before submit: scroll through entire form, identify all required fields (asterisk, "required" attr), fill all before clicking submit. Reduces validation errors by ~60%.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fail 5: Cross-App State -->
+        <div class="fail-scene" id="fail-5">
+          <div class="fail-head">
+            <div class="fail-emoji">&#128256;</div>
+            <div>
+              <span class="fail-severity sev-llm">Orchestration Failure</span>
+              <div class="fail-title">Cross-application state lost during app switch</div>
+              <div class="fail-subtitle">Agent copied data from a spreadsheet but lost clipboard context when switching to the document editor. The paste action inserted stale data from a previous copy.</div>
+            </div>
+          </div>
+          <div class="fail-body">
+            <div class="fail-terminal">
+              <div class="fail-term-bar"><div class="fail-term-dot td-r"></div><div class="fail-term-dot td-y"></div><div class="fail-term-dot td-g"></div></div>
+              <div class="fail-term-out">
+                <span class="term-line"><span class="t-cmd">[Excel] select(A1:D10) -> copy()</span></span>
+                <span class="term-line"><span class="t-cmd">[Switch to Word] click(document_body)</span></span>
+                <span class="term-line"><span class="t-cmd">[Word] paste()</span></span>
+                <span class="term-line" style="color:#ef4444;">WRONG: Pasted stale data from previous clipboard</span>
+                <span class="term-line" style="color:#ef4444;">App switch cleared the clipboard context</span>
+                <span class="term-line"><span class="t-info">---</span></span>
+                <span class="term-line"><span class="t-warn">After learning: Use explicit data passing</span></span>
+                <span class="term-line"><span class="t-cmd">[Excel] export(A1:D10) -> temp_data.json</span></span>
+                <span class="term-line"><span class="t-cmd">[Word] import(temp_data.json) -> insert_table()</span></span>
+                <span class="term-line"><span class="t-ok">Data transferred reliably via file intermediary</span></span>
+              </div>
+            </div>
+            <div class="fail-recovery">
+              <h5>What the Agent Learned</h5>
+              <p>Clipboard is unreliable across application switches. The agent now uses explicit file-based data transfer for cross-app workflows.</p>
+              <div class="fail-skill-learned">
+                <strong>New skill: cross_app_data_transfer (z10)</strong>
+                <p>For multi-app data movement: export source data to structured intermediate format (JSON/CSV), then import into target application. Avoids clipboard race conditions.</p>
+              </div>
+              <div class="fail-skill-learned" style="margin-top:8px;">
+                <strong>Pattern: explicit_state_passing</strong>
+                <p>Never rely on implicit OS state (clipboard, focus) across app boundaries. Always use explicit data channels. Critical for IW benchmark multi-app workflows.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT INTERACTION DEMO -->
+<section class="section chat-section">
+  <div class="section-inner">
+    <span class="label">Learning from Interaction</span>
+    <h2 class="section-title">Corrections become skills automatically</h2>
+    <p class="section-sub">When the agent makes mistakes during simulation, the correction trajectories feed into skill discovery. No manual SKILL.md editing needed.</p>
+    <div class="chat-container">
+      <div class="chat-left">
+        <div class="chat-panel-head">
+          <div>
+            <div class="chat-panel-title">Agent &harr; Environment Interaction</div>
+            <div class="chat-panel-sub">Corrections and error-recovery patterns extracted naturally</div>
+          </div>
+        </div>
+        <div class="chat-messages" id="chatMsgs"></div>
+        <div class="chat-scenarios">
+          <div class="chat-scenarios-label">Try a correction scenario</div>
+          <div class="pill-row">
+            <div class="pill active" onclick="loadChat(0,this)">Wrong element clicked</div>
+            <div class="pill" onclick="loadChat(1,this)">Login required</div>
+            <div class="pill" onclick="loadChat(2,this)">Pagination needed</div>
+            <div class="pill" onclick="loadChat(3,this)">Form validation error</div>
+          </div>
+        </div>
+      </div>
+      <div class="chat-left" style="background:#0f1117;">
+        <div class="chat-panel-head">
+          <div>
+            <div class="chat-panel-title">Skill Memory &mdash; What It Learned</div>
+            <div class="chat-panel-sub">Updated live from interactions. No hardcoded rules.</div>
+          </div>
+        </div>
+        <div class="memory-feed" id="memFeed">
+          <div style="font-size:.75rem;color:rgba(255,255,255,.2);text-align:center;padding:20px;">Select a scenario to see skills extracted &rarr;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>InteraSkill &middot; Interaction Demonstrations &middot; NeurIPS 2026</footer>
+</div><!-- /panel-interactions -->
+
+<!-- ======== TAB 3: THEORY & MATH ======== -->
+<div class="panel" id="panel-theory">
+
+<section class="section math" style="padding-top:40px;">
+  <div class="section-inner">
+    <span class="label">The Math, Explained</span>
+    <h2 class="section-title">Four equations that matter</h2>
+    <p class="section-sub">Each formula solves a specific real problem. Here's what they mean in plain language.</p>
+    <div class="math-grid">
+      <div class="math-card">
+        <div class="math-card-head"><div class="math-icon">&#127959;</div><div class="math-name">The Agent's World Model</div></div>
+        <div class="math-body">
+          <div class="equation">M = (S, A<sub>low</sub>, A<sub>high</sub>, P, R, &#947;)<span class="eq-label">Hierarchical Markov Decision Process</span></div>
+          <p class="math-plain">The agent operates in two layers. <strong>Low-level</strong>: raw mouse moves and keystrokes in continuous [0,1]&#8308;. <strong>High-level</strong>: learned skill abstractions like "fill form." The high-level controller picks a skill every H steps; the low-level controller executes it.</p>
+        </div>
+      </div>
+      <div class="math-card">
+        <div class="math-card-head"><div class="math-icon">&#127919;</div><div class="math-name">Resolution-Invariant Actions</div></div>
+        <div class="math-body">
+          <div class="equation">a<sub>prim</sub> = (x, y, a<sub>type</sub>, d) &#8712; [0,1]&#8308;<span class="eq-label">Normalized continuous action space</span></div>
+          <p class="math-plain"><strong>x, y</strong>: screen position as fractions (not pixels). The same policy works on 1080p and 4K. SKILL.md stores "click at (847, 312)." We store "click at (0.44, 0.29)" &mdash; which survives any resize.</p>
+        </div>
+      </div>
+      <div class="math-card">
+        <div class="math-card-head"><div class="math-icon">&#129522;</div><div class="math-name">How Skills Are Discovered</div></div>
+        <div class="math-body">
+          <div class="equation">L<sub>skill</sub> = &minus;E<sub>&#964;</sub>[log exp(f(&#964;,z<sub>&#964;</sub>)/T) / &#8721; exp(f(&#964;,z')/T)]<span class="eq-label">InfoNCE contrastive loss</span></div>
+          <p class="math-plain">For each trajectory &#964;, the "correct" skill z is pulled close while wrong skills are pushed away. The result: skill z&#8321; specializes in "clicking patterns," z&#8322; in "typing sequences" &mdash; <strong>without any human labeling</strong>.</p>
+        </div>
+      </div>
+      <div class="math-card">
+        <div class="math-card-head"><div class="math-icon">&#127760;</div><div class="math-name">Cross-Domain Transfer</div></div>
+        <div class="math-body">
+          <div class="equation">Sim(s<sub>A</sub>, s<sub>B</sub>) = cos(&#966;<sub>CLIP</sub>(s<sub>A</sub>), &#966;<sub>CLIP</sub>(s<sub>B</sub>)) > &#952;<span class="eq-label">Semantic state matching via CLIP</span></div>
+          <p class="math-plain">Two UI screens are "the same" if their CLIP embeddings are similar &mdash; regardless of visual appearance. A "Submit" button on Shopify and GitHub look different but mean the same thing. Skills adapt with <strong>just 5-10 examples</strong>.</p>
+        </div>
+      </div>
+      <div class="math-card">
+        <div class="math-card-head"><div class="math-icon">&#128279;</div><div class="math-name">Composing Skills</div></div>
+        <div class="math-body">
+          <div class="equation">Q(s,z) = r(s,z) + &#947;E<sub>s'</sub>[(1&minus;&#946;<sub>z</sub>)Q(s',z) + &#946;<sub>z</sub> max<sub>z'</sub> Q(s',z')]<span class="eq-label">Option-value recursion</span></div>
+          <p class="math-plain"><strong>&#946;<sub>z</sub>(s')</strong> is the termination function &mdash; probability of switching to a new skill. The agent learns <strong>when to stop</strong> one skill and start another from data, not from a script.</p>
+        </div>
+      </div>
+      <div class="math-card">
+        <div class="math-card-head"><div class="math-icon">&#128208;</div><div class="math-name">Keeping Skills Distinct</div></div>
+        <div class="math-body">
+          <div class="equation">L<sub>ortho</sub> = &#8214;J<sub>z</sub>&#7488;J<sub>z</sub> &minus; I&#8214;&#178;<sub>F</sub><span class="eq-label">Jacobian orthogonality regularization</span></div>
+          <p class="math-plain">Forces each skill dimension to affect behavior <strong>independently</strong>. Without this, skills collapse into the same average behavior. Like orthogonal basis vectors &mdash; each skill is its own direction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE DETAIL -->
+<section class="section pipeline">
+  <div class="section-inner">
+    <span class="label">Full Pipeline</span>
+    <h2 class="section-title">From raw trajectories to executable skills</h2>
+    <div class="pipe-steps" style="margin-top:32px;">
+      <div class="pipe-step"><div class="pipe-num" style="color:var(--skill1);">1</div><div class="pipe-body"><div style="flex:1;"><h5>Trajectory Segmentation</h5><p>Compute &#916;a<sub>t</sub> = ||a<sub>t</sub> - a<sub>t-1</sub>||. Detect boundaries where &#916;a<sub>t</sub> > &#952;. Each segment = candidate skill.</p></div></div></div>
+      <div class="pipe-step"><div class="pipe-num" style="color:var(--skill2);">2</div><div class="pipe-body"><div style="flex:1;"><h5>Segment Representation</h5><p>Model each segment as Gaussian mixture p(a|segment) = &#8721;&#960;<sub>m</sub>N(a; &#956;<sub>m</sub>, &#931;<sub>m</sub>). Compare via Wasserstein distance.</p></div></div></div>
+      <div class="pipe-step"><div class="pipe-num" style="color:var(--skill3);">3</div><div class="pipe-body"><div style="flex:1;"><h5>Hierarchical Clustering</h5><p>Agglomerative clustering on Wasserstein distance matrix. Automatically discovers k skills without specifying k.</p></div></div></div>
+      <div class="pipe-step"><div class="pipe-num" style="color:var(--skill4);">4</div><div class="pipe-body"><div style="flex:1;"><h5>Contrastive Embedding</h5><p>InfoNCE loss maps clusters into continuous latent space z &#8712; R^16. Multimodal encoder ingests vision + text + action.</p></div></div></div>
+      <div class="pipe-step"><div class="pipe-num" style="color:var(--skill5);">5</div><div class="pipe-body"><div style="flex:1;"><h5>Hierarchical Policy</h5><p>Macro policy &#960;<sub>macro</sub>(z|s) selects skills. Each skill executes until termination &#946;<sub>z</sub>(s) fires. Options framework.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="outcome">
+  <h2>Skills should be learned,<br>not engineered.</h2>
+  <p>InteraSkill proves that raw interaction trajectories contain enough structure for agents to discover reusable, composable, transferable skills &mdash; making SKILL.md obsolete.</p>
+</section>
+
+<footer>InteraSkill &middot; Theory & Mathematics &middot; NeurIPS 2026</footer>
+</div><!-- /panel-theory -->
+
+<!-- ======== JAVASCRIPT ======== -->
+<script>
+/* Tab switching */
+function switchTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'overview') setTimeout(animateBars, 200);
+}
+
+/* Failure mode switching */
+function showFail(idx, el) {
+  document.querySelectorAll('.fail-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.fail-scene').forEach(s => s.classList.remove('active'));
+  if (el) el.classList.add('active');
+  const scene = document.getElementById('fail-' + idx);
+  if (scene) scene.classList.add('active');
+}
+
+/* Demo scenario switching */
+function switchDemo(id, btn) {
+  document.querySelectorAll('.demo-view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.demo-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('demo-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* Result bars animation */
+function animateBars() {
+  document.querySelectorAll('#resultBars .bar-fill').forEach(bar => {
+    const w = bar.getAttribute('data-w');
+    if (w) bar.style.width = w + '%';
+  });
+}
+setTimeout(animateBars, 600);
+
+/* Scroll reveal */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* Terminal simulation */
+const SIM_LOGS = [
+  { text:"[00:00.000] InteraSkill initialized - WebArena Episode 042", cls:"t-info" },
+  { text:"[00:00.012] Loading skill library: 14 skills from 41 prior episodes", cls:"t-info" },
+  { text:"", cls:"" },
+  { text:'Task: "Find cheapest laptop with 16GB RAM on OneStopShop"', cls:"t-hl" },
+  { text:"", cls:"" },
+  { text:"skill_select(z1: search_product) // confidence: 0.94", cls:"t-cmd", p:true },
+  { text:"  click(0.45, 0.08) -> type('laptop 16GB RAM') -> click(0.62, 0.08)", cls:"t-api" },
+  { text:"  z1 terminated (beta=0.91) after 3 actions", cls:"t-info" },
+  { text:"skill_select(z2: filter_and_sort) // confidence: 0.88", cls:"t-cmd", p:true },
+  { text:"  click(0.12, 0.28) -> select('16GB') -> click(sort_price_asc)", cls:"t-api" },
+  { text:"  z2 terminated (beta=0.87) after 3 actions", cls:"t-info" },
+  { text:"skill_select(z3: select_and_purchase) // confidence: 0.91", cls:"t-cmd", p:true },
+  { text:"  click(product_1) -> scroll(down) -> click(add_to_cart)", cls:"t-api" },
+  { text:"  z3 terminated (beta=0.95) after 3 actions", cls:"t-info" },
+  { text:"", cls:"" },
+  { text:"TASK COMPLETED in 9 primitive actions (3 skills composed)", cls:"t-ok" },
+  { text:"", cls:"" },
+  { text:"[ONLINE SKILL UPDATE]", cls:"t-api" },
+  { text:"  Segmentation: 3 segments detected (matches existing skills)", cls:"t-info" },
+  { text:"  z1 embedding updated: delta=0.003 (stable)", cls:"t-hl" },
+  { text:"  z2 embedding updated: delta=0.008 (refining filter pattern)", cls:"t-hl" },
+  { text:"  z3 embedding updated: delta=0.002 (stable)", cls:"t-hl" },
+  { text:"  Skill library: 14 skills (0 new, 3 refined)", cls:"t-ok" },
+  { text:"", cls:"" },
+  { text:"Episode 042 complete | Success: TRUE | Skills reused: 3/3", cls:"t-ok" },
+  { text:"Cumulative success rate: 67.4% (+2.1% from episode 41)", cls:"t-hl" },
+];
+let simRunning = false;
+async function runSim() {
+  if (simRunning) return; simRunning = true;
+  const out = document.getElementById('simOutput');
+  out.innerHTML = '';
+  for (const line of SIM_LOGS) {
+    await new Promise(r => setTimeout(r, line.text === '' ? 30 : Math.random() * 50 + 20));
+    const s = document.createElement('span'); s.className = 'term-line';
+    s.innerHTML = line.p ? `<span class="t-prompt">&#10095; </span><span class="${line.cls}">${line.text}</span>` : `<span class="${line.cls}">${line.text}</span>`;
+    out.appendChild(s); out.scrollTop = out.scrollHeight;
+  }
+  const c = document.createElement('span'); c.className = 'term-line'; c.innerHTML = '<span class="cursor"></span>';
+  out.appendChild(c); simRunning = false;
+}
+
+/* Chat interaction demo */
+const CHAT_SCENARIOS = [
+  {
+    msgs: [
+      { type:'agent', text:'Executing task: "Add red jacket to cart"...' },
+      { type:'agent', text:'click(0.35, 0.52) -> product_thumbnail' },
+      { type:'system', text:'ERROR: Clicked on advertisement banner instead of product' },
+      { type:'agent', text:'Retrying with visual grounding... click(0.35, 0.45) -> product_card' },
+      { type:'agent', text:'Task recovered. Recording correction trajectory.' },
+    ],
+    memories: [
+      { type:'pattern', title:'Ad-avoidance pattern', content:'When product grid has interleaved ads, use DOM class filtering (class="product-card") instead of coordinate-only targeting. <strong>Confidence: 0.82</strong>' },
+      { type:'skill', title:'Skill z3 updated', content:'select_and_purchase now includes a visual verification step: check element class before clicking. <strong>Embedding delta: 0.014</strong>' },
+    ]
+  },
+  {
+    msgs: [
+      { type:'agent', text:'Executing task: "Post a comment on issue #42"...' },
+      { type:'agent', text:'click(comment_box) -> type("Looks good to merge")' },
+      { type:'system', text:'ERROR 401: Authentication required. Redirected to login page.' },
+      { type:'agent', text:'Detected login redirect. Initiating auth flow...' },
+      { type:'agent', text:'type(username) -> type(password) -> click(login) -> retry original task' },
+      { type:'agent', text:'Comment posted successfully after auth recovery.' },
+    ],
+    memories: [
+      { type:'skill', title:'New skill: auth_recovery (z7)', content:'Detected login redirect pattern (URL contains /login or /signin). Action sequence: <strong>fill credentials -> submit -> return to original URL</strong>. Discovered from 3 similar failure-recovery trajectories.' },
+      { type:'pattern', title:'Pre-auth check', content:'Before write actions (comment, edit, submit), verify auth state by checking for user avatar in top nav. <strong>Prevents 401 errors proactively.</strong>' },
+    ]
+  },
+  {
+    msgs: [
+      { type:'agent', text:'Executing: "Find all orders from last month"...' },
+      { type:'agent', text:'click(orders_tab) -> Results: showing 20 of 156 orders' },
+      { type:'agent', text:'Only 20 items visible. Need to paginate...' },
+      { type:'agent', text:'click(next_page) -> page 2/8 -> click(next_page) -> page 3/8...' },
+      { type:'agent', text:'Collected all 156 orders across 8 pages.' },
+    ],
+    memories: [
+      { type:'skill', title:'New skill: paginated_collect (z8)', content:'When results are truncated (indicator: "showing X of Y" or pagination controls visible), iterate through all pages before processing. <strong>Action pattern: while(has_next) { click(next) -> collect(items) }</strong>' },
+      { type:'pattern', title:'Pagination detection', content:'Look for pagination indicators: page numbers, "next" buttons, "showing X of Y" text. <strong>Trigger paginated_collect skill when detected.</strong>' },
+    ]
+  },
+  {
+    msgs: [
+      { type:'agent', text:'Executing: "Submit the shipping form"...' },
+      { type:'agent', text:'type(address) -> type(city) -> click(submit)' },
+      { type:'system', text:'VALIDATION ERROR: "Zip code is required"' },
+      { type:'agent', text:'Form validation failed. Scanning for required fields...' },
+      { type:'agent', text:'Found empty required field: zip_code. type("02139") -> click(submit)' },
+      { type:'agent', text:'Form submitted successfully after filling missing field.' },
+    ],
+    memories: [
+      { type:'skill', title:'Skill z9: form_completion updated', content:'Before submitting any form, scan for required field indicators (asterisk, "required" attribute, red borders). Fill ALL required fields before clicking submit. <strong>Reduces form errors by ~60%.</strong>' },
+      { type:'pref', title:'Validation-first pattern', content:'After form submission failure: read error message -> identify missing/invalid field -> correct -> resubmit. <strong>Never retry submit without fixing the error.</strong>' },
+    ]
+  }
+];
+
+function loadChat(idx, el) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  const scenario = CHAT_SCENARIOS[idx];
+  const chatEl = document.getElementById('chatMsgs');
+  const memEl = document.getElementById('memFeed');
+  chatEl.innerHTML = '';
+  memEl.innerHTML = '';
+
+  let delay = 0;
+  scenario.msgs.forEach(m => {
+    delay += 300;
+    setTimeout(() => {
+      const div = document.createElement('div');
+      div.className = 'msg msg-' + m.type;
+      div.textContent = m.text;
+      chatEl.appendChild(div);
+      chatEl.scrollTop = chatEl.scrollHeight;
+    }, delay);
+  });
+
+  delay += 500;
+  scenario.memories.forEach(m => {
+    delay += 400;
+    setTimeout(() => {
+      const div = document.createElement('div');
+      div.className = 'mem-card';
+      const typeClass = m.type === 'skill' ? 'mem-type-skill' : m.type === 'pref' ? 'mem-type-pref' : 'mem-type-pattern';
+      div.innerHTML = `<span class="mem-type ${typeClass}">${m.type}</span><div style="font-size:.85rem;font-weight:600;color:rgba(255,255,255,.8);margin:6px 0 4px;">${m.title}</div><div class="mem-content">${m.content}</div>`;
+      memEl.appendChild(div);
+      memEl.scrollTop = memEl.scrollHeight;
+    }, delay);
+  });
+}
+
+// Load first scenario
+setTimeout(() => loadChat(0, document.querySelector('.pill.active')), 100);
+</script>
+</body>
+</html>

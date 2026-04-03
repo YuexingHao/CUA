@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Generated data (large, reproducible from scripts)
+data/fabricated_trajectories.json
+data/parsed_trajectories.json
+data/iw_summary.json
+data/iw_skill_templates.json
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.log
+paper/*.bbl
+paper/*.blg
+paper/*.out
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk
+
+# Overleaf zip (uploaded separately)
+paper/Neurips SKILL Paper.zip
+paper/uploads/
+
+# OS
+.DS_Store
