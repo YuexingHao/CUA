@@ -2,7 +2,9 @@
 
 **Automatic Skill Discovery for Computer-Using Agents**
 
-NeurIPS 2026 Submission
+Under Submission
+
+Interactive demo available: https://yuexinghao.github.io/CUA/website/website.html
 
 ---
 
