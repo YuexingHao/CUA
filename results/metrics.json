@@ -1,0 +1,30 @@
+{
+  "phase1_segmentation": {
+    "best_theta": 1.5502467155456543,
+    "boundary_precision": 0.4152962222291102,
+    "boundary_recall": 0.8049333333333333,
+    "boundary_f1": 0.5344894694908844
+  },
+  "phase2_clustering": {
+    "wasserstein_best_k": 10,
+    "wasserstein_nmi": 0.5312845319823216
+  },
+  "phase2_infonce": {
+    "latent_nmi": 0.8506603063124492,
+    "latent_silhouette": 0.5408935546875,
+    "latent_purity": 0.8339658444022771
+  },
+  "phase3_composition": {
+    "sequence_exact_match": 0.052,
+    "normalized_edit_distance": 0.5547714285714285,
+    "per_position_accuracy": {
+      "0": 1.0,
+      "1": 0.236,
+      "2": 0.2108843537414966,
+      "3": 0.2719298245614035,
+      "4": 0.2596685082872928,
+      "5": 0.17204301075268819,
+      "6": 0.29411764705882354
+    }
+  }
+}

@@ -451,6 +451,98 @@ Training proceeds in three phases:
 \end{enumerate}
 
 
+\section{Preliminary Experimental Results}
+
+We validate the InteraSkill pipeline on a corpus of 500 simulated interaction trajectories spanning 12 skill types (e.g., \texttt{document\_edit}, \texttt{search\_navigate}, \texttt{send\_message}), totaling 2{,}108 ground-truth segments. All experiments were conducted on a single NVIDIA RTX A6000 GPU.
+
+\subsection{Phase 1: Trajectory Segmentation}
+
+We sweep the discontinuity threshold $\theta$ across percentiles of the action-difference distribution (Figure~\ref{fig:segmentation}). The best threshold ($\theta = 1.550$, 50th percentile) achieves boundary precision 0.415, recall 0.805, and F1 0.534. The high recall indicates that most true skill boundaries produce detectable action discontinuities, validating our segmentation hypothesis (H1). Precision is lower because some within-skill action variation also exceeds the threshold, suggesting that incorporating additional features (e.g., DOM state changes) could improve boundary detection.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{../results/segmentation_hist.png}
+\caption{Distribution of action discontinuities ($\|\Delta a_t\|_2$) across all trajectories, with the optimal threshold $\theta = 1.550$ shown. Values above $\theta$ are classified as skill boundaries.}
+\label{fig:segmentation}
+\end{figure}
+
+\subsection{Phase 2: Skill Discovery and Embedding}
+
+\paragraph{Wasserstein Clustering.}
+Using Gaussian segment representations and approximate Wasserstein distance, agglomerative clustering achieves NMI = 0.531 at $k = 10$ clusters (Table~\ref{tab:clustering}). This unsupervised baseline demonstrates that action distributions alone carry substantial skill-discriminative information.
+
+\begin{table}[h]
+\centering
+\caption{Wasserstein clustering results across different $k$.}
+\label{tab:clustering}
+\small
+\begin{tabular}{ccc}
+\toprule
+$k$ & NMI & Purity \\
+\midrule
+8  & 0.531 & 0.528 \\
+10 & \textbf{0.531} & 0.528 \\
+12 & 0.502 & 0.532 \\
+14 & 0.508 & 0.581 \\
+16 & 0.508 & 0.597 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{InfoNCE Contrastive Encoder.}
+Training a contrastive encoder with supervised InfoNCE loss for 200 epochs yields dramatically improved skill representations (Figure~\ref{fig:training}). In the learned 16-dimensional latent space, KMeans clustering achieves NMI = 0.851, silhouette score = 0.541, and purity = 0.834---a 60\% relative improvement in NMI over the Wasserstein baseline. The t-SNE visualization (Figure~\ref{fig:tsne}) shows well-separated skill clusters, confirming that the learned embeddings capture semantically meaningful behavioral distinctions.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{../results/training_curves.png}
+\caption{InfoNCE encoder training and validation loss over 200 epochs. The model converges smoothly with no overfitting.}
+\label{fig:training}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{../results/tsne.png}
+\caption{t-SNE visualization of learned 16-dimensional skill embeddings. Each color represents a ground-truth skill type. Clusters are well-separated, indicating that the encoder learns discriminative skill representations.}
+\label{fig:tsne}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{../results/clustering_confusion.png}
+\caption{Confusion matrix of Wasserstein clustering assignments vs.\ ground-truth skill labels.}
+\label{fig:confusion}
+\end{figure}
+
+\subsection{Phase 3: Hierarchical Skill Composition}
+
+The macro policy, trained for 150 epochs on 3{,}216 state-skill transition samples, achieves a per-step skill prediction accuracy of 43.0\% at convergence. However, full sequence reconstruction remains challenging: exact match = 5.2\%, normalized edit distance = 0.555 (Table~\ref{tab:composition}). Per-position accuracy (Figure~\ref{fig:position}) reveals that while position 0 is given (100\%), subsequent positions average 24.1\%, with position 5 being hardest (17.2\%).
+
+\begin{table}[h]
+\centering
+\caption{Phase 3 composition metrics.}
+\label{tab:composition}
+\small
+\begin{tabular}{lc}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Sequence exact match & 0.052 \\
+Normalized edit distance & 0.555 \\
+Mean per-position accuracy (pos 1--6) & 0.241 \\
+Macro policy accuracy (final epoch) & 0.430 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{../results/position_accuracy.png}
+\caption{Per-position skill prediction accuracy. Position 0 is given; accuracy at subsequent positions reflects the macro policy's ability to predict the next skill in a sequence.}
+\label{fig:position}
+\end{figure}
+
+These results validate the skill discovery pipeline (Phases 1--2) while identifying composition (Phase 3) as the primary bottleneck for future improvement. Potential directions include attention-based sequence models, curriculum learning over trajectory lengths, and incorporating state observations into the macro policy input.
+
 \section{Discussion}
 
 The proposed framework removes the need for explicit skill specification and enables agents to autonomously discover reusable behaviors. By grounding skills in multimodal representations and enforcing information-theoretic objectives, the system achieves improved robustness and compositional generalization.

@@ -1,0 +1,85 @@
+=== InteraSkill Pipeline ===
+Node: node3800
+GPU: NVIDIA RTX A6000
+Date: Sat Apr  4 14:09:05 EDT 2026
+
+Device: cuda
+============================================================
+
+[1/6] Loading and featurizing trajectories...
+  500 trajectories, 2108 segments, 12 skill types
+
+[2/6] Phase 1: Trajectory Segmentation
+  Best theta=1.5502: P=0.415 R=0.805 F1=0.534
+    p50: theta=1.5502 P=0.415 R=0.805 F1=0.534
+    p60: theta=1.5907 P=0.407 R=0.688 F1=0.493
+    p70: theta=1.6374 P=0.408 R=0.555 F1=0.443
+    p75: theta=1.6621 P=0.397 R=0.474 F1=0.399
+    p80: theta=1.6907 P=0.416 R=0.393 F1=0.356
+    p85: theta=1.7204 P=0.441 R=0.303 F1=0.300
+    p90: theta=1.7548 P=0.485 R=0.217 F1=0.233
+    p95: theta=1.8087 P=0.651 R=0.118 F1=0.139
+  Saved: results/segmentation_hist.png
+
+[3/6] Phase 2a: Gaussian Representation + Wasserstein Clustering
+  k=8: NMI=0.531, Purity=0.528
+  k=10: NMI=0.531, Purity=0.528
+  k=12: NMI=0.502, Purity=0.532
+  k=14: NMI=0.508, Purity=0.581
+  k=16: NMI=0.508, Purity=0.597
+  Best k=10: NMI=0.531
+  Saved: results/clustering_confusion.png
+
+[4/6] Phase 2b: InfoNCE Contrastive Encoder Training
+  Epoch 50/200: train=3.5212 val=4.4232
+  Epoch 100/200: train=3.4597 val=4.3656
+  Epoch 150/200: train=3.4372 val=4.3588
+  Epoch 200/200: train=3.4307 val=4.3510
+  Saved: results/training_curves.png
+  Embeddings: torch.Size([2108, 16])
+  Latent KMeans: NMI=0.851, Silhouette=0.541, Purity=0.834
+  Saved: results/tsne.png
+
+[5/6] Phase 3: Hierarchical Skill Composition
+  Composition dataset: 3216 samples
+  Epoch 25/150: loss=3.0843 skill_acc=0.109
+  Epoch 50/150: loss=2.8667 skill_acc=0.312
+  Epoch 75/150: loss=2.6269 skill_acc=0.289
+  Epoch 100/150: loss=2.5715 skill_acc=0.328
+  Epoch 125/150: loss=2.4081 skill_acc=0.406
+  Epoch 150/150: loss=2.3530 skill_acc=0.430
+  Sequence exact match: 0.052
+  Normalized edit distance: 0.555
+  Per-position accuracy: {0: 1.0, 1: 0.236, 2: 0.2108843537414966, 3: 0.2719298245614035, 4: 0.2596685082872928, 5: 0.17204301075268819, 6: 0.29411764705882354}
+  Saved: results/position_accuracy.png
+
+============================================================
+RESULTS SUMMARY
+============================================================
+
+  phase1_segmentation:
+    best_theta: 1.5502
+    boundary_precision: 0.4153
+    boundary_recall: 0.8049
+    boundary_f1: 0.5345
+
+  phase2_clustering:
+    wasserstein_best_k: 10
+    wasserstein_nmi: 0.5313
+
+  phase2_infonce:
+    latent_nmi: 0.8507
+    latent_silhouette: 0.5409
+    latent_purity: 0.8340
+
+  phase3_composition:
+    sequence_exact_match: 0.0520
+    normalized_edit_distance: 0.5548
+    per_position_accuracy: {'0': 1.0, '1': 0.236, '2': 0.2108843537414966, '3': 0.2719298245614035, '4': 0.2596685082872928, '5': 0.17204301075268819, '6': 0.29411764705882354}
+
+  Saved metrics to results/metrics.json
+  Plots saved to results/
+  Models saved to results/
+
+=== Done ===
+Date: Sat Apr  4 14:09:37 EDT 2026
