@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InteraSkill: From Hard-Coded SKILL.md to Learned Behaviors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;
+  --slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;
+  --slate-100:#f1f5f9;--slate-50:#f8fafc;--white:#ffffff;
+  --accent:#3b82f6;--accent-dark:#2563eb;--accent-light:#dbeafe;--accent-50:#eff6ff;
+  --text:#1e293b;--text-muted:#64748b;
+  --success:#16a34a;--fail:#dc2626;--warn:#d97706;--learn:#7c3aed;
+  --radius:12px;--radius-sm:8px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05);
+  --shadow-md:0 10px 25px -3px rgba(0,0,0,.08),0 4px 6px -4px rgba(0,0,0,.04);
+  --shadow-lg:0 20px 40px -4px rgba(0,0,0,.1),0 8px 16px -8px rgba(0,0,0,.06);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--white);color:var(--text);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+.container{max-width:1020px;margin:0 auto;padding:0 28px;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.fade-section{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.fade-section.visible{opacity:1;transform:translateY(0);}
+.header{background:linear-gradient(135deg,var(--slate-900) 0%,var(--slate-800) 100%);color:#fff;text-align:center;padding:4rem 0 3rem;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(59,130,246,.12) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(59,130,246,.08) 0%,transparent 50%);}
+.header .container{position:relative;z-index:1;}
+.header h1{font-size:2.2rem;font-weight:800;margin-bottom:.4rem;letter-spacing:-.025em;line-height:1.2;}
+.header .subtitle{font-size:1.1rem;color:var(--slate-300);margin-bottom:.8rem;font-weight:400;}
+.header .authors{font-size:.9rem;color:var(--slate-400);margin-bottom:.2rem;}
+.header .venue{font-size:.85rem;color:var(--accent);font-weight:600;margin-bottom:1.2rem;}
+.header .links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.header .links a{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border:1.5px solid rgba(255,255,255,.25);border-radius:9999px;font-size:.85rem;font-weight:600;color:#fff;text-decoration:none;transition:all .25s ease;backdrop-filter:blur(8px);background:rgba(255,255,255,.06);}
+.header .links a:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 20px rgba(59,130,246,.35);text-decoration:none;}
+.nav-full{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--slate-200);}
+.nav{display:flex;align-items:stretch;padding:0 28px;gap:0;max-width:1020px;margin:0 auto;}
+.nav-logo{font-size:.95rem;font-weight:800;color:var(--accent);padding:0 20px 0 0;display:flex;align-items:center;border-right:1px solid var(--slate-200);margin-right:8px;white-space:nowrap;}
+.nav a{padding:14px 20px;font-size:.82rem;letter-spacing:.02em;color:var(--slate-400);font-weight:500;text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.nav a:hover{color:var(--slate-600);text-decoration:none;}
+.nav a.active{color:var(--accent);border-bottom-color:var(--accent);}
+section{padding:3.5rem 0;}
+section h2{font-size:1.55rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em;color:var(--slate-900);}
+.section-badge{display:inline-block;font-size:.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem;}
+section p{margin-bottom:1rem;color:var(--slate-600);font-size:.93rem;}
+.section-intro{font-size:1rem;color:var(--slate-500);margin-bottom:1.5rem;max-width:680px;}
+.abstract-text{font-size:.97rem;line-height:1.85;text-align:justify;color:var(--slate-700);border-left:3px solid var(--accent);padding-left:1.5rem;max-width:780px;}
+.nav-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:2rem;}
+.nav-card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);padding:28px 24px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .25s ease,box-shadow .3s ease;text-decoration:none;display:block;}
+.nav-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);text-decoration:none;}
+.nav-card .card-icon{font-size:2rem;margin-bottom:10px;display:block;}
+.nav-card .card-title{font-size:1rem;font-weight:700;color:var(--slate-900);margin-bottom:6px;}
+.nav-card .card-desc{font-size:.82rem;color:var(--slate-500);line-height:1.6;}
+.bibtex{background:var(--slate-900);color:#a6e3a1;padding:18px 22px;border-radius:var(--radius);font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:.8rem;white-space:pre-wrap;overflow-x:auto;user-select:all;margin:.8rem 0;position:relative;box-shadow:var(--shadow-md);}
+.bibtex-copy{position:absolute;top:12px;right:12px;padding:6px 14px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.1);color:#94a3b8;border:none;border-radius:6px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
+.bibtex-copy:hover{background:rgba(255,255,255,.2);color:#fff;}
+footer{text-align:center;padding:2.5rem 0 1.5rem;font-size:.82rem;color:var(--slate-400);background:var(--slate-900);}
+footer .footer-line{font-weight:600;color:var(--slate-300);margin-bottom:4px;font-size:.88rem;}
+footer .footer-sub{font-size:.78rem;color:var(--slate-500);}
+@media(max-width:768px){.header h1{font-size:1.6rem;}.header{padding:2.5rem 0 2rem;}section{padding:2rem 0;}section h2{font-size:1.3rem;}.nav{flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <h1>InteraSkill: From Hard-Coded SKILL.md to Learned Behaviors</h1>
+    <div class="subtitle">Automatic Skill Discovery for Computer-Using Agents</div>
+    <div class="authors">Anonymous Authors</div>
+    <div class="venue">Under review at NeurIPS 2026</div>
+    <div class="links"><a href="#">Paper PDF</a><a href="#">Code</a></div>
+  </div>
+</header>
+<div class="nav-full">
+  <nav class="nav">
+    <div class="nav-logo">InteraSkill</div>
+    <a href="index.html" class="active">Home</a>
+    <a href="overview.html">Overview</a>
+    <a href="demos.html">Demos</a>
+    <a href="theory.html">Theory</a>
+    <a href="playground.html">Playground</a>
+  </nav>
+</div>
+
+<section style="background:var(--white);">
+  <div class="container fade-section">
+    <div class="section-badge">Overview</div>
+    <h2>Abstract</h2>
+    <p class="abstract-text">
+      Computer-using agents (CUAs) typically rely on manually authored skill definitions
+      (e.g., SKILL.md files) that enumerate action patterns for web-based tasks. This approach
+      scales poorly and fails to capture the distributional structure of real user interactions.
+      We propose InteraSkill, a three-phase framework that (1) collects interaction trajectories
+      from CUA sessions on live web platforms, (2) segments and clusters action sequences into
+      a discrete skill vocabulary using change-point detection and hierarchical clustering, and
+      (3) trains sequence models over the induced skill space to predict task-relevant skill
+      compositions. On a corpus of 5,226 interaction segments derived from 847 WebArena
+      sessions, our learned skill vocabulary of 12 canonical skills achieves 0.850 information-weighted
+      accuracy with a Qwen3-8B LoRA predictor, compared to 0.140 for the original SKILL.md baseline.
+    </p>
+  </div>
+</section>
+
+<section style="background:var(--slate-50);">
+  <div class="container fade-section">
+    <div class="section-badge">Explore</div>
+    <h2>Explore the Project</h2>
+    <p class="section-intro">Navigate through the different sections of this research project.</p>
+    <div class="nav-cards">
+      <a class="nav-card" href="overview.html">
+        <span class="card-icon">&#128202;</span>
+        <div class="card-title">Overview</div>
+        <div class="card-desc">Abstract, problem statement, pipeline, live simulation, results charts, and experimental figures.</div>
+      </a>
+      <a class="nav-card" href="demos.html">
+        <span class="card-icon">&#127916;</span>
+        <div class="card-title">Interaction Demos</div>
+        <div class="card-desc">WebArena scenario replays, failure mode analysis, chat interaction demo, and IW benchmark examples.</div>
+      </a>
+      <a class="nav-card" href="theory.html">
+        <span class="card-icon">&#128218;</span>
+        <div class="card-title">Theory</div>
+        <div class="card-desc">Six key equations explained step-by-step with intuitive analogies, visual diagrams, and code references.</div>
+      </a>
+      <a class="nav-card" href="playground.html">
+        <span class="card-icon">&#127918;</span>
+        <div class="card-title">Playground</div>
+        <div class="card-desc">Interactive t-SNE visualization, skill composition playground, and trajectory replay player.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);">
+  <div class="container fade-section">
+    <div class="section-badge">Reference</div>
+    <h2>Citation</h2>
+    <div class="bibtex" id="bibtex-block"><button class="bibtex-copy" onclick="copyBibtex()">Copy</button>@inproceedings{interaskill2026,
+  title     = {From Hard-Coded {SKILL.md} to Learned Behaviors:
+               Automatic Skill Discovery for Computer-Using Agents},
+  author    = {Anonymous},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
+}</div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-line">InteraSkill</div>
+    <div class="footer-sub">NeurIPS 2026 Submission</div>
+  </div>
+</footer>
+
+<script>
+function copyBibtex(){
+  const text=document.getElementById('bibtex-block').innerText.replace('Copy','').trim();
+  navigator.clipboard.writeText(text).then(()=>{const btn=document.querySelector('.bibtex-copy');btn.textContent='Copied!';setTimeout(()=>{btn.textContent='Copy';},2000);});
+}
+const fadeObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-section').forEach(el=>fadeObserver.observe(el));
+</script>
+</body>
+</html>

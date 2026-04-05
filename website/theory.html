@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theory - InteraSkill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;--slate-100:#f1f5f9;--slate-50:#f8fafc;--white:#ffffff;--accent:#3b82f6;--accent-dark:#2563eb;--accent-light:#dbeafe;--accent-50:#eff6ff;--text:#1e293b;--text-muted:#64748b;--success:#16a34a;--fail:#dc2626;--warn:#d97706;--learn:#7c3aed;--radius:12px;--radius-sm:8px;--shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--shadow:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05);--shadow-md:0 10px 25px -3px rgba(0,0,0,.08),0 4px 6px -4px rgba(0,0,0,.04);--shadow-lg:0 20px 40px -4px rgba(0,0,0,.1),0 8px 16px -8px rgba(0,0,0,.06);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--white);color:var(--text);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+.container{max-width:1020px;margin:0 auto;padding:0 28px;}
+a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+.fade-section{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}.fade-section.visible{opacity:1;transform:translateY(0);}
+.nav-full{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--slate-200);}
+.nav{display:flex;align-items:stretch;padding:0 28px;gap:0;max-width:1020px;margin:0 auto;}
+.nav-logo{font-size:.95rem;font-weight:800;color:var(--accent);padding:0 20px 0 0;display:flex;align-items:center;border-right:1px solid var(--slate-200);margin-right:8px;white-space:nowrap;}
+.nav a{padding:14px 20px;font-size:.82rem;letter-spacing:.02em;color:var(--slate-400);font-weight:500;text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.nav a:hover{color:var(--slate-600);text-decoration:none;}.nav a.active{color:var(--accent);border-bottom-color:var(--accent);}
+section{padding:3.5rem 0;}section h2{font-size:1.55rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em;color:var(--slate-900);}
+.section-badge{display:inline-block;font-size:.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem;}
+section p{margin-bottom:1rem;color:var(--slate-600);font-size:.93rem;}
+.section-intro{font-size:1rem;color:var(--slate-500);margin-bottom:1.5rem;max-width:680px;}
+/* Math card styles */
+.eq-card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:2rem;}
+.eq-header{padding:16px 22px;border-bottom:1px solid var(--slate-100);display:flex;align-items:center;gap:12px;background:var(--slate-50);}
+.eq-icon{font-size:1.4rem;flex-shrink:0;}.eq-name{font-size:1.05rem;font-weight:700;color:var(--slate-900);}
+.eq-body{padding:22px;}
+.eq-why{font-size:.9rem;color:var(--slate-600);line-height:1.8;margin-bottom:16px;padding:12px 16px;background:#eff6ff;border-radius:var(--radius-sm);border-left:3px solid var(--accent);}
+.eq-box{background:var(--slate-100);border-radius:var(--radius-sm);padding:14px 18px;text-align:center;font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:.92rem;color:#7c3aed;margin:16px 0;border:1px solid var(--slate-200);letter-spacing:.02em;}
+.eq-label{display:block;font-size:.7rem;color:var(--slate-400);margin-top:6px;font-style:italic;font-family:'Inter',sans-serif;}
+.eq-breakdown{margin:16px 0;}
+.eq-breakdown dt{font-weight:700;font-size:.85rem;color:var(--slate-800);margin-top:8px;}
+.eq-breakdown dd{font-size:.82rem;color:var(--slate-500);line-height:1.7;margin-left:16px;margin-bottom:4px;}
+.eq-analogy{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:14px 18px;margin:16px 0;}
+.eq-analogy strong{color:var(--success);font-size:.82rem;}
+.eq-analogy p{font-size:.82rem;color:var(--slate-600);line-height:1.7;margin:4px 0 0;}
+.eq-visual{margin:16px 0;text-align:center;}
+.eq-visual svg{max-width:100%;height:auto;}
+.eq-code{font-size:.78rem;color:var(--slate-400);margin-top:12px;padding:8px 14px;background:var(--slate-50);border-radius:var(--radius-sm);border:1px solid var(--slate-100);}
+.eq-code code{font-family:'JetBrains Mono','Fira Code','Courier New',monospace;color:var(--accent-dark);}
+/* Pipeline detail */
+.pipe-steps{display:flex;flex-direction:column;gap:0;border:1px solid var(--slate-200);border-radius:var(--radius-sm);overflow:hidden;margin-top:1.5rem;background:var(--white);}
+.pipe-step{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--slate-100);}.pipe-step:last-child{border-bottom:none;}
+.pipe-num{display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:700;background:var(--slate-50);border-right:1px solid var(--slate-100);}
+.pipe-body{padding:18px 24px;display:flex;align-items:center;gap:16px;}
+.pipe-body h5{font-size:.95rem;font-weight:700;color:var(--slate-900);margin-bottom:4px;}
+.pipe-body p{font-size:.82rem;color:var(--slate-500);line-height:1.65;margin-bottom:0;}
+/* Footer etc */
+.bibtex{background:var(--slate-900);color:#a6e3a1;padding:18px 22px;border-radius:var(--radius);font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:.8rem;white-space:pre-wrap;overflow-x:auto;user-select:all;margin:.8rem 0;position:relative;box-shadow:var(--shadow-md);}
+.bibtex-copy{position:absolute;top:12px;right:12px;padding:6px 14px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.1);color:#94a3b8;border:none;border-radius:6px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}.bibtex-copy:hover{background:rgba(255,255,255,.2);color:#fff;}
+footer{text-align:center;padding:2.5rem 0 1.5rem;font-size:.82rem;color:var(--slate-400);background:var(--slate-900);}
+footer .footer-line{font-weight:600;color:var(--slate-300);margin-bottom:4px;font-size:.88rem;}footer .footer-sub{font-size:.78rem;color:var(--slate-500);}
+@media(max-width:768px){section{padding:2rem 0;}section h2{font-size:1.3rem;}.nav{flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+<div class="nav-full">
+  <nav class="nav">
+    <div class="nav-logo">InteraSkill</div>
+    <a href="index.html">Home</a>
+    <a href="overview.html">Overview</a>
+    <a href="demos.html">Demos</a>
+    <a href="theory.html" class="active">Theory</a>
+    <a href="playground.html">Playground</a>
+  </nav>
+</div>
+
+<section class="section-white" style="padding-top:2rem;">
+  <div class="container fade-section">
+    <div class="section-badge">The Math, Explained</div>
+    <h2>Six equations that matter</h2>
+    <p class="section-intro">Each formula solves a specific real problem. Below we break down what they mean, why they matter, and how they connect to our codebase.</p>
+
+    <!-- 1. Hierarchical MDP -->
+    <div class="eq-card">
+      <div class="eq-header"><div class="eq-icon">&#127959;</div><div class="eq-name">1. Hierarchical MDP -- The Agent's World Model</div></div>
+      <div class="eq-body">
+        <div class="eq-why">
+          <strong>Why it matters:</strong> Standard MDPs treat every mouse click as an independent decision. But real tasks have structure -- "search for a product" is a coherent sub-goal, not a sequence of unrelated clicks. The hierarchical MDP gives the agent two levels of decision-making: pick a high-level skill, then execute it with low-level primitives.
+        </div>
+        <div class="eq-box">M = (S, A<sub>low</sub>, A<sub>high</sub>, P, R, &#947;)<span class="eq-label">Hierarchical Markov Decision Process</span></div>
+        <dl class="eq-breakdown">
+          <dt>S -- State space</dt><dd>The current screenshot, DOM tree, and task description. Everything the agent can observe.</dd>
+          <dt>A<sub>low</sub> -- Low-level actions</dt><dd>Raw primitives: mouse clicks at (x,y), keystrokes, scrolls. These are continuous in [0,1]<sup>4</sup>.</dd>
+          <dt>A<sub>high</sub> -- High-level actions (skills)</dt><dd>Learned abstractions like "search_product" or "filter_and_sort". Each skill is a policy over low-level actions.</dd>
+          <dt>P -- Transition function</dt><dd>How the environment changes after an action. In web UIs, this is non-deterministic (pages load, popups appear).</dd>
+          <dt>R -- Reward</dt><dd>Task success signal: did the agent complete the objective? Sparse and delayed.</dd>
+          <dt>&#947; -- Discount factor</dt><dd>How much to weight future rewards vs. immediate ones. Typically 0.99 for long web tasks.</dd>
+        </dl>
+        <div class="eq-analogy"><strong>Analogy: Restaurant kitchen</strong><p>A chef (agent) works at two levels. High-level: decide what dish to prepare next ("make risotto"). Low-level: individual cooking steps (chop onions, heat pan, stir). The chef does not think about every knife motion when deciding the menu -- skills let the agent do the same.</p></div>
+        <div class="eq-visual">
+          <svg viewBox="0 0 480 140" xmlns="http://www.w3.org/2000/svg" style="max-width:480px">
+            <rect width="480" height="140" fill="#f8fafc" rx="8"/>
+            <text x="240" y="20" text-anchor="middle" font-size="11" fill="#64748b" font-family="Inter,sans-serif" font-weight="600">HIGH-LEVEL POLICY: &#960;<sub>high</sub>(z | s)</text>
+            <rect x="40" y="30" width="100" height="36" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+            <text x="90" y="52" text-anchor="middle" font-size="10" fill="#1d4ed8" font-family="Inter,sans-serif" font-weight="600">search_product</text>
+            <rect x="190" y="30" width="100" height="36" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+            <text x="240" y="52" text-anchor="middle" font-size="10" fill="#7c3aed" font-family="Inter,sans-serif" font-weight="600">filter_and_sort</text>
+            <rect x="340" y="30" width="100" height="36" rx="6" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="390" y="52" text-anchor="middle" font-size="10" fill="#16a34a" font-family="Inter,sans-serif" font-weight="600">select_purchase</text>
+            <line x1="140" y1="48" x2="190" y2="48" stroke="#cbd5e1" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="290" y1="48" x2="340" y2="48" stroke="#cbd5e1" stroke-width="1.5" marker-end="url(#arr)"/>
+            <text x="240" y="88" text-anchor="middle" font-size="11" fill="#64748b" font-family="Inter,sans-serif" font-weight="600">LOW-LEVEL POLICY: &#960;<sub>low</sub>(a | s, z)</text>
+            <rect x="60" y="98" width="60" height="28" rx="4" fill="#f1f5f9" stroke="#e2e8f0"/>
+            <text x="90" y="116" text-anchor="middle" font-size="9" fill="#475569" font-family="monospace">click()</text>
+            <rect x="140" y="98" width="60" height="28" rx="4" fill="#f1f5f9" stroke="#e2e8f0"/>
+            <text x="170" y="116" text-anchor="middle" font-size="9" fill="#475569" font-family="monospace">type()</text>
+            <rect x="220" y="98" width="60" height="28" rx="4" fill="#f1f5f9" stroke="#e2e8f0"/>
+            <text x="250" y="116" text-anchor="middle" font-size="9" fill="#475569" font-family="monospace">scroll()</text>
+            <rect x="300" y="98" width="60" height="28" rx="4" fill="#f1f5f9" stroke="#e2e8f0"/>
+            <text x="330" y="116" text-anchor="middle" font-size="9" fill="#475569" font-family="monospace">click()</text>
+            <rect x="380" y="98" width="60" height="28" rx="4" fill="#f1f5f9" stroke="#e2e8f0"/>
+            <text x="410" y="116" text-anchor="middle" font-size="9" fill="#475569" font-family="monospace">select()</text>
+            <defs><marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#cbd5e1"/></marker></defs>
+          </svg>
+        </div>
+        <div class="eq-code">See <code>interaskill/mdp.py</code> -- defines the hierarchical state-action spaces and transition logic.</div>
+      </div>
+    </div>
+
+    <!-- 2. Normalized Actions -->
+    <div class="eq-card">
+      <div class="eq-header"><div class="eq-icon">&#127919;</div><div class="eq-name">2. Normalized Actions -- Resolution Invariance</div></div>
+      <div class="eq-body">
+        <div class="eq-why">
+          <strong>Why it matters:</strong> SKILL.md stores actions as pixel coordinates like "click at (847, 312)." This breaks when the screen resolution changes, the window resizes, or the UI layout shifts. Normalizing all coordinates to [0,1] makes the same policy work on 1080p, 4K, or any resolution -- the agent thinks in relative positions, not absolute pixels.
+        </div>
+        <div class="eq-box">a<sub>prim</sub> = (x, y, a<sub>type</sub>, d) &#8712; [0,1]<sup>4</sup><span class="eq-label">Normalized continuous action space</span></div>
+        <dl class="eq-breakdown">
+          <dt>x -- Horizontal position</dt><dd>Fraction of screen width. 0.0 = left edge, 1.0 = right edge. E.g., 0.45 = slightly left of center.</dd>
+          <dt>y -- Vertical position</dt><dd>Fraction of screen height. 0.0 = top, 1.0 = bottom. E.g., 0.08 = near the top bar.</dd>
+          <dt>a<sub>type</sub> -- Action type</dt><dd>Encoded as a continuous value: 0.0 = click, 0.33 = type, 0.67 = scroll, 1.0 = special.</dd>
+          <dt>d -- Action data</dt><dd>Additional parameter: scroll distance, key code, or duration. Normalized to [0,1].</dd>
+        </dl>
+        <div class="eq-analogy"><strong>Analogy: GPS vs. street addresses</strong><p>Street addresses ("123 Main St") only work in one city. GPS coordinates (42.36, -71.06) work everywhere. Normalizing actions is like switching from street addresses to GPS -- the same instruction works regardless of the "city" (screen resolution).</p></div>
+        <div class="eq-visual">
+          <svg viewBox="0 0 440 100" xmlns="http://www.w3.org/2000/svg" style="max-width:440px">
+            <rect width="440" height="100" fill="#f8fafc" rx="8"/>
+            <rect x="20" y="15" width="120" height="70" rx="4" fill="#fef2f2" stroke="#fecaca"/>
+            <text x="80" y="35" text-anchor="middle" font-size="9" fill="#ef4444" font-family="Inter,sans-serif" font-weight="700">SKILL.md</text>
+            <text x="80" y="52" text-anchor="middle" font-size="8" fill="#64748b" font-family="monospace">click(847, 312)</text>
+            <text x="80" y="65" text-anchor="middle" font-size="7" fill="#94a3b8" font-family="Inter,sans-serif">1920x1080 only</text>
+            <text x="220" y="55" text-anchor="middle" font-size="18" fill="#cbd5e1">&#8594;</text>
+            <rect x="300" y="15" width="120" height="70" rx="4" fill="#f0fdf4" stroke="#bbf7d0"/>
+            <text x="360" y="35" text-anchor="middle" font-size="9" fill="#16a34a" font-family="Inter,sans-serif" font-weight="700">InteraSkill</text>
+            <text x="360" y="52" text-anchor="middle" font-size="8" fill="#64748b" font-family="monospace">click(0.44, 0.29)</text>
+            <text x="360" y="65" text-anchor="middle" font-size="7" fill="#94a3b8" font-family="Inter,sans-serif">Any resolution</text>
+          </svg>
+        </div>
+        <div class="eq-code">See <code>interaskill/actions.py</code> -- the <code>normalize_action()</code> function converts pixel coords to [0,1] fractions.</div>
+      </div>
+    </div>
+
+    <!-- 3. InfoNCE Loss -->
+    <div class="eq-card">
+      <div class="eq-header"><div class="eq-icon">&#129522;</div><div class="eq-name">3. InfoNCE Loss -- How Skills Are Discovered</div></div>
+      <div class="eq-body">
+        <div class="eq-why">
+          <strong>Why it matters:</strong> We need to discover skills without any human labels. The InfoNCE loss does this by learning to match trajectories to their correct skill embedding while pushing apart trajectories that belong to different skills. It is the same contrastive approach used by CLIP and SimCLR, adapted here for action sequences instead of images.
+        </div>
+        <div class="eq-box">L<sub>skill</sub> = &minus;E<sub>&#964;</sub>[log exp(f(&#964;, z<sub>&#964;</sub>) / T) / &#8721;<sub>z'</sub> exp(f(&#964;, z') / T)]<span class="eq-label">InfoNCE contrastive loss</span></div>
+        <dl class="eq-breakdown">
+          <dt>&#964; -- Trajectory segment</dt><dd>A sequence of actions that form a candidate skill (e.g., 3 clicks that perform a search).</dd>
+          <dt>z<sub>&#964;</sub> -- Positive skill embedding</dt><dd>The "correct" skill label for this trajectory, assigned by clustering.</dd>
+          <dt>z' -- Negative skill embeddings</dt><dd>All other skill labels in the batch. The loss pushes &#964; away from these.</dd>
+          <dt>f(&#964;, z) -- Compatibility score</dt><dd>Dot product between the trajectory encoder output and the skill embedding vector.</dd>
+          <dt>T -- Temperature</dt><dd>Controls the sharpness of the distribution. Lower T = harder contrastive signal. We use T=0.07.</dd>
+        </dl>
+        <div class="eq-analogy"><strong>Analogy: Sorting mail into mailboxes</strong><p>Imagine sorting 5,000 letters into 12 mailboxes, but nobody labeled the mailboxes. You compare each letter to every mailbox and put it in the one it matches best. Over time, each mailbox specializes: one gets all the bills, another gets personal letters. InfoNCE does this automatically for action sequences.</p></div>
+        <div class="eq-visual">
+          <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" style="max-width:400px">
+            <rect width="400" height="120" fill="#f8fafc" rx="8"/>
+            <text x="200" y="16" text-anchor="middle" font-size="10" fill="#64748b" font-family="Inter,sans-serif" font-weight="600">Contrastive Learning: Pull matching, Push non-matching</text>
+            <!-- Positive pair -->
+            <circle cx="120" cy="60" r="14" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+            <text x="120" y="64" text-anchor="middle" font-size="8" fill="#1d4ed8" font-family="Inter,sans-serif" font-weight="700">&#964;</text>
+            <circle cx="200" cy="60" r="14" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+            <text x="200" y="64" text-anchor="middle" font-size="8" fill="#16a34a" font-family="Inter,sans-serif" font-weight="700">z<tspan font-size="6" dy="2">+</tspan></text>
+            <line x1="134" y1="60" x2="186" y2="60" stroke="#16a34a" stroke-width="2" stroke-dasharray="4,3"/>
+            <text x="160" y="52" text-anchor="middle" font-size="8" fill="#16a34a" font-family="Inter,sans-serif" font-weight="600">PULL</text>
+            <!-- Negative pairs -->
+            <circle cx="300" cy="35" r="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+            <text x="300" y="39" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Inter,sans-serif">z<tspan font-size="5" dy="1">-</tspan></text>
+            <circle cx="320" cy="70" r="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+            <text x="320" y="74" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Inter,sans-serif">z<tspan font-size="5" dy="1">-</tspan></text>
+            <circle cx="290" cy="95" r="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+            <text x="290" y="99" text-anchor="middle" font-size="7" fill="#ef4444" font-family="Inter,sans-serif">z<tspan font-size="5" dy="1">-</tspan></text>
+            <line x1="214" y1="55" x2="290" y2="35" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="214" y1="60" x2="310" y2="70" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="214" y1="65" x2="280" y2="95" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,3"/>
+            <text x="260" y="112" text-anchor="middle" font-size="8" fill="#ef4444" font-family="Inter,sans-serif" font-weight="600">PUSH APART</text>
+          </svg>
+        </div>
+        <div class="eq-code">See <code>interaskill/discover.py</code> -- the <code>InfoNCELoss</code> class and <code>train_skill_encoder()</code> training loop.</div>
+      </div>
+    </div>
+
+    <!-- 4. CLIP Transfer -->
+    <div class="eq-card">
+      <div class="eq-header"><div class="eq-icon">&#127760;</div><div class="eq-name">4. CLIP Transfer -- Cross-Domain Matching</div></div>
+      <div class="eq-body">
+        <div class="eq-why">
+          <strong>Why it matters:</strong> A "Submit" button on Shopify and a "Submit" button on GitHub look different but serve the same purpose. CLIP embeddings capture this semantic similarity, allowing the agent to recognize that a skill learned on one website can be reused on another -- even if the visual appearance is completely different.
+        </div>
+        <div class="eq-box">Sim(s<sub>A</sub>, s<sub>B</sub>) = cos(&#966;<sub>CLIP</sub>(s<sub>A</sub>), &#966;<sub>CLIP</sub>(s<sub>B</sub>)) > &#952;<span class="eq-label">Semantic state matching via CLIP</span></div>
+        <dl class="eq-breakdown">
+          <dt>s<sub>A</sub>, s<sub>B</sub> -- Screenshots from two different domains</dt><dd>E.g., a product listing on Amazon vs. a product listing on eBay.</dd>
+          <dt>&#966;<sub>CLIP</sub> -- CLIP image encoder</dt><dd>Pre-trained vision-language model that maps images to a semantic vector space. We use ViT-B/32.</dd>
+          <dt>cos(&#183;, &#183;) -- Cosine similarity</dt><dd>Measures angle between two vectors. Range [-1, 1]. Higher = more similar.</dd>
+          <dt>&#952; -- Transfer threshold</dt><dd>Minimum similarity required to reuse a skill across domains. We use &#952; = 0.75.</dd>
+        </dl>
+        <div class="eq-analogy"><strong>Analogy: Universal language translator</strong><p>Imagine you speak only English and visit Japan. You cannot read the signs, but a universal translator tells you "this sign means Exit, just like back home." CLIP is that translator for UI elements -- it recognizes the meaning behind different visual appearances.</p></div>
+        <div class="eq-code">See <code>interaskill/transfer.py</code> -- the <code>clip_similarity()</code> function and <code>should_transfer_skill()</code> decision logic.</div>
+      </div>
+    </div>
+
+    <!-- 5. Option-Value -->
+    <div class="eq-card">
+      <div class="eq-header"><div class="eq-icon">&#128279;</div><div class="eq-name">5. Option-Value Recursion -- Composing Skills</div></div>
+      <div class="eq-body">
+        <div class="eq-why">
+          <strong>Why it matters:</strong> The agent needs to decide not just which skill to use, but when to stop one skill and start another. The option-value recursion (from the Options framework by Sutton, Precup, Singh 1999) gives the agent a principled way to evaluate "should I keep doing this skill, or switch to something better?"
+        </div>
+        <div class="eq-box">Q(s,z) = r(s,z) + &#947;E<sub>s'</sub>[(1&minus;&#946;<sub>z</sub>)Q(s',z) + &#946;<sub>z</sub> max<sub>z'</sub> Q(s',z')]<span class="eq-label">Option-value recursion</span></div>
+        <dl class="eq-breakdown">
+          <dt>Q(s, z) -- Option value</dt><dd>Expected future reward of executing skill z in state s until it terminates.</dd>
+          <dt>r(s, z) -- Immediate reward</dt><dd>Reward obtained from executing one step of skill z in state s.</dd>
+          <dt>&#946;<sub>z</sub>(s') -- Termination probability</dt><dd>Probability that skill z should stop in state s'. Learned from data: e.g., "stop searching once results appear."</dd>
+          <dt>(1 - &#946;<sub>z</sub>) -- Continue probability</dt><dd>If the skill does not terminate, continue executing it and get Q(s', z).</dd>
+          <dt>max<sub>z'</sub> Q(s', z') -- Best next skill</dt><dd>If the skill terminates, pick the best next skill to execute.</dd>
+        </dl>
+        <div class="eq-analogy"><strong>Analogy: Relay race</strong><p>Each runner (skill) runs their leg until they reach the handoff zone (termination condition). They do not stop mid-stride; they complete their segment. The baton pass (&#946;<sub>z</sub>) determines when one runner hands off to the next. The coach (Q function) decides who runs each leg for the fastest total time.</p></div>
+        <div class="eq-visual">
+          <svg viewBox="0 0 480 80" xmlns="http://www.w3.org/2000/svg" style="max-width:480px">
+            <rect width="480" height="80" fill="#f8fafc" rx="8"/>
+            <text x="240" y="16" text-anchor="middle" font-size="10" fill="#64748b" font-family="Inter,sans-serif" font-weight="600">Skill Timeline with Termination Points</text>
+            <!-- Timeline -->
+            <line x1="30" y1="50" x2="450" y2="50" stroke="#e2e8f0" stroke-width="2"/>
+            <!-- Skill segments -->
+            <rect x="30" y="35" width="120" height="30" rx="4" fill="#dbeafe" opacity="0.7"/>
+            <text x="90" y="54" text-anchor="middle" font-size="9" fill="#1d4ed8" font-family="Inter,sans-serif" font-weight="600">z1: search</text>
+            <rect x="155" y="35" width="100" height="30" rx="4" fill="#f5f3ff" opacity="0.7"/>
+            <text x="205" y="54" text-anchor="middle" font-size="9" fill="#7c3aed" font-family="Inter,sans-serif" font-weight="600">z2: filter</text>
+            <rect x="260" y="35" width="130" height="30" rx="4" fill="#ecfdf5" opacity="0.7"/>
+            <text x="325" y="54" text-anchor="middle" font-size="9" fill="#16a34a" font-family="Inter,sans-serif" font-weight="600">z3: purchase</text>
+            <!-- Beta markers -->
+            <circle cx="150" cy="50" r="5" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+            <text x="150" y="30" text-anchor="middle" font-size="7" fill="#f97316" font-family="Inter,sans-serif" font-weight="600">&#946;=0.91</text>
+            <circle cx="255" cy="50" r="5" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+            <text x="255" y="30" text-anchor="middle" font-size="7" fill="#f97316" font-family="Inter,sans-serif" font-weight="600">&#946;=0.87</text>
+            <circle cx="390" cy="50" r="5" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+            <text x="390" y="30" text-anchor="middle" font-size="7" fill="#f97316" font-family="Inter,sans-serif" font-weight="600">&#946;=0.95</text>
+            <text x="430" y="54" font-size="9" fill="#16a34a" font-family="Inter,sans-serif" font-weight="700">DONE</text>
+          </svg>
+        </div>
+        <div class="eq-code">See <code>interaskill/policy.py</code> -- the <code>OptionValueFunction</code> class implements Q(s,z) with learned termination &#946;.</div>
+      </div>
+    </div>
+
+    <!-- 6. Jacobian Orthogonality -->
+    <div class="eq-card">
+      <div class="eq-header"><div class="eq-icon">&#128208;</div><div class="eq-name">6. Jacobian Orthogonality -- Keeping Skills Distinct</div></div>
+      <div class="eq-body">
+        <div class="eq-why">
+          <strong>Why it matters:</strong> Without regularization, learned skills tend to collapse -- multiple skill dimensions end up encoding the same behavior. The Jacobian orthogonality penalty forces each skill dimension to control a different aspect of behavior, ensuring the full skill space is used and skills remain distinguishable from each other.
+        </div>
+        <div class="eq-box">L<sub>ortho</sub> = &#8214;J<sub>z</sub><sup>T</sup>J<sub>z</sub> &minus; I&#8214;<sup>2</sup><sub>F</sub><span class="eq-label">Jacobian orthogonality regularization</span></div>
+        <dl class="eq-breakdown">
+          <dt>J<sub>z</sub> -- Jacobian matrix</dt><dd>Matrix of partial derivatives: how much each action output changes when each skill dimension changes. Size: (action_dim x skill_dim).</dd>
+          <dt>J<sub>z</sub><sup>T</sup>J<sub>z</sub> -- Gram matrix</dt><dd>Measures the correlation between skill dimensions. If two skill dims affect actions the same way, their entry will be large.</dd>
+          <dt>I -- Identity matrix</dt><dd>The target: each skill dimension is perfectly independent (correlation = 0 with all others, self-correlation = 1).</dd>
+          <dt>&#8214;&#183;&#8214;<sup>2</sup><sub>F</sub> -- Frobenius norm squared</dt><dd>Sum of squared differences between J<sup>T</sup>J and I. Zero means perfect orthogonality.</dd>
+        </dl>
+        <div class="eq-analogy"><strong>Analogy: TV remote control</strong><p>Imagine a remote where volume and channel buttons both change the volume. That is mode collapse -- two controls doing the same thing. The orthogonality loss is like a rule that says "each button must do something different." Volume changes volume, channel changes channel, brightness changes brightness -- each skill dimension controls one independent aspect of behavior.</p></div>
+        <div class="eq-code">See <code>interaskill/regularizers.py</code> -- the <code>jacobian_orthogonality_loss()</code> function, called during skill encoder training.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE DETAIL -->
+<section style="background:var(--slate-50);">
+  <div class="container fade-section">
+    <div class="section-badge">Full Pipeline</div>
+    <h2>From raw trajectories to executable skills</h2>
+    <div class="pipe-steps">
+      <div class="pipe-step"><div class="pipe-num" style="color:var(--accent);">1</div><div class="pipe-body"><div style="flex:1;"><h5>Trajectory Segmentation</h5><p>Compute &#916;a<sub>t</sub> = ||a<sub>t</sub> - a<sub>t-1</sub>||. Detect boundaries where &#916;a<sub>t</sub> > &#952;. Each segment = candidate skill.</p></div></div></div>
+      <div class="pipe-step"><div class="pipe-num" style="color:#7c3aed;">2</div><div class="pipe-body"><div style="flex:1;"><h5>Segment Representation</h5><p>Model each segment as Gaussian mixture p(a|segment) = &#8721;&#960;<sub>m</sub>N(a; &#956;<sub>m</sub>, &#931;<sub>m</sub>). Compare via Wasserstein distance.</p></div></div></div>
+      <div class="pipe-step"><div class="pipe-num" style="color:var(--success);">3</div><div class="pipe-body"><div style="flex:1;"><h5>Hierarchical Clustering</h5><p>Agglomerative clustering on Wasserstein distance matrix. Automatically discovers k skills without specifying k.</p></div></div></div>
+      <div class="pipe-step"><div class="pipe-num" style="color:var(--warn);">4</div><div class="pipe-body"><div style="flex:1;"><h5>Contrastive Embedding</h5><p>InfoNCE loss maps clusters into continuous latent space z &#8712; R<sup>16</sup>. Multimodal encoder ingests vision + text + action.</p></div></div></div>
+      <div class="pipe-step"><div class="pipe-num" style="color:#fb923c;">5</div><div class="pipe-body"><div style="flex:1;"><h5>Hierarchical Policy</h5><p>Macro policy &#960;<sub>macro</sub>(z|s) selects skills. Each skill executes until termination &#946;<sub>z</sub>(s) fires. Options framework.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CITATION -->
+<section class="section-white">
+  <div class="container fade-section">
+    <div class="section-badge">Reference</div>
+    <h2>Citation</h2>
+    <div class="bibtex" id="bibtex-block"><button class="bibtex-copy" onclick="copyBibtex()">Copy</button>@inproceedings{interaskill2026,
+  title     = {From Hard-Coded {SKILL.md} to Learned Behaviors:
+               Automatic Skill Discovery for Computer-Using Agents},
+  author    = {Anonymous},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
+}</div>
+  </div>
+</section>
+
+<footer><div class="container"><div class="footer-line">InteraSkill</div><div class="footer-sub">NeurIPS 2026 Submission</div></div></footer>
+
+<script>
+const fadeObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-section').forEach(el=>fadeObserver.observe(el));
+function copyBibtex(){const text=document.getElementById('bibtex-block').innerText.replace('Copy','').trim();navigator.clipboard.writeText(text).then(()=>{const btn=document.querySelector('.bibtex-copy');btn.textContent='Copied!';setTimeout(()=>{btn.textContent='Copy';},2000);});}
+</script>
+</body>
+</html>
