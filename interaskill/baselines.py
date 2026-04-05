@@ -44,19 +44,43 @@ SKILLMD_TRANSITIONS = {
     "generic_action":    "document_edit",
 }
 
+# Richer transition table derived from structured SKILL.md files
+# (skills/ directory, following anthropics/skills format).
+# Each skill maps to a weighted distribution over likely next skills.
+SKILLMD_RICH_TRANSITIONS = {
+    "search_navigate":   {"document_edit": 0.30, "review_content": 0.30, "data_transfer": 0.15, "presentation_edit": 0.10, "organize_files": 0.10, "collaborate": 0.05},
+    "document_edit":     {"review_content": 0.30, "export_publish": 0.25, "data_transfer": 0.15, "collaborate": 0.10, "send_message": 0.10, "presentation_edit": 0.10},
+    "review_content":    {"document_edit": 0.30, "export_publish": 0.25, "collaborate": 0.20, "send_message": 0.15, "presentation_edit": 0.10},
+    "export_publish":    {"send_message": 0.45, "organize_files": 0.25, "collaborate": 0.15, "review_content": 0.15},
+    "send_message":      {"monitor_status": 0.25, "collaborate": 0.20, "schedule_meeting": 0.15, "review_content": 0.15, "search_navigate": 0.15, "document_edit": 0.10},
+    "collaborate":       {"send_message": 0.25, "document_edit": 0.25, "review_content": 0.15, "schedule_meeting": 0.15, "search_navigate": 0.10, "monitor_status": 0.10},
+    "schedule_meeting":  {"send_message": 0.40, "collaborate": 0.25, "document_edit": 0.15, "monitor_status": 0.10, "search_navigate": 0.10},
+    "data_transfer":     {"document_edit": 0.40, "presentation_edit": 0.25, "review_content": 0.15, "export_publish": 0.10, "organize_files": 0.10},
+    "organize_files":    {"document_edit": 0.25, "send_message": 0.20, "review_content": 0.20, "search_navigate": 0.15, "export_publish": 0.10, "collaborate": 0.10},
+    "presentation_edit": {"review_content": 0.35, "export_publish": 0.30, "send_message": 0.15, "collaborate": 0.10, "data_transfer": 0.10},
+    "monitor_status":    {"document_edit": 0.30, "search_navigate": 0.25, "collaborate": 0.20, "send_message": 0.15, "review_content": 0.10},
+    "generic_action":    {"document_edit": 0.25, "search_navigate": 0.25, "review_content": 0.20, "collaborate": 0.15, "send_message": 0.15},
+}
+
 
 class SkillMdBaseline:
     """Fixed skill transition table — the SKILL.md paradigm."""
 
-    def __init__(self):
+    def __init__(self, use_rich=False):
+        self.use_rich = use_rich
         self.transitions = SKILLMD_TRANSITIONS
+        self.rich_transitions = SKILLMD_RICH_TRANSITIONS
 
     def predict_sequence(self, first_skill: str, length: int) -> list[str]:
         """Predict a skill sequence starting from first_skill."""
         seq = [first_skill]
         current = first_skill
         for _ in range(length - 1):
-            next_skill = self.transitions.get(current, "document_edit")
+            if self.use_rich:
+                dist = self.rich_transitions.get(current, {"document_edit": 1.0})
+                next_skill = max(dist, key=dist.get)
+            else:
+                next_skill = self.transitions.get(current, "document_edit")
             seq.append(next_skill)
             current = next_skill
         return seq
@@ -207,9 +231,13 @@ def run_all_baselines(traj_data_list) -> dict:
     freq.fit(traj_data_list)
     results["frequency"] = evaluate_baseline(freq, traj_data_list, "Frequency (most common)")
 
-    # 2. SKILL.md baseline
-    skillmd = SkillMdBaseline()
+    # 2. SKILL.md baseline (simple)
+    skillmd = SkillMdBaseline(use_rich=False)
     results["skillmd"] = evaluate_baseline(skillmd, traj_data_list, "SKILL.md (fixed table)")
+
+    # 2b. SKILL.md baseline (rich — using structured skill definitions)
+    skillmd_rich = SkillMdBaseline(use_rich=True)
+    results["skillmd_rich"] = evaluate_baseline(skillmd_rich, traj_data_list, "SKILL.md (rich transitions)")
 
     # 3. AWM baseline
     # Split: train on 80%, eval on 20%

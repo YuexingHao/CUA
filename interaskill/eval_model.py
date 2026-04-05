@@ -1,12 +1,26 @@
 """
-Evaluate the LoRA fine-tuned Qwen3-8B on multi-turn skill prediction.
+Evaluate any HF model (zero-shot or LoRA) on multi-turn skill prediction.
 
-For each conversation in the validation set, we replay the conversation
-up to each assistant turn and check if the model's generated response
-contains the correct skill action.
+Supports:
+  - Zero-shot evaluation of any instruction-tuned model
+  - LoRA adapter evaluation on top of a base model
 
 Usage:
-    python -m interaskill.eval_qwen [--dataset iw|wa] [--max-convs 50]
+    # Zero-shot Llama-3.1-70B on WebArena
+    python -m interaskill.eval_model \
+        --model meta-llama/Meta-Llama-3.1-70B-Instruct \
+        --dataset wa --max-convs 200
+
+    # Zero-shot Gemma-4-31B on IW
+    python -m interaskill.eval_model \
+        --model google/gemma-4-31B-it \
+        --dataset iw --max-convs 50
+
+    # LoRA-adapted Qwen3-8B
+    python -m interaskill.eval_model \
+        --model Qwen/Qwen3-8B \
+        --adapter results/qwen3_lora/final_adapter \
+        --dataset iw --max-convs 50
 """
 
 import argparse
@@ -16,14 +30,11 @@ import torch
 from pathlib import Path
 from collections import Counter
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-from peft import PeftModel
 
 from .data import SKILL_TYPES
 
 # ── Configuration ────────────────────────────────────────────────────
 
-MODEL_NAME = "Qwen/Qwen3-8B"
-ADAPTER_PATH = Path("results/qwen3_lora/final_adapter")
 DATA_DIR = Path("data")
 RESULTS_DIR = Path("results")
 
@@ -40,39 +51,56 @@ VALID_SKILLS = set(SKILL_TYPES)
 ACTION_PATTERN = re.compile(r"\[Action:\s*(\w+)\]", re.IGNORECASE)
 
 
-def load_model_and_tokenizer():
-    """Load base model with LoRA adapter."""
-    print("Loading tokenizer...")
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Evaluate HF model on skill prediction")
+    parser.add_argument("--model", type=str, required=True,
+                        help="HF model name or path")
+    parser.add_argument("--adapter", type=str, default=None,
+                        help="Path to LoRA adapter (optional)")
+    parser.add_argument("--dataset", choices=["iw", "wa"], default="iw",
+                        help="Dataset: iw (fabricated) or wa (WebArena)")
+    parser.add_argument("--max-convs", type=int, default=50,
+                        help="Max conversations to evaluate")
+    parser.add_argument("--max-new-tokens", type=int, default=150,
+                        help="Max tokens to generate per response")
+    return parser.parse_args()
+
+
+def load_model_and_tokenizer(model_name: str, adapter_path: str = None):
+    """Load model with 4-bit quantization and optional LoRA adapter."""
+    print(f"Loading tokenizer for {model_name}...")
     tokenizer = AutoTokenizer.from_pretrained(
-        str(ADAPTER_PATH), trust_remote_code=True
+        adapter_path or model_name, trust_remote_code=True
     )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    print("Loading base model (4-bit)...")
+    print(f"Loading model (4-bit): {model_name}...")
     model = AutoModelForCausalLM.from_pretrained(
-        MODEL_NAME,
+        model_name,
         quantization_config=QUANT_CONFIG,
         device_map="auto",
         trust_remote_code=True,
         torch_dtype=torch.bfloat16,
     )
 
-    print("Loading LoRA adapter...")
-    model = PeftModel.from_pretrained(model, str(ADAPTER_PATH))
-    model.eval()
+    if adapter_path:
+        from peft import PeftModel
+        print(f"Loading LoRA adapter from {adapter_path}...")
+        model = PeftModel.from_pretrained(model, adapter_path)
 
-    print(f"  GPU memory: {torch.cuda.memory_allocated()/1e9:.1f} GB", flush=True)
+    model.eval()
+    print(f"  GPU memory: {torch.cuda.memory_allocated()/1e9:.1f} GB")
+    n_gpus = torch.cuda.device_count()
+    if n_gpus > 1:
+        print(f"  Using {n_gpus} GPUs")
     return model, tokenizer
 
 
 def extract_skill_from_response(response: str) -> str:
-    """Extract the skill name from an agent response.
-
-    Looks for patterns like: [Action: document_edit]
-    Falls back to matching any valid skill name in the text.
-    """
-    # Try regex match first
+    """Extract skill name from model response."""
+    # Try [Action: skill_name] pattern
     match = ACTION_PATTERN.search(response)
     if match:
         skill = match.group(1).lower()
@@ -88,17 +116,30 @@ def extract_skill_from_response(response: str) -> str:
     return response_lower.split()[0] if response_lower.strip() else "unknown"
 
 
+def _fallback_chat_format(messages: list[dict]) -> str:
+    """Simple fallback for models without a chat template."""
+    parts = []
+    for msg in messages:
+        role = msg["role"].capitalize()
+        parts.append(f"### {role}:\n{msg['content']}\n")
+    parts.append("### Assistant:\n")
+    return "\n".join(parts)
+
+
 def generate_response(model, tokenizer, messages: list[dict],
-                      max_new_tokens: int = 100) -> str:
+                      max_new_tokens: int = 150) -> str:
     """Generate a response given conversation history."""
-    prompt = tokenizer.apply_chat_template(
-        messages,
-        tokenize=False,
-        add_generation_prompt=True,
-    )
+    try:
+        prompt = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+    except Exception:
+        prompt = _fallback_chat_format(messages)
 
     inputs = tokenizer(prompt, return_tensors="pt", truncation=True,
-                       max_length=2048).to(model.device)
+                       max_length=4096).to(model.device)
 
     with torch.no_grad():
         outputs = model.generate(
@@ -114,7 +155,7 @@ def generate_response(model, tokenizer, messages: list[dict],
 
 def normalized_edit_distance(pred_seqs: list[list[str]],
                              gt_seqs: list[list[str]]) -> float:
-    """Compute mean normalized edit distance between predicted and GT skill sequences."""
+    """Compute mean normalized edit distance."""
     def edit_dist(a, b):
         n, m = len(a), len(b)
         dp = [[0] * (m + 1) for _ in range(n + 1)]
@@ -138,28 +179,40 @@ def normalized_edit_distance(pred_seqs: list[list[str]],
     return total / max(len(pred_seqs), 1)
 
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", choices=["iw", "wa"], default="iw",
-                        help="Dataset to evaluate on: iw (fabricated) or wa (WebArena)")
-    parser.add_argument("--max-convs", type=int, default=50,
-                        help="Max conversations to evaluate")
-    return parser.parse_args()
+def model_short_name(model_name: str) -> str:
+    """Extract a short name for file naming."""
+    # meta-llama/Meta-Llama-3.1-70B-Instruct -> llama3.1-70b
+    # google/gemma-4-31B-it -> gemma4-31b
+    # Qwen/Qwen3-8B -> qwen3-8b
+    name = model_name.split("/")[-1].lower()
+    name = name.replace("meta-", "").replace("-instruct", "").replace("-it", "")
+    # Simplify common patterns
+    for old, new in [("llama-3.1", "llama3.1"), ("gemma-4", "gemma4"),
+                     ("qwen3", "qwen3")]:
+        name = name.replace(old, new)
+    # Remove extra hyphens
+    name = re.sub(r'-+', '-', name).strip('-')
+    return name
 
 
 def main():
     args = parse_args()
 
-    dataset_name = "WebArena" if args.dataset == "wa" else "IW (Fabricated)"
+    dataset_label = "WebArena" if args.dataset == "wa" else "IW (Fabricated)"
+    short_name = model_short_name(args.model)
+
     print("=" * 60)
-    print(f"Evaluating LoRA Fine-Tuned Qwen3-8B — {dataset_name}")
+    print(f"Model: {args.model}")
+    if args.adapter:
+        print(f"Adapter: {args.adapter}")
+    print(f"Dataset: {dataset_label}")
+    print(f"Max conversations: {args.max_convs}")
     print("=" * 60)
 
     # Load model
-    model, tokenizer = load_model_and_tokenizer()
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
 
     # Load conversations
-    MAX_EVAL_CONVS = args.max_convs
     if args.dataset == "wa":
         val_path = DATA_DIR / "wa_conversations.jsonl"
     else:
@@ -169,47 +222,42 @@ def main():
     with open(val_path) as f:
         for line in f:
             conversations.append(json.loads(line))
-            if len(conversations) >= MAX_EVAL_CONVS:
+            if len(conversations) >= args.max_convs:
                 break
-    print(f"\nLoaded {len(conversations)} {dataset_name} conversations (max {MAX_EVAL_CONVS})", flush=True)
+    print(f"\nLoaded {len(conversations)} {dataset_label} conversations", flush=True)
 
-    # Evaluate: for each conversation, replay up to each assistant turn
-    # and check if the model predicts the correct skill
+    # Evaluate
     total = 0
     correct = 0
     pos_correct = {}
     pos_total = {}
     predictions = []
-    skill_step = 0  # which skill in the flow
 
     for ci, conv in enumerate(conversations):
         msgs = conv["messages"]
-        skill_flow = conv["skill_flow"]
-        skill_idx = 0  # tracks which skill we're on
+        skill_idx = 0
 
         for mi in range(len(msgs)):
             if msgs[mi]["role"] != "assistant":
                 continue
 
-            # The ground truth is the skill used in this assistant turn
             gt_response = msgs[mi]["content"]
             gt_skill = extract_skill_from_response(gt_response)
 
             if gt_skill not in VALID_SKILLS:
                 continue
 
-            # Build context: all messages up to (but not including) this assistant turn
             context = msgs[:mi]
 
-            # Generate model response
-            pred_response = generate_response(model, tokenizer, context)
+            pred_response = generate_response(
+                model, tokenizer, context,
+                max_new_tokens=args.max_new_tokens)
             pred_skill = extract_skill_from_response(pred_response)
 
             is_correct = pred_skill == gt_skill
             correct += int(is_correct)
             total += 1
 
-            # Track per-position accuracy
             pos_total[skill_idx] = pos_total.get(skill_idx, 0) + 1
             pos_correct[skill_idx] = pos_correct.get(skill_idx, 0) + int(is_correct)
 
@@ -258,14 +306,14 @@ def main():
         if t > 0:
             print(f"  {skill:20s}: {c/t:.3f} ({c}/{t})")
 
-    # Most common errors
+    # Top errors
     print(f"\nTop 10 errors:")
     errors = [(p["ground_truth"], p["prediction"])
               for p in predictions if not p["correct"]]
     for (gt, pred), count in Counter(errors).most_common(10):
-        print(f"  {gt:20s} → {pred:20s} ({count} times)")
+        print(f"  {gt:20s} -> {pred:20s} ({count} times)")
 
-    # Compute edit distance from per-conversation predicted vs GT skill sequences
+    # Edit distance
     conv_pred_seqs = {}
     conv_gt_seqs = {}
     for p in predictions:
@@ -276,17 +324,16 @@ def main():
     pred_seqs = [conv_pred_seqs[cid] for cid in conv_pred_seqs]
     gt_seqs = [conv_gt_seqs[cid] for cid in conv_gt_seqs]
     edit_dist = normalized_edit_distance(pred_seqs, gt_seqs)
-    print(f"\nNormalized edit distance: {edit_dist:.4f}")
-
-    # Exact sequence match
     exact_match = sum(1 for p, g in zip(pred_seqs, gt_seqs) if p == g) / max(len(pred_seqs), 1)
+
+    print(f"\nNormalized edit distance: {edit_dist:.4f}")
     print(f"Exact sequence match: {exact_match:.4f} ({sum(1 for p, g in zip(pred_seqs, gt_seqs) if p == g)}/{len(pred_seqs)})")
 
     # Save results
-    suffix = "_wa" if args.dataset == "wa" else ""
+    suffix = f"_{args.dataset}" if args.dataset == "wa" else ""
     results = {
-        "model": MODEL_NAME,
-        "adapter": str(ADAPTER_PATH),
+        "model": args.model,
+        "adapter": args.adapter,
         "dataset": args.dataset,
         "overall_accuracy": overall_acc,
         "normalized_edit_distance": edit_dist,
@@ -297,12 +344,12 @@ def main():
         "num_conversations": len(conversations),
     }
 
-    results_path = RESULTS_DIR / f"qwen3_eval_metrics{suffix}.json"
+    results_path = RESULTS_DIR / f"{short_name}_eval_metrics{suffix}.json"
     with open(results_path, "w") as f:
         json.dump(results, f, indent=2)
     print(f"\nSaved results to {results_path}")
 
-    preds_path = RESULTS_DIR / f"qwen3_predictions{suffix}.json"
+    preds_path = RESULTS_DIR / f"{short_name}_predictions{suffix}.json"
     with open(preds_path, "w") as f:
         json.dump(predictions, f, indent=2)
     print(f"Saved predictions to {preds_path}")

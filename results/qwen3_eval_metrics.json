@@ -1,7 +1,10 @@
 {
   "model": "Qwen/Qwen3-8B",
   "adapter": "results/qwen3_lora/final_adapter",
+  "dataset": "iw",
   "overall_accuracy": 0.85,
+  "normalized_edit_distance": 0.14846248196248196,
+  "exact_sequence_match": 0.32,
   "per_position_accuracy": {
     "0": 0.9,
     "1": 0.86,
