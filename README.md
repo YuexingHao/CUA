@@ -2,172 +2,138 @@
 
 **Automatic Skill Discovery for Computer-Using Agents**
 
-Under Submission
+Under submission to NeurIPS 2026
 
-Interactive demo available: https://yuexinghao.github.io/CUA/website/website.html
+[Project Website](https://yuexinghao.github.io/CUA/website/website.html)
 
 ---
 
 ## Overview
 
-Computer-using agents (CUAs) today rely on manually written `SKILL.md` files that map actions to fixed UI coordinates. These are brittle, inflexible, and don't scale. **InteraSkill** proposes an alternative: agents that discover reusable skills automatically from interaction trajectories — no manual engineering required.
+Computer-using agents today rely on manually written `SKILL.md` files that map actions to fixed UI coordinates. These are brittle, inflexible, and don't scale. **InteraSkill** discovers reusable skills automatically from interaction trajectories — no manual engineering required.
 
-### Key Idea
+## Key Results
 
-```
-Raw Interaction Trajectories
-    → Trajectory Segmentation (action discontinuities)
-    → Wasserstein Clustering (group similar segments)
-    → InfoNCE Skill Embedding (contrastive learning)
-    → Hierarchical Composition (options framework)
-    → Reusable Skill Library (replaces SKILL.md)
-```
+| Model | Type | IW Acc. | WA Acc. | IW Edit Dist. |
+|-------|------|---------|---------|---------------|
+| SKILL.md | Fixed table | 0.140 | 0.087 | 0.633 |
+| Frequency | Most common | 0.349 | 0.285 | 0.480 |
+| AWM | Learned transitions | 0.334 | 0.788 | 0.479 |
+| Transformer (ours) | Sequence model | 0.349 | 0.410 | 0.480 |
+| **Qwen3-8B LoRA (ours)** | **Fine-tuned LLM** | **0.850** | **0.437** | **0.148** |
 
-### What Makes This Different
-
-| Approach | Skill Source | Online | Interaction-Derived | Transferable |
-|----------|-------------|--------|---------------------|-------------|
-| SKILL.md | Manual engineering | No | No | No |
-| AWM (Wang et al.) | Trajectory mining | Partial | No | Yes |
-| SkillWeaver (Zheng et al.) | Self-exploration | No | No | Yes |
-| ICAL (Sarch et al.) | Demos + feedback | Yes | Partial | No |
-| **InteraSkill (Ours)** | **Interaction trajectories** | **Yes** | **Yes** | **Yes** |
+Zero-shot LLM baselines (no fine-tuning):
+| Model | IW Acc. (partial) |
+|-------|------------------|
+| Llama-3.1-70B | ~30% |
+| Gemma-4-31B | ~15% |
+| OLMo-3-7B | ~6% |
 
 ## Repository Structure
 
 ```
 CUA2026/
-├── README.md
-├── .gitignore
-├── data/
-│   ├── iw-benchmark-examples.json  # IW Benchmark: 45 real M365 workflows
-│   ├── parse_iw_benchmark.py       # Parse raw benchmark → trajectory format
-│   ├── summarize_iw_benchmark.py   # Condense + extract 12 skill templates
-│   └── fabricate_trajectories.py   # Generate synthetic trajectories from templates
-├── paper/
-│   ├── main.tex                    # NeurIPS 2026 paper (LaTeX)
-│   ├── citation.bib                # Bibliography (37 verified citations)
-│   ├── neurips_2026.sty            # NeurIPS style file
-│   ├── Fig/                        # Figures
-│   └── diagram.jpg
-├── website/
-│   └── website.html                # Interactive project website
-├── literature_survey.md            # 37-paper literature survey
-└── research_proposal.md            # Experiment design for WebArena evaluation
+├── interaskill/               # Core pipeline code
+│   ├── data.py                # Data loading and featurization
+│   ├── segment.py             # Trajectory segmentation
+│   ├── discover.py            # Skill discovery (clustering + InfoNCE)
+│   ├── compose.py             # Skill composition (MLP, Transformer)
+│   ├── evaluate.py            # Metrics and visualization
+│   ├── baselines.py           # Baseline implementations
+│   ├── finetune_qwen.py       # Qwen3-8B LoRA fine-tuning
+│   ├── eval_qwen.py           # Qwen3 evaluation (IW + WA)
+│   └── eval_model.py          # Generic model evaluation
+│
+├── data/                      # Data files and generators
+│   ├── iw-benchmark-examples.json
+│   ├── parse_iw_benchmark.py
+│   ├── summarize_iw_benchmark.py
+│   ├── fabricate_trajectories.py
+│   ├── download_webarena.py
+│   ├── generate_conversations.py      # IW conversation data
+│   └── generate_wa_conversations.py   # WebArena conversation data
+│
+├── skills/                    # Structured skill definitions (SKILL.md format)
+│   ├── README.md
+│   ├── document_edit/SKILL.md     # → anthropic docx
+│   ├── presentation_edit/SKILL.md # → anthropic pptx
+│   ├── data_transfer/SKILL.md     # → anthropic xlsx
+│   ├── export_publish/SKILL.md    # → anthropic pdf
+│   ├── search_navigate/SKILL.md
+│   ├── review_content/SKILL.md
+│   ├── send_message/SKILL.md
+│   ├── collaborate/SKILL.md
+│   ├── schedule_meeting/SKILL.md
+│   ├── organize_files/SKILL.md
+│   ├── monitor_status/SKILL.md
+│   └── generic_action/SKILL.md
+│
+├── scripts/
+│   ├── eval/                  # SLURM evaluation scripts
+│   │   ├── run_eval_wa.sh         # Qwen3 on WebArena
+│   │   ├── run_eval_llama70b.sh   # Llama-3.1-70B zero-shot
+│   │   ├── run_eval_gemma31b.sh   # Gemma-4-31B zero-shot
+│   │   ├── run_eval_olmo7b.sh     # OLMo-3-7B zero-shot
+│   │   ├── run_eval_phi4mini.sh   # Phi-4-mini zero-shot
+│   │   ├── run_eval_deepseek_r1.sh# DeepSeek-R1 zero-shot
+│   │   ├── run_baselines.sh       # All baselines
+│   │   ├── run_webarena.sh        # Full WebArena pipeline
+│   │   └── run_eval_only.sh       # Eval-only (skip training)
+│   └── train/
+│       ├── run_finetune.sh        # Qwen3-8B LoRA training
+│       └── run_pipeline.sh        # Full InteraSkill pipeline
+│
+├── paper/                     # NeurIPS 2026 paper (LaTeX)
+│   ├── main.tex
+│   └── citation.bib
+│
+├── results/                   # Experiment outputs
+│   ├── metrics.json               # IW pipeline metrics
+│   ├── qwen3_eval_metrics.json    # Qwen3 IW results
+│   ├── qwen3_eval_metrics_wa.json # Qwen3 WebArena results
+│   ├── baseline_metrics_iw.json
+│   ├── baseline_metrics_wa.json
+│   └── webarena/                  # WebArena-specific results
+│
+├── website/                   # Project website
+│   └── website.html
+│
+├── literature_survey.md
+└── research_proposal.md
 ```
 
-## Data Pipeline
-
-### 1. Parse IW Benchmark
-
-Converts 45 real-world information worker workflows (Word, PowerPoint, Teams, Outlook) into structured trajectories.
+## Quick Start
 
 ```bash
-cd data
-python parse_iw_benchmark.py
-```
+# 1. Parse IW benchmark data
+cd data && python parse_iw_benchmark.py
 
-**Input:** `iw-benchmark-examples.json` (45 categories x 2 workflows = 90 trajectories)  
-**Output:** `parsed_trajectories.json`
-
-### 2. Summarize & Extract Skill Templates
-
-Condenses 20-60 sub-tasks per trajectory into 3-7 high-level steps and discovers 12 reusable skill templates.
-
-```bash
-python summarize_iw_benchmark.py
-```
-
-**Output:**
-- `iw_summary.json` — condensed trajectory summaries
-- `iw_skill_templates.json` — 12 skill templates with action sequences
-
-**Discovered Skills:**
-
-| Skill | Frequency | Actions |
-|-------|-----------|---------|
-| `document_edit` | 33.4% | click → select → type → format → save |
-| `send_message` | 12.0% | compose → recipient → write → send |
-| `review_content` | 11.8% | open → read → comment → write → submit |
-| `schedule_meeting` | 11.4% | calendar → new → title → attendees → time → send |
-| `collaborate` | 5.9% | open chat → message → share → react |
-| + 7 more | | |
-
-### 3. Fabricate Synthetic Trajectories
-
-Generates realistic synthetic trajectories using the discovered skill templates. Each trajectory has normalized coordinates, 5% action failure rate, and realistic duration noise.
-
-```bash
+# 2. Generate synthetic trajectories
 python fabricate_trajectories.py --num 500 --seed 42
+
+# 3. Run full pipeline (requires GPU)
+sbatch scripts/train/run_pipeline.sh
+
+# 4. Evaluate on WebArena
+sbatch scripts/eval/run_webarena.sh
+
+# 5. Fine-tune Qwen3-8B LoRA
+sbatch scripts/train/run_finetune.sh
+
+# 6. Evaluate any model zero-shot
+python -m interaskill.eval_model \
+    --model meta-llama/Meta-Llama-3.1-70B-Instruct \
+    --dataset wa --max-convs 200
 ```
 
-**Output:** `fabricated_trajectories.json`
+## Skill Library
 
-| Stat | Value |
-|------|-------|
-| Trajectories | 500 (balanced low/medium/high) |
-| Actions per trajectory | 7-40 (mean 20.8) |
-| Segments per trajectory | 2-7 (mean 4.2) |
-| Duration | 3.5-83.7 min (mean 35.9) |
+InteraSkill outputs structured `SKILL.md` files following the [anthropics/skills](https://github.com/anthropics/skills) format. Each discovered skill includes:
+- Trigger conditions and workflow steps
+- Transition probabilities to/from other skills
+- Error handling patterns learned from failure trajectories
 
-### Trajectory Format
-
-```json
-{
-  "trajectory_id": "fab_medium_0016",
-  "objective": "Run customer feedback analysis and team action planning",
-  "complexity": "medium",
-  "apps_involved": ["outlook", "teams"],
-  "total_duration_minutes": 39.9,
-  "segments": [
-    {
-      "skill_type": "send_message",
-      "actions": [
-        {"action_type": "click", "target": "compose_button", "coordinates": {"x": 0.45, "y": 0.08}},
-        {"action_type": "type", "target": "recipient_field", "text_length": 42},
-        {"action_type": "type", "target": "message_body", "text_length": 156},
-        {"action_type": "click", "target": "send_button", "coordinates": {"x": 0.82, "y": 0.12}}
-      ]
-    }
-  ],
-  "skill_sequence": ["send_message", "document_edit", "review_content", "collaborate"]
-}
-```
-
-## Paper
-
-The LaTeX source is in `paper/main.tex` with 37 verified citations in `citation.bib`. Key sections:
-
-- **Related Work** — Comparison table against AWM, SkillWeaver, ICAL, AutoManual, etc.
-- **Problem Formulation** — Hierarchical MDP with continuous action space
-- **Skill Discovery** — InfoNCE + Wasserstein clustering + Jacobian regularization
-- **Skill Composition** — Options framework with learned termination conditions
-- **Cross-Domain Transfer** — CLIP-based semantic state matching
-
-## Website
-
-`website/website.html` is a self-contained interactive website with:
-
-- **Overview tab** — Problem statement, gap analysis, pipeline, results
-- **Interaction Demos tab** — WebArena scenarios (e-commerce, forum, GitLab transfer), IW benchmark real data, 6 failure modes with recovery, interactive chat demo
-- **Theory tab** — Plain-language math explanations with analogies
-
-Open in any browser: `open website/website.html`
-
-## Evaluation Plan
-
-**Testbed:** [WebArena](https://github.com/web-arena-x/webarena) (812 tasks, 6 domains)
-
-| Training | Test (Unseen) |
-|----------|--------------|
-| E-commerce | GitLab |
-| Reddit | OpenStreetMap |
-| Shopping Admin | Wikipedia |
-
-**Baselines:** SKILL.md agent, AWM, SkillWeaver, GPT-4o zero-shot  
-**Metrics:** Task success rate, generalization gap, skill reuse rate, trajectory efficiency
-
-See `research_proposal.md` for the full experiment design.
+See `skills/` directory for the 12 discovered skill definitions.
 
 ## Citation
 
@@ -179,7 +145,3 @@ See `research_proposal.md` for the full experiment design.
   year={2026}
 }
 ```
-
-## License
-
-This project is for research purposes. Please contact the authors for usage inquiries.
