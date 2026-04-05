@@ -58,8 +58,8 @@ def parse_args():
                         help="HF model name or path")
     parser.add_argument("--adapter", type=str, default=None,
                         help="Path to LoRA adapter (optional)")
-    parser.add_argument("--dataset", choices=["iw", "wa"], default="iw",
-                        help="Dataset: iw (fabricated) or wa (WebArena)")
+    parser.add_argument("--dataset", choices=["iw", "wa", "bc"], default="iw",
+                        help="Dataset: iw (fabricated), wa (WebArena), or bc (BrowseComp-Plus)")
     parser.add_argument("--max-convs", type=int, default=50,
                         help="Max conversations to evaluate")
     parser.add_argument("--max-new-tokens", type=int, default=150,
@@ -198,7 +198,8 @@ def model_short_name(model_name: str) -> str:
 def main():
     args = parse_args()
 
-    dataset_label = "WebArena" if args.dataset == "wa" else "IW (Fabricated)"
+    dataset_labels = {"iw": "IW (Fabricated)", "wa": "WebArena", "bc": "BrowseComp-Plus"}
+    dataset_label = dataset_labels.get(args.dataset, args.dataset)
     short_name = model_short_name(args.model)
 
     print("=" * 60)
@@ -215,6 +216,8 @@ def main():
     # Load conversations
     if args.dataset == "wa":
         val_path = DATA_DIR / "wa_conversations.jsonl"
+    elif args.dataset == "bc":
+        val_path = DATA_DIR / "bc_conversations.jsonl"
     else:
         val_path = DATA_DIR / "val_conversations.jsonl"
 
@@ -330,7 +333,7 @@ def main():
     print(f"Exact sequence match: {exact_match:.4f} ({sum(1 for p, g in zip(pred_seqs, gt_seqs) if p == g)}/{len(pred_seqs)})")
 
     # Save results
-    suffix = f"_{args.dataset}" if args.dataset == "wa" else ""
+    suffix = f"_{args.dataset}" if args.dataset in ("wa", "bc") else ""
     results = {
         "model": args.model,
         "adapter": args.adapter,
