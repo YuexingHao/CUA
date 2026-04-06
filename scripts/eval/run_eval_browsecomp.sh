@@ -30,28 +30,28 @@ echo "=== Qwen3-8B LoRA on BrowseComp-Plus ==="
 python -m interaskill.eval_model \
     --model Qwen/Qwen3-8B \
     --adapter results/qwen3_lora/final_adapter \
-    --dataset bc --max-convs 200
+    --dataset bc --max-convs 200 --resume
 
 # Step 2: Llama-3.1-70B (zero-shot)
 echo ""
 echo "=== Llama-3.1-70B on BrowseComp-Plus ==="
 python -m interaskill.eval_model \
     --model meta-llama/Meta-Llama-3.1-70B-Instruct \
-    --dataset bc --max-convs 200
+    --dataset bc --max-convs 200 --resume
 
 # Step 3: Gemma-4-31B (zero-shot)
 echo ""
 echo "=== Gemma-4-31B on BrowseComp-Plus ==="
 python -m interaskill.eval_model \
     --model google/gemma-4-31B-it \
-    --dataset bc --max-convs 200
+    --dataset bc --max-convs 200 --resume
 
 # Step 4: OLMo-3-7B (zero-shot)
 echo ""
 echo "=== OLMo-3-7B on BrowseComp-Plus ==="
 python -m interaskill.eval_model \
     --model allenai/Olmo-3-1025-7B \
-    --dataset bc --max-convs 200
+    --dataset bc --max-convs 200 --resume
 
 echo ""
 echo "=== Done ==="

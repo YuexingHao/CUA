@@ -23,6 +23,19 @@ SKILL_TYPES = [
 SKILL_TO_IDX = {s: i for i, s in enumerate(SKILL_TYPES)}
 N_SKILLS = len(SKILL_TYPES)
 
+# ── Mind2Web Action Types ────────────────────────────────────────────
+MIND2WEB_ACTION_TYPES = ["click", "type", "select_option"]
+
+# ── WebShop Canonical Skill Sequences ────────────────────────────────
+# Expected skill flow for typical WebShop tasks
+WEBSHOP_CANONICAL_SEQUENCE = [
+    "search_navigate",  # search for product
+    "review_content",   # browse results
+    "review_content",   # view product details
+    "data_transfer",    # select options (size, color)
+    "generic_action",   # add to cart / buy
+]
+
 TrajectoryData = namedtuple("TrajectoryData", [
     "traj_id",           # str
     "actions",           # Tensor (T, D_ACTION)
@@ -121,3 +134,127 @@ def extract_all_segments(traj_data_list: list[TrajectoryData]):
         labels.extend(td.gt_segment_labels)
     label_ints = torch.tensor([SKILL_TO_IDX[l] for l in labels])
     return segments, labels, label_ints
+
+
+# ── Mind2Web Helpers ─────────────────────────────────────────────────
+
+def _extract_text_from_attrs(attrs: str) -> str:
+    """Extract visible text from a Mind2Web attributes string.
+
+    Attributes are typically a space-separated string of key=value pairs.
+    We look for aria-label, title, placeholder, value, alt, or inner_text.
+    """
+    if not attrs:
+        return ""
+    import re
+    # Try common text-bearing attributes
+    for attr_name in ["aria-label", "title", "placeholder", "value",
+                      "alt", "inner_text", "text"]:
+        match = re.search(
+            rf'{attr_name}\s*=\s*["\']([^"\']+)["\']', attrs)
+        if match:
+            return match.group(1)
+    # Fallback: return first non-empty quoted string
+    match = re.search(r'["\']([^"\']{2,50})["\']', attrs)
+    return match.group(1) if match else ""
+
+
+def _candidate_to_text(candidate: dict) -> str:
+    """Convert a Mind2Web candidate element to display text."""
+    if not isinstance(candidate, dict):
+        return str(candidate)[:100]
+    tag = candidate.get("tag", "div")
+    attrs = candidate.get("attributes", "")
+    text = _extract_text_from_attrs(attrs)
+    node_id = candidate.get("backend_node_id", "")
+    return f"<{tag}> {text}" if text else f"<{tag}> [node:{node_id}]"
+
+
+# ── Mind2Web Data Loading ────────────────────────────────────────────
+
+def load_mind2web(split: str = "test", max_tasks: int = None,
+                  cache_dir: str = None) -> list[dict]:
+    """Load Mind2Web dataset from HuggingFace.
+
+    Args:
+        split: "train", "test", or "test_task", "test_website", "test_domain"
+        max_tasks: Maximum number of tasks to load
+        cache_dir: HuggingFace cache directory
+
+    Returns:
+        List of task dicts with keys:
+            task, website, domain, subdomain, action_reprs, actions
+    """
+    from datasets import load_dataset
+
+    kwargs = {}
+    if cache_dir:
+        kwargs["cache_dir"] = cache_dir
+
+    dataset = load_dataset("osunlp/Mind2Web", split=split, **kwargs)
+
+    tasks = []
+    for i, example in enumerate(dataset):
+        if max_tasks and i >= max_tasks:
+            break
+        tasks.append({
+            "task_id": f"m2w_{split}_{i}",
+            "task": example.get("confirmed_task", example.get("task", "")),
+            "website": example.get("website", ""),
+            "domain": example.get("domain", ""),
+            "subdomain": example.get("subdomain", ""),
+            "action_reprs": example.get("action_reprs", []),
+            "actions": example.get("actions", []),
+        })
+    return tasks
+
+
+def mind2web_task_to_steps(task: dict) -> list[dict]:
+    """Convert a Mind2Web task to a list of evaluation steps.
+
+    Each step has: action_type, element_text, element_tag, value,
+                   candidates (top-k elements), ground_truth_element_id
+    """
+    steps = []
+    actions = task.get("actions", [])
+    action_reprs = task.get("action_reprs", [])
+
+    for i, action in enumerate(actions):
+        step = {
+            "step_idx": i,
+            "action_repr": action_reprs[i] if i < len(action_reprs) else "",
+        }
+
+        # Extract structured action info
+        if isinstance(action, dict):
+            step["action_type"] = action.get("operation", {}).get(
+                "op", "click").lower()
+            step["value"] = action.get("operation", {}).get("value", "")
+
+            # Mind2Web candidates have: tag, backend_node_id, attributes
+            # Extract text from attributes string or tag
+            pos_cands = action.get("pos_candidates", [])
+            if pos_cands:
+                first = pos_cands[0] if isinstance(pos_cands[0], dict) else {}
+                attrs = first.get("attributes", "")
+                # Extract visible text from attributes (e.g. aria-label, title)
+                step["element_text"] = _extract_text_from_attrs(attrs)
+                step["element_tag"] = first.get("tag", "")
+            else:
+                step["element_text"] = ""
+                step["element_tag"] = ""
+
+            step["candidates"] = action.get("pos_candidates", []) + \
+                                 action.get("neg_candidates", [])
+            step["ground_truth_idx"] = 0  # pos_candidates[0] is the target
+        else:
+            # Fallback for string-format actions
+            step["action_type"] = "click"
+            step["value"] = ""
+            step["element_text"] = str(action)
+            step["element_tag"] = ""
+            step["candidates"] = []
+            step["ground_truth_idx"] = 0
+
+        steps.append(step)
+    return steps

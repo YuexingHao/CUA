@@ -31,6 +31,11 @@ from pathlib import Path
 from collections import Counter
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
+# Patch for DeepSeek-R1: is_torch_fx_available was removed in transformers 5.x
+import transformers.utils.import_utils as _import_utils
+if not hasattr(_import_utils, "is_torch_fx_available"):
+    _import_utils.is_torch_fx_available = lambda: False
+
 from .data import SKILL_TYPES
 
 # ── Configuration ────────────────────────────────────────────────────
@@ -64,6 +69,8 @@ def parse_args():
                         help="Max conversations to evaluate")
     parser.add_argument("--max-new-tokens", type=int, default=150,
                         help="Max tokens to generate per response")
+    parser.add_argument("--resume", action="store_true",
+                        help="Resume from checkpoint if available")
     return parser.parse_args()
 
 
@@ -195,6 +202,29 @@ def model_short_name(model_name: str) -> str:
     return name
 
 
+def _checkpoint_path(short_name: str, dataset: str) -> Path:
+    suffix = f"_{dataset}" if dataset in ("wa", "bc") else ""
+    return RESULTS_DIR / f"{short_name}_checkpoint{suffix}.json"
+
+
+def save_checkpoint(ckpt_path: Path, predictions: list, completed_convs: int):
+    """Save evaluation checkpoint for resuming."""
+    data = {"completed_convs": completed_convs, "predictions": predictions}
+    tmp = ckpt_path.with_suffix(".tmp")
+    with open(tmp, "w") as f:
+        json.dump(data, f)
+    tmp.rename(ckpt_path)
+
+
+def load_checkpoint(ckpt_path: Path) -> tuple[list, int]:
+    """Load checkpoint. Returns (predictions, completed_convs)."""
+    if not ckpt_path.exists():
+        return [], 0
+    with open(ckpt_path) as f:
+        data = json.load(f)
+    return data["predictions"], data["completed_convs"]
+
+
 def main():
     args = parse_args()
 
@@ -229,14 +259,35 @@ def main():
                 break
     print(f"\nLoaded {len(conversations)} {dataset_label} conversations", flush=True)
 
-    # Evaluate
+    # Resume from checkpoint if requested
+    ckpt_name = short_name + ("_lora" if args.adapter else "")
+    ckpt_path = _checkpoint_path(ckpt_name, args.dataset)
+    start_conv = 0
+    predictions = []
+
+    if args.resume:
+        predictions, start_conv = load_checkpoint(ckpt_path)
+        if start_conv > 0:
+            print(f"Resuming from conversation {start_conv} "
+                  f"({len(predictions)} predictions loaded)", flush=True)
+
+    # Rebuild counters from loaded predictions
     total = 0
     correct = 0
     pos_correct = {}
     pos_total = {}
-    predictions = []
+    for p in predictions:
+        total += 1
+        correct += int(p["correct"])
+        si = p["skill_position"]
+        pos_total[si] = pos_total.get(si, 0) + 1
+        pos_correct[si] = pos_correct.get(si, 0) + int(p["correct"])
 
+    # Evaluate
     for ci, conv in enumerate(conversations):
+        if ci < start_conv:
+            continue
+
         msgs = conv["messages"]
         skill_idx = 0
 
@@ -279,6 +330,7 @@ def main():
             print(f"  {ci+1}/{len(conversations)} conversations: "
                   f"accuracy = {correct/max(total,1):.3f} ({correct}/{total})",
                   flush=True)
+            save_checkpoint(ckpt_path, predictions, ci + 1)
 
     # ── Results ──────────────────────────────────────────────────
     print(f"\n{'='*60}")
@@ -334,6 +386,8 @@ def main():
 
     # Save results
     suffix = f"_{args.dataset}" if args.dataset in ("wa", "bc") else ""
+    if args.adapter:
+        short_name += "_lora"
     results = {
         "model": args.model,
         "adapter": args.adapter,
@@ -356,6 +410,11 @@ def main():
     with open(preds_path, "w") as f:
         json.dump(predictions, f, indent=2)
     print(f"Saved predictions to {preds_path}")
+
+    # Clean up checkpoint after successful completion
+    if ckpt_path.exists():
+        ckpt_path.unlink()
+        print(f"Removed checkpoint {ckpt_path}")
 
 
 if __name__ == "__main__":
