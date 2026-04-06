@@ -63,6 +63,8 @@ class CLIPEncoder:
         """
         inputs = self.processor(images=image, return_tensors="pt").to(self.device)
         emb = self.model.get_image_features(**inputs)
+        if not isinstance(emb, torch.Tensor):
+            emb = emb.pooler_output if hasattr(emb, "pooler_output") else emb[0]
         return torch.nn.functional.normalize(emb, dim=-1)
 
     @torch.no_grad()
@@ -71,6 +73,8 @@ class CLIPEncoder:
         inputs = self.processor(text=text, return_tensors="pt",
                                 padding=True, truncation=True).to(self.device)
         emb = self.model.get_text_features(**inputs)
+        if not isinstance(emb, torch.Tensor):
+            emb = emb.pooler_output if hasattr(emb, "pooler_output") else emb[0]
         return torch.nn.functional.normalize(emb, dim=-1)
 
     def compute_similarity(self, image_a: Image.Image,
