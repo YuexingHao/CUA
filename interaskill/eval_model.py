@@ -105,8 +105,26 @@ def load_model_and_tokenizer(model_name: str, adapter_path: str = None):
     return model, tokenizer
 
 
+def _strip_thinking(response: str) -> str:
+    """Strip <think>...</think> blocks from Qwen3 responses."""
+    # Remove complete thinking blocks
+    cleaned = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL).strip()
+    # Also handle unclosed <think> (model hit max_new_tokens mid-thought)
+    if "<think>" in cleaned and "</think>" not in cleaned:
+        # Everything after <think> is thinking — try to find content before it
+        before_think = cleaned.split("<think>")[0].strip()
+        if before_think:
+            return before_think
+        # All content is thinking — return the thinking content as fallback
+        return cleaned.replace("<think>", "").strip()
+    return cleaned if cleaned else response
+
+
 def extract_skill_from_response(response: str) -> str:
     """Extract skill name from model response."""
+    # Strip thinking blocks (Qwen3 outputs <think>...</think> by default)
+    response = _strip_thinking(response)
+
     # Try [Action: skill_name] pattern
     match = ACTION_PATTERN.search(response)
     if match:
@@ -137,11 +155,21 @@ def generate_response(model, tokenizer, messages: list[dict],
                       max_new_tokens: int = 150) -> str:
     """Generate a response given conversation history."""
     try:
-        prompt = tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        # Try to disable Qwen3 thinking mode for more concise output
+        try:
+            prompt = tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+                enable_thinking=False,
+            )
+        except TypeError:
+            # Model doesn't support enable_thinking kwarg
+            prompt = tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+            )
     except Exception:
         prompt = _fallback_chat_format(messages)
 
@@ -157,7 +185,8 @@ def generate_response(model, tokenizer, messages: list[dict],
         )
 
     new_tokens = outputs[0][inputs["input_ids"].shape[1]:]
-    return tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+    response = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+    return _strip_thinking(response)
 
 
 def normalized_edit_distance(pred_seqs: list[list[str]],

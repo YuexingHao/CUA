@@ -473,6 +473,11 @@ class SkillGrounder:
 
     def _extract_skill(self, response: str) -> str:
         """Extract skill name from model response."""
+        # Strip <think>...</think> blocks (Qwen3)
+        response = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL).strip()
+        if "<think>" in response:
+            response = response.split("<think>")[0].strip() or response.replace("<think>", "")
+
         match = re.search(r"\[Action:\s*(\w+)\]", response, re.IGNORECASE)
         if match:
             skill = match.group(1).lower()
