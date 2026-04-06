@@ -402,7 +402,10 @@ def main():
                  fontsize=16, fontweight="bold", y=0.98)
     plt.tight_layout(rect=[0, 0, 1, 0.96])
 
-    out_path = RESULTS_DIR / "model_comparison.png"
+    figures_dir = RESULTS_DIR / "figures"
+    figures_dir.mkdir(exist_ok=True)
+
+    out_path = figures_dir / "model_comparison.png"
     fig.savefig(out_path, dpi=150, bbox_inches="tight")
     print(f"Saved to {out_path}")
     plt.close()
@@ -411,7 +414,7 @@ def main():
     fig2, ax2 = plt.subplots(figsize=(12, 6))
     plot_skill_prediction(ax2)
     ax2.set_title("Skill Prediction: All Models (95% Bootstrap CI)", fontsize=14)
-    out2 = RESULTS_DIR / "model_comparison_simple.png"
+    out2 = figures_dir / "model_comparison_simple.png"
     fig2.savefig(out2, dpi=150, bbox_inches="tight")
     print(f"Saved to {out2}")
     plt.close()

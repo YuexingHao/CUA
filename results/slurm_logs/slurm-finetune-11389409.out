@@ -1,0 +1,269 @@
+=== Qwen3-8B LoRA Fine-Tuning on Multi-Turn Conversations ===
+Node: node3900
+GPU: NVIDIA A100 80GB PCIe, 81920 MiB
+Date: Sat Apr  4 14:48:36 EDT 2026
+
+=== Step 2: LoRA Fine-Tuning ===
+============================================================
+LoRA Fine-Tuning: Qwen3-8B on Multi-Turn Conversations
+============================================================
+
+[1/5] Loading conversation data...
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 850 examples [00:00, 13594.30 examples/s]
+Generating validation split: 0 examples [00:00, ? examples/s]Generating validation split: 150 examples [00:00, 19527.16 examples/s]
+  Train: 850 conversations
+  Val:   150 conversations
+  Turns per conversation: min=11, max=25, mean=17.3
+
+[2/5] Loading tokenizer...
+Map:   0%|          | 0/850 [00:00<?, ? examples/s]Map:  24%|██▎       | 200/850 [00:00<00:00, 1971.09 examples/s]Map:  53%|█████▎    | 449/850 [00:00<00:00, 2268.72 examples/s]Map:  82%|████████▏ | 696/850 [00:00<00:00, 2357.63 examples/s]Map: 100%|██████████| 850/850 [00:00<00:00, 2228.74 examples/s]
+Map:   0%|          | 0/150 [00:00<?, ? examples/s]Map: 100%|██████████| 150/150 [00:00<00:00, 2160.59 examples/s]
+  Example conversation: 697 tokens
+  Max sequence length: 2048
+  Preview (first 400 chars):
+  <|im_start|>system
+You are InteraSkill, an AI computer-using agent that helps users complete tasks across Microsoft 365 applications (Word, PowerPoint, Outlook, Teams).
+
+You can execute the following skills:
+- document_edit: Edit text documents (Word)
+- presentation_edit: Edit slides (PowerPoint)
+- send_message: Compose and send emails/messages
+- schedule_meeting: Create calendar events and invite...
+
+[3/5] Loading Qwen3-8B with 4-bit quantization...
+  This downloads ~5GB on first run (cached after that)
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:04<00:19,  4.95s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:10<00:15,  5.15s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:15<00:10,  5.19s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:19<00:04,  4.80s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:20<00:00,  3.49s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:20<00:00,  4.17s/it]
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/training_args.py:2058: FutureWarning: `--push_to_hub_token` is deprecated and will be removed in version 5 of 🤗 Transformers. Use `--hub_token` instead.
+  warnings.warn(
+  Model loaded on: cuda:0
+  GPU memory used: 8.6 GB
+
+[4/5] Applying LoRA adapters...
+  Total parameters:      8,206,070,784
+  Trainable (LoRA):         15,335,424 (0.19%)
+  Frozen:                8,190,735,360 (99.81%)
+
+[5/5] Starting LoRA fine-tuning on multi-turn conversations...
+  Epochs: 3
+  Batch: 2 × 8 accum = 16 effective
+  Learning rate: 0.0002
+  LoRA: r=16, alpha=16
+  Max seq length: 2048
+
+Adding EOS to train dataset:   0%|          | 0/850 [00:00<?, ? examples/s]Adding EOS to train dataset: 100%|██████████| 850/850 [00:00<00:00, 24499.44 examples/s]
+Tokenizing train dataset:   0%|          | 0/850 [00:00<?, ? examples/s]Tokenizing train dataset:   6%|▌         | 53/850 [00:00<00:01, 522.85 examples/s]Tokenizing train dataset:  13%|█▎        | 108/850 [00:00<00:01, 533.38 examples/s]Tokenizing train dataset:  19%|█▉        | 165/850 [00:00<00:01, 544.58 examples/s]Tokenizing train dataset:  26%|██▌       | 222/850 [00:00<00:01, 551.17 examples/s]Tokenizing train dataset:  33%|███▎      | 278/850 [00:00<00:01, 549.82 examples/s]Tokenizing train dataset:  40%|███▉      | 336/850 [00:00<00:00, 557.44 examples/s]Tokenizing train dataset:  46%|████▌     | 393/850 [00:00<00:00, 557.90 examples/s]Tokenizing train dataset:  56%|█████▌    | 475/850 [00:00<00:00, 548.96 examples/s]Tokenizing train dataset:  66%|██████▌   | 557/850 [00:01<00:00, 545.96 examples/s]Tokenizing train dataset:  75%|███████▍  | 637/850 [00:01<00:00, 539.92 examples/s]Tokenizing train dataset:  81%|████████▏ | 692/850 [00:01<00:00, 542.10 examples/s]Tokenizing train dataset:  88%|████████▊ | 749/850 [00:01<00:00, 546.86 examples/s]Tokenizing train dataset:  98%|█████████▊| 831/850 [00:01<00:00, 543.18 examples/s]Tokenizing train dataset: 100%|██████████| 850/850 [00:01<00:00, 514.64 examples/s]
+Truncating train dataset:   0%|          | 0/850 [00:00<?, ? examples/s]Truncating train dataset: 100%|██████████| 850/850 [00:00<00:00, 36836.24 examples/s]
+Adding EOS to eval dataset:   0%|          | 0/150 [00:00<?, ? examples/s]Adding EOS to eval dataset: 100%|██████████| 150/150 [00:00<00:00, 15088.15 examples/s]
+Tokenizing eval dataset:   0%|          | 0/150 [00:00<?, ? examples/s]Tokenizing eval dataset:  38%|███▊      | 57/150 [00:00<00:00, 562.54 examples/s]Tokenizing eval dataset:  77%|███████▋  | 115/150 [00:00<00:00, 568.20 examples/s]Tokenizing eval dataset: 100%|██████████| 150/150 [00:00<00:00, 534.47 examples/s]
+Truncating eval dataset:   0%|          | 0/150 [00:00<?, ? examples/s]Truncating eval dataset: 100%|██████████| 150/150 [00:00<00:00, 20811.96 examples/s]
+Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+  0%|          | 0/159 [00:00<?, ?it/s]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  1%|          | 1/159 [00:08<21:05,  8.01s/it]  1%|▏         | 2/159 [00:15<19:30,  7.45s/it]  2%|▏         | 3/159 [00:22<19:11,  7.38s/it]  3%|▎         | 4/159 [00:29<19:04,  7.38s/it]  3%|▎         | 5/159 [00:36<18:47,  7.32s/it]  4%|▍         | 6/159 [00:44<18:32,  7.27s/it]  4%|▍         | 7/159 [00:51<18:21,  7.25s/it]  5%|▌         | 8/159 [00:58<18:10,  7.22s/it]  6%|▌         | 9/159 [01:05<18:08,  7.26s/it]  6%|▋         | 10/159 [01:13<18:02,  7.26s/it]                                                  6%|▋         | 10/159 [01:13<18:02,  7.26s/it]  7%|▋         | 11/159 [01:20<17:52,  7.25s/it]  8%|▊         | 12/159 [01:27<17:44,  7.24s/it]  8%|▊         | 13/159 [01:34<17:41,  7.27s/it]  9%|▉         | 14/159 [01:42<17:39,  7.30s/it]  9%|▉         | 15/159 [01:49<17:32,  7.31s/it] 10%|█         | 16/159 [01:57<17:29,  7.34s/it] 11%|█         | 17/159 [02:04<17:16,  7.30s/it] 11%|█▏        | 18/159 [02:11<17:04,  7.27s/it] 12%|█▏        | 19/159 [02:18<16:52,  7.23s/it] 13%|█▎        | 20/159 [02:25<16:41,  7.21s/it]                                                 13%|█▎        | 20/159 [02:25<16:41,  7.21s/it] 13%|█▎        | 21/159 [02:33<16:42,  7.27s/it] 14%|█▍        | 22/159 [02:40<16:32,  7.25s/it] 14%|█▍        | 23/159 [02:47<16:22,  7.22s/it] 15%|█▌        | 24/159 [02:54<16:21,  7.27s/it] 16%|█▌        | 25/159 [03:01<16:07,  7.22s/it] 16%|█▋        | 26/159 [03:09<15:56,  7.19s/it] 17%|█▋        | 27/159 [03:16<15:54,  7.23s/it] 18%|█▊        | 28/159 [03:23<15:44,  7.21s/it] 18%|█▊        | 29/159 [03:30<15:22,  7.10s/it] 19%|█▉        | 30/159 [03:37<15:25,  7.18s/it]                                                 19%|█▉        | 30/159 [03:37<15:25,  7.18s/it] 19%|█▉        | 31/159 [03:44<15:19,  7.18s/it] 20%|██        | 32/159 [03:52<15:18,  7.24s/it] 21%|██        | 33/159 [03:59<15:10,  7.23s/it] 21%|██▏       | 34/159 [04:06<14:54,  7.15s/it] 22%|██▏       | 35/159 [04:13<14:42,  7.11s/it] 23%|██▎       | 36/159 [04:20<14:37,  7.13s/it] 23%|██▎       | 37/159 [04:27<14:24,  7.09s/it] 24%|██▍       | 38/159 [04:34<14:15,  7.07s/it] 25%|██▍       | 39/159 [04:42<14:16,  7.13s/it] 25%|██▌       | 40/159 [04:49<14:11,  7.16s/it]                                                 25%|██▌       | 40/159 [04:49<14:11,  7.16s/it] 26%|██▌       | 41/159 [04:56<14:09,  7.20s/it] 26%|██▋       | 42/159 [05:03<14:01,  7.19s/it] 27%|██▋       | 43/159 [05:11<14:02,  7.26s/it] 28%|██▊       | 44/159 [05:18<13:50,  7.22s/it] 28%|██▊       | 45/159 [05:25<13:41,  7.20s/it] 29%|██▉       | 46/159 [05:32<13:35,  7.21s/it] 30%|██▉       | 47/159 [05:39<13:31,  7.25s/it] 30%|███       | 48/159 [05:47<13:26,  7.27s/it] 31%|███       | 49/159 [05:54<13:20,  7.28s/it] 31%|███▏      | 50/159 [06:02<13:18,  7.33s/it]                                                 31%|███▏      | 50/159 [06:02<13:18,  7.33s/it]{'loss': 2.5216, 'grad_norm': 0.5546875, 'learning_rate': 0.0001999783578606323, 'entropy': 0.9363400153815746, 'num_tokens': 150379.0, 'mean_token_accuracy': 0.5769990287721157, 'epoch': 0.19}
+{'loss': 1.6335, 'grad_norm': 0.330078125, 'learning_rate': 0.0001973926168680066, 'entropy': 1.4750283762812615, 'num_tokens': 302000.0, 'mean_token_accuracy': 0.6352093040943145, 'epoch': 0.38}
+{'loss': 1.1418, 'grad_norm': 0.33203125, 'learning_rate': 0.0001906063394634356, 'entropy': 1.210188040882349, 'num_tokens': 450652.0, 'mean_token_accuracy': 0.7195840537548065, 'epoch': 0.56}
+{'loss': 0.6913, 'grad_norm': 0.271484375, 'learning_rate': 0.0001799122172929206, 'entropy': 0.7031444728374481, 'num_tokens': 601354.0, 'mean_token_accuracy': 0.8248474173247814, 'epoch': 0.75}
+{'loss': 0.4502, 'grad_norm': 0.310546875, 'learning_rate': 0.00016577148706018328, 'entropy': 0.4491304397583008, 'num_tokens': 753451.0, 'mean_token_accuracy': 0.8760563924908638, 'epoch': 0.94}
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+  0%|          | 0/75 [00:00<?, ?it/s][A
+  3%|▎         | 2/75 [00:00<00:10,  6.67it/s][A
+  4%|▍         | 3/75 [00:00<00:14,  4.89it/s][A
+  5%|▌         | 4/75 [00:00<00:17,  4.14it/s][A
+  7%|▋         | 5/75 [00:01<00:18,  3.81it/s][A
+  8%|▊         | 6/75 [00:01<00:19,  3.63it/s][A
+  9%|▉         | 7/75 [00:01<00:19,  3.53it/s][A
+ 11%|█         | 8/75 [00:02<00:19,  3.50it/s][A
+ 12%|█▏        | 9/75 [00:02<00:19,  3.45it/s][A
+ 13%|█▎        | 10/75 [00:02<00:19,  3.41it/s][A
+ 15%|█▍        | 11/75 [00:02<00:18,  3.39it/s][A
+ 16%|█▌        | 12/75 [00:03<00:18,  3.37it/s][A
+ 17%|█▋        | 13/75 [00:03<00:18,  3.43it/s][A
+ 19%|█▊        | 14/75 [00:03<00:17,  3.40it/s][A
+ 20%|██        | 15/75 [00:04<00:17,  3.41it/s][A
+ 21%|██▏       | 16/75 [00:04<00:17,  3.46it/s][A
+ 23%|██▎       | 17/75 [00:04<00:16,  3.43it/s][A
+ 24%|██▍       | 18/75 [00:05<00:16,  3.39it/s][A
+ 25%|██▌       | 19/75 [00:05<00:16,  3.37it/s][A
+ 27%|██▋       | 20/75 [00:05<00:15,  3.46it/s][A
+ 28%|██▊       | 21/75 [00:05<00:15,  3.42it/s][A
+ 29%|██▉       | 22/75 [00:06<00:15,  3.49it/s][A
+ 31%|███       | 23/75 [00:06<00:14,  3.48it/s][A
+ 32%|███▏      | 24/75 [00:06<00:14,  3.47it/s][A
+ 33%|███▎      | 25/75 [00:07<00:14,  3.49it/s][A
+ 35%|███▍      | 26/75 [00:07<00:14,  3.44it/s][A
+ 36%|███▌      | 27/75 [00:07<00:14,  3.41it/s][A
+ 37%|███▋      | 28/75 [00:07<00:13,  3.38it/s][A
+ 39%|███▊      | 29/75 [00:08<00:13,  3.37it/s][A
+ 40%|████      | 30/75 [00:08<00:13,  3.35it/s][A
+ 41%|████▏     | 31/75 [00:08<00:13,  3.35it/s][A
+ 43%|████▎     | 32/75 [00:09<00:12,  3.38it/s][A
+ 44%|████▍     | 33/75 [00:09<00:12,  3.40it/s][A
+ 45%|████▌     | 34/75 [00:09<00:12,  3.38it/s][A
+ 47%|████▋     | 35/75 [00:09<00:11,  3.45it/s][A
+ 48%|████▊     | 36/75 [00:10<00:11,  3.42it/s][A
+ 49%|████▉     | 37/75 [00:10<00:11,  3.39it/s][A
+ 51%|█████     | 38/75 [00:10<00:10,  3.41it/s][A
+ 52%|█████▏    | 39/75 [00:11<00:10,  3.38it/s][A
+ 53%|█████▎    | 40/75 [00:11<00:10,  3.44it/s][A
+ 55%|█████▍    | 41/75 [00:11<00:09,  3.41it/s][A
+ 56%|█████▌    | 42/75 [00:12<00:09,  3.38it/s][A
+ 57%|█████▋    | 43/75 [00:12<00:09,  3.47it/s][A
+ 59%|█████▊    | 44/75 [00:12<00:09,  3.42it/s][A
+ 60%|██████    | 45/75 [00:12<00:08,  3.41it/s][A
+ 61%|██████▏   | 46/75 [00:13<00:08,  3.42it/s][A
+ 63%|██████▎   | 47/75 [00:13<00:07,  3.63it/s][A
+ 64%|██████▍   | 48/75 [00:13<00:07,  3.53it/s][A
+ 65%|██████▌   | 49/75 [00:14<00:07,  3.47it/s][A
+ 67%|██████▋   | 50/75 [00:14<00:07,  3.43it/s][A
+ 68%|██████▊   | 51/75 [00:14<00:07,  3.41it/s][A
+ 69%|██████▉   | 52/75 [00:14<00:06,  3.38it/s][A
+ 71%|███████   | 53/75 [00:15<00:06,  3.40it/s][A
+ 72%|███████▏  | 54/75 [00:15<00:06,  3.38it/s][A
+ 73%|███████▎  | 55/75 [00:15<00:05,  3.44it/s][A
+ 75%|███████▍  | 56/75 [00:16<00:05,  3.41it/s][A
+ 76%|███████▌  | 57/75 [00:16<00:05,  3.38it/s][A
+ 77%|███████▋  | 58/75 [00:16<00:05,  3.37it/s][A
+ 79%|███████▊  | 59/75 [00:17<00:04,  3.36it/s][A
+ 80%|████████  | 60/75 [00:17<00:04,  3.35it/s][A
+ 81%|████████▏ | 61/75 [00:17<00:04,  3.34it/s][A
+ 83%|████████▎ | 62/75 [00:17<00:03,  3.34it/s][A
+ 84%|████████▍ | 63/75 [00:18<00:03,  3.35it/s][A
+ 85%|████████▌ | 64/75 [00:18<00:03,  3.37it/s][A
+ 87%|████████▋ | 65/75 [00:18<00:02,  3.36it/s][A
+ 88%|████████▊ | 66/75 [00:19<00:02,  3.35it/s][A
+ 89%|████████▉ | 67/75 [00:19<00:02,  3.38it/s][A
+ 91%|█████████ | 68/75 [00:19<00:01,  3.58it/s][A
+ 92%|█████████▏| 69/75 [00:19<00:01,  3.59it/s][A
+ 93%|█████████▎| 70/75 [00:20<00:01,  3.73it/s][A
+ 95%|█████████▍| 71/75 [00:20<00:01,  3.65it/s][A
+ 96%|█████████▌| 72/75 [00:20<00:00,  3.55it/s][A
+ 97%|█████████▋| 73/75 [00:21<00:00,  3.57it/s][A
+ 99%|█████████▊| 74/75 [00:21<00:00,  3.53it/s][A
+100%|██████████| 75/75 [00:21<00:00,  3.37it/s][A                                                
+                                               [A 31%|███▏      | 50/159 [06:24<13:18,  7.33s/it]
+100%|██████████| 75/75 [00:21<00:00,  3.37it/s][A
+                                               [A 32%|███▏      | 51/159 [06:31<25:04, 13.93s/it] 33%|███▎      | 52/159 [06:38<21:22, 11.99s/it] 33%|███▎      | 53/159 [06:46<18:46, 10.63s/it] 34%|███▍      | 54/159 [06:47<13:31,  7.73s/it]{'eval_loss': 0.3670934736728668, 'eval_runtime': 22.004, 'eval_samples_per_second': 6.817, 'eval_steps_per_second': 3.408, 'eval_entropy': 0.35987896045049034, 'eval_num_tokens': 753451.0, 'eval_mean_token_accuracy': 0.8966281692186991, 'epoch': 0.94}
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+ 35%|███▍      | 55/159 [06:54<13:09,  7.60s/it] 35%|███▌      | 56/159 [07:01<12:37,  7.35s/it] 36%|███▌      | 57/159 [07:08<12:22,  7.28s/it] 36%|███▋      | 58/159 [07:15<12:15,  7.29s/it] 37%|███▋      | 59/159 [07:22<12:06,  7.26s/it] 38%|███▊      | 60/159 [07:30<12:01,  7.28s/it]                                                 38%|███▊      | 60/159 [07:30<12:01,  7.28s/it] 38%|███▊      | 61/159 [07:37<11:55,  7.30s/it] 39%|███▉      | 62/159 [07:45<11:55,  7.38s/it] 40%|███▉      | 63/159 [07:52<11:42,  7.32s/it] 40%|████      | 64/159 [07:59<11:32,  7.29s/it] 41%|████      | 65/159 [08:06<11:25,  7.29s/it] 42%|████▏     | 66/159 [08:14<11:19,  7.30s/it] 42%|████▏     | 67/159 [08:21<11:11,  7.29s/it] 43%|████▎     | 68/159 [08:28<10:59,  7.25s/it] 43%|████▎     | 69/159 [08:36<10:56,  7.29s/it] 44%|████▍     | 70/159 [08:43<10:51,  7.32s/it]                                                 44%|████▍     | 70/159 [08:43<10:51,  7.32s/it] 45%|████▍     | 71/159 [08:50<10:40,  7.27s/it] 45%|████▌     | 72/159 [08:57<10:26,  7.21s/it] 46%|████▌     | 73/159 [09:04<10:16,  7.17s/it] 47%|████▋     | 74/159 [09:12<10:14,  7.23s/it] 47%|████▋     | 75/159 [09:19<10:09,  7.26s/it] 48%|████▊     | 76/159 [09:26<10:05,  7.30s/it] 48%|████▊     | 77/159 [09:33<09:48,  7.18s/it] 49%|████▉     | 78/159 [09:40<09:43,  7.20s/it] 50%|████▉     | 79/159 [09:48<09:37,  7.22s/it] 50%|█████     | 80/159 [09:55<09:26,  7.18s/it]                                                 50%|█████     | 80/159 [09:55<09:26,  7.18s/it] 51%|█████     | 81/159 [10:02<09:23,  7.22s/it] 52%|█████▏    | 82/159 [10:09<09:18,  7.25s/it] 52%|█████▏    | 83/159 [10:17<09:13,  7.28s/it] 53%|█████▎    | 84/159 [10:24<09:04,  7.26s/it] 53%|█████▎    | 85/159 [10:31<08:59,  7.30s/it] 54%|█████▍    | 86/159 [10:38<08:46,  7.21s/it] 55%|█████▍    | 87/159 [10:46<08:41,  7.25s/it] 55%|█████▌    | 88/159 [10:53<08:36,  7.28s/it] 56%|█████▌    | 89/159 [11:00<08:28,  7.27s/it] 57%|█████▋    | 90/159 [11:07<08:16,  7.20s/it]                                                 57%|█████▋    | 90/159 [11:07<08:16,  7.20s/it] 57%|█████▋    | 91/159 [11:15<08:09,  7.20s/it] 58%|█████▊    | 92/159 [11:22<08:04,  7.23s/it] 58%|█████▊    | 93/159 [11:29<08:01,  7.30s/it] 59%|█████▉    | 94/159 [11:37<07:53,  7.29s/it] 60%|█████▉    | 95/159 [11:44<07:45,  7.27s/it] 60%|██████    | 96/159 [11:51<07:33,  7.20s/it] 61%|██████    | 97/159 [11:58<07:29,  7.25s/it] 62%|██████▏   | 98/159 [12:05<07:18,  7.19s/it] 62%|██████▏   | 99/159 [12:12<07:05,  7.09s/it] 63%|██████▎   | 100/159 [12:19<06:58,  7.09s/it]                                                  63%|██████▎   | 100/159 [12:19<06:58,  7.09s/it]{'loss': 0.3084, 'grad_norm': 0.2490234375, 'learning_rate': 0.00014879403742151283, 'entropy': 0.3109726407756544, 'num_tokens': 889378.0, 'mean_token_accuracy': 0.9117883476492477, 'epoch': 1.11}
+{'loss': 0.2191, 'grad_norm': 0.259765625, 'learning_rate': 0.00012971210453281674, 'entropy': 0.22721609231084586, 'num_tokens': 1041337.0, 'mean_token_accuracy': 0.9349287584424019, 'epoch': 1.3}
+{'loss': 0.164, 'grad_norm': 0.263671875, 'learning_rate': 0.000109348690758, 'entropy': 0.17175740506500006, 'num_tokens': 1190432.0, 'mean_token_accuracy': 0.9502483651041984, 'epoch': 1.49}
+{'loss': 0.1328, 'grad_norm': 0.28125, 'learning_rate': 8.858206863746018e-05, 'entropy': 0.140408624894917, 'num_tokens': 1342801.0, 'mean_token_accuracy': 0.9571415290236474, 'epoch': 1.68}
+{'loss': 0.1152, 'grad_norm': 0.2060546875, 'learning_rate': 6.830790105792973e-05, 'entropy': 0.12202582843601703, 'num_tokens': 1492436.0, 'mean_token_accuracy': 0.9603112727403641, 'epoch': 1.87}
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+  0%|          | 0/75 [00:00<?, ?it/s][A
+  3%|▎         | 2/75 [00:00<00:10,  6.66it/s][A
+  4%|▍         | 3/75 [00:00<00:14,  4.88it/s][A
+  5%|▌         | 4/75 [00:00<00:17,  4.13it/s][A
+  7%|▋         | 5/75 [00:01<00:18,  3.81it/s][A
+  8%|▊         | 6/75 [00:01<00:18,  3.64it/s][A
+  9%|▉         | 7/75 [00:01<00:19,  3.53it/s][A
+ 11%|█         | 8/75 [00:02<00:19,  3.50it/s][A
+ 12%|█▏        | 9/75 [00:02<00:19,  3.44it/s][A
+ 13%|█▎        | 10/75 [00:02<00:19,  3.40it/s][A
+ 15%|█▍        | 11/75 [00:02<00:18,  3.38it/s][A
+ 16%|█▌        | 12/75 [00:03<00:18,  3.37it/s][A
+ 17%|█▋        | 13/75 [00:03<00:18,  3.43it/s][A
+ 19%|█▊        | 14/75 [00:03<00:17,  3.40it/s][A
+ 20%|██        | 15/75 [00:04<00:17,  3.42it/s][A
+ 21%|██▏       | 16/75 [00:04<00:17,  3.46it/s][A
+ 23%|██▎       | 17/75 [00:04<00:16,  3.42it/s][A
+ 24%|██▍       | 18/75 [00:05<00:16,  3.39it/s][A
+ 25%|██▌       | 19/75 [00:05<00:16,  3.37it/s][A
+ 27%|██▋       | 20/75 [00:05<00:15,  3.46it/s][A
+ 28%|██▊       | 21/75 [00:05<00:15,  3.41it/s][A
+ 29%|██▉       | 22/75 [00:06<00:15,  3.48it/s][A
+ 31%|███       | 23/75 [00:06<00:14,  3.47it/s][A
+ 32%|███▏      | 24/75 [00:06<00:14,  3.46it/s][A
+ 33%|███▎      | 25/75 [00:07<00:14,  3.48it/s][A
+ 35%|███▍      | 26/75 [00:07<00:14,  3.44it/s][A
+ 36%|███▌      | 27/75 [00:07<00:14,  3.40it/s][A
+ 37%|███▋      | 28/75 [00:07<00:13,  3.37it/s][A
+ 39%|███▊      | 29/75 [00:08<00:13,  3.36it/s][A
+ 40%|████      | 30/75 [00:08<00:13,  3.35it/s][A
+ 41%|████▏     | 31/75 [00:08<00:13,  3.35it/s][A
+ 43%|████▎     | 32/75 [00:09<00:12,  3.38it/s][A
+ 44%|████▍     | 33/75 [00:09<00:12,  3.40it/s][A
+ 45%|████▌     | 34/75 [00:09<00:12,  3.37it/s][A
+ 47%|████▋     | 35/75 [00:10<00:11,  3.43it/s][A
+ 48%|████▊     | 36/75 [00:10<00:11,  3.41it/s][A
+ 49%|████▉     | 37/75 [00:10<00:11,  3.38it/s][A
+ 51%|█████     | 38/75 [00:10<00:10,  3.40it/s][A
+ 52%|█████▏    | 39/75 [00:11<00:10,  3.38it/s][A
+ 53%|█████▎    | 40/75 [00:11<00:10,  3.44it/s][A
+ 55%|█████▍    | 41/75 [00:11<00:09,  3.40it/s][A
+ 56%|█████▌    | 42/75 [00:12<00:09,  3.38it/s][A
+ 57%|█████▋    | 43/75 [00:12<00:09,  3.47it/s][A
+ 59%|█████▊    | 44/75 [00:12<00:09,  3.42it/s][A
+ 60%|██████    | 45/75 [00:12<00:08,  3.41it/s][A
+ 61%|██████▏   | 46/75 [00:13<00:08,  3.42it/s][A
+ 63%|██████▎   | 47/75 [00:13<00:07,  3.63it/s][A
+ 64%|██████▍   | 48/75 [00:13<00:07,  3.53it/s][A
+ 65%|██████▌   | 49/75 [00:14<00:07,  3.47it/s][A
+ 67%|██████▋   | 50/75 [00:14<00:07,  3.43it/s][A
+ 68%|██████▊   | 51/75 [00:14<00:07,  3.41it/s][A
+ 69%|██████▉   | 52/75 [00:14<00:06,  3.38it/s][A
+ 71%|███████   | 53/75 [00:15<00:06,  3.40it/s][A
+ 72%|███████▏  | 54/75 [00:15<00:06,  3.38it/s][A
+ 73%|███████▎  | 55/75 [00:15<00:05,  3.44it/s][A
+ 75%|███████▍  | 56/75 [00:16<00:05,  3.41it/s][A
+ 76%|███████▌  | 57/75 [00:16<00:05,  3.38it/s][A
+ 77%|███████▋  | 58/75 [00:16<00:05,  3.37it/s][A
+ 79%|███████▊  | 59/75 [00:17<00:04,  3.36it/s][A
+ 80%|████████  | 60/75 [00:17<00:04,  3.35it/s][A
+ 81%|████████▏ | 61/75 [00:17<00:04,  3.34it/s][A
+ 83%|████████▎ | 62/75 [00:17<00:03,  3.33it/s][A
+ 84%|████████▍ | 63/75 [00:18<00:03,  3.34it/s][A
+ 85%|████████▌ | 64/75 [00:18<00:03,  3.37it/s][A
+ 87%|████████▋ | 65/75 [00:18<00:02,  3.36it/s][A
+ 88%|████████▊ | 66/75 [00:19<00:02,  3.35it/s][A
+ 89%|████████▉ | 67/75 [00:19<00:02,  3.38it/s][A
+ 91%|█████████ | 68/75 [00:19<00:01,  3.58it/s][A
+ 92%|█████████▏| 69/75 [00:19<00:01,  3.59it/s][A
+ 93%|█████████▎| 70/75 [00:20<00:01,  3.74it/s][A
+ 95%|█████████▍| 71/75 [00:20<00:01,  3.65it/s][A
+ 96%|█████████▌| 72/75 [00:20<00:00,  3.55it/s][A
+ 97%|█████████▋| 73/75 [00:21<00:00,  3.57it/s][A
+ 99%|█████████▊| 74/75 [00:21<00:00,  3.53it/s][A
+100%|██████████| 75/75 [00:21<00:00,  3.36it/s][A                                                 
+                                               [A 63%|██████▎   | 100/159 [12:41<06:58,  7.09s/it]
+100%|██████████| 75/75 [00:21<00:00,  3.36it/s][A
+                                               [A 64%|██████▎   | 101/159 [12:49<13:34, 14.04s/it] 64%|██████▍   | 102/159 [12:57<11:25, 12.03s/it] 65%|██████▍   | 103/159 [13:04<09:55, 10.64s/it] 65%|██████▌   | 104/159 [13:11<08:49,  9.62s/it] 66%|██████▌   | 105/159 [13:18<07:52,  8.75s/it] 67%|██████▋   | 106/159 [13:25<07:21,  8.32s/it] 67%|██████▋   | 107/159 [13:33<06:55,  7.99s/it] 68%|██████▊   | 108/159 [13:34<05:00,  5.89s/it]{'eval_loss': 0.11455568671226501, 'eval_runtime': 22.0246, 'eval_samples_per_second': 6.811, 'eval_steps_per_second': 3.405, 'eval_entropy': 0.11943217664957047, 'eval_num_tokens': 1492436.0, 'eval_mean_token_accuracy': 0.9603291511535644, 'epoch': 1.87}
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+ 69%|██████▊   | 109/159 [13:41<05:20,  6.41s/it] 69%|██████▉   | 110/159 [13:49<05:28,  6.70s/it]                                                  69%|██████▉   | 110/159 [13:49<05:28,  6.70s/it] 70%|██████▉   | 111/159 [13:56<05:29,  6.87s/it] 70%|███████   | 112/159 [14:03<05:28,  6.99s/it] 71%|███████   | 113/159 [14:11<05:25,  7.08s/it] 72%|███████▏  | 114/159 [14:18<05:24,  7.21s/it] 72%|███████▏  | 115/159 [14:25<05:17,  7.22s/it] 73%|███████▎  | 116/159 [14:33<05:10,  7.23s/it] 74%|███████▎  | 117/159 [14:40<05:05,  7.26s/it] 74%|███████▍  | 118/159 [14:47<05:00,  7.33s/it] 75%|███████▍  | 119/159 [14:55<04:53,  7.34s/it] 75%|███████▌  | 120/159 [15:02<04:45,  7.33s/it]                                                  75%|███████▌  | 120/159 [15:02<04:45,  7.33s/it] 76%|███████▌  | 121/159 [15:09<04:37,  7.31s/it] 77%|███████▋  | 122/159 [15:17<04:31,  7.34s/it] 77%|███████▋  | 123/159 [15:24<04:22,  7.29s/it] 78%|███████▊  | 124/159 [15:31<04:13,  7.24s/it] 79%|███████▊  | 125/159 [15:38<04:05,  7.23s/it] 79%|███████▉  | 126/159 [15:46<03:59,  7.27s/it] 80%|███████▉  | 127/159 [15:53<03:50,  7.20s/it] 81%|████████  | 128/159 [16:00<03:43,  7.21s/it] 81%|████████  | 129/159 [16:07<03:37,  7.23s/it] 82%|████████▏ | 130/159 [16:14<03:30,  7.26s/it]                                                  82%|████████▏ | 130/159 [16:14<03:30,  7.26s/it][2026-04-04T15:05:36.433] error: *** JOB 11389409 ON node3900 CANCELLED AT 2026-04-04T15:05:36 DUE to SIGNAL Terminated ***

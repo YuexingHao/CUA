@@ -32,10 +32,12 @@ from .evaluate import (
 
 DATA_PATH = Path("data/fabricated_trajectories.json")
 RESULTS_DIR = Path("results")
+FIGURES_DIR = RESULTS_DIR / "figures"
 
 
 def main():
     RESULTS_DIR.mkdir(exist_ok=True)
+    FIGURES_DIR.mkdir(exist_ok=True)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Device: {device}")
     print(f"{'='*60}")
@@ -57,7 +59,7 @@ def main():
               f"R={v['recall']:.3f} F1={v['f1']:.3f}")
 
     plot_discontinuity_histogram(all_disc, best_theta,
-                                 str(RESULTS_DIR / "segmentation_hist.png"))
+                                 str(FIGURES_DIR / "segmentation_hist.png"))
 
     # ── Phase 2a: Wasserstein Clustering ──────────────────────────
     print(f"\n[3/7] Phase 2a: Gaussian Representation + Wasserstein Clustering")
@@ -76,7 +78,7 @@ def main():
     best_cl = cluster_segments(dist_matrix, n_clusters=best_k)
     print(f"  Best k={best_k}: NMI={best_nmi:.3f}")
     plot_confusion_matrix(best_cl, label_ints.numpy(), SKILL_TYPES,
-                          str(RESULTS_DIR / "clustering_confusion.png"))
+                          str(FIGURES_DIR / "clustering_confusion.png"))
 
     # ── Phase 2b: InfoNCE Encoder ─────────────────────────────────
     print(f"\n[4/7] Phase 2b: InfoNCE Contrastive Encoder Training")
@@ -85,7 +87,7 @@ def main():
         lr=1e-3, batch_size=256, verbose=True,
     )
     plot_training_curves(train_losses, val_losses,
-                         str(RESULTS_DIR / "training_curves.png"))
+                         str(FIGURES_DIR / "training_curves.png"))
 
     z_all = encode_all(encoder, summaries, device=device)
     print(f"  Embeddings: {z_all.shape}")
@@ -99,7 +101,7 @@ def main():
           f"Purity={latent_pur:.3f}")
 
     plot_tsne(z_all.numpy(), label_ints.numpy(), SKILL_TYPES,
-              str(RESULTS_DIR / "tsne.png"))
+              str(FIGURES_DIR / "tsne.png"))
 
     # ── Phase 3a: MLP Composition (baseline) ──────────────────────
     print(f"\n[5/7] Phase 3a: MLP Skill Composition (baseline)")
@@ -149,14 +151,14 @@ def main():
     print(f"  [Transformer] Per-position accuracy: {tf_pos}")
 
     plot_per_position_accuracy(tf_pos,
-                               str(RESULTS_DIR / "position_accuracy.png"))
+                               str(FIGURES_DIR / "position_accuracy.png"))
 
     # ── Phase 3 Comparison Plot ───────────────────────────────────
     print(f"\n[7/7] Generating comparison plots")
     plot_composition_comparison(mlp_pos, tf_pos,
-                                str(RESULTS_DIR / "composition_comparison.png"))
+                                str(FIGURES_DIR / "composition_comparison.png"))
     plot_training_curves(tf_train_losses, tf_val_losses,
-                         str(RESULTS_DIR / "transformer_training.png"))
+                         str(FIGURES_DIR / "transformer_training.png"))
 
     # ── Summary ───────────────────────────────────────────────────
     print(f"\n{'='*60}")

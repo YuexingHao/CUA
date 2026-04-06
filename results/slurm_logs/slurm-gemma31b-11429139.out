@@ -1,0 +1,213 @@
+=== Gemma-4-31B-IT: Skill Prediction Evaluation ===
+Node: node3902
+GPUs: NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+Date: Sun Apr  5 16:44:39 EDT 2026
+
+=== Step 1: Evaluating on IW ===
+============================================================
+Model: google/gemma-4-31B-it
+Dataset: IW (Fabricated)
+Max conversations: 50
+============================================================
+Loading tokenizer for google/gemma-4-31B-it...
+Loading model (4-bit): google/gemma-4-31B-it...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/1188 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1188 [00:00<03:09,  6.27it/s]Loading weights:   0%|          | 2/1188 [00:00<05:35,  3.54it/s]Loading weights:   1%|          | 12/1188 [00:00<00:46, 25.49it/s]Loading weights:   2%|▏         | 21/1188 [00:00<00:30, 38.80it/s]Loading weights:   3%|▎         | 34/1188 [00:00<00:18, 61.04it/s]Loading weights:   4%|▍         | 47/1188 [00:00<00:14, 78.65it/s]Loading weights:   5%|▍         | 58/1188 [00:01<00:12, 87.09it/s]Loading weights:   6%|▌         | 69/1188 [00:01<00:12, 89.81it/s]Loading weights:   7%|▋         | 79/1188 [00:01<00:12, 87.44it/s]Loading weights:   7%|▋         | 89/1188 [00:01<00:12, 86.51it/s]Loading weights:   9%|▊         | 102/1188 [00:01<00:11, 97.81it/s]Loading weights:  10%|▉         | 113/1188 [00:01<00:10, 100.68it/s]Loading weights:  10%|█         | 124/1188 [00:01<00:10, 99.05it/s] Loading weights:  11%|█▏        | 135/1188 [00:01<00:10, 98.01it/s]Loading weights:  12%|█▏        | 145/1188 [00:01<00:10, 97.23it/s]Loading weights:  13%|█▎        | 158/1188 [00:02<00:09, 105.04it/s]Loading weights:  14%|█▍        | 169/1188 [00:02<00:10, 99.60it/s] Loading weights:  15%|█▌        | 180/1188 [00:02<00:10, 98.72it/s]Loading weights:  16%|█▌        | 190/1188 [00:02<00:10, 95.36it/s]Loading weights:  17%|█▋        | 200/1188 [00:02<00:10, 96.31it/s]Loading weights:  18%|█▊        | 213/1188 [00:02<00:09, 105.25it/s]Loading weights:  19%|█▉        | 224/1188 [00:02<00:09, 106.23it/s]Loading weights:  20%|█▉        | 235/1188 [00:02<00:09, 102.66it/s]Loading weights:  21%|██        | 246/1188 [00:02<00:09, 98.29it/s] Loading weights:  22%|██▏       | 256/1188 [00:03<00:10, 86.68it/s]Loading weights:  23%|██▎       | 269/1188 [00:03<00:09, 97.35it/s]Loading weights:  24%|██▎       | 282/1188 [00:03<00:08, 105.45it/s]Loading weights:  25%|██▍       | 293/1188 [00:03<00:08, 106.57it/s]Loading weights:  26%|██▌       | 304/1188 [00:03<00:08, 103.20it/s]Loading weights:  27%|██▋       | 315/1188 [00:03<00:08, 100.55it/s]Loading weights:  27%|██▋       | 326/1188 [00:03<00:09, 93.38it/s] Loading weights:  28%|██▊       | 338/1188 [00:03<00:08, 96.03it/s]Loading weights:  30%|██▉       | 352/1188 [00:04<00:08, 100.50it/s]Loading weights:  31%|███       | 366/1188 [00:04<00:08, 102.65it/s]Loading weights:  32%|███▏      | 380/1188 [00:04<00:07, 104.79it/s]Loading weights:  33%|███▎      | 393/1188 [00:04<00:07, 110.53it/s]Loading weights:  34%|███▍      | 407/1188 [00:04<00:07, 109.11it/s]Loading weights:  35%|███▌      | 418/1188 [00:04<00:07, 103.29it/s]Loading weights:  36%|███▌      | 429/1188 [00:04<00:07, 102.46it/s]Loading weights:  37%|███▋      | 440/1188 [00:04<00:07, 101.52it/s]Loading weights:  38%|███▊      | 451/1188 [00:04<00:07, 96.39it/s] Loading weights:  39%|███▉      | 464/1188 [00:05<00:07, 98.08it/s]Loading weights:  40%|████      | 477/1188 [00:05<00:06, 106.00it/s]Loading weights:  41%|████      | 490/1188 [00:05<00:06, 112.08it/s]Loading weights:  42%|████▏     | 502/1188 [00:05<00:06, 106.92it/s]Loading weights:  43%|████▎     | 513/1188 [00:05<00:06, 101.82it/s]Loading weights:  44%|████▍     | 524/1188 [00:05<00:06, 102.68it/s]Loading weights:  45%|████▌     | 535/1188 [00:05<00:06, 98.81it/s] Loading weights:  46%|████▌     | 547/1188 [00:05<00:06, 96.88it/s]Loading weights:  47%|████▋     | 560/1188 [00:06<00:05, 105.14it/s]Loading weights:  48%|████▊     | 573/1188 [00:06<00:05, 111.15it/s]Loading weights:  49%|████▉     | 585/1188 [00:06<00:05, 106.92it/s]Loading weights:  50%|█████     | 596/1188 [00:06<00:05, 101.76it/s]Loading weights:  51%|█████     | 607/1188 [00:06<00:05, 102.83it/s]Loading weights:  52%|█████▏    | 618/1188 [00:06<00:05, 98.81it/s] Loading weights:  53%|█████▎    | 629/1188 [00:06<00:05, 101.44it/s]Loading weights:  54%|█████▍    | 642/1188 [00:06<00:05, 108.81it/s]Loading weights:  55%|█████▌    | 656/1188 [00:06<00:04, 108.23it/s]Loading weights:  56%|█████▌    | 667/1188 [00:07<00:05, 102.34it/s]Loading weights:  57%|█████▋    | 678/1188 [00:07<00:05, 101.46it/s]Loading weights:  58%|█████▊    | 689/1188 [00:07<00:04, 100.81it/s]Loading weights:  59%|█████▉    | 700/1188 [00:07<00:05, 95.97it/s] Loading weights:  60%|██████    | 713/1188 [00:07<00:04, 97.72it/s]Loading weights:  61%|██████    | 727/1188 [00:07<00:04, 101.01it/s]Loading weights:  62%|██████▏   | 740/1188 [00:07<00:04, 108.32it/s]Loading weights:  63%|██████▎   | 752/1188 [00:07<00:04, 107.33it/s]Loading weights:  64%|██████▍   | 766/1188 [00:08<00:03, 107.49it/s]Loading weights:  66%|██████▌   | 780/1188 [00:08<00:03, 107.96it/s]Loading weights:  67%|██████▋   | 794/1188 [00:08<00:03, 108.08it/s]Loading weights:  68%|██████▊   | 808/1188 [00:08<00:03, 107.76it/s]Loading weights:  69%|██████▉   | 822/1188 [00:08<00:03, 107.67it/s]Loading weights:  70%|███████   | 833/1188 [00:08<00:03, 104.43it/s]Loading weights:  82%|████████▏ | 973/1188 [00:08<00:00, 437.02it/s]Loading weights:  94%|█████████▍| 1115/1188 [00:08<00:00, 699.80it/s]Loading weights: 100%|██████████| 1188/1188 [00:08<00:00, 133.56it/s]
+  GPU memory: 0.0 GB
+  Using 8 GPUs
+
+Loaded 50 IW (Fabricated) conversations
+The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  10/50 conversations: accuracy = 0.154 (12/78)
+  20/50 conversations: accuracy = 0.152 (24/158)
+  30/50 conversations: accuracy = 0.170 (41/241)
+  40/50 conversations: accuracy = 0.163 (52/319)
+  50/50 conversations: accuracy = 0.165 (66/400)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.1650 (66/400)
+
+Per-position accuracy:
+  Position 0: 0.040 (2/50)
+  Position 1: 0.140 (7/50)
+  Position 2: 0.160 (8/50)
+  Position 3: 0.260 (13/50)
+  Position 4: 0.260 (13/50)
+  Position 5: 0.188 (9/48)
+  Position 6: 0.163 (7/43)
+  Position 7: 0.097 (3/31)
+  Position 8: 0.235 (4/17)
+  Position 9: 0.000 (0/9)
+  Position 10: 0.000 (0/2)
+
+Per-skill accuracy:
+  collaborate         : 0.026 (2/78)
+  data_transfer       : 0.175 (7/40)
+  document_edit       : 0.360 (27/75)
+  export_publish      : 0.098 (4/41)
+  monitor_status      : 0.500 (1/2)
+  organize_files      : 0.154 (2/13)
+  presentation_edit   : 0.000 (0/7)
+  review_content      : 0.000 (0/28)
+  schedule_meeting    : 0.100 (1/10)
+  search_navigate     : 0.157 (8/51)
+  send_message        : 0.255 (14/55)
+
+Top 10 errors:
+  collaborate          -> you're               (30 times)
+  document_edit        -> search_navigate      (25 times)
+  data_transfer        -> search_navigate      (21 times)
+  collaborate          -> search_navigate      (14 times)
+  export_publish       -> you're               (13 times)
+  send_message         -> export_publish       (12 times)
+  review_content       -> search_navigate      (11 times)
+  search_navigate      -> i                    (11 times)
+  collaborate          -> document_edit        (11 times)
+  search_navigate      -> data_transfer        (8 times)
+
+Normalized edit distance: 0.7322
+Exact sequence match: 0.0000 (0/50)
+
+Saved results to results/gemma4-31b_eval_metrics.json
+Saved predictions to results/gemma4-31b_predictions.json
+
+=== Step 2: Evaluating on WebArena ===
+============================================================
+Model: google/gemma-4-31B-it
+Dataset: WebArena
+Max conversations: 200
+============================================================
+Loading tokenizer for google/gemma-4-31B-it...
+Loading model (4-bit): google/gemma-4-31B-it...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/1188 [00:00<?, ?it/s]Loading weights:   0%|          | 2/1188 [00:00<03:59,  4.96it/s]Loading weights:   1%|          | 12/1188 [00:00<00:39, 29.63it/s]Loading weights:   2%|▏         | 21/1188 [00:00<00:27, 42.89it/s]Loading weights:   3%|▎         | 34/1188 [00:00<00:17, 65.55it/s]Loading weights:   4%|▍         | 47/1188 [00:00<00:13, 82.83it/s]Loading weights:   5%|▍         | 59/1188 [00:00<00:12, 93.21it/s]Loading weights:   6%|▌         | 70/1188 [00:01<00:11, 94.10it/s]Loading weights:   7%|▋         | 81/1188 [00:01<00:11, 93.20it/s]Loading weights:   8%|▊         | 92/1188 [00:01<00:12, 85.59it/s]Loading weights:   9%|▊         | 103/1188 [00:01<00:11, 91.55it/s]Loading weights:  10%|▉         | 116/1188 [00:01<00:10, 101.40it/s]Loading weights:  11%|█         | 127/1188 [00:01<00:10, 103.46it/s]Loading weights:  12%|█▏        | 138/1188 [00:01<00:10, 101.14it/s]Loading weights:  13%|█▎        | 149/1188 [00:01<00:10, 98.62it/s] Loading weights:  13%|█▎        | 160/1188 [00:01<00:11, 91.90it/s]Loading weights:  14%|█▍        | 172/1188 [00:02<00:10, 94.68it/s]Loading weights:  16%|█▌        | 185/1188 [00:02<00:09, 103.57it/s]Loading weights:  16%|█▋        | 196/1188 [00:02<00:09, 105.15it/s]Loading weights:  17%|█▋        | 207/1188 [00:02<00:09, 102.35it/s]Loading weights:  18%|█▊        | 218/1188 [00:02<00:09, 100.38it/s]Loading weights:  19%|█▉        | 229/1188 [00:02<00:10, 94.17it/s] Loading weights:  20%|██        | 242/1188 [00:02<00:09, 102.27it/s]Loading weights:  21%|██▏       | 254/1188 [00:02<00:09, 101.13it/s]Loading weights:  22%|██▏       | 265/1188 [00:03<00:08, 103.30it/s]Loading weights:  23%|██▎       | 276/1188 [00:03<00:09, 101.02it/s]Loading weights:  24%|██▍       | 287/1188 [00:03<00:09, 99.69it/s] Loading weights:  25%|██▌       | 298/1188 [00:03<00:09, 94.05it/s]Loading weights:  26%|██▌       | 311/1188 [00:03<00:08, 102.69it/s]Loading weights:  27%|██▋       | 324/1188 [00:03<00:07, 109.34it/s]Loading weights:  28%|██▊       | 336/1188 [00:03<00:08, 105.90it/s]Loading weights:  29%|██▉       | 347/1188 [00:03<00:08, 101.07it/s]Loading weights:  30%|███       | 358/1188 [00:03<00:08, 102.35it/s]Loading weights:  31%|███       | 369/1188 [00:04<00:08, 98.52it/s] Loading weights:  32%|███▏      | 381/1188 [00:04<00:08, 96.98it/s]Loading weights:  33%|███▎      | 394/1188 [00:04<00:07, 105.19it/s]Loading weights:  34%|███▍      | 407/1188 [00:04<00:06, 111.70it/s]Loading weights:  35%|███▌      | 419/1188 [00:04<00:07, 107.59it/s]Loading weights:  36%|███▌      | 430/1188 [00:04<00:07, 101.66it/s]Loading weights:  37%|███▋      | 441/1188 [00:04<00:07, 102.47it/s]Loading weights:  38%|███▊      | 452/1188 [00:04<00:07, 98.48it/s] Loading weights:  39%|███▉      | 464/1188 [00:04<00:07, 97.09it/s]Loading weights:  40%|████      | 477/1188 [00:05<00:06, 105.58it/s]Loading weights:  41%|████      | 490/1188 [00:05<00:06, 111.87it/s]Loading weights:  42%|████▏     | 502/1188 [00:05<00:06, 107.66it/s]Loading weights:  43%|████▎     | 513/1188 [00:05<00:06, 102.31it/s]Loading weights:  44%|████▍     | 524/1188 [00:05<00:06, 103.09it/s]Loading weights:  45%|████▌     | 535/1188 [00:05<00:06, 99.10it/s] Loading weights:  46%|████▌     | 547/1188 [00:05<00:06, 97.13it/s]Loading weights:  47%|████▋     | 560/1188 [00:05<00:05, 105.39it/s]Loading weights:  48%|████▊     | 573/1188 [00:05<00:05, 111.41it/s]Loading weights:  49%|████▉     | 585/1188 [00:06<00:05, 107.20it/s]Loading weights:  50%|█████     | 596/1188 [00:06<00:05, 101.26it/s]Loading weights:  51%|█████     | 607/1188 [00:06<00:05, 102.52it/s]Loading weights:  52%|█████▏    | 618/1188 [00:06<00:05, 98.64it/s] Loading weights:  53%|█████▎    | 630/1188 [00:06<00:05, 96.79it/s]Loading weights:  54%|█████▍    | 643/1188 [00:06<00:05, 105.12it/s]Loading weights:  55%|█████▌    | 656/1188 [00:06<00:04, 111.82it/s]Loading weights:  56%|█████▌    | 668/1188 [00:06<00:04, 107.34it/s]Loading weights:  57%|█████▋    | 679/1188 [00:07<00:05, 101.76it/s]Loading weights:  58%|█████▊    | 690/1188 [00:07<00:04, 102.70it/s]Loading weights:  59%|█████▉    | 701/1188 [00:07<00:04, 98.75it/s] Loading weights:  60%|██████    | 713/1188 [00:07<00:04, 97.15it/s]Loading weights:  61%|██████    | 727/1188 [00:07<00:04, 100.71it/s]Loading weights:  62%|██████▏   | 740/1188 [00:07<00:04, 108.27it/s]Loading weights:  63%|██████▎   | 752/1188 [00:07<00:04, 107.34it/s]Loading weights:  64%|██████▍   | 766/1188 [00:07<00:03, 107.58it/s]Loading weights:  66%|██████▌   | 780/1188 [00:07<00:03, 108.08it/s]Loading weights:  67%|██████▋   | 794/1188 [00:08<00:03, 108.18it/s]Loading weights:  68%|██████▊   | 808/1188 [00:08<00:03, 107.91it/s]Loading weights:  69%|██████▉   | 822/1188 [00:08<00:03, 107.78it/s]Loading weights:  70%|███████   | 833/1188 [00:08<00:03, 104.64it/s]Loading weights:  82%|████████▏ | 973/1188 [00:08<00:00, 437.78it/s]Loading weights:  94%|█████████▍| 1115/1188 [00:08<00:00, 701.37it/s]Loading weights: 100%|██████████| 1188/1188 [00:08<00:00, 135.81it/s]
+  GPU memory: 0.0 GB
+  Using 8 GPUs
+
+Loaded 200 WebArena conversations
+The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  10/200 conversations: accuracy = 0.318 (14/44)
+  20/200 conversations: accuracy = 0.363 (33/91)
+  30/200 conversations: accuracy = 0.364 (48/132)
+  40/200 conversations: accuracy = 0.374 (65/174)
+  50/200 conversations: accuracy = 0.349 (73/209)
+  60/200 conversations: accuracy = 0.380 (97/255)
+  70/200 conversations: accuracy = 0.383 (114/298)
+  80/200 conversations: accuracy = 0.373 (128/343)
+  90/200 conversations: accuracy = 0.372 (142/382)
+  100/200 conversations: accuracy = 0.384 (163/425)
+  110/200 conversations: accuracy = 0.384 (178/464)
+  120/200 conversations: accuracy = 0.381 (192/504)
+  130/200 conversations: accuracy = 0.376 (204/543)
+  140/200 conversations: accuracy = 0.372 (220/591)
+  150/200 conversations: accuracy = 0.371 (232/626)
+  160/200 conversations: accuracy = 0.371 (249/672)
+  170/200 conversations: accuracy = 0.374 (267/713)
+  180/200 conversations: accuracy = 0.371 (279/753)
+  190/200 conversations: accuracy = 0.377 (299/794)
+  200/200 conversations: accuracy = 0.377 (314/833)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.3770 (314/833)
+
+Per-position accuracy:
+  Position 0: 0.295 (59/200)
+  Position 1: 0.560 (112/200)
+  Position 2: 0.275 (55/200)
+  Position 3: 0.485 (47/97)
+  Position 4: 0.338 (25/74)
+  Position 5: 0.333 (13/39)
+  Position 6: 0.167 (3/18)
+  Position 7: 0.000 (0/5)
+
+Per-skill accuracy:
+  collaborate         : 0.143 (5/35)
+  document_edit       : 0.047 (5/106)
+  export_publish      : 0.500 (11/22)
+  generic_action      : 0.750 (3/4)
+  review_content      : 0.519 (164/316)
+  search_navigate     : 0.381 (121/318)
+  send_message        : 0.156 (5/32)
+
+Top 10 errors:
+  review_content       -> you're               (82 times)
+  search_navigate      -> review_content       (62 times)
+  search_navigate      -> generic_action       (60 times)
+  search_navigate      -> you're               (60 times)
+  document_edit        -> generic_action       (38 times)
+  document_edit        -> you're               (34 times)
+  review_content       -> generic_action       (20 times)
+  document_edit        -> review_content       (18 times)
+  review_content       -> search_navigate      (17 times)
+  review_content       -> to                   (17 times)
+
+Normalized edit distance: 0.6418
+Exact sequence match: 0.0000 (0/200)
+
+Saved results to results/gemma4-31b_eval_metrics_wa.json
+Saved predictions to results/gemma4-31b_predictions_wa.json
+
+=== Done ===
+Date: Sun Apr  5 21:26:55 EDT 2026
+
+=== Results Summary ===
+IW:
+{
+  "model": "google/gemma-4-31B-it",
+  "adapter": null,
+  "dataset": "iw",
+  "overall_accuracy": 0.165,
+  "normalized_edit_distance": 0.7321926406926409,
+  "exact_sequence_match": 0.0,
+  "per_position_accuracy": {
+    "0": 0.04,
+    "1": 0.14,
+    "2": 0.16,
+    "3": 0.26,
+    "4": 0.26,
+    "5": 0.1875,
+    "6": 0.16279069767441862,
+    "7": 0.0967741935483871,
+    "8": 0.23529411764705882,
+    "9": 0.0,
+    "10": 0.0
+  },
+  "total_samples": 400,
+  "correct": 66,
+  "num_conversations": 50
+}
+WebArena:
+{
+  "model": "google/gemma-4-31B-it",
+  "adapter": null,
+  "dataset": "wa",
+  "overall_accuracy": 0.37695078031212487,
+  "normalized_edit_distance": 0.641803571428572,
+  "exact_sequence_match": 0.0,
+  "per_position_accuracy": {
+    "0": 0.295,
+    "1": 0.56,
+    "2": 0.275,
+    "3": 0.4845360824742268,
+    "4": 0.33783783783783783,
+    "5": 0.3333333333333333,
+    "6": 0.16666666666666666,
+    "7": 0.0
+  },
+  "total_samples": 833,
+  "correct": 314,
+  "num_conversations": 200
+}

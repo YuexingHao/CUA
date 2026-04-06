@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=50gb
 #SBATCH --time=6:00:00
-#SBATCH --output=results/slurm-olmo7b-%j.out
+#SBATCH --output=results/slurm_logs/slurm-olmo7b-%j.out
 
 echo "=== OLMo-3-1025-7B: Skill Prediction Evaluation ==="
 echo "Node: $(hostname)"

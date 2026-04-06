@@ -1,0 +1,76 @@
+=== Qwen3-8B LoRA Evaluation ===
+Node: node3800
+GPU: NVIDIA RTX A6000, 49140 MiB
+Date: Sat Apr  4 19:46:12 EDT 2026
+
+============================================================
+Evaluating LoRA Fine-Tuned Qwen3-8B (Multi-Turn)
+============================================================
+Loading tokenizer...
+Loading base model (4-bit)...
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:03<00:12,  3.22s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:06<00:09,  3.26s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:09<00:06,  3.30s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:12<00:03,  3.10s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:13<00:00,  2.12s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:13<00:00,  2.61s/it]
+Loading LoRA adapter...
+  GPU memory: 6.1 GB
+
+Loaded 50 validation conversations (max 50)
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:636: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.95` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:653: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `20` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+  10/50 conversations: accuracy = 0.833 (65/78)
+  20/50 conversations: accuracy = 0.861 (136/158)
+  30/50 conversations: accuracy = 0.859 (207/241)
+  40/50 conversations: accuracy = 0.843 (269/319)
+  50/50 conversations: accuracy = 0.850 (340/400)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.8500 (340/400)
+
+Per-position accuracy:
+  Position 0: 0.900 (45/50)
+  Position 1: 0.860 (43/50)
+  Position 2: 0.860 (43/50)
+  Position 3: 0.800 (40/50)
+  Position 4: 0.820 (41/50)
+  Position 5: 0.833 (40/48)
+  Position 6: 0.860 (37/43)
+  Position 7: 0.903 (28/31)
+  Position 8: 0.765 (13/17)
+  Position 9: 0.889 (8/9)
+  Position 10: 1.000 (2/2)
+
+Per-skill accuracy:
+  collaborate         : 0.831 (59/71)
+  data_transfer       : 0.897 (35/39)
+  document_edit       : 0.878 (65/74)
+  export_publish      : 0.821 (23/28)
+  monitor_status      : 0.000 (0/2)
+  organize_files      : 0.917 (11/12)
+  presentation_edit   : 0.556 (5/9)
+  review_content      : 0.893 (25/28)
+  schedule_meeting    : 0.778 (14/18)
+  search_navigate     : 0.941 (48/51)
+  send_message        : 0.809 (55/68)
+
+Top 10 errors:
+  send_message         → export_publish       (5 times)
+  collaborate          → export_publish       (4 times)
+  send_message         → schedule_meeting     (3 times)
+  document_edit        → data_transfer        (3 times)
+  export_publish       → document_edit        (2 times)
+  document_edit        → organize_files       (2 times)
+  schedule_meeting     → document_edit        (2 times)
+  send_message         → collaborate          (2 times)
+  collaborate          → monitor_status       (2 times)
+  presentation_edit    → document_edit        (2 times)
+
+Saved results to results/qwen3_eval_metrics.json
+Saved predictions to results/qwen3_predictions.json
+
+=== Done ===
+Date: Sat Apr  4 20:31:44 EDT 2026

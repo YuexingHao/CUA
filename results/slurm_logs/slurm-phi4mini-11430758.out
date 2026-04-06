@@ -1,0 +1,295 @@
+=== Phi-4-mini-instruct: Skill Prediction Evaluation ===
+Node: node3802
+GPUs: NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+Date: Sun Apr  5 17:21:36 EDT 2026
+
+=== Step 1: Evaluating on IW ===
+============================================================
+Model: microsoft/Phi-4-mini-instruct
+Dataset: IW (Fabricated)
+Max conversations: 50
+============================================================
+Loading tokenizer for microsoft/Phi-4-mini-instruct...
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 422, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<15 lines>...
+        dry_run=dry_run,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1206, in _hf_hub_download_to_cache_dir
+    with WeakFileLock(lock_path):
+         ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_fixes.py", line 99, in WeakFileLock
+    lock.acquire(timeout=min(log_interval, timeout - elapsed_time) if timeout else log_interval)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_api.py", line 332, in acquire
+    self._acquire()
+    ~~~~~~~~~~~~~^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_unix.py", line 44, in _acquire
+    fd = os.open(self.lock_file, open_flags, self._context.mode)
+PermissionError: [Errno 13] Permission denied: '/orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--microsoft--Phi-4-mini-instruct/679e70defca5b399ae9e8ad53ff1176c9d7c6f93.lock'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 685, in from_pretrained
+    config = AutoConfig.from_pretrained(
+        pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/configuration_auto.py", line 1483, in from_pretrained
+    config_dict, unused_kwargs = PreTrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 667, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 722, in _get_config_dict
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<9 lines>...
+        _commit_hash=commit_hash,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 467, in cached_files
+    raise OSError(
+    ...<3 lines>...
+    ) from e
+OSError: PermissionError at /orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--microsoft--Phi-4-mini-instruct/679e70defca5b399ae9e8ad53ff1176c9d7c6f93.lock when downloading microsoft/Phi-4-mini-instruct. Check cache directory permissions. Common causes: 1) another user is downloading the same model (please wait); 2) a previous download was canceled and the lock file needs manual removal.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 422, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<15 lines>...
+        dry_run=dry_run,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1206, in _hf_hub_download_to_cache_dir
+    with WeakFileLock(lock_path):
+         ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_fixes.py", line 99, in WeakFileLock
+    lock.acquire(timeout=min(log_interval, timeout - elapsed_time) if timeout else log_interval)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_api.py", line 332, in acquire
+    self._acquire()
+    ~~~~~~~~~~~~~^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_unix.py", line 44, in _acquire
+    fd = os.open(self.lock_file, open_flags, self._context.mode)
+PermissionError: [Errno 13] Permission denied: '/orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--microsoft--Phi-4-mini-instruct/679e70defca5b399ae9e8ad53ff1176c9d7c6f93.lock'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 359, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 213, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 73, in load_model_and_tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(
+        adapter_path or model_name, trust_remote_code=True
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in from_pretrained
+    config = PreTrainedConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 626, in from_pretrained
+    config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 667, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 722, in _get_config_dict
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<9 lines>...
+        _commit_hash=commit_hash,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 467, in cached_files
+    raise OSError(
+    ...<3 lines>...
+    ) from e
+OSError: PermissionError at /orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--microsoft--Phi-4-mini-instruct/679e70defca5b399ae9e8ad53ff1176c9d7c6f93.lock when downloading microsoft/Phi-4-mini-instruct. Check cache directory permissions. Common causes: 1) another user is downloading the same model (please wait); 2) a previous download was canceled and the lock file needs manual removal.
+
+=== Step 2: Evaluating on WebArena ===
+============================================================
+Model: microsoft/Phi-4-mini-instruct
+Dataset: WebArena
+Max conversations: 200
+============================================================
+Loading tokenizer for microsoft/Phi-4-mini-instruct...
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 422, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<15 lines>...
+        dry_run=dry_run,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1206, in _hf_hub_download_to_cache_dir
+    with WeakFileLock(lock_path):
+         ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_fixes.py", line 99, in WeakFileLock
+    lock.acquire(timeout=min(log_interval, timeout - elapsed_time) if timeout else log_interval)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_api.py", line 332, in acquire
+    self._acquire()
+    ~~~~~~~~~~~~~^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_unix.py", line 44, in _acquire
+    fd = os.open(self.lock_file, open_flags, self._context.mode)
+PermissionError: [Errno 13] Permission denied: '/orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--microsoft--Phi-4-mini-instruct/679e70defca5b399ae9e8ad53ff1176c9d7c6f93.lock'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 685, in from_pretrained
+    config = AutoConfig.from_pretrained(
+        pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/configuration_auto.py", line 1483, in from_pretrained
+    config_dict, unused_kwargs = PreTrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 667, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 722, in _get_config_dict
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<9 lines>...
+        _commit_hash=commit_hash,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 467, in cached_files
+    raise OSError(
+    ...<3 lines>...
+    ) from e
+OSError: PermissionError at /orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--microsoft--Phi-4-mini-instruct/679e70defca5b399ae9e8ad53ff1176c9d7c6f93.lock when downloading microsoft/Phi-4-mini-instruct. Check cache directory permissions. Common causes: 1) another user is downloading the same model (please wait); 2) a previous download was canceled and the lock file needs manual removal.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 422, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<15 lines>...
+        dry_run=dry_run,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1206, in _hf_hub_download_to_cache_dir
+    with WeakFileLock(lock_path):
+         ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_fixes.py", line 99, in WeakFileLock
+    lock.acquire(timeout=min(log_interval, timeout - elapsed_time) if timeout else log_interval)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_api.py", line 332, in acquire
+    self._acquire()
+    ~~~~~~~~~~~~~^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_unix.py", line 44, in _acquire
+    fd = os.open(self.lock_file, open_flags, self._context.mode)
+PermissionError: [Errno 13] Permission denied: '/orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--microsoft--Phi-4-mini-instruct/679e70defca5b399ae9e8ad53ff1176c9d7c6f93.lock'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 359, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 213, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 73, in load_model_and_tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(
+        adapter_path or model_name, trust_remote_code=True
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in from_pretrained
+    config = PreTrainedConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 626, in from_pretrained
+    config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 667, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 722, in _get_config_dict
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<9 lines>...
+        _commit_hash=commit_hash,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 467, in cached_files
+    raise OSError(
+    ...<3 lines>...
+    ) from e
+OSError: PermissionError at /orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--microsoft--Phi-4-mini-instruct/679e70defca5b399ae9e8ad53ff1176c9d7c6f93.lock when downloading microsoft/Phi-4-mini-instruct. Check cache directory permissions. Common causes: 1) another user is downloading the same model (please wait); 2) a previous download was canceled and the lock file needs manual removal.
+
+=== Done ===
+Date: Sun Apr  5 17:22:00 EDT 2026
+
+=== Results Summary ===
+IW:
+
+WebArena:

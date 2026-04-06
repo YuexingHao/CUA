@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=200gb
 #SBATCH --time=16:00:00
-#SBATCH --output=results/slurm-gemma31bc-%j.out
+#SBATCH --output=results/slurm_logs/slurm-gemma31bc-%j.out
 
 echo "=== Gemma-4-31B on BrowseComp-Plus ==="
 echo "Node: $(hostname)"

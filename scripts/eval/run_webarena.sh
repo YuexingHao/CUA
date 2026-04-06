@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=50gb
 #SBATCH --time=4:00:00
-#SBATCH --output=results/slurm-webarena-%j.out
+#SBATCH --output=results/slurm_logs/slurm-webarena-%j.out
 
 echo "=== WebArena Pipeline ==="
 echo "Node: $(hostname)"

@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=50gb
 #SBATCH --time=4:00:00
-#SBATCH --output=results/slurm-eval-%j.out
+#SBATCH --output=results/slurm_logs/slurm-eval-%j.out
 
 echo "=== Qwen3-8B LoRA Evaluation ==="
 echo "Node: $(hostname)"

@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=100gb
 #SBATCH --time=12:00:00
-#SBATCH --output=results/slurm-qwen3-zs-%j.out
+#SBATCH --output=results/slurm_logs/slurm-qwen3-zs-%j.out
 
 echo "=== Qwen3-8B Zero-Shot: Skill Prediction Evaluation ==="
 echo "Node: $(hostname)"

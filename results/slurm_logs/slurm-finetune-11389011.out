@@ -1,0 +1,115 @@
+=== Qwen3-8B LoRA Fine-Tuning ===
+Node: node3900
+GPU: NVIDIA A100 80GB PCIe, 81920 MiB
+Date: Sat Apr  4 14:35:57 EDT 2026
+
+=== Step 1: Preparing training data ===
+Loaded 500 trajectories
+Generated 1608 training samples
+Saved 1366 samples to /orcd/home/002/yuexing/CUA2026/data/train_llm.jsonl
+Saved 242 samples to /orcd/home/002/yuexing/CUA2026/data/val_llm.jsonl
+
+============================================================
+EXAMPLE TRAINING SAMPLE
+============================================================
+
+[System]
+You are InteraSkill, a computer-using agent that predicts the next skill to execute in a workflow trajectory.
+
+Available skills: collaborate, data_transfer, document_edit, export_publish, generic_acti...
+
+[User]
+Objective: Create employee onboarding documentation
+Apps: word
+Complexity: low
+Skills completed (1/2): search_navigate
+Recent actions: click, type, click, click, scroll
+What is the next skill?
+
+[Assistant]
+review_content
+
+============================================================
+LABEL DISTRIBUTION
+============================================================
+  document_edit       :   548 (34.1%)
+  generic_action      :   195 (12.1%)
+  review_content      :   189 (11.8%)
+  schedule_meeting    :   187 (11.6%)
+  send_message        :   181 (11.3%)
+  collaborate         :    99 (6.2%)
+  presentation_edit   :    60 (3.7%)
+  search_navigate     :    52 (3.2%)
+  monitor_status      :    31 (1.9%)
+  organize_files      :    27 (1.7%)
+  data_transfer       :    23 (1.4%)
+  export_publish      :    16 (1.0%)
+
+=== Step 2: LoRA Fine-Tuning ===
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/importlib/metadata/__init__.py", line 407, in from_name
+    return next(iter(cls.discover(name=name)))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/finetune_qwen.py", line 104, in <module>
+    QUANT_CONFIG = BitsAndBytesConfig(
+        load_in_4bit=True,                          # Use 4-bit quantization
+    ...<2 lines>...
+        bnb_4bit_use_double_quant=True,             # Double quantization saves more memory
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/quantization_config.py", line 438, in __init__
+    self.post_init()
+    ~~~~~~~~~~~~~~^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/quantization_config.py", line 496, in post_init
+    if self.load_in_4bit and not version.parse(importlib.metadata.version("bitsandbytes")) >= version.parse(
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/importlib/metadata/__init__.py", line 987, in version
+    return distribution(distribution_name).version
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/importlib/metadata/__init__.py", line 960, in distribution
+    return Distribution.from_name(distribution_name)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/importlib/metadata/__init__.py", line 409, in from_name
+    raise PackageNotFoundError(name)
+importlib.metadata.PackageNotFoundError: No package metadata was found for bitsandbytes
+
+=== Step 3: Evaluation ===
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/importlib/metadata/__init__.py", line 407, in from_name
+    return next(iter(cls.discover(name=name)))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_qwen.py", line 27, in <module>
+    QUANT_CONFIG = BitsAndBytesConfig(
+        load_in_4bit=True,
+    ...<2 lines>...
+        bnb_4bit_use_double_quant=True,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/quantization_config.py", line 438, in __init__
+    self.post_init()
+    ~~~~~~~~~~~~~~^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/quantization_config.py", line 496, in post_init
+    if self.load_in_4bit and not version.parse(importlib.metadata.version("bitsandbytes")) >= version.parse(
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/importlib/metadata/__init__.py", line 987, in version
+    return distribution(distribution_name).version
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/importlib/metadata/__init__.py", line 960, in distribution
+    return Distribution.from_name(distribution_name)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/importlib/metadata/__init__.py", line 409, in from_name
+    raise PackageNotFoundError(name)
+importlib.metadata.PackageNotFoundError: No package metadata was found for bitsandbytes
+
+=== Done ===
+Date: Sat Apr  4 14:36:24 EDT 2026

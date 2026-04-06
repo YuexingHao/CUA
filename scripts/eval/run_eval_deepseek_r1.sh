@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=500gb
 #SBATCH --time=24:00:00
-#SBATCH --output=results/slurm-deepseek-r1-%j.out
+#SBATCH --output=results/slurm_logs/slurm-deepseek-r1-%j.out
 
 echo "=== DeepSeek-R1: Skill Prediction Evaluation ==="
 echo "Node: $(hostname)"

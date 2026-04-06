@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=200gb
 #SBATCH --time=8:00:00
-#SBATCH --output=results/slurm-gemma31b-%j.out
+#SBATCH --output=results/slurm_logs/slurm-gemma31b-%j.out
 
 echo "=== Gemma-4-31B-IT: Skill Prediction Evaluation ==="
 echo "Node: $(hostname)"

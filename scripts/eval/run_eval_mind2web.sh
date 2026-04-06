@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=100gb
 #SBATCH --time=24:00:00
-#SBATCH --output=results/slurm-mind2web-%j.out
+#SBATCH --output=results/slurm_logs/slurm-mind2web-%j.out
 
 echo "=== Mind2Web Evaluation (Full Suite) ==="
 echo "Node: $(hostname)"

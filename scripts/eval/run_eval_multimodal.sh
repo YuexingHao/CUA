@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=100gb
 #SBATCH --time=24:00:00
-#SBATCH --output=results/slurm-multimodal-%j.out
+#SBATCH --output=results/slurm_logs/slurm-multimodal-%j.out
 
 echo "=== Multimodal Evaluation Suite ==="
 echo "Node: $(hostname)"

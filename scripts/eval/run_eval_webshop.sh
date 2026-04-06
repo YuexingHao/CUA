@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=100gb
 #SBATCH --time=24:00:00
-#SBATCH --output=results/slurm-webshop-%j.out
+#SBATCH --output=results/slurm_logs/slurm-webshop-%j.out
 
 echo "=== WebShop End-to-End Evaluation (Full Suite) ==="
 echo "Node: $(hostname)"

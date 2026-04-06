@@ -1,0 +1,41 @@
+=== Gemma-4-31B on BrowseComp-Plus ===
+Node: node3902
+GPUs: NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+Date: Mon Apr  6 10:35:47 EDT 2026
+
+============================================================
+Model: google/gemma-4-31B-it
+Dataset: BrowseComp-Plus
+Max conversations: 200
+============================================================
+Loading tokenizer for google/gemma-4-31B-it...
+Loading model (4-bit): google/gemma-4-31B-it...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/1188 [00:00<?, ?it/s]Loading weights:   0%|          | 2/1188 [00:00<04:00,  4.94it/s]Loading weights:   1%|          | 12/1188 [00:00<00:39, 29.50it/s]Loading weights:   2%|▏         | 21/1188 [00:00<00:27, 42.72it/s]Loading weights:   3%|▎         | 34/1188 [00:00<00:17, 64.96it/s]Loading weights:   4%|▍         | 47/1188 [00:00<00:13, 82.20it/s]Loading weights:   5%|▍         | 58/1188 [00:00<00:12, 89.91it/s]Loading weights:   6%|▌         | 69/1188 [00:01<00:12, 91.77it/s]Loading weights:   7%|▋         | 80/1188 [00:01<00:12, 91.33it/s]Loading weights:   8%|▊         | 90/1188 [00:01<00:13, 82.35it/s]Loading weights:   9%|▊         | 103/1188 [00:01<00:11, 94.14it/s]Loading weights:  10%|▉         | 116/1188 [00:01<00:10, 103.18it/s]Loading weights:  11%|█         | 127/1188 [00:01<00:10, 104.68it/s]Loading weights:  12%|█▏        | 138/1188 [00:01<00:10, 101.91it/s]Loading weights:  13%|█▎        | 149/1188 [00:01<00:10, 99.02it/s] Loading weights:  13%|█▎        | 160/1188 [00:02<00:11, 91.61it/s]Loading weights:  14%|█▍        | 172/1188 [00:02<00:10, 94.25it/s]Loading weights:  16%|█▌        | 185/1188 [00:02<00:09, 103.10it/s]Loading weights:  16%|█▋        | 196/1188 [00:02<00:09, 104.69it/s]Loading weights:  17%|█▋        | 207/1188 [00:02<00:09, 101.94it/s]Loading weights:  18%|█▊        | 218/1188 [00:02<00:09, 100.07it/s]Loading weights:  19%|█▉        | 229/1188 [00:02<00:10, 93.80it/s] Loading weights:  20%|██        | 242/1188 [00:02<00:09, 101.75it/s]Loading weights:  21%|██▏       | 254/1188 [00:02<00:09, 100.79it/s]Loading weights:  22%|██▏       | 265/1188 [00:03<00:08, 102.85it/s]Loading weights:  23%|██▎       | 276/1188 [00:03<00:09, 100.55it/s]Loading weights:  24%|██▍       | 287/1188 [00:03<00:09, 99.27it/s] Loading weights:  25%|██▌       | 297/1188 [00:03<00:08, 99.07it/s]Loading weights:  26%|██▌       | 310/1188 [00:03<00:08, 106.56it/s]Loading weights:  27%|██▋       | 321/1188 [00:03<00:08, 107.35it/s]Loading weights:  28%|██▊       | 332/1188 [00:03<00:08, 99.23it/s] Loading weights:  29%|██▉       | 343/1188 [00:03<00:08, 97.40it/s]Loading weights:  30%|██▉       | 353/1188 [00:03<00:09, 90.96it/s]Loading weights:  31%|███       | 367/1188 [00:04<00:08, 96.65it/s]Loading weights:  32%|███▏      | 381/1188 [00:04<00:08, 100.44it/s]Loading weights:  33%|███▎      | 394/1188 [00:04<00:07, 107.38it/s]Loading weights:  34%|███▍      | 407/1188 [00:04<00:06, 112.99it/s]Loading weights:  35%|███▌      | 419/1188 [00:04<00:07, 108.14it/s]Loading weights:  36%|███▌      | 430/1188 [00:04<00:07, 102.60it/s]Loading weights:  37%|███▋      | 441/1188 [00:04<00:07, 103.09it/s]Loading weights:  38%|███▊      | 452/1188 [00:04<00:07, 98.84it/s] Loading weights:  39%|███▉      | 464/1188 [00:04<00:07, 97.28it/s]Loading weights:  40%|████      | 477/1188 [00:05<00:06, 105.49it/s]Loading weights:  41%|████      | 490/1188 [00:05<00:06, 111.50it/s]Loading weights:  42%|████▏     | 502/1188 [00:05<00:06, 107.06it/s]Loading weights:  43%|████▎     | 513/1188 [00:05<00:06, 101.82it/s]Loading weights:  44%|████▍     | 524/1188 [00:05<00:06, 102.07it/s]Loading weights:  45%|████▌     | 535/1188 [00:05<00:06, 98.25it/s] Loading weights:  46%|████▌     | 547/1188 [00:05<00:06, 96.48it/s]Loading weights:  47%|████▋     | 560/1188 [00:05<00:05, 104.79it/s]Loading weights:  48%|████▊     | 573/1188 [00:06<00:05, 110.87it/s]Loading weights:  49%|████▉     | 585/1188 [00:06<00:05, 106.70it/s]Loading weights:  50%|█████     | 596/1188 [00:06<00:05, 101.57it/s]Loading weights:  51%|█████     | 607/1188 [00:06<00:05, 102.63it/s]Loading weights:  52%|█████▏    | 618/1188 [00:06<00:05, 98.68it/s] Loading weights:  53%|█████▎    | 630/1188 [00:06<00:05, 96.82it/s]Loading weights:  54%|█████▍    | 643/1188 [00:06<00:05, 105.05it/s]Loading weights:  55%|█████▌    | 656/1188 [00:06<00:04, 111.71it/s]Loading weights:  56%|█████▌    | 668/1188 [00:06<00:04, 107.00it/s]Loading weights:  57%|█████▋    | 679/1188 [00:07<00:05, 101.50it/s]Loading weights:  58%|█████▊    | 690/1188 [00:07<00:04, 101.67it/s]Loading weights:  59%|█████▉    | 701/1188 [00:07<00:04, 98.01it/s] Loading weights:  60%|██████    | 713/1188 [00:07<00:04, 96.57it/s]Loading weights:  61%|██████    | 727/1188 [00:07<00:04, 100.21it/s]Loading weights:  62%|██████▏   | 740/1188 [00:07<00:04, 107.70it/s]Loading weights:  63%|██████▎   | 752/1188 [00:07<00:04, 106.80it/s]Loading weights:  64%|██████▍   | 766/1188 [00:07<00:03, 107.81it/s]Loading weights:  66%|██████▌   | 780/1188 [00:08<00:03, 108.15it/s]Loading weights:  67%|██████▋   | 794/1188 [00:08<00:03, 108.18it/s]Loading weights:  68%|██████▊   | 808/1188 [00:08<00:03, 107.88it/s]Loading weights:  69%|██████▉   | 822/1188 [00:08<00:03, 107.69it/s]Loading weights:  70%|███████   | 833/1188 [00:08<00:03, 104.37it/s]Loading weights:  82%|████████▏ | 973/1188 [00:08<00:00, 436.99it/s]Loading weights:  94%|█████████▍| 1115/1188 [00:08<00:00, 700.21it/s]Loading weights: 100%|██████████| 1188/1188 [00:08<00:00, 135.24it/s]
+  GPU memory: 0.0 GB
+  Using 8 GPUs
+
+Loaded 200 BrowseComp-Plus conversations
+The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  10/200 conversations: accuracy = 0.148 (16/108)
+  20/200 conversations: accuracy = 0.133 (29/218)
+  30/200 conversations: accuracy = 0.134 (44/328)
+  40/200 conversations: accuracy = 0.126 (55/438)
+  50/200 conversations: accuracy = 0.114 (62/544)
+  60/200 conversations: accuracy = 0.104 (68/654)
+  70/200 conversations: accuracy = 0.106 (81/764)
+  80/200 conversations: accuracy = 0.109 (95/874)
+  90/200 conversations: accuracy = 0.112 (110/984)
+  100/200 conversations: accuracy = 0.108 (118/1094)
+  110/200 conversations: accuracy = 0.109 (131/1204)
+  120/200 conversations: accuracy = 0.107 (140/1314)
+  130/200 conversations: accuracy = 0.110 (157/1424)
+  140/200 conversations: accuracy = 0.110 (169/1534)
+  150/200 conversations: accuracy = 0.113 (186/1644)

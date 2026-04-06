@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=50gb
 #SBATCH --time=1:00:00
-#SBATCH --output=results/slurm-baselines-%j.out
+#SBATCH --output=results/slurm_logs/slurm-baselines-%j.out
 
 echo "=== Baseline Evaluation ==="
 echo "Node: $(hostname)"

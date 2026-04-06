@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=50gb
 #SBATCH --time=6:00:00
-#SBATCH --output=results/slurm-phi4mini-%j.out
+#SBATCH --output=results/slurm_logs/slurm-phi4mini-%j.out
 
 echo "=== Phi-4-mini-instruct: Skill Prediction Evaluation ==="
 echo "Node: $(hostname)"

@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=200gb
 #SBATCH --time=12:00:00
-#SBATCH --output=results/slurm-llama70bc-%j.out
+#SBATCH --output=results/slurm_logs/slurm-llama70bc-%j.out
 
 echo "=== Llama-3.1-70B on BrowseComp-Plus ==="
 echo "Node: $(hostname)"

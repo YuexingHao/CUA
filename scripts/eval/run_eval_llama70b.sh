@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=200gb
 #SBATCH --time=8:00:00
-#SBATCH --output=results/slurm-llama70b-%j.out
+#SBATCH --output=results/slurm_logs/slurm-llama70b-%j.out
 
 echo "=== Llama-3.1-70B-Instruct: Skill Prediction Evaluation ==="
 echo "Node: $(hostname)"

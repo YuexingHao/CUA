@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=50gb
 #SBATCH --time=6:00:00
-#SBATCH --output=results/slurm-eval-wa-%j.out
+#SBATCH --output=results/slurm_logs/slurm-eval-wa-%j.out
 
 echo "=== Qwen3-8B LoRA: WebArena + IW Edit Distance Evaluation ==="
 echo "Node: $(hostname)"
