@@ -110,6 +110,8 @@ class CLIPEncoder:
                                     padding=True).to(self.device)
             with torch.no_grad():
                 emb = self.model.get_image_features(**inputs)
+                if not isinstance(emb, torch.Tensor):
+                    emb = emb.pooler_output if hasattr(emb, "pooler_output") else emb[0]
                 emb = torch.nn.functional.normalize(emb, dim=-1)
             all_embs.append(emb.cpu())
         return torch.cat(all_embs, dim=0)
