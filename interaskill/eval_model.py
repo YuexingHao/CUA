@@ -83,32 +83,31 @@ def load_model_and_tokenizer(model_name: str, adapter_path: str = None):
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    # Some models (e.g., DeepSeek-R1) ship pre-quantized in FP8 and
-    # conflict with BitsAndBytes. Detect and skip our quantization config.
-    use_bnb = True
+    # Check if model has existing quantization (e.g., DeepSeek-R1 ships FP8).
+    # FP8 auto-dequantizes to bf16 on non-H100 GPUs, which is too large.
+    # In that case, load the unquantized config and apply BnB 4-bit ourselves.
+    has_existing_quant = False
     try:
         from transformers import AutoConfig
         cfg = AutoConfig.from_pretrained(model_name, trust_remote_code=True)
-        if hasattr(cfg, "quantization_config"):
-            existing_quant = cfg.quantization_config
-            if isinstance(existing_quant, dict) and existing_quant.get("quant_type") != "nf4":
-                print(f"  Model has existing quantization ({existing_quant.get('quant_method', 'unknown')}), skipping BnB")
-                use_bnb = False
-            elif not isinstance(existing_quant, dict):
-                print(f"  Model has existing quantization config, skipping BnB")
-                use_bnb = False
+        if hasattr(cfg, "quantization_config") and cfg.quantization_config:
+            has_existing_quant = True
+            print(f"  Model has existing quantization — will load with BnB 4-bit override")
     except Exception:
         pass
 
-    quant_label = "4-bit" if use_bnb else "native"
-    print(f"Loading model ({quant_label}): {model_name}...")
+    print(f"Loading model (4-bit): {model_name}...")
     load_kwargs = dict(
+        quantization_config=QUANT_CONFIG,
         device_map="auto",
         trust_remote_code=True,
         torch_dtype=torch.bfloat16,
     )
-    if use_bnb:
-        load_kwargs["quantization_config"] = QUANT_CONFIG
+    # For pre-quantized models, load the base (unquantized) config first
+    if has_existing_quant:
+        cfg.quantization_config = None
+        load_kwargs["config"] = cfg
+
     model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
 
     if adapter_path:

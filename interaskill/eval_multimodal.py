@@ -360,7 +360,6 @@ def evaluate_cross_domain(args):
         "n_tasks": len(tasks),
         "n_domains": len(domain_screenshots),
     }
-    import numpy as np
     out_path = RESULTS_DIR / "multimodal_cross_domain.json"
     with open(out_path, "w") as f:
         json.dump(results, f, indent=2)
