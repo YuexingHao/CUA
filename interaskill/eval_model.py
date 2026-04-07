@@ -83,14 +83,33 @@ def load_model_and_tokenizer(model_name: str, adapter_path: str = None):
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    print(f"Loading model (4-bit): {model_name}...")
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        quantization_config=QUANT_CONFIG,
+    # Some models (e.g., DeepSeek-R1) ship pre-quantized in FP8 and
+    # conflict with BitsAndBytes. Detect and skip our quantization config.
+    use_bnb = True
+    try:
+        from transformers import AutoConfig
+        cfg = AutoConfig.from_pretrained(model_name, trust_remote_code=True)
+        if hasattr(cfg, "quantization_config"):
+            existing_quant = cfg.quantization_config
+            if isinstance(existing_quant, dict) and existing_quant.get("quant_type") != "nf4":
+                print(f"  Model has existing quantization ({existing_quant.get('quant_method', 'unknown')}), skipping BnB")
+                use_bnb = False
+            elif not isinstance(existing_quant, dict):
+                print(f"  Model has existing quantization config, skipping BnB")
+                use_bnb = False
+    except Exception:
+        pass
+
+    quant_label = "4-bit" if use_bnb else "native"
+    print(f"Loading model ({quant_label}): {model_name}...")
+    load_kwargs = dict(
         device_map="auto",
         trust_remote_code=True,
         torch_dtype=torch.bfloat16,
     )
+    if use_bnb:
+        load_kwargs["quantization_config"] = QUANT_CONFIG
+    model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
 
     if adapter_path:
         from peft import PeftModel
