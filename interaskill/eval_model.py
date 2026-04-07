@@ -139,14 +139,29 @@ def _strip_thinking(response: str) -> str:
 
 
 def extract_skill_from_response(response: str) -> str:
-    """Extract skill name from model response."""
+    """Extract skill name from model response.
+
+    Robust parsing to avoid format errors deflating accuracy:
+      - [Action: skill_name]
+      - **[Action: skill_name]**
+      - Action: skill_name (without brackets)
+      - Bare skill name mention
+      - Handles underscores, hyphens, spaces in skill names
+    """
     # Strip thinking blocks (Qwen3 outputs <think>...</think> by default)
     response = _strip_thinking(response)
 
-    # Try [Action: skill_name] pattern
+    # Try strict format: [Action: skill_name]
     match = ACTION_PATTERN.search(response)
     if match:
-        skill = match.group(1).lower()
+        skill = match.group(1).lower().replace("-", "_").replace(" ", "_")
+        if skill in VALID_SKILLS:
+            return skill
+
+    # Try looser format: Action: skill_name (without brackets)
+    match = re.search(r"action\s*:\s*(\w+)", response, re.IGNORECASE)
+    if match:
+        skill = match.group(1).lower().replace("-", "_").replace(" ", "_")
         if skill in VALID_SKILLS:
             return skill
 
@@ -154,6 +169,11 @@ def extract_skill_from_response(response: str) -> str:
     response_lower = response.lower()
     for skill in VALID_SKILLS:
         if skill in response_lower:
+            return skill
+        # Also match "search navigate" or "search-navigate"
+        if skill.replace("_", " ") in response_lower:
+            return skill
+        if skill.replace("_", "-") in response_lower:
             return skill
 
     return response_lower.split()[0] if response_lower.strip() else "unknown"
