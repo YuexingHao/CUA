@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=100gb
-#SBATCH --time=12:00:00
+#SBATCH --time=3-00:00:00
 #SBATCH --output=results/slurm_logs/slurm-grpo-%j.out
 
 echo "=== GRPO Fine-Tuning: Qwen3-8B ==="

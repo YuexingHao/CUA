@@ -343,7 +343,15 @@ def main():
         processing_class=tokenizer,
     )
 
-    train_result = trainer.train()
+    # Resume from checkpoint if available (for jobs that timed out)
+    last_ckpt = None
+    if OUTPUT_DIR.exists():
+        ckpts = sorted(OUTPUT_DIR.glob("checkpoint-*"), key=lambda p: p.stat().st_mtime)
+        if ckpts:
+            last_ckpt = str(ckpts[-1])
+            print(f"  Resuming from {last_ckpt}")
+
+    train_result = trainer.train(resume_from_checkpoint=last_ckpt)
 
     # ── Results ──────────────────────────────────────────────────
     print(f"\n{'='*60}")
