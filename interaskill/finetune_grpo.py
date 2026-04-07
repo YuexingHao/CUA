@@ -329,6 +329,11 @@ def main():
     print(f"  Learning rate: {grpo_config.learning_rate}")
     print()
 
+    # Patch for trl/peft compatibility: GRPOTrainer accesses
+    # model.warnings_issued which doesn't exist on PEFT-wrapped models
+    if not hasattr(model, "warnings_issued"):
+        model.warnings_issued = {}
+
     trainer = GRPOTrainer(
         model=model,
         reward_funcs=reward_fn,

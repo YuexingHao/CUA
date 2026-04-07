@@ -76,9 +76,14 @@ def parse_args():
 
 def load_model_and_tokenizer(model_name: str, adapter_path: str = None):
     """Load model with 4-bit quantization and optional LoRA adapter."""
-    print(f"Loading tokenizer for {model_name}...")
+    # Load tokenizer — prefer adapter path if it exists locally (has tokenizer files),
+    # otherwise fall back to base model name
+    tokenizer_path = model_name
+    if adapter_path and Path(adapter_path).is_dir() and (Path(adapter_path) / "tokenizer_config.json").exists():
+        tokenizer_path = adapter_path
+    print(f"Loading tokenizer for {tokenizer_path}...")
     tokenizer = AutoTokenizer.from_pretrained(
-        adapter_path or model_name, trust_remote_code=True
+        tokenizer_path, trust_remote_code=True
     )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
