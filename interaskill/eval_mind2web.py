@@ -303,8 +303,22 @@ def main():
         if args.max_tasks:
             tasks = tasks[:args.max_tasks]
     else:
-        print(f"Loading Mind2Web from HuggingFace (split={args.split})...")
-        tasks = load_mind2web(args.split, args.max_tasks, args.cache_dir)
+        # Download first if not cached
+        print(f"Data not found at {data_path}. Downloading Mind2Web...")
+        import subprocess
+        subprocess.run([
+            "python", "data/download_mind2web.py",
+            "--max-tasks", str(args.max_tasks or 500),
+        ], check=True)
+        if data_path.exists():
+            with open(data_path) as f:
+                tasks = json.load(f)
+            if args.max_tasks:
+                tasks = tasks[:args.max_tasks]
+        else:
+            # Fallback: load from HF directly (uses 'train' split)
+            print(f"Loading Mind2Web from HuggingFace...")
+            tasks = load_mind2web("train", args.max_tasks, args.cache_dir)
 
     print(f"Loaded {len(tasks)} tasks", flush=True)
 
