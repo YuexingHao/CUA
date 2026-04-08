@@ -39,3 +39,54 @@ The following generation flags are not valid and may be ignored: ['top_p', 'top_
   130/200 conversations: accuracy = 0.110 (157/1424)
   140/200 conversations: accuracy = 0.110 (169/1534)
   150/200 conversations: accuracy = 0.113 (186/1644)
+  160/200 conversations: accuracy = 0.116 (203/1754)
+  170/200 conversations: accuracy = 0.112 (209/1864)
+  180/200 conversations: accuracy = 0.114 (226/1974)
+  190/200 conversations: accuracy = 0.111 (232/2084)
+  200/200 conversations: accuracy = 0.112 (246/2194)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.1121 (246/2194)
+
+Per-position accuracy:
+  Position 0: 0.000 (0/200)
+  Position 1: 0.560 (112/200)
+  Position 2: 0.010 (2/200)
+  Position 3: 0.240 (48/200)
+  Position 4: 0.035 (7/200)
+  Position 5: 0.175 (35/200)
+  Position 6: 0.040 (8/200)
+  Position 7: 0.085 (17/199)
+  Position 8: 0.035 (7/199)
+  Position 9: 0.051 (10/198)
+  Position 10: 0.000 (0/198)
+
+Per-skill accuracy:
+  export_publish      : 0.000 (0/20)
+  review_content      : 0.020 (24/1187)
+  search_navigate     : 0.225 (222/987)
+
+Top 10 errors:
+  search_navigate      -> **[thinking]**       (516 times)
+  review_content       -> **[thinking]**       (502 times)
+  review_content       -> search_navigate      (361 times)
+  review_content       -> based                (176 times)
+  search_navigate      -> based                (124 times)
+  search_navigate      -> to                   (65 times)
+  review_content       -> the                  (49 times)
+  review_content       -> you're               (47 times)
+  search_navigate      -> the                  (34 times)
+  review_content       -> to                   (13 times)
+
+Normalized edit distance: 0.8605
+Exact sequence match: 0.0000 (0/200)
+
+Saved results to results/gemma4-31b_eval_metrics_bc.json
+Saved predictions to results/gemma4-31b_predictions_bc.json
+Removed checkpoint results/gemma4-31b_checkpoint_bc.json
+
+=== Done ===
+Date: Mon Apr  6 19:53:22 EDT 2026

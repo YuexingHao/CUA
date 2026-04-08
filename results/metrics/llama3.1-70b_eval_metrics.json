@@ -1,0 +1,24 @@
+{
+  "model": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+  "adapter": null,
+  "dataset": "iw",
+  "overall_accuracy": 0.3,
+  "normalized_edit_distance": 0.6311594516594518,
+  "exact_sequence_match": 0.0,
+  "per_position_accuracy": {
+    "0": 0.52,
+    "1": 0.26,
+    "2": 0.44,
+    "3": 0.32,
+    "4": 0.3,
+    "5": 0.20833333333333334,
+    "6": 0.23255813953488372,
+    "7": 0.12903225806451613,
+    "8": 0.23529411764705882,
+    "9": 0.0,
+    "10": 0.0
+  },
+  "total_samples": 400,
+  "correct": 120,
+  "num_conversations": 50
+}

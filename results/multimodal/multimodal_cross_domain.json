@@ -1,0 +1,82 @@
+{
+  "cross_domain_similarity": {
+    "pairwise_similarities": {
+      "Entertainment_vs_Shopping": 0.8892329931259155,
+      "Entertainment_vs_Travel": 0.8556327223777771,
+      "Shopping_vs_Travel": 0.8899571895599365
+    },
+    "mean_cross_domain_sim": 0.8782743016878763,
+    "n_domains": 3
+  },
+  "skill_invariance": {
+    "data_transfer": {
+      "mean_cross_domain_similarity": 0.7031214237213135,
+      "invariance": 0.2968785762786865,
+      "n_domains": 2,
+      "n_screenshots": 13
+    },
+    "document_edit": {
+      "mean_cross_domain_similarity": 0.8662822445233663,
+      "invariance": 0.13371775547663367,
+      "n_domains": 3,
+      "n_screenshots": 52
+    },
+    "export_publish": {
+      "mean_cross_domain_similarity": 0.6964105367660522,
+      "invariance": 0.30358946323394775,
+      "n_domains": 2,
+      "n_screenshots": 31
+    },
+    "generic_action": {
+      "mean_cross_domain_similarity": 0.8302320241928101,
+      "invariance": 0.16976797580718994,
+      "n_domains": 3,
+      "n_screenshots": 60
+    },
+    "monitor_status": {
+      "mean_cross_domain_similarity": 0.7802909016609192,
+      "invariance": 0.2197090983390808,
+      "n_domains": 2,
+      "n_screenshots": 26
+    },
+    "review_content": {
+      "mean_cross_domain_similarity": 0.8245618144671122,
+      "invariance": 0.1754381855328878,
+      "n_domains": 3,
+      "n_screenshots": 60
+    },
+    "schedule_meeting": {
+      "mean_cross_domain_similarity": 0.8167731165885925,
+      "invariance": 0.18322688341140747,
+      "n_domains": 3,
+      "n_screenshots": 38
+    },
+    "search_navigate": {
+      "mean_cross_domain_similarity": 0.8141262928644816,
+      "invariance": 0.18587370713551843,
+      "n_domains": 3,
+      "n_screenshots": 60
+    },
+    "send_message": {
+      "mean_cross_domain_similarity": 0.8666930198669434,
+      "invariance": 0.13330698013305664,
+      "n_domains": 2,
+      "n_screenshots": 32
+    }
+  },
+  "alignment_loss": {
+    "collaborate": 1.7104026079177856,
+    "data_transfer": 1.7034862041473389,
+    "document_edit": 1.7140958309173584,
+    "export_publish": 1.6778331995010376,
+    "generic_action": 1.6562678813934326,
+    "monitor_status": 1.6340796947479248,
+    "review_content": 1.627156138420105,
+    "schedule_meeting": 1.6458271741867065,
+    "search_navigate": 1.5720473527908325,
+    "send_message": 1.6797994375228882
+  },
+  "mean_alignment_loss": 1.662099552154541,
+  "n_tasks": 500,
+  "n_domains": 3
+}

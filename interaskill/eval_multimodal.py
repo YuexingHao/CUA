@@ -47,6 +47,9 @@ from .multimodal import (
 )
 
 RESULTS_DIR = Path("results")
+METRICS_DIR = RESULTS_DIR / "metrics"
+PREDICTIONS_DIR = RESULTS_DIR / "predictions"
+MULTIMODAL_DIR = RESULTS_DIR / "multimodal"
 
 
 def parse_args():
@@ -360,7 +363,8 @@ def evaluate_cross_domain(args):
         "n_tasks": len(tasks),
         "n_domains": len(domain_screenshots),
     }
-    out_path = RESULTS_DIR / "multimodal_cross_domain.json"
+    MULTIMODAL_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = MULTIMODAL_DIR / "multimodal_cross_domain.json"
     with open(out_path, "w") as f:
         json.dump(results, f, indent=2)
     print(f"\nSaved to {out_path}")
@@ -399,7 +403,8 @@ def _save_results(task_results: list[TaskResult], model: str,
 
     # Short model name for file
     short = model.split("/")[-1].lower().replace("-instruct", "").replace("-", "_")
-    out_path = RESULTS_DIR / f"{short}_{mode}_metrics.json"
+    METRICS_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = METRICS_DIR / f"{short}_{mode}_metrics.json"
     with open(out_path, "w") as f:
         json.dump(metrics, f, indent=2)
     print(f"\nSaved to {out_path}")
@@ -416,7 +421,8 @@ def _save_results(task_results: list[TaskResult], model: str,
         } for s in r.steps],
     } for r in task_results]
 
-    preds_path = RESULTS_DIR / f"{short}_{mode}_predictions.json"
+    PREDICTIONS_DIR.mkdir(parents=True, exist_ok=True)
+    preds_path = PREDICTIONS_DIR / f"{short}_{mode}_predictions.json"
     with open(preds_path, "w") as f:
         json.dump(preds, f, indent=2)
     print(f"Saved predictions to {preds_path}")

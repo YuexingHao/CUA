@@ -26,3 +26,7 @@ paper/uploads/
 
 # OS
 .DS_Store
+
+# Large optimizer checkpoints (exceed GitHub 100MB limit)
+results/*/checkpoint-*/optimizer.pt
+results/*/checkpoint-*/rng_state.pth

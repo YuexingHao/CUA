@@ -1,0 +1,21 @@
+{
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+  "adapter": null,
+  "dataset": "wa",
+  "overall_accuracy": 0.45138055222088835,
+  "normalized_edit_distance": 0.5611011904761909,
+  "exact_sequence_match": 0.04,
+  "per_position_accuracy": {
+    "0": 0.275,
+    "1": 0.505,
+    "2": 0.46,
+    "3": 0.5979381443298969,
+    "4": 0.5675675675675675,
+    "5": 0.46153846153846156,
+    "6": 0.5,
+    "7": 0.2
+  },
+  "total_samples": 833,
+  "correct": 376,
+  "num_conversations": 200
+}

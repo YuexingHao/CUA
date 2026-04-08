@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=dsr1-eval
 #SBATCH --partition=pi_mghassem
-#SBATCH --gres=gpu:a100:8
+#SBATCH --gres=gpu:10
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=500gb
 #SBATCH --time=24:00:00

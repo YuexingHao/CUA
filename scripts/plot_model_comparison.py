@@ -18,6 +18,8 @@ from pathlib import Path
 from collections import defaultdict
 
 RESULTS_DIR = Path("results")
+METRICS_DIR = RESULTS_DIR / "metrics"
+PREDICTIONS_DIR = RESULTS_DIR / "predictions"
 
 # ── Style ────────────────────────────────────────────────────────────
 
@@ -66,7 +68,10 @@ SKILL_PRED_DATASETS = {
 
 def load_predictions(short_name, dataset):
     suffix = f"_{dataset}" if dataset in ("wa", "bc") else ""
-    path = RESULTS_DIR / f"{short_name}_predictions{suffix}.json"
+    path = PREDICTIONS_DIR / f"{short_name}_predictions{suffix}.json"
+    if not path.exists():
+        # Fallback to legacy flat location
+        path = RESULTS_DIR / f"{short_name}_predictions{suffix}.json"
     if not path.exists():
         return None
     with open(path) as f:
@@ -75,7 +80,10 @@ def load_predictions(short_name, dataset):
 
 def load_metrics(short_name, dataset):
     suffix = f"_{dataset}" if dataset in ("wa", "bc") else ""
-    path = RESULTS_DIR / f"{short_name}_eval_metrics{suffix}.json"
+    path = METRICS_DIR / f"{short_name}_eval_metrics{suffix}.json"
+    if not path.exists():
+        # Fallback to legacy flat location
+        path = RESULTS_DIR / f"{short_name}_eval_metrics{suffix}.json"
     if not path.exists():
         return None
     with open(path) as f:
@@ -177,8 +185,8 @@ def plot_skill_prediction(ax):
 def plot_baselines(ax):
     """Grouped bar chart comparing baselines on IW and WebArena."""
     baseline_files = {
-        "iw": RESULTS_DIR / "baseline_metrics_iw.json",
-        "wa": RESULTS_DIR / "baseline_metrics_wa.json",
+        "iw": METRICS_DIR / "baseline_metrics_iw.json",
+        "wa": METRICS_DIR / "baseline_metrics_wa.json",
     }
 
     baselines_data = {}
@@ -196,7 +204,7 @@ def plot_baselines(ax):
     # Methods to compare
     methods = ["frequency", "skillmd", "awm"]
     # Add pipeline + LLM results from metrics.json
-    pipeline_file = RESULTS_DIR / "metrics.json"
+    pipeline_file = METRICS_DIR / "pipeline_metrics.json"
     method_labels = {
         "frequency": "Frequency",
         "skillmd": "SKILL.md",
@@ -326,7 +334,7 @@ def plot_e2e_benchmarks(ax):
 
     # Check for WebShop results
     for pattern in ["*webshop_metrics.json"]:
-        for f in RESULTS_DIR.glob(pattern):
+        for f in METRICS_DIR.glob(pattern):
             with open(f) as fh:
                 d = json.load(fh)
             benchmarks.append({
@@ -338,7 +346,7 @@ def plot_e2e_benchmarks(ax):
 
     # Check for Mind2Web results
     for pattern in ["*mind2web_metrics*.json"]:
-        for f in RESULTS_DIR.glob(pattern):
+        for f in METRICS_DIR.glob(pattern):
             with open(f) as fh:
                 d = json.load(fh)
             benchmarks.append({
@@ -350,7 +358,7 @@ def plot_e2e_benchmarks(ax):
 
     # Check for Multimodal results
     for pattern in ["*vlm_metrics.json", "*clip_zeroshot_metrics.json"]:
-        for f in RESULTS_DIR.glob(pattern):
+        for f in METRICS_DIR.glob(pattern):
             with open(f) as fh:
                 d = json.load(fh)
             benchmarks.append({

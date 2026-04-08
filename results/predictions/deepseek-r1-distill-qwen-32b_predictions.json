@@ -1,0 +1,3202 @@
+[
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to help verify that all customer-facing documents have the updated privacy disclaimer. They mentioned that Legal needs this audit. Let me break down how I should approac"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to search all Word documents in the shared drive that were modified in the last 90 days. Let me think about how to approach this.\n\nFirst, I need to use the search_naviga"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to cross-reference the list of customer-facing documents in the compliance tracker. Let me break this down. \n\nFirst, I need to understand what the compliance tracker is."
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has asked me to check each document for the 2026 privacy disclaimer text. Let me break this down step by step. First, I need to understand what exactly the user is asking for. They w"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by checking all customer-facing documents in the shared drive for the updated privacy disclaimer. The user mentioned that Legal needs this verification, so it's import"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to change my approach. They mentioned \"Wait, let me change that \u2014 use a different approach.\" Hmm, I need to figure out what they want me to do differently. \n\nFirst, I sh"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by reporting the findings of the document audit in the #compliance channel. Let me think about how to approach this step by step.\n\nFirst, I need to understand what the"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 7,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to verify that all customer-facing documents have the updated privacy disclaimer. They started by asking to audit everything, which involved several steps li"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to put together a weekly status report on Friday. Let me break down what they might need. First, they probably have a template they use every week, so I should check if that's "
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find this week's task completion data from the project board. Let me think about how to approach this. \n\nFirst, I need to figure out where the project board is locate"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is working on a weekly status report and needs to include the latest numbers. They mentioned that they forgot to mention this earlier. I need to figure out how to incorporate this in"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 3,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to pull the completion metrics into the status report template. Let me think about how to approach this. \n\nFirst, I need to understand what the user is asking for. They "
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is working on their weekly status report and needs to update the highlights section. They mentioned completing the API migration and starting the UI redesign. I need to figure out ho"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is working on a weekly status report and needs to include some specific information. They mentioned that they forgot to include the latest numbers earlier, so I need to make sure tha"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to share the draft of the weekly status report in the #leadership channel for comments. Let me think about how to approach this step by step.\n\nFirst, I need to make sure"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on putting together a weekly status report. They started by asking for help, and I've been guiding them through the process using different skills like search_naviga"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate the monthly sales report automatically. That means I need to pull data, format it, and send it out. Let me break this down step by step.\n\nFirst, I need to figure"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate a monthly sales report automatically. They mentioned pulling data, formatting it, and sending it out. From the history, I see that I initially thought about usin"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to import the query results into the report template. Let me think about how to approach this. First, I need to make sure I have the query results from the sales database fo"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table in the sales report. The user wants borders, a header row, and alternating colors. Let me think about how to approach this.\n\nFirst, I need to locate the data "
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table in the sales report using the company brand colors. The user specified that the headers should be navy and the alternating rows should be light gray. Alright,"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to add an executive summary to the monthly sales report based on the numbers we've pulled. First, I should understand what an executive summary typically includes. It usually gives a h"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to redo the formatting of the sales report. They mentioned they want it formatted differently. Hmm, I need to figure out what exactly they want. Maybe they didn't like t"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user export their document as a PDF. They mentioned that they want it formatted differently, so I need to make sure I understand exactly what they're looking for. First, I "
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to generate a monthly sales report. They started by asking to pull data, format it, and send it out. I broke it down into steps, using different skills like "
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to schedule a quarterly review but there are conflicting calendars. I need to figure out how to help them. Let me break this down step by step.\n\nFirst, I should understand the "
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to check the availability of all 8 VPs across both Outlook and Teams calendars. Let me think about how to approach this.\n\nFirst, I need to access the calendars. Since the us"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is trying to schedule a quarterly review meeting, but there are some issues with the calendars. They mentioned that there are conflicting calendars, so I need to help them sort that "
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to schedule a quarterly review meeting, but there are conflicting calendars among the 8 VPs. They've asked me to check availability across both Outlook and Teams calendars and "
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to post the proposed time for the quarterly review in the #leadership channel for confirmation. Let me think about how to approach this step by step.\n\nFirst, I need to under"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help schedule a quarterly review meeting for all 8 VPs, but their calendars are conflicting. First, I need to check everyone's availability across both Outlook and Teams calendars. "
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 6,
+    "ground_truth": "monitor_status",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help schedule a quarterly review meeting for all 8 VPs, but their calendars are conflicting. First, I need to check everyone's availability across both Outlook and Teams calendars. "
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 7,
+    "ground_truth": "monitor_status",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to schedule a quarterly review, dealing with conflicting calendars, checking availability for all 8 VPs across Outlook and Teams, finding a 2-hour slot next "
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to plan a team offsite next month and needs help getting the logistics started. Let me break this down step by step.\n\nFirst, I need to figure out what the user is asking for. T"
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 1,
+    "ground_truth": "schedule_meeting",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is planning a team offsite and needs help with the logistics. They've already asked for an agenda document, specifying Day 1 as strategy sessions and Day 2 as team building. \n\nFirst,"
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 2,
+    "ground_truth": "schedule_meeting",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user initially asked for a 2-day offsite agenda, but now they've changed it to 3 days because leadership approved an extra day for a hackathon. I need to adjust the agenda accordingly. \n\n"
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to schedule a planning call with the admin team for this Friday at 3pm. Let me break this down step by step.\n\nFirst, I need to understand the task. The user is asking for a "
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 4,
+    "ground_truth": "schedule_meeting",
+    "prediction": "schedule_meeting",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working with me to plan a team offsite. They started by asking for help getting the logistics started, then moved on to creating an agenda document. Initially, it was a 2-da"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to process all their proposal documents for the board meeting. They mentioned converting them to PDF, adding confidential watermarks, and sending them to the board members. Let"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find all the proposal documents in the 'Board-Q3' folder. Let me think about how to approach this. \n\nFirst, I need to understand the context. The user is processing p"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to add a note about the deadline at the bottom of the proposal documents. Let me think about how to approach this.\n\nFirst, I need to make sure I understand where exactly"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 3,
+    "ground_truth": "organize_files",
+    "prediction": "organize_files",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to organize the proposal documents by department: finance, engineering, and marketing. Let me think about how to approach this.\n\nFirst, I need to understand where the do"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to add a 'CONFIDENTIAL - Board Only' watermark to each document. I need to figure out how to do this using the available skills. \n\nFirst, I remember that document_edit is the s"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has a task to process all the proposal documents for the board meeting. They need to convert them to PDF, add a confidential watermark, and send them to the board members. \n\nFirst, I"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a task to process all the proposal documents for the board meeting. They need to convert them to PDF, add a confidential watermark, and send them to the board members. \n\nFirst, I"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has given me a series of tasks to process proposal documents for a board meeting. They want all the Word documents converted to PDF, add a confidential watermark, and send them to th"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to put together a weekly status report on Friday. Let me break down what they might need. First, they probably have a template they use every week, so I should check if that's "
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find this week's task completion data from the project board. Let me think about how to approach this. \n\nFirst, I need to figure out which application the project boa"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to pull the completion metrics into the status report template. Let me think about how to approach this. \n\nFirst, I need to understand what the user has done so far. The"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to update the highlights section in the status report. They mentioned that we completed the API migration and started the UI redesign. I need to make sure I understand e"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to add a note about the deadline at the bottom of the status report. Let me think about how to approach this. \n\nFirst, I need to figure out which skill to use. Since the"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "collaborate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to share the draft in the #leadership channel for comments. Let me think about how to approach this. First, I need to make sure the draft is ready to be shared. I should check "
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working on putting together a weekly status report. They started by asking for help, and I broke down the tasks into steps, using different skills like search_navigate, data"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a bunch of client feedback emails and needs help processing them. Let me break this down step by step.\n\nFirst, I need to figure out what the user means by \"processing.\" They migh"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They just asked me to search their inbox for emails with the subject containing 'feedback' from the last week. \n"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They first asked me to process the emails, so I thought about the necessary skills: search_navigate to find the "
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help process their client feedback emails. They mentioned they got a batch this morning, so they probably have a lot to go through. First, they asked to search their "
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've already asked to search their inbox for emails with 'feedback' in the subject from the last week, but then co"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've asked me to help with several tasks, including searching for emails, opening specific ones, filtering by date"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've been guiding me through the steps, and now they want to share a summary document with the product team in the"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 7,
+    "ground_truth": "review_content",
+    "prediction": "review_content",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working with me to process client feedback emails. They started by asking to process a batch of emails, and I used several skills like search_navigate, review_content, and d"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is evaluating three cloud vendors and needs to organize a comparison. Let me break down how I can help them using the skills I have.\n\nFirst, I need to figure out what the user's main"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 1,
+    "ground_truth": "organize_files",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find all the vendor proposals they received, which are in their email attachments from last week. Let me think about how to approach this.\n\nFirst, I need to figure ou"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to organize some vendor proposals into a folder called 'Vendor-Eval-2026'. Let me think about how to approach this.\n\nFirst, I need to find all the vendor proposals. The user"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 3,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to create a comparison matrix document with specific columns: vendor, pricing, features, support, and security. Let me break this down step by step.\n\nFirst, I need to un"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 4,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to add a 'compliance' column to the comparison matrix document. They mentioned that legal wants us to check GDPR compliance. Let me think about how to approach this.\n\nFi"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 5,
+    "ground_truth": "schedule_meeting",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help them review the comparison matrix before sharing it. Let me think about how to approach this.\n\nFirst, I need to understand what the comparison matrix contains. I"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 6,
+    "ground_truth": "presentation_edit",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to schedule a decision meeting with the infrastructure team for next Thursday at 2pm. Let me break this down step by step.\n\nFirst, I need to identify the appropriate skill f"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to create a summary slide deck with the top 3 findings for each vendor. First, I should figure out what the top 3 findings are for each vendor. I guess I need to look back at the compa"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to create a summary slide deck with the top 3 findings for each vendor, but it has to be a maximum of 5 slides. The VP doesn't have patience for long presentations, so I need to make i"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 9,
+    "ground_truth": "presentation_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on evaluating three cloud vendors and organizing the comparison. They started by asking to find all vendor proposals in their email attachments from last week. I hel"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to write a product launch announcement for their new feature. I need to help them draft it. Let me think about how to approach this.\n\nFirst, I should figure out what the user's"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to create a product launch announcement for their new feature called 'SmartSync'. It's an AI-powered file synchronization tool. I need to help them draft this announcement. \n\nF"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user initially asked to write a product launch announcement for a new feature called 'SmartSync', which is an AI-powered file synchronization tool. I started by thinking about the necessa"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to help them draft a product launch announcement for their new feature called 'SmartSync'. They mentioned it's an AI-powered file synchronization tool. I need to create a ne"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to share the draft of the product launch announcement for 'SmartSync' with the marketing team in the #product-launches channel for feedback. Let me think about how to approa"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants to export the product launch announcement as a PDF for the press kit. Let me think about how to approach this. \n\nFirst, I need to make sure I'm using the right skill. Exporting"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working with me to create a product launch announcement for their new feature called 'SmartSync'. They started by asking for help drafting the announcement, and I guided the"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to put together a weekly status report on Friday. Let me break down what they might need. First, they probably have a template they use every week, so I should check if that's "
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find this week's task completion data from the project board. Let me break this down step by step.\n\nFirst, I need to understand where the project board is located. Si"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to redo the data transfer because they want it formatted differently. Let me think about how to approach this.\n\nFirst, I need to understand what exactly they want. They "
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to pull the completion metrics into the status report template. Let me break this down step by step. First, I need to understand what exactly the user is asking for. The"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to update the highlights section in the status report. They mentioned that we completed the API migration and started the UI redesign. I need to make sure I understand e"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to update the highlights section of the status report. They mentioned that we completed the API migration but it had a 2-day delay, and we recovered. They also want to be tr"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to share the draft in the #leadership channel for comments. Let me think about how to approach this. First, I need to make sure I have the draft ready. It should be in a format"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on putting together a weekly status report. They started by asking for help, and I used various skills like search_navigate, data_transfer, document_edit, and collab"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants me to pull the latest project metrics from the Teams dashboard and put them into the weekly report, then email it out. Let me break this down step by step.\n\nFirst, I need to ac"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to grab the KPI data from the #analytics channel in Teams. Let me break this down. First, I need to access the Teams app. I'll open Teams and navigate to the #analytics chan"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "alright,",
+    "correct": false,
+    "pred_response_preview": "Alright, so I need to paste the KPI data from the #analytics channel into the weekly report document. Okay, first, I need to make sure I have the KPI data from the #analytics channel. I think I alread"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to update the summary paragraph in the weekly report with the new numbers. Let me think about how to approach this.\n\nFirst, I need to make sure I have the latest KPI data fr"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so I need to update the summary paragraph in the weekly report with the new numbers, but the user just told me that the date should be next week, not this week. Hmm, I need to make sure I get th"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. The user has already given some specific "
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by exporting their weekly report as a PDF and then emailing it to the stakeholders. Let me think through how to do this step by step.\n\nFirst, the user has already pull"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. Let me break this down step by step.\n\nFir"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants me to pull the latest project metrics from the Teams dashboard and put them into the weekly report, then email it out. Let me break this down step by step.\n\nFirst, I need to ac"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to grab the KPI data from the #analytics channel in Teams. Let me think about how to approach this. \n\nFirst, I need to access the #analytics channel. I remember that in Team"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "alright,",
+    "correct": false,
+    "pred_response_preview": "Alright, so the user has asked me to paste the KPI data into the weekly report document. Let me think through how to approach this.\n\nFirst, I need to recall the previous steps. The user started by ask"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 3,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to update the summary paragraph in the weekly report with the new numbers. Let me think about how to approach this.\n\nFirst, I need to make sure I have the latest KPI data fr"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. The user has already instructed me to sta"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. Let me break this down step by step.\n\nFir"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to write a product launch announcement for their new feature. I need to help them draft it. Let me think about how to approach this.\n\nFirst, I should figure out what the user's"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to create a new Word document for a product launch announcement. The product is called 'SmartSync', and it's an AI-powered file synchronization tool. \n\nFirst, I need to figure "
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to add a note about the deadline at the bottom of the product launch announcement for 'SmartSync'. Let me think about how to approach this.\n\nFirst, I need to locate the Word"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help them review what I've written so far for the product launch announcement. They mentioned adding a note about the deadline at the bottom, so I need to make sure t"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to share the draft of the product launch announcement for 'SmartSync' with the marketing team in the #product-launches channel. Let me think about how to approach this.\n\nFir"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to export the product launch announcement as a PDF for the press kit. Let me think about how to approach this. \n\nFirst, I need to make sure that the document is ready for expor"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on drafting a product launch announcement for their new feature called 'SmartSync'. They've gone through several steps, including creating a Word document, adding a "
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "Okay, so I need to help the user by adding the CEO as a CC on the email they're composing. Let me think about how to approach this step by step.\n\nFirst, I need to understand the current task. The user"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on drafting a product launch announcement for their new feature called 'SmartSync'. They've gone through several steps, including creating a Word document, adding a "
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to migrate Project Alpha from the old SharePoint to the new Teams workspace. I need to figure out how to approach this. First, I should understand what exactly needs to be move"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to start by listing all files in the old SharePoint site. They mentioned that they're migrating Project Alpha from the old SharePoint to the new Teams workspace. I need "
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to copy project documents from the old SharePoint to the new Teams file storage. Let me think about how to approach this. \n\nFirst, I need to understand the structure of "
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 3,
+    "ground_truth": "organize_files",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate the conversation history from the old Slack channel to Microsoft Teams. I'm not super familiar with all the tools, but I know that Microsoft Teams is part of the Micros"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 4,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to create a new folder structure in Teams for Project Alpha. The folders I need are /docs, /design, /meeting-notes, and /archive. I'm not entirely sure how to do this in Teams, but I t"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already asked to move everything over, and now they want to verify that all files tra"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already asked to move everything over, and now they want to make sure that all files "
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 7,
+    "ground_truth": "organize_files",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started by listing all the files in the old SharePoint site, and then they wa"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a bunch of client feedback emails and needs help processing them. Let me break this down step by step.\n\nFirst, I need to figure out what the user means by \"processing.\" They migh"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They just asked me to search their inbox for emails with the subject containing 'feedback' from the last week. \n"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "review_content",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to redo the previous action because they want the formatting changed. Let me break this down.\n\nFirst, the user initially asked to process client feedback emails. I used "
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants me to process them. They initially asked for help, and I started by thinking about the necessary skills, which were search_navigate an"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help process their client feedback emails. They mentioned they received a batch of these emails this morning. My first thought is to figure out the best way to approa"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've asked me to help, and I need to figure out the best way to approach this. First, I should understand what exa"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've asked me to redo a previous action, specifically to search their inbox for emails with the subject containing"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've been guiding me through the steps, and now they want me to share the summary with the product team in our Tea"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 8,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails, specifically from Acme Corp. They want to process these emails and draft a response. Let me break down what needs to be done step by step.\n\nFir"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 9,
+    "ground_truth": "review_content",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to process a batch of client feedback emails. They started by asking me to search their inbox for emails with 'feedback' in the subject from the last week. I"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate the monthly sales report automatically. That means I need to pull data, format it, and send it out. Let me break this down step by step.\n\nFirst, I need to figure"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate a monthly sales report automatically. They mentioned pulling data, formatting it, and sending it out. From the history, I initially thought about using PowerPoin"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to import the query results into the report template. Let me think about how to approach this. \n\nFirst, I need to make sure I have the query results from the sales database for"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "alright,",
+    "correct": false,
+    "pred_response_preview": "Alright, so I need to format this data table in the sales report. The user wants borders, a header row, and alternating colors. Okay, let's break this down. First, I need to make sure the table has bo"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table in the sales report using the company brand colors. The user specified that the headers should be navy and the alternating rows should be light gray. Alright,"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to add an executive summary to the monthly sales report based on the numbers from March 2026. First, I should understand what an executive summary typically includes. It usually gives "
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by generating a monthly sales report automatically. They want me to pull data, format it, and send it out. First, I need to figure out where the sales data is stored. "
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to generate the monthly sales report automatically. That means I have to pull data from somewhere, format it, and send it out. First, I need to figure out where the sales data is store"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants me to pull the latest project metrics from the Teams dashboard and put them into the weekly report, then email it out. Let me break this down step by step.\n\nFirst, I need to ac"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to grab the KPI data from the #analytics channel in Teams. Let me think about how to approach this. \n\nFirst, I need to navigate to the correct channel. I remember that in Te"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to paste the KPI data into the weekly report document. Let me think about how to approach this. \n\nFirst, I need to make sure I have the correct data from the clipboard. I co"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to update the summary paragraph in the weekly report with the new numbers. Let me think about how to approach this.\n\nFirst, I need to locate the summary paragraph in the doc"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. The user has already instructed me to sta"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "alright,",
+    "correct": false,
+    "pred_response_preview": "Alright, so I need to help the user by exporting the weekly report as a PDF and then emailing it to the stakeholders. Let me think through how to approach this step by step.\n\nFirst, I need to make sur"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working with me to pull project metrics from the Teams dashboard and put them into a weekly report, then email it out. They started by asking to grab the KPI data from the #"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to migrate Project Alpha from the old SharePoint to the new Teams workspace. I need to figure out how to approach this. First, I should understand what exactly needs to be move"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to start by listing all files in the old SharePoint site. They mentioned that they're migrating Project Alpha from the old SharePoint to the new Teams workspace. I need "
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to copy project documents from the old SharePoint to the new Teams file storage. I need to figure out how to do this step by step. First, I should understand what the us"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help move Project Alpha from the old SharePoint to the new Teams workspace. The user wants me to list all the files in the old SharePoint site first. I need to figure out how to"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 4,
+    "ground_truth": "organize_files",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate the conversation history from the old Slack channel to Microsoft Teams. I'm not entirely sure how to do this, but I'll try to figure it out step by step. First, I need "
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started by listing all the files in the old SharePoint site, and now they want to"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already asked to move everything over, and now they want to verify that all files tra"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already asked to move everything over, and now they want to verify that all files tra"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "Okay, so I need to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started the process, and now they want to announce the migration in both the old "
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 9,
+    "ground_truth": "organize_files",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to migrate Project Alpha from the old SharePoint to the new Teams workspace. They've given me a series of tasks, and I've been using my skills to handle each"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 0,
+    "ground_truth": "schedule_meeting",
+    "prediction": "schedule_meeting",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants to plan a team offsite next month and needs help getting the logistics started. Let me break this down step by step.\n\nFirst, I need to figure out what the user is asking for. T"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is planning a team offsite next month and needs help with the logistics. They've already asked for help starting the planning process, and I responded by scheduling a meeting. Now, t"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user initially asked for a 2-day offsite agenda, and I created that. Now they're saying it's actually a 3-day offsite because leadership approved an extra day for a hackathon. I need to a"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to schedule a planning call with the admin team for this Friday at 3pm. Let me think about how to approach this.\n\nFirst, I need to use the schedule_meeting skill. That makes"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to send the draft agenda to the team and ask for topic suggestions. Let me think about how to approach this.\n\nFirst, I need to make sure I have the draft agenda ready. It's "
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 5,
+    "ground_truth": "schedule_meeting",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to plan a team offsite. They started by asking for help getting the logistics started, and I broke that down into scheduling a meeting. Then they wanted an a"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants me to pull the latest project metrics from the Teams dashboard and put them into the weekly report, then email it out. Let me break this down step by step.\n\nFirst, I need to ac"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to grab the KPI data from the #analytics channel in Teams. Let me break this down. First, I need to navigate to the correct channel. I'll open Teams and go to the #analytics"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to add a note about the deadline at the bottom of the weekly report. Let me think about how to approach this. \n\nFirst, I need to locate where the weekly report is. It's prob"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "Alright, so I need to help the user by pasting the KPI data from the #analytics channel into the weekly report document. Let me think about how to approach this step by step.\n\nFirst, I need to ensure "
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 4,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to update the summary paragraph in the weekly report with the new numbers. First, I should figure out where the summary paragraph is located in the document. Is it at the beginning, mi"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. The user also mentioned adding a note abo"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. The user has given me a series of instruc"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. Let me break this down step by step.\n\nFir"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate the monthly sales report automatically. That means I need to pull data, format it, and send it out. Let me break this down step by step.\n\nFirst, I need to figure"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate a monthly sales report automatically. They mentioned pulling data, formatting it, and sending it out. From the history, I see that I initially thought about usin"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to import the query results into the report template. Let me break this down step by step. First, I need to understand where the query results are stored. They were pulled f"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to generate a monthly sales report automatically. They want me to pull data, format it, and send it out. Hmm, that sounds like a multi-step process. First, I need to fig"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table for the monthly sales report. The user wants me to add borders, a header row, and alternating colors. Let me think about how to approach this.\n\nFirst, I need "
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 5,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table in the sales report using the company brand colors. The user specified that the headers should be navy and the alternating rows should be light gray. Alright,"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to add an executive summary to the monthly sales report based on the numbers we've pulled. First, I should understand what an executive summary typically includes. It usually gives a h"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by generating a monthly sales report automatically. They want me to pull data, format it, and send it out. First, I need to understand what exactly they're asking for."
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has asked me to generate a monthly sales report automatically, which involves pulling data, formatting it, and sending it out. I need to figure out how to approach this step by step."
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to help verify that all customer-facing documents have the updated privacy disclaimer. They mentioned that Legal needs this audit. Let me break down how I should approac"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to search all Word documents in the shared drive that were modified in the last 90 days. Let me think about how to approach this.\n\nFirst, I need to identify the right sk"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 2,
+    "ground_truth": "monitor_status",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to cross-reference the list of customer-facing documents in the compliance tracker. Let me try to understand what they need. \n\nFirst, I need to recall the previous steps"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 3,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to check each document for the 2026 privacy disclaimer text. Hmm, where do I start? First, I guess I need to find all the customer-facing documents. The user mentioned that Legal needs"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by adding the current version of the privacy disclaimer to any documents that are missing or have outdated disclaimers. First, I should understand what the user is ask"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on verifying that all customer-facing documents have the updated privacy disclaimer. They started by searching for Word documents in the shared drive modified in the"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "Okay, so I need to help the user by figuring out how to report the findings in the #compliance channel. The user mentioned that they want to change the approach, so I need to think about what that mea"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by figuring out how to email the compliance summary to legal@company.com. Let me think through this step by step.\n\nFirst, I remember that the user is using InteraSkill"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 8,
+    "ground_truth": "monitor_status",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help verify that all customer-facing documents have the updated privacy disclaimer. The user mentioned that Legal needs this, so it's important to get it right. First, I need to und"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to put together a weekly status report on Friday. Let me break down what they might need. First, they probably have a template they use every week, so I should check if that's "
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find this week's task completion data from the project board. Let me break this down. First, I need to understand where the project board is located. Since the user m"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to pull the completion metrics into the status report template. Let me break this down step by step.\n\nFirst, I need to understand what the user is asking for. They want "
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to update the highlights section of the status report. They mentioned two main achievements: completing the API migration and starting the UI redesign. I need to make su"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to update the highlights section of the weekly status report. They mentioned that the API migration was completed but had a 2-day delay, and they recovered. They also want to b"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to share the draft in the #leadership channel for comments. Let me think about how to approach this. First, I need to make sure I have the draft ready. It should be in a format"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on compiling a weekly status report. They started by asking for help to put together the report, and I guided them through the process, including finding task comple"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has three new engineers starting next Monday and needs to prepare their onboarding materials. Let me break down what I need to do step by step.\n\nFirst, I should figure out what the u"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 1,
+    "ground_truth": "presentation_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find the onboarding checklist template in the HR shared drive. Let me think about how to approach this.\n\nFirst, I need to use the search_navigate skill because the ta"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to update the onboarding checklist with some team-specific items. Let me break this down. First, I need to make sure I understand what the user is asking for. They menti"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to add 'complete security training' to the onboarding checklist. Let me think about how to approach this. \n\nFirst, I need to make sure I understand the context. The user"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 4,
+    "ground_truth": "organize_files",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a task to update the welcome presentation for new engineers. They need to change the team name to 'Platform Engineering' and update the org chart on slide 3. \n\nFirst, I need to f"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 5,
+    "ground_truth": "schedule_meeting",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to create a folder called 'Onboarding-2026-Q2' and move all the materials there. Let me think about how to approach this.\n\nFirst, I need to identify the relevant files. "
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a series of tasks related to onboarding new engineers. They started by asking to prepare onboarding materials, then to find a template, update it with specific items, add more it"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to change the welcome meeting time from 9am to 9:30am because they have a standup at 9. I need to make sure I update the meeting time correctly in the calendar. \n\nFirst, I s"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 8,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to send a welcome email to the new hires. They also want the email to include a meeting invite and a link to the materials folder. Let me break this down step by step.\n\nFirs"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 9,
+    "ground_truth": "presentation_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to prepare onboarding materials for three new engineers. They started by asking to prepare the materials, then I helped find the onboarding checklist templat"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to migrate Project Alpha from the old SharePoint to the new Teams workspace. I need to figure out how to approach this. First, I should understand what exactly needs to be move"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to start by listing all files in the old SharePoint site. They mentioned that they're migrating Project Alpha from the old SharePoint to the new Teams workspace. I need "
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to copy project documents from the old SharePoint to the new Teams file storage. Let me break this down step by step.\n\nFirst, I need to understand what the user is askin"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user mentioned that they want to include the latest numbers as well. I need to figure out what"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 4,
+    "ground_truth": "organize_files",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to migrate the conversation history from the old Slack channel to Microsoft Teams. I'm not entirely sure how to do this, but I'll try to figure it out step by step. First, I need to un"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started by listing all the files in the old SharePoint site and moving the projec"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already asked to move everything over, and now they want to verify that all files tra"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started by listing all files in the old SharePoint site and moving the project do"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started the process, and now they want to announce the migration in both the old "
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 9,
+    "ground_truth": "organize_files",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. First, I need to list all the files in the old SharePoint site. I'm not entirely sure how to do th"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 0,
+    "ground_truth": "schedule_meeting",
+    "prediction": "schedule_meeting",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants to plan a team offsite next month and needs help getting the logistics started. Let me break this down step by step.\n\nFirst, I need to figure out what the user is asking for. T"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is planning a team offsite and needs help creating an agenda document. They mentioned it's a 2-day event with Day 1 focused on strategy sessions and Day 2 on team building. \n\nFirst, "
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user initially asked for a 2-day offsite agenda, and I created that. Now they're saying it's actually a 3-day offsite because leadership approved an extra day for a hackathon. I need to a"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to schedule a planning call with the admin team for this Friday at 3pm. Let me break this down step by step.\n\nFirst, I need to identify the right skill for this task. Since "
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to send the draft agenda to the team and ask for topic suggestions. Let me break this down step by step.\n\nFirst, I need to understand the current context. The user is planni"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 5,
+    "ground_truth": "schedule_meeting",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to plan a team offsite. They started by asking for help getting the logistics started, then moved on to creating an agenda document. Initially, it was a 2-da"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate the monthly sales report automatically. That means I need to pull data, format it, and send it out. Let me break this down step by step.\n\nFirst, I need to figure"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate a monthly sales report automatically. They mentioned pulling data, formatting it, and sending it out. From the history, I see that I started by searching for the"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to import the query results into the report template. Let me think about how to approach this. First, I need to make sure I have the query results from the sales database fo"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table for the monthly sales report. The user wants me to add borders, a header row, and alternating colors. Let me think about how to approach this.\n\nFirst, I need "
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to add a note about the deadline at the bottom of the report. Let me think about how to approach this. \n\nFirst, I need to understand where exactly the deadline note should g"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to add an executive summary to the monthly sales report based on the numbers we've got. First, I should understand what an executive summary is. From what I know, it's a concise overvi"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 6,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working with me to generate a monthly sales report. They started by asking to pull data, format it, and send it out. I broke it down into steps, using different skills like "
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 0,
+    "ground_truth": "review_content",
+    "prediction": "review_content",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has a bunch of client feedback emails and needs help processing them. Let me break this down step by step.\n\nFirst, I need to figure out what the user means by \"processing.\" They migh"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They just asked me to search their inbox for emails with 'feedback' in the subject from the last week. \n\nFirst, "
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 2,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user initially asked for help processing client feedback emails. I responded by outlining the steps I would take, which involved organizing files, collaborating, transferring data, review"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They initially asked for help, and I started by thinking about the necessary skills, which included organizing files,"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help process their client feedback emails. They mentioned they got a batch of these emails this morning. My first thought is to figure out the best way to approach th"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've asked me to help, and I need to figure out the best way to approach this. First, I need to understand exactly"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've asked me to help with that. First, I need to understand exactly what they're looking for. They mentioned \"cli"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've asked me to help with that. First, I need to understand exactly what they're looking for. They mentioned \"pro"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 8,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to process client feedback emails. They started by asking me to search their inbox for emails with 'feedback' in the subject from the last week. I used the s"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a bunch of client feedback emails and needs help processing them. Let me break this down step by step.\n\nFirst, I need to figure out what the user means by \"processing.\" They migh"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants me to process them. They just asked me to search their inbox for emails with the subject containing 'feedback' from the last week. \n\nF"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They've already asked me to search their inbox for emails with 'feedback' in the subject from the last week. Now"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help process their client feedback emails. They mentioned they got a batch this morning, so they probably have a lot to go through. My first thought is to figure out "
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've already asked to search their inbox for emails with 'feedback' in the subject from the last week, but then co"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They initially asked to search for emails with 'feedback' in the subject from the last week. But then they changed it"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "collaborate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've asked me to help with several tasks, including searching for emails, opening specific ones, filtering by date"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 7,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. First, I need to figure out what they mean by \"process.\" It could involve reading through the emails, summarizing the"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a bunch of client feedback emails and needs help processing them. Let me break this down step by step.\n\nFirst, I need to figure out what the user means by \"processing.\" They migh"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They just asked me to search their inbox for emails with the subject containing 'feedback' from the last week. \n"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They've asked me to search their inbox for emails with 'feedback' in the subject from the last week. I need to f"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They asked me to search their inbox for emails with 'feedback' in the subject from the last week. I found the emails,"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've already asked me to search their inbox for emails with 'feedback' in the subject from the last week. I found "
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've already asked me to search their inbox for emails with 'feedback' in the subject from the last week. I found "
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 6,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to process their client feedback emails. They started by asking me to search their inbox for emails with 'feedback' in the subject from the last week. I navi"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate the monthly sales report automatically. That means I need to pull data, format it, and send it out. Let me break this down step by step.\n\nFirst, I need to figure"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate a monthly sales report automatically. They mentioned pulling data, formatting it, and sending it out. From the history, I see that I initially thought about usin"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to import the query results into the report template. Let me think about how to approach this. First, I need to make sure I have the query results from the sales database fo"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table in the sales report. The user wants borders, a header row, and alternating colors. Let me think about how to approach this.\n\nFirst, I need to locate the data "
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table in the sales report using the company brand colors. The user specified that the headers should be navy and the alternating rows should be light gray. Alright,"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 5,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to add an executive summary to the monthly sales report based on the numbers for March 2026. First, I should understand what an executive summary typically includes. It usually gives a"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user export their monthly sales report as a PDF. They've already gone through several steps: querying the sales database for March 2026 numbers, importing the query results"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by generating a monthly sales report automatically. They want me to pull data, format it, and send it out. First, I need to figure out where the sales data is stored. "
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to generate the monthly sales report automatically. That means I have to pull data from somewhere, format it, and send it out. First, I need to figure out where the sales data is store"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate the monthly sales report automatically. That means I need to pull data, format it, and send it out. Let me break this down step by step.\n\nFirst, I need to figure"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate a monthly sales report automatically. They mentioned pulling data, formatting it, and sending it out. From the history, I see that I started by thinking about th"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to import the query results into the report template. Let me think about how to approach this. First, I need to make sure I have the query results from the sales database fo"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 3,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to format the data table in the sales report. They specifically mentioned adding borders, a header row, and alternating colors. Let me break this down step by step.\n\nFirst, "
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to format the data table in the sales report using the company brand colors. Specifically, they mentioned navy headers and light gray alternating rows. Let me break this dow"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 5,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to add an executive summary to the monthly sales report based on the numbers from March 2026. First, I should understand what an executive summary typically includes. It usually gives "
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working with me to generate a monthly sales report. They started by asking to pull data, format it, and send it out. I broke it down into steps, using different skills like "
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to put together a weekly status report on Friday. Let me break down what they might need. First, they probably have a template they use every week, so I should check if that's "
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find this week's task completion data from the project board. Let me think about how to approach this. \n\nFirst, I need to figure out which application the project boa"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 2,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to pull the completion metrics into the status report template. Let me think about how to approach this. \n\nFirst, I need to understand what the user is asking for. They "
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to update the highlights section in the status report. They mentioned that we completed the API migration and started the UI redesign. I need to figure out how to do thi"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants to update the highlights section of their weekly status report. They mentioned that the API migration was completed but had a 2-day delay, and they want to be transparent about"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 5,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on putting together a weekly status report. They started by asking for help, and I've been assisting them through various steps. Now, they've mentioned that everythi"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user just mentioned that BigCorp's integration is down and they need help coordinating the response. I need to figure out how to approach this using the skills I have. Let me break it dow"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "review_content",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to find the last support ticket and any related emails from BigCorp. Let me think about how to approach this.\n\nFirst, I need to understand where the support tickets and "
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 2,
+    "ground_truth": "collaborate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to check the incident thread in the #support-escalations channel in Teams. Let me think about how to approach this.\n\nFirst, I need to understand what the user is asking "
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to ping the on-call engineer in the Teams channel for an urgent status update. Let me break this down step by step.\n\nFirst, I need to understand the context. The user me"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to draft an incident response document based on what we know so far. Let me think about how to approach this.\n\nFirst, I need to understand the current situation. We've g"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to add a timeline of events to the incident response document, specifically noting that the issue started at 2:15 PM EST today. Let me break this down.\n\nFirst, I need to"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 6,
+    "ground_truth": "review_content",
+    "prediction": "review_content",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working with me to handle an urgent escalation from BigCorp. They started by asking for help coordinating the response, and I broke that down into steps using different skil"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to prepare QBR materials for a leadership meeting next Monday. Let me break this down step by step.\n\nFirst, I need to understand what QBR stands for. It's likely a Quarterly Bu"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help prepare the QBR materials for next Monday's leadership meeting. They mentioned that the last quarter's report should be in the shared drive. I need to figure out"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to update the revenue numbers in the Word document. They mentioned that Q3 revenue was $4.2M, up 12% from Q2. I need to figure out how to do this step by step.\n\nFirst, I"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 3,
+    "ground_truth": "presentation_edit",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to pull key charts from the Word document into the PowerPoint deck. Let me break this down step by step.\n\nFirst, I need to understand what the user is asking for. They w"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 4,
+    "ground_truth": "presentation_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to pull the key charts from the Word document into the PowerPoint deck. But then they clarified that they want the updated chart from the appendix, not the one in the ma"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to change the title of their PowerPoint slide deck to 'Q3 2026 Business Review'. Let me think about how to approach this.\n\nFirst, I need to identify which skill is requi"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 6,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is working on preparing materials for a QBR meeting next Monday. They've been guiding me through the process, starting with finding last quarter's report, updating revenue numbers, p"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, the user has asked me to help prepare QBR materials for a leadership meeting. They've been guiding me through the process, starting with finding last quarter's report, updating revenue numbers, "
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is working on preparing materials for a leadership meeting, specifically the QBR. They've been guiding me through various tasks like finding the last quarter's report, updating reven"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 9,
+    "ground_truth": "send_message",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help them prepare for a QBR meeting. They mentioned that they need to update the revenue numbers in a Word document and then pull some charts into a PowerPoint deck. "
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 10,
+    "ground_truth": "presentation_edit",
+    "prediction": "presentation_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working on preparing materials for a QBR meeting. They started by asking for help, and I've been guiding them through the process using different skills like document_edit, "
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to help verify that all customer-facing documents have the updated privacy disclaimer. They mentioned that Legal needs this audit. Let me break down how I should approac"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to search all Word documents in the shared drive that were modified in the last 90 days. Let me break this down.\n\nFirst, I need to figure out which skill to use. Since t"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to cross-reference the Word documents I found with the list in the compliance tracker. Let me break this down.\n\nFirst, I need to understand what the compliance tracker i"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to check each document for the 2026 privacy disclaimer text. Let me break this down step by step. First, I need to understand what exactly the user is asking for. They w"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to audit customer-facing documents for the updated privacy disclaimer. They started by asking to verify all documents, then wanted to search all Word documen"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help verify that all customer-facing documents have the updated privacy disclaimer. The user mentioned that Legal needs this, and they want everything audited. First, I need to unde"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 6,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to audit customer-facing documents for the updated privacy disclaimer. They started by asking to verify all documents, then wanted to search for Word documen"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to plan a team offsite next month and needs help getting the logistics started. Let me break this down step by step.\n\nFirst, I need to figure out what the user is asking for. T"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 1,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is planning a team offsite and needs help with the logistics. They've already asked for help starting the planning process, and I responded by outlining the steps I would take. Now, "
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 2,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is planning a team offsite and has been working with me to get the logistics sorted. Initially, they asked for a 2-day offsite with strategy sessions on Day 1 and team building on Da"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 3,
+    "ground_truth": "schedule_meeting",
+    "prediction": "schedule_meeting",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants me to schedule a planning call with the admin team for this Friday at 3pm. Let me think about how to approach this.\n\nFirst, I need to identify the right skill to use. Since sch"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 4,
+    "ground_truth": "schedule_meeting",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is planning a team offsite and needs help with the logistics. They've already asked for an agenda document, which I created, but then they wanted to add an extra day for a hackathon."
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to send the draft agenda to the team and ask for topic suggestions. Let me think about how to approach this.\n\nFirst, I need to make sure I have the draft agenda ready. It's "
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 6,
+    "ground_truth": "schedule_meeting",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to plan a team offsite. They started by asking for help getting the logistics started, then moved on to creating an agenda document. I adjusted from a 2-day "
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants to sync today's meeting notes across all their systems. Let me break this down step by step.\n\nFirst, I need to figure out where the meeting notes are. They might be in a Word d"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to find today's meeting recording and transcript in the Outlook calendar. Let me break this down step by step.\n\nFirst, I need to figure out which skills are required for thi"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 2,
+    "ground_truth": "send_message",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to create a clean summary document from the meeting transcript. Let me break this down step by step. First, I need to find today's meeting recording and transcript in the Ou"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to create a clean summary document from the meeting transcript. They also mentioned that I should tag the action items with owner names, not just list them generically. \n\nFi"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "alright,",
+    "correct": false,
+    "pred_response_preview": "Alright, so I need to share this summary document in the Teams project channel. First, I need to make sure I have the document ready. I created a clean summary from the transcript, and I made sure to "
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by creating a clean summary document from the transcript of today's meeting. The user also mentioned that I should tag the action items with owner names and not just l"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 6,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to copy the action items from the meeting transcript into the team's shared task tracker. Hmm, where do I start? First, I should probably find the meeting transcript. I remember the us"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to archive the original transcript from today's meeting into the project folder. Let me think about how to approach this. First, I need to locate where the transcript is stored. It was"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 8,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to handle a series of tasks related to syncing meeting notes across systems. They started by asking to sync the meeting notes, and I broke that down into sev"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate the monthly sales report automatically. That means I need to pull data, format it, and send it out. Let me break this down step by step.\n\nFirst, I need to figure"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to generate a monthly sales report automatically. They mentioned pulling data, formatting it, and sending it out. From the history, I see that I initially thought of using m"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to import the query results into the report template. Let me think about how to approach this. First, I need to make sure I have the query results from the sales database fo"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table in the monthly sales report. The user wants me to add borders, a header row, and alternating colors. Let me think about how to approach this step by step.\n\nFi"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to format this data table in the sales report using the company brand colors. The user specified that the headers should be navy and the alternating rows should be light gray. Alright,"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to add an executive summary to the monthly sales report based on the numbers from March 2026. First, I should understand what an executive summary typically includes. It usually gives "
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by generating the monthly sales report automatically. They want me to pull data, format it, and send it out. First, I need to figure out where the sales data is stored"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to generate the monthly sales report automatically. That sounds like a task that involves pulling data from somewhere, formatting it, and then sending it out. Let me break this down st"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to migrate Project Alpha from the old SharePoint to the new Teams workspace. I need to figure out how to approach this. First, I should understand what exactly needs to be move"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to start by listing all files in the old SharePoint site. They mentioned that they're migrating Project Alpha from the old SharePoint to the new Teams workspace. I need "
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to copy project documents from the old SharePoint to the new Teams file storage. Let me break this down step by step.\n\nFirst, I need to understand what the user is askin"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 3,
+    "ground_truth": "organize_files",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to migrate the conversation history from the old Slack channel to Teams. I need to figure out how to do this step by step. First, I should understand what exactly needs "
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to create a new folder structure in Teams for Project Alpha. The folders I need are /docs, /design, /meeting-notes, and /archive. I'm not entirely sure how to do this in Teams, but I t"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started by listing all files in the old SharePoint site and copying the project d"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 6,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user wants me to list all files in the old SharePoint site first. I need to figure out how to "
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started by listing all files in the old SharePoint site and copying the project d"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help migrate Project Alpha from the old SharePoint to the new Teams workspace. The user has already started by listing all files in the old SharePoint site and moving the project do"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 9,
+    "ground_truth": "organize_files",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I'm trying to help migrate Project Alpha from the old SharePoint to the new Teams workspace. First, I need to understand what exactly needs to be moved. I guess it's all the files, documents,"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to prepare QBR materials for a leadership meeting next Monday. Let me break this down step by step.\n\nFirst, I need to understand what QBR stands for. It's likely a Quarterly Bu"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help prepare QBR materials for the leadership meeting next Monday. They mentioned starting by finding last quarter's report in the shared drive. \n\nFirst, I need to fi"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 2,
+    "ground_truth": "presentation_edit",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to update the revenue numbers in a Word document. They mentioned that Q3 revenue was $4.2M, up 12% from Q2. I need to figure out how to do this using the skills I have.\n"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to pull key charts from a Word document into a PowerPoint deck. Let me think about how to approach this. \n\nFirst, I need to understand the current context. The user is p"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 4,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to pull the key charts from the Word doc into the PowerPoint deck. But they just clarified that I should use the updated chart from the appendix, not the one in the main bod"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to change the title of their PowerPoint slide deck to 'Q3 2026 Business Review'. Let me think about how to approach this.\n\nFirst, I need to identify which skill is requi"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on preparing materials for a QBR meeting. They started by asking for help finding last quarter's report in the shared drive. I navigated to the team channel folder a"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is working on preparing materials for a leadership meeting, specifically the QBR (Quarterly Business Review). They've been using InteraSkill to help with various tasks like finding l"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help them prepare for a QBR meeting. They mentioned that they need to update the revenue numbers in a Word document and then pull some charts into a PowerPoint deck. "
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 9,
+    "ground_truth": "presentation_edit",
+    "prediction": "presentation_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has been working on preparing QBR materials for a leadership meeting. They started by asking for help, and I broke down the tasks into steps, using different skills like search_navig"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user needs to process all their proposal documents for the board meeting. They mentioned converting them to PDF, adding confidential watermarks, and sending them to the board members. Let"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 1,
+    "ground_truth": "organize_files",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find all the proposal documents in the 'Board-Q3' folder. Let me break this down. \n\nFirst, I need to understand the context. The user is processing proposal documents"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to organize the proposal documents in the 'Board-Q3' folder by department: finance, engineering, and marketing. Let me break this down step by step.\n\nFirst, I need to un"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 3,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants to add a 'CONFIDENTIAL - Board Only' watermark to each proposal document. I need to figure out how to do this efficiently. \n\nFirst, I should check if the documents are in a for"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user is asking me to convert all Word documents to PDF. Let me think about how to approach this. First, I need to make sure I understand the task correctly. They want all the Word files i"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user process all their proposal documents for the board meeting. They want to convert all Word docs and PowerPoint decks to PDF, add a 'CONFIDENTIAL - Board Only' watermark"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user has given me a series of commands to process proposal documents for a board meeting. They want all the Word documents converted to PDF, add a confidential watermark, and send them to"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants me to pull the latest project metrics from the Teams dashboard and put them into the weekly report, then email it out. Let me break this down step by step.\n\nFirst, I need to ac"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to grab the KPI data from the #analytics channel in Teams. Let me break this down. First, I need to access the #analytics channel. I'll open Teams and navigate to that speci"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to paste the KPI data into the weekly report document. Let me think about how to approach this. \n\nFirst, I need to make sure I have the KPI data from the #analytics channel."
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to update the summary paragraph in the weekly report with the new numbers. Let me think about how to approach this.\n\nFirst, I need to locate the summary paragraph in the doc"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by pulling the latest project metrics from the Teams dashboard and putting them into the weekly report, then emailing it out. The user has already instructed me to sta"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "alright,",
+    "correct": false,
+    "pred_response_preview": "Alright, so I need to help the user by exporting the weekly report as a PDF and then emailing it to the stakeholders. Let me think through the steps carefully.\n\nFirst, the user has already pulled the "
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has given me a series of commands to perform tasks using InteraSkill, an AI assistant that works with Microsoft 365 applications. The tasks involve pulling project metrics from a Tea"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user just finished a project review meeting and wants me to help write up the minutes. Let me break this down step by step.\n\nFirst, I need to figure out what skills are required here. The"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user just asked me to create a meeting minutes document with specific details: date, attendees, and so on. Let me think about how to approach this.\n\nFirst, I need to use the document_edit"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user just asked me to change my approach. They mentioned \"Wait, let me change that \u2014 use a different approach.\" Hmm, I need to figure out what they're referring to. \n\nLooking back at the "
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is working on creating meeting minutes. They've already provided some details: the date is April 3, 2026, and the attendees are Sarah, Mike, Alex, and themselves. They initially aske"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to add Lisa to the attendees list in the meeting minutes. Let me think about how to approach this. \n\nFirst, I need to locate where the attendees are listed in the document. "
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working on creating meeting minutes for a project review meeting. They started by asking for help writing up the minutes, and I broke it down into steps, using the document_"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has three new engineers starting next Monday and needs to prepare their onboarding materials. Let me break down what I need to do step by step.\n\nFirst, I should figure out what the u"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to find the onboarding checklist template in the HR shared drive. Let me think about how to approach this.\n\nFirst, I need to understand where the HR shared drive is loca"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 2,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to add a note about the deadline at the bottom of the onboarding checklist. Let me think about how to approach this.\n\nFirst, I need to make sure I understand where exact"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 3,
+    "ground_truth": "presentation_edit",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to update the onboarding checklist with some team-specific items. Let me break this down step by step.\n\nFirst, I need to understand what the user is asking for. They men"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 4,
+    "ground_truth": "presentation_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to add 'complete security training' to the onboarding checklist. They mentioned that HR just made it mandatory, so it's important to include this. I need to make sure th"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 5,
+    "ground_truth": "organize_files",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to update the welcome presentation. They want to change the team name to 'Platform Engineering' and update the org chart on slide 3. Let me think about how to approach t"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 6,
+    "ground_truth": "schedule_meeting",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to create a new folder called 'Onboarding-2026-Q2' and move all the onboarding materials into it. Let me think about how to approach this.\n\nFirst, I need to identify where t"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to schedule a welcome meeting for Monday at 9am with the new hires and the team. Let me break this down step by step.\n\nFirst, I need to use the **schedule_meeting** skill be"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help this user who is trying to schedule a welcome meeting for new hires. They initially asked for Monday at 9 AM, but then realized they have a standup meeting at 9 AM, so they wan"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 9,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help the user by creating a welcome email for the new hires. They also want to include a meeting invite and a link to the materials folder. Let me break this down step by step.\n\nFir"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 10,
+    "ground_truth": "presentation_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to prepare onboarding materials for three new engineers starting next Monday. They've gone through several steps, including finding the onboarding checklist "
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants to sync today's meeting notes across all their systems. Let me break this down step by step.\n\nFirst, I need to figure out where the meeting notes are. They might be in a Word d"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to find today's meeting recording and transcript in the Outlook calendar. Let me break this down step by step.\n\nFirst, I need to understand where the meeting details are sto"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 2,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to create a clean summary document from the transcript of today's meeting. Let me break this down step by step.\n\nFirst, I need to understand where the transcript is located."
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to create a clean summary document from the meeting transcript. They also mentioned that I should tag the action items with owner names, not just list them generically. \n\nFi"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "collaborate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to share the summary document in the Teams project channel. Let me think about how to approach this. First, I need to make sure I have the document ready. It should be a cle"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 5,
+    "ground_truth": "data_transfer",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to copy the action items from the meeting transcript into the team's shared task tracker. First, I should find where the action items are in the transcript. Maybe they're listed at the"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 6,
+    "ground_truth": "organize_files",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to archive the original transcript in the project folder. Hmm, where do I start? First, I should probably locate the transcript. It was mentioned in the Teams project channel, right? S"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to send a follow-up email to the meeting attendees with a link to the summary document. Let me think about how to approach this step by step.\n\nFirst, I need to identify who the attende"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 8,
+    "ground_truth": "organize_files",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to handle a bunch of tasks related to their meeting notes and project management. They started by asking to sync meeting notes across all systems, which invo"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 0,
+    "ground_truth": "schedule_meeting",
+    "prediction": "schedule_meeting",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants to schedule a quarterly review but there are conflicting calendars. I need to figure out how to help them. Let me break this down step by step.\n\nFirst, I should understand the "
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "Okay, so the user wants me to check the availability of all 8 VPs across both Outlook and Teams calendars. Let me break this down step by step.\n\nFirst, I need to understand the task. The user is tryin"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 2,
+    "ground_truth": "search_navigate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to check the availability of all 8 VPs across both Outlook and Teams calendars. They mentioned that there are conflicting calendars, so I need to make sure I get accurate in"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 3,
+    "ground_truth": "search_navigate",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is trying to schedule a quarterly review meeting, but there are conflicting calendars among the 8 VPs. They initially asked me to check availability across both Outlook and Teams cal"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so I need to help schedule a quarterly review meeting for all 8 VPs, but their calendars are conflicting across both Outlook and Teams. First, I need to understand what the user is asking for. T"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to post the proposed time for the quarterly review in the #leadership channel for confirmation. Let me think about how to approach this step by step.\n\nFirst, I need to under"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "collaborate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants to schedule a quarterly review, but there are conflicting calendars. They asked me to help sort it out. I started by trying to check availability for all 8 VPs across both Outl"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 7,
+    "ground_truth": "schedule_meeting",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has asked me to schedule a quarterly review, but there are conflicting calendars among the 8 VPs. They want me to check availability across both Outlook and Teams calendars. \n\nFirst,"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a bunch of client feedback emails and needs help processing them. Let me break this down step by step.\n\nFirst, I need to figure out what the user means by \"processing.\" They migh"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They just asked me to search their inbox for emails with the subject containing 'feedback' from the last week. \n"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 2,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants help processing them. They've already asked me to search their inbox for emails with 'feedback' in the subject from the last week. Now"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user is asking me to help process their client feedback emails. They mentioned they got a batch this morning, so I need to figure out the best way to handle this. \n\nFirst, I need to under"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've already asked to search their inbox for emails with 'feedback' in the subject from the last week, but then co"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 5,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "Okay, so I need to help the user process their client feedback emails. They mentioned getting a batch of these emails this morning and want to process them. First, I need to understand exactly what th"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has a batch of client feedback emails and wants to process them. They've already asked me to search their inbox for emails with 'feedback' in the subject from the last week, but then"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 7,
+    "ground_truth": "review_content",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has been working with me to process client feedback emails. They started by asking me to search their inbox for emails with 'feedback' in the subject from the last week. Then, they w"
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user just finished a project review meeting and wants me to help write up the minutes. Let me break this down step by step.\n\nFirst, I need to figure out what skills are required here. The"
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user just asked me to create a meeting minutes document with specific details: date, attendees, and so on. Let me break this down.\n\nFirst, I need to figure out which skills are required h"
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 2,
+    "ground_truth": "send_message",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user just asked me to create a meeting minutes document with specific details. I used the review_content skill to go through the document, making sure everything was correct. Now, the use"
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user wants me to add Lisa to the attendees list in the meeting minutes. Let me think about how to approach this. \n\nFirst, I need to locate where the attendees are listed in the document. "
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 4,
+    "ground_truth": "review_content",
+    "prediction": "okay,",
+    "correct": false,
+    "pred_response_preview": "Okay, so the user has just finished a project review meeting and wants to write up the minutes. They've asked me, as InteraSkill, to help create a meeting minutes document. Let me break down what I ne"
+  }
+]

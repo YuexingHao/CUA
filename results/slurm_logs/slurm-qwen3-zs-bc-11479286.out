@@ -1,0 +1,88 @@
+=== Qwen3-8B Zero-Shot on BrowseComp-Plus (thinking fix) ===
+Node: node3800
+GPUs: NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+Date: Mon Apr  6 18:01:40 EDT 2026
+
+============================================================
+Model: Qwen/Qwen3-8B
+Dataset: BrowseComp-Plus
+Max conversations: 200
+============================================================
+Loading tokenizer for Qwen/Qwen3-8B...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:01<08:05,  1.22s/it]Loading weights:   1%|          | 2/399 [00:01<04:36,  1.44it/s]Loading weights:   1%|▏         | 5/399 [00:01<01:27,  4.50it/s]Loading weights:   4%|▍         | 16/399 [00:01<00:21, 18.19it/s]Loading weights:   7%|▋         | 26/399 [00:01<00:12, 31.04it/s]Loading weights:   9%|▉         | 37/399 [00:01<00:08, 44.42it/s]Loading weights:  12%|█▏        | 48/399 [00:02<00:06, 57.02it/s]Loading weights:  15%|█▍        | 59/399 [00:02<00:05, 67.92it/s]Loading weights:  18%|█▊        | 70/399 [00:02<00:04, 76.93it/s]Loading weights:  20%|██        | 81/399 [00:02<00:04, 70.07it/s]Loading weights:  23%|██▎       | 90/399 [00:02<00:05, 54.98it/s]Loading weights:  24%|██▍       | 97/399 [00:03<00:07, 40.73it/s]Loading weights:  26%|██▌       | 103/399 [00:03<00:07, 38.82it/s]Loading weights:  27%|██▋       | 108/399 [00:03<00:08, 34.50it/s]Loading weights:  29%|██▊       | 114/399 [00:03<00:08, 34.15it/s]Loading weights:  30%|██▉       | 118/399 [00:03<00:09, 30.25it/s]Loading weights:  31%|███▏      | 125/399 [00:04<00:08, 32.01it/s]Loading weights:  32%|███▏      | 129/399 [00:04<00:09, 27.84it/s]Loading weights:  34%|███▍      | 136/399 [00:04<00:08, 30.21it/s]Loading weights:  35%|███▌      | 140/399 [00:04<00:09, 26.83it/s]Loading weights:  37%|███▋      | 147/399 [00:04<00:08, 29.57it/s]Loading weights:  38%|███▊      | 151/399 [00:05<00:09, 26.39it/s]Loading weights:  40%|███▉      | 158/399 [00:05<00:08, 29.34it/s]Loading weights:  40%|████      | 161/399 [00:05<00:09, 24.64it/s]Loading weights:  42%|████▏     | 169/399 [00:05<00:07, 29.51it/s]Loading weights:  43%|████▎     | 173/399 [00:05<00:08, 26.50it/s]Loading weights:  45%|████▌     | 180/399 [00:06<00:07, 29.37it/s]Loading weights:  46%|████▌     | 183/399 [00:06<00:08, 24.89it/s]Loading weights:  48%|████▊     | 191/399 [00:06<00:07, 29.43it/s]Loading weights:  49%|████▊     | 194/399 [00:06<00:08, 24.85it/s]Loading weights:  51%|█████     | 202/399 [00:06<00:06, 29.73it/s]Loading weights:  52%|█████▏    | 206/399 [00:07<00:07, 26.68it/s]Loading weights:  53%|█████▎    | 213/399 [00:07<00:06, 29.54it/s]Loading weights:  54%|█████▍    | 216/399 [00:07<00:07, 24.88it/s]Loading weights:  56%|█████▌    | 224/399 [00:07<00:05, 29.86it/s]Loading weights:  57%|█████▋    | 228/399 [00:07<00:06, 26.69it/s]Loading weights:  59%|█████▉    | 235/399 [00:08<00:05, 29.53it/s]Loading weights:  60%|█████▉    | 238/399 [00:08<00:06, 24.94it/s]Loading weights:  62%|██████▏   | 246/399 [00:08<00:05, 29.82it/s]Loading weights:  63%|██████▎   | 250/399 [00:08<00:05, 26.56it/s]Loading weights:  64%|██████▍   | 257/399 [00:08<00:04, 29.80it/s]Loading weights:  65%|██████▌   | 261/399 [00:08<00:05, 26.68it/s]Loading weights:  67%|██████▋   | 268/399 [00:09<00:04, 29.46it/s]Loading weights:  68%|██████▊   | 271/399 [00:09<00:05, 24.73it/s]Loading weights:  70%|██████▉   | 279/399 [00:09<00:04, 29.59it/s]Loading weights:  71%|███████   | 283/399 [00:09<00:04, 26.44it/s]Loading weights:  73%|███████▎  | 290/399 [00:09<00:03, 29.40it/s]Loading weights:  73%|███████▎  | 293/399 [00:10<00:04, 24.80it/s]Loading weights:  75%|███████▌  | 301/399 [00:10<00:03, 29.58it/s]Loading weights:  76%|███████▌  | 304/399 [00:10<00:03, 24.85it/s]Loading weights:  78%|███████▊  | 312/399 [00:10<00:02, 29.48it/s]Loading weights:  79%|███████▉  | 315/399 [00:11<00:03, 24.93it/s]Loading weights:  81%|████████  | 323/399 [00:11<00:02, 29.77it/s]Loading weights:  82%|████████▏ | 327/399 [00:11<00:02, 27.04it/s]Loading weights:  84%|████████▎ | 334/399 [00:11<00:02, 29.75it/s]Loading weights:  84%|████████▍ | 337/399 [00:11<00:02, 24.97it/s]Loading weights:  86%|████████▋ | 345/399 [00:11<00:01, 29.80it/s]Loading weights:  87%|████████▋ | 349/399 [00:12<00:01, 26.53it/s]Loading weights:  89%|████████▉ | 356/399 [00:12<00:01, 28.90it/s]Loading weights:  90%|████████▉ | 359/399 [00:12<00:01, 24.44it/s]Loading weights:  92%|█████████▏| 367/399 [00:12<00:01, 29.28it/s]Loading weights:  93%|█████████▎| 370/399 [00:13<00:01, 24.81it/s]Loading weights:  95%|█████████▍| 378/399 [00:13<00:00, 29.66it/s]Loading weights:  96%|█████████▌| 382/399 [00:13<00:00, 26.27it/s]Loading weights:  97%|█████████▋| 389/399 [00:13<00:00, 29.06it/s]Loading weights:  98%|█████████▊| 392/399 [00:13<00:00, 24.99it/s]Loading weights: 100%|██████████| 399/399 [00:13<00:00, 28.74it/s]
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+
+Loaded 200 BrowseComp-Plus conversations
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  10/200 conversations: accuracy = 0.454 (49/108)
+  20/200 conversations: accuracy = 0.436 (95/218)
+  30/200 conversations: accuracy = 0.448 (147/328)
+  40/200 conversations: accuracy = 0.452 (198/438)
+  50/200 conversations: accuracy = 0.432 (235/544)
+  60/200 conversations: accuracy = 0.439 (287/654)
+  70/200 conversations: accuracy = 0.444 (339/764)
+  80/200 conversations: accuracy = 0.436 (381/874)
+  90/200 conversations: accuracy = 0.437 (430/984)
+  100/200 conversations: accuracy = 0.431 (472/1094)
+  110/200 conversations: accuracy = 0.434 (522/1204)
+  120/200 conversations: accuracy = 0.438 (575/1314)
+  130/200 conversations: accuracy = 0.441 (628/1424)
+  140/200 conversations: accuracy = 0.439 (674/1534)
+  150/200 conversations: accuracy = 0.440 (724/1644)
+  160/200 conversations: accuracy = 0.440 (772/1754)
+  170/200 conversations: accuracy = 0.435 (810/1864)
+  180/200 conversations: accuracy = 0.437 (862/1974)
+  190/200 conversations: accuracy = 0.434 (905/2084)
+  200/200 conversations: accuracy = 0.435 (955/2194)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.4353 (955/2194)
+
+Per-position accuracy:
+  Position 0: 0.020 (4/200)
+  Position 1: 0.825 (165/200)
+  Position 2: 0.270 (54/200)
+  Position 3: 0.615 (123/200)
+  Position 4: 0.280 (56/200)
+  Position 5: 0.760 (152/200)
+  Position 6: 0.335 (67/200)
+  Position 7: 0.663 (132/199)
+  Position 8: 0.337 (67/199)
+  Position 9: 0.672 (133/198)
+  Position 10: 0.010 (2/198)
+
+Per-skill accuracy:
+  export_publish      : 0.150 (3/20)
+  review_content      : 0.206 (244/1187)
+  search_navigate     : 0.717 (708/987)
+
+Top 10 errors:
+  review_content       -> search_navigate      (406 times)
+  review_content       -> to                   (184 times)
+  review_content       -> export_publish       (135 times)
+  search_navigate      -> **[thinking]**       (118 times)
+  review_content       -> **[thinking]**       (64 times)
+  review_content       -> you're               (62 times)
+  search_navigate      -> export_publish       (60 times)
+  search_navigate      -> document_edit        (45 times)
+  review_content       -> **[observation]**    (35 times)
+  search_navigate      -> **[observation]**    (34 times)
+
+Normalized edit distance: 0.5526
+Exact sequence match: 0.0000 (0/200)
+
+Saved results to results/qwen3-8b_eval_metrics_bc.json
+Saved predictions to results/qwen3-8b_predictions_bc.json
+Removed checkpoint results/qwen3-8b_checkpoint_bc.json
+
+=== Done ===
+Date: Mon Apr  6 23:37:08 EDT 2026

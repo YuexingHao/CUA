@@ -44,6 +44,8 @@ from .eval_model import (
 )
 
 RESULTS_DIR = Path("results")
+METRICS_DIR = RESULTS_DIR / "metrics"
+PREDICTIONS_DIR = RESULTS_DIR / "predictions"
 DATA_DIR = Path("data")
 
 
@@ -420,7 +422,8 @@ def main():
 
     # Save results
     suffix = f"_{args.split}"
-    results_path = RESULTS_DIR / f"{short_name}_mind2web_metrics{suffix}.json"
+    METRICS_DIR.mkdir(parents=True, exist_ok=True)
+    results_path = METRICS_DIR / f"{short_name}_mind2web_metrics{suffix}.json"
     with open(results_path, "w") as f:
         json.dump(metrics, f, indent=2)
     print(f"\nSaved metrics to {results_path}")
@@ -449,7 +452,8 @@ def main():
             ],
         })
 
-    preds_path = RESULTS_DIR / f"{short_name}_mind2web_predictions{suffix}.json"
+    PREDICTIONS_DIR.mkdir(parents=True, exist_ok=True)
+    preds_path = PREDICTIONS_DIR / f"{short_name}_mind2web_predictions{suffix}.json"
     with open(preds_path, "w") as f:
         json.dump(preds, f, indent=2)
     print(f"Saved predictions to {preds_path}")

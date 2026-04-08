@@ -40,6 +40,8 @@ from .eval_model import (
 )
 
 RESULTS_DIR = Path("results")
+METRICS_DIR = RESULTS_DIR / "metrics"
+PREDICTIONS_DIR = RESULTS_DIR / "predictions"
 MAX_STEPS_PER_TASK = 15
 
 
@@ -360,7 +362,8 @@ def main():
                   f"[{info['ci_lo']:.3f}, {info['ci_hi']:.3f}]")
 
     # Save results
-    results_path = RESULTS_DIR / f"{short_name}_webshop_metrics.json"
+    METRICS_DIR.mkdir(parents=True, exist_ok=True)
+    results_path = METRICS_DIR / f"{short_name}_webshop_metrics.json"
     with open(results_path, "w") as f:
         json.dump(metrics, f, indent=2)
     print(f"\nSaved metrics to {results_path}")
@@ -386,7 +389,8 @@ def main():
             ],
         })
 
-    preds_path = RESULTS_DIR / f"{short_name}_webshop_predictions.json"
+    PREDICTIONS_DIR.mkdir(parents=True, exist_ok=True)
+    preds_path = PREDICTIONS_DIR / f"{short_name}_webshop_predictions.json"
     with open(preds_path, "w") as f:
         json.dump(preds, f, indent=2)
     print(f"Saved predictions to {preds_path}")

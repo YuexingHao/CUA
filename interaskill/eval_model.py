@@ -42,6 +42,8 @@ from .data import SKILL_TYPES
 
 DATA_DIR = Path("data")
 RESULTS_DIR = Path("results")
+METRICS_DIR = RESULTS_DIR / "metrics"
+PREDICTIONS_DIR = RESULTS_DIR / "predictions"
 
 QUANT_CONFIG = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -473,12 +475,14 @@ def main():
         "num_conversations": len(conversations),
     }
 
-    results_path = RESULTS_DIR / f"{short_name}_eval_metrics{suffix}.json"
+    METRICS_DIR.mkdir(exist_ok=True)
+    results_path = METRICS_DIR / f"{short_name}_eval_metrics{suffix}.json"
     with open(results_path, "w") as f:
         json.dump(results, f, indent=2)
     print(f"\nSaved results to {results_path}")
 
-    preds_path = RESULTS_DIR / f"{short_name}_predictions{suffix}.json"
+    PREDICTIONS_DIR.mkdir(exist_ok=True)
+    preds_path = PREDICTIONS_DIR / f"{short_name}_predictions{suffix}.json"
     with open(preds_path, "w") as f:
         json.dump(predictions, f, indent=2)
     print(f"Saved predictions to {preds_path}")

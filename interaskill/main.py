@@ -32,11 +32,15 @@ from .evaluate import (
 
 DATA_PATH = Path("data/fabricated_trajectories.json")
 RESULTS_DIR = Path("results")
+METRICS_DIR = RESULTS_DIR / "metrics"
+MODELS_DIR = RESULTS_DIR / "models"
 FIGURES_DIR = RESULTS_DIR / "figures"
 
 
 def main():
     RESULTS_DIR.mkdir(exist_ok=True)
+    METRICS_DIR.mkdir(exist_ok=True)
+    MODELS_DIR.mkdir(exist_ok=True)
     FIGURES_DIR.mkdir(exist_ok=True)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Device: {device}")
@@ -201,16 +205,16 @@ def main():
                 print(f"    {k}: {v:.4f}" if isinstance(v, float) else f"    {k}: {v}")
 
     # Save results JSON
-    with open(RESULTS_DIR / "metrics.json", "w") as f:
+    with open(METRICS_DIR / "pipeline_metrics.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\n  Saved metrics to {RESULTS_DIR / 'metrics.json'}")
-    print(f"  Plots saved to {RESULTS_DIR}/")
+    print(f"\n  Saved metrics to {METRICS_DIR / 'pipeline_metrics.json'}")
+    print(f"  Plots saved to {FIGURES_DIR}/")
 
     # Save models
-    torch.save(encoder.state_dict(), RESULTS_DIR / "encoder.pt")
-    torch.save(policy_mlp.state_dict(), RESULTS_DIR / "policy_mlp.pt")
-    torch.save(policy_tf.state_dict(), RESULTS_DIR / "policy_transformer.pt")
-    print(f"  Models saved to {RESULTS_DIR}/")
+    torch.save(encoder.state_dict(), MODELS_DIR / "encoder.pt")
+    torch.save(policy_mlp.state_dict(), MODELS_DIR / "policy_mlp.pt")
+    torch.save(policy_tf.state_dict(), MODELS_DIR / "policy_transformer.pt")
+    print(f"  Models saved to {MODELS_DIR}/")
 
 
 def plot_composition_comparison(mlp_pos, tf_pos, save_path):

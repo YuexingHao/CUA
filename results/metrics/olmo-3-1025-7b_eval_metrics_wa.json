@@ -1,0 +1,21 @@
+{
+  "model": "allenai/Olmo-3-1025-7B",
+  "adapter": null,
+  "dataset": "wa",
+  "overall_accuracy": 0.5450180072028812,
+  "normalized_edit_distance": 0.48622023809523846,
+  "exact_sequence_match": 0.03,
+  "per_position_accuracy": {
+    "0": 0.165,
+    "1": 0.84,
+    "2": 0.505,
+    "3": 0.7835051546391752,
+    "4": 0.5540540540540541,
+    "5": 0.6666666666666666,
+    "6": 0.5,
+    "7": 0.0
+  },
+  "total_samples": 833,
+  "correct": 454,
+  "num_conversations": 200
+}
