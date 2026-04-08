@@ -40,6 +40,7 @@ COLORS = {
     "Llama-3.1-70B": "#DD8452",
     "OLMo-3-7B": "#55A868",
     "Gemma-4-31B": "#C44E52",
+    "DeepSeek-R1-32B": "#937860",
     "Qwen3-VL-8B": "#8172B3",
     "CLIP zero-shot": "#CCB974",
 }
@@ -52,6 +53,7 @@ SKILL_PRED_MODELS = {
     "Llama-3.1-70B": "llama3.1-70b",
     "OLMo-3-7B": "olmo-3-1025-7b",
     "Gemma-4-31B": "gemma4-31b",
+    "DeepSeek-R1-32B": "deepseek-r1-distill-qwen-32b",
 }
 
 SKILL_PRED_DATASETS = {
@@ -110,7 +112,7 @@ def plot_skill_prediction(ax):
     n_models = len(model_names)
     n_datasets = len(dataset_keys)
 
-    bar_width = 0.15
+    bar_width = 0.12
     x = np.arange(n_datasets)
 
     for i, model_name in enumerate(model_names):
@@ -120,9 +122,17 @@ def plot_skill_prediction(ax):
         for ds in dataset_keys:
             preds = load_predictions(short_name, ds)
             if preds is None:
-                means.append(0)
-                ci_lo.append(0)
-                ci_hi.append(0)
+                # Fallback: try loading from metrics file (no predictions file)
+                metrics = load_metrics(short_name, ds)
+                if metrics:
+                    acc = metrics["overall_accuracy"]
+                    means.append(acc)
+                    ci_lo.append(0)
+                    ci_hi.append(0)
+                else:
+                    means.append(0)
+                    ci_lo.append(0)
+                    ci_hi.append(0)
                 continue
             accs = per_conversation_accuracy(preds)
             mean, lo, hi = bootstrap_ci(accs)
@@ -136,21 +146,21 @@ def plot_skill_prediction(ax):
         offset = (i - (n_models - 1) / 2) * bar_width
 
         bars = ax.bar(x + offset, means, bar_width,
-                       yerr=errs, capsize=3,
+                       yerr=errs, capsize=2,
                        label=model_name, color=color,
                        edgecolor="white", linewidth=0.5,
-                       error_kw={"linewidth": 1.2})
+                       error_kw={"linewidth": 1.0})
 
         for j, (bar, m) in enumerate(zip(bars, means)):
             if m > 0:
                 ax.text(bar.get_x() + bar.get_width() / 2,
                         bar.get_height() + errs[1, j] + 0.01,
                         f"{m:.0%}", ha="center", va="bottom",
-                        fontsize=6.5, fontweight="bold")
+                        fontsize=5.5, fontweight="bold")
             else:
                 ax.text(bar.get_x() + bar.get_width() / 2, 0.02,
                         "—", ha="center", va="bottom",
-                        fontsize=7, color="gray")
+                        fontsize=6, color="gray")
 
     ax.set_ylabel("Per-Conv Accuracy")
     ax.set_title("(a) Skill Prediction Accuracy (95% CI)")
