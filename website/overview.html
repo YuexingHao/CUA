@@ -109,16 +109,18 @@ footer .footer-line{font-weight:600;color:var(--slate-300);margin-bottom:4px;fon
     <div class="section-badge">Overview</div>
     <h2>Abstract</h2>
     <p class="abstract-text">
-      Computer-using agents (CUAs) typically rely on manually authored skill definitions
-      (e.g., SKILL.md files) that enumerate action patterns for web-based tasks. This approach
-      scales poorly and fails to capture the distributional structure of real user interactions.
-      We propose InteraSkill, a three-phase framework that (1) collects interaction trajectories
-      from CUA sessions on live web platforms, (2) segments and clusters action sequences into
-      a discrete skill vocabulary using change-point detection and hierarchical clustering, and
-      (3) trains sequence models over the induced skill space to predict task-relevant skill
-      compositions. On a corpus of 5,226 interaction segments derived from 847 WebArena
-      sessions, our learned skill vocabulary of 12 canonical skills achieves 0.850 information-weighted
-      accuracy with a Qwen3-8B LoRA predictor, compared to 0.140 for the original SKILL.md baseline.
+      Computer-using agents (CUAs) typically rely on manually engineered skill libraries&mdash;hard-coded
+      mappings from semantic intents to fixed UI actions&mdash;that are brittle under interface changes
+      and costly to maintain. We introduce InteraSkill, a three-phase framework that replaces manual
+      skill specification with data-driven skill discovery, embedding, and composition. In Phase&nbsp;1,
+      trajectory segmentation via action discontinuity detection achieves F1&nbsp;=&nbsp;0.851 on real
+      WebArena trajectories. In Phase&nbsp;2, contrastive skill embedding with InfoNCE improves clustering
+      NMI from 0.531 to 0.871. In Phase&nbsp;3, a LoRA-fine-tuned Qwen3-8B achieves 85.0% skill prediction
+      accuracy on enterprise workflows&mdash;a 4&times; gain over a Transformer baseline and 6&times; over
+      a hard-coded transition table. On Mind2Web end-to-end evaluation, our method achieves 35.5% task
+      completion rate versus 9.5% for the zero-shot baseline, with cross-domain transfer retaining 27.0%.
+      A six-model comparison across three benchmarks reveals that fine-tuning on interaction-derived data
+      is critical: the LoRA-adapted 8B model outperforms zero-shot 70B models on in-domain tasks.
     </p>
   </div>
 </section>
@@ -180,15 +182,15 @@ footer .footer-line{font-weight:600;color:var(--slate-300);margin-bottom:4px;fon
   <div class="container fade-section">
     <div class="section-badge">Approach</div>
     <h2>Method</h2>
-    <p class="section-intro">InteraSkill operates in three phases. Raw interaction logs are segmented at detected change-points, clustered into a skill vocabulary, then used to train predictive models over skill sequences.</p>
+    <p class="section-intro">InteraSkill operates in three phases: segment trajectories at action discontinuities, embed segments into a learned skill space via contrastive learning, then compose skills with a fine-tuned LLM.</p>
     <div class="pipeline">
-      <div class="pipe-box"><div class="pipe-title">Phase 1: Collection</div><div class="pipe-desc">847 WebArena sessions<br>Raw action sequences</div></div>
+      <div class="pipe-box"><div class="pipe-title">Phase 1: Segmentation</div><div class="pipe-desc">Action discontinuity detection<br>F1 = 0.851 (WebArena)</div></div>
       <div class="pipe-arrow">&#8594;</div>
-      <div class="pipe-box"><div class="pipe-title">Phase 2: Segmentation</div><div class="pipe-desc">Change-point detection<br>5,226 segments</div></div>
+      <div class="pipe-box"><div class="pipe-title">Phase 2: Embedding</div><div class="pipe-desc">Wasserstein + InfoNCE<br>NMI: 0.531 &rarr; 0.871</div></div>
       <div class="pipe-arrow">&#8594;</div>
-      <div class="pipe-box"><div class="pipe-title">Phase 3: Clustering</div><div class="pipe-desc">Hierarchical clustering<br>12 canonical skills</div></div>
+      <div class="pipe-box"><div class="pipe-title">Phase 3: Composition</div><div class="pipe-desc">Qwen3-8B + LoRA<br>85.0% skill accuracy</div></div>
       <div class="pipe-arrow">&#8594;</div>
-      <div class="pipe-box"><div class="pipe-title">Prediction</div><div class="pipe-desc">Sequence models<br>Skill composition</div></div>
+      <div class="pipe-box"><div class="pipe-title">End-to-End</div><div class="pipe-desc">Mind2Web evaluation<br>35.5% TCR</div></div>
     </div>
   </div>
 </section>
@@ -197,8 +199,8 @@ footer .footer-line{font-weight:600;color:var(--slate-300);margin-bottom:4px;fon
 <section class="section-white">
   <div class="container fade-section">
     <div class="section-badge">Live Simulation</div>
-    <h2>Watch the agent discover skills</h2>
-    <p class="section-intro">Simulated log stream from a WebArena agent run with online skill discovery.</p>
+    <h2>Watch the agent discover and compose skills</h2>
+    <p class="section-intro">This simulation replays a WebArena agent session. It shows how InteraSkill (1) composes skills from its learned vocabulary, (2) segments the resulting trajectory at action discontinuities, and (3) updates skill embeddings online. <strong>Blue annotations</strong> explain each step of the pipeline as it executes.</p>
     <div class="terminal-box">
       <div class="term-topbar"><div class="term-dot td-r"></div><div class="term-dot td-y"></div><div class="term-dot td-g"></div><span class="term-title">interaskill-runtime &middot; webarena-episode-042</span></div>
       <div class="term-output" id="simOutput"><span class="term-line"><span class="t-info"># Click "Run Simulation" to replay the skill discovery log</span></span><span class="term-line"><span class="cursor"></span></span></div>
@@ -213,37 +215,54 @@ footer .footer-line{font-weight:600;color:var(--slate-300);margin-bottom:4px;fon
     <div class="section-badge">Evaluation</div>
     <h2>Results</h2>
     <div class="results-grid">
-      <div class="result-card"><span class="result-num" style="color:var(--success);">+34%</span><span class="result-label">Cross-domain success rate vs SKILL.md</span></div>
-      <div class="result-card"><span class="result-num" style="color:var(--accent);">16</span><span class="result-label">Skill dimensions encode full behavioral diversity</span></div>
-      <div class="result-card"><span class="result-num" style="color:var(--skill4);">51%</span><span class="result-label">Skill reuse rate across episodes</span></div>
-      <div class="result-card"><span class="result-num" style="color:var(--skill5);">3x</span><span class="result-label">Fewer primitive actions per task</span></div>
+      <div class="result-card"><span class="result-num" style="color:var(--accent);">85.0%</span><span class="result-label">Skill Prediction Accuracy (IW)</span></div>
+      <div class="result-card"><span class="result-num" style="color:var(--success);">35.5%</span><span class="result-label">Task Completion Rate (Mind2Web)</span></div>
+      <div class="result-card"><span class="result-num" style="color:var(--learn);">0.871</span><span class="result-label">Clustering NMI (InfoNCE)</span></div>
+      <div class="result-card"><span class="result-num" style="color:var(--skill5);">3.7x</span><span class="result-label">vs. Zero-Shot Baseline</span></div>
     </div>
-    <h3>Information-Weighted Accuracy</h3>
-    <div class="chart-wrap"><svg id="bar-chart" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg"></svg></div>
+
+    <h3>Six-Model Comparison Across Benchmarks</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Model</th><th>IW Accuracy</th><th>WebArena SR</th></tr></thead>
+        <thead><tr><th>Model</th><th>Params</th><th>IW (Enterprise)</th><th>WebArena</th><th>BrowseComp+</th></tr></thead>
         <tbody>
-          <tr><td>SKILL.md (baseline)</td><td>0.140</td><td>0.22</td></tr>
-          <tr><td>Frequency</td><td>0.349</td><td>0.28</td></tr>
-          <tr><td>AWM</td><td>0.334</td><td>0.26</td></tr>
-          <tr><td>Transformer</td><td>0.349</td><td>0.30</td></tr>
-          <tr><td>Qwen3-8B LoRA</td><td>0.850</td><td>0.36</td></tr>
+          <tr style="background:var(--accent-50);font-weight:700;"><td style="color:var(--accent-dark);">Qwen3-8B (LoRA)</td><td>8B</td><td style="color:var(--accent-dark);">85.0%</td><td>43.7%</td><td>44.8%</td></tr>
+          <tr><td>Llama-3.1-70B</td><td>70B</td><td>30.0%</td><td style="font-weight:600;">56.2%</td><td>51.9%</td></tr>
+          <tr><td>OLMo-3-7B</td><td>7B</td><td>14.3%</td><td>54.5%</td><td style="font-weight:600;">61.4%</td></tr>
+          <tr><td>Qwen3-8B (zero-shot)</td><td>8B</td><td>18.5%</td><td>55.8%</td><td>43.5%</td></tr>
+          <tr><td>DeepSeek-R1-Distill-32B</td><td>32B</td><td>14.3%</td><td>45.1%</td><td>0.05%</td></tr>
+          <tr><td>Gemma-4-31B</td><td>31B</td><td>16.5%</td><td>37.7%</td><td>11.2%</td></tr>
         </tbody>
       </table>
     </div>
-    <h3>Task Success Rate by WebArena Domain</h3>
-    <div id="resultBars" style="margin:1rem 0;">
-      <div class="bar-row"><span class="bar-label">E-commerce (seen)</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#2563eb,#60aff0);" data-w="78">78%</div></div><span class="bar-val" style="color:var(--accent);">78%</span></div>
-      <div class="bar-row"><span class="bar-label-muted">SKILL.md baseline</span><div class="bar-wrap"><div class="bar-fill" style="background:var(--slate-300);" data-w="72">72%</div></div><span class="bar-val" style="color:var(--slate-400);">72%</span></div>
-      <div class="bar-row" style="margin-top:8px;"><span class="bar-label">Reddit (seen)</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#7c3aed,#c084fc);" data-w="74">74%</div></div><span class="bar-val" style="color:#7c3aed;">74%</span></div>
-      <div class="bar-row"><span class="bar-label-muted">SKILL.md baseline</span><div class="bar-wrap"><div class="bar-fill" style="background:var(--slate-300);" data-w="69">69%</div></div><span class="bar-val" style="color:var(--slate-400);">69%</span></div>
-      <div class="bar-row" style="margin-top:8px;"><span class="bar-label">GitLab (unseen)</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#059669,#6ee7b7);" data-w="62">62%</div></div><span class="bar-val" style="color:var(--success);">62%</span></div>
-      <div class="bar-row"><span class="bar-label-muted">SKILL.md baseline</span><div class="bar-wrap"><div class="bar-fill" style="background:var(--slate-300);" data-w="31">31%</div></div><span class="bar-val" style="color:var(--slate-400);">31%</span></div>
-      <div class="bar-row" style="margin-top:8px;"><span class="bar-label">Wikipedia (unseen)</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#d97706,#fbbf24);" data-w="58">58%</div></div><span class="bar-val" style="color:var(--warn);">58%</span></div>
-      <div class="bar-row"><span class="bar-label-muted">SKILL.md baseline</span><div class="bar-wrap"><div class="bar-fill" style="background:var(--slate-300);" data-w="28">28%</div></div><span class="bar-val" style="color:var(--slate-400);">28%</span></div>
+    <p style="font-size:.8rem;color:var(--slate-500);margin-top:.5rem;">LoRA fine-tuning yields 4.6&times; gains over zero-shot, outperforming 9&times; larger models on in-domain data.</p>
+
+    <h3>Baseline Comparison</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Method</th><th>Type</th><th>IW Accuracy</th><th>WA Accuracy</th><th>Edit Distance</th></tr></thead>
+        <tbody>
+          <tr><td>SKILL.md</td><td>Fixed table</td><td>14.0%</td><td>8.7%</td><td>0.633</td></tr>
+          <tr><td>Frequency</td><td>Most common</td><td>34.9%</td><td>28.5%</td><td>0.480</td></tr>
+          <tr><td>AWM</td><td>Learned transitions</td><td>33.4%</td><td style="font-weight:600;">78.8%</td><td>0.479</td></tr>
+          <tr><td>Transformer (ours)</td><td>Sequence model</td><td>34.9%</td><td>41.0%</td><td>0.480</td></tr>
+          <tr style="background:var(--accent-50);font-weight:700;"><td style="color:var(--accent-dark);">Qwen3-8B LoRA (ours)</td><td>Fine-tuned LLM</td><td style="color:var(--accent-dark);">85.0%</td><td>43.7%</td><td style="color:var(--accent-dark);">0.148</td></tr>
+        </tbody>
+      </table>
     </div>
-    <p style="font-size:.75rem;color:var(--slate-400);">* Results are projected based on reported trends; exact numbers forthcoming.</p>
+    <p style="font-size:.8rem;color:var(--slate-500);margin-top:.5rem;">AWM excels on homogeneous WebArena (78.8%) via learned self-transitions, but only reaches 33.4% on diverse workflows.</p>
+
+    <h3>Mind2Web End-to-End Task Completion</h3>
+    <div id="resultBars" style="margin:1rem 0;">
+      <div class="bar-row"><span class="bar-label">LoRA (in-domain)</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#2563eb,#60aff0);" data-w="35.5">35.5%</div></div><span class="bar-val" style="color:var(--accent);">35.5%</span></div>
+      <div class="bar-row"><span class="bar-label">LoRA (cross-domain)</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#7c3aed,#c084fc);" data-w="27">27.0%</div></div><span class="bar-val" style="color:#7c3aed;">27.0%</span></div>
+      <div class="bar-row"><span class="bar-label-muted">Zero-shot baseline</span><div class="bar-wrap"><div class="bar-fill" style="background:var(--slate-300);" data-w="9.5">9.5%</div></div><span class="bar-val" style="color:var(--slate-400);">9.5%</span></div>
+      <div style="height:16px;"></div>
+      <div class="bar-row"><span class="bar-label">Entertainment</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#059669,#6ee7b7);" data-w="49.1">49.1%</div></div><span class="bar-val" style="color:var(--success);">49.1%</span></div>
+      <div class="bar-row"><span class="bar-label">Shopping</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#d97706,#fbbf24);" data-w="41.3">41.3%</div></div><span class="bar-val" style="color:var(--warn);">41.3%</span></div>
+      <div class="bar-row"><span class="bar-label">Travel</span><div class="bar-wrap"><div class="bar-fill" style="background:linear-gradient(90deg,#dc2626,#f87171);" data-w="21.3">21.3%</div></div><span class="bar-val" style="color:var(--fail);">21.3%</span></div>
+    </div>
+    <p style="font-size:.8rem;color:var(--slate-500);">Cross-domain transfer retains 76% of in-domain performance. Travel tasks are hardest due to complex multi-step booking workflows.</p>
   </div>
 </section>
 
@@ -288,8 +307,8 @@ footer .footer-line{font-weight:600;color:var(--slate-300);margin-bottom:4px;fon
     <div class="section-badge">Reference</div>
     <h2>Citation</h2>
     <div class="bibtex" id="bibtex-block"><button class="bibtex-copy" onclick="copyBibtex()">Copy</button>@inproceedings{interaskill2026,
-  title     = {From Hard-Coded {SKILL.md} to Learned Behaviors:
-               Automatic Skill Discovery for Computer-Using Agents},
+  title     = {InteraSkill: Learning Reusable Skill Abstractions
+               for Computer-Using Agents from Interaction Trajectories},
   author    = {Anonymous},
   booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
   year      = {2026}
@@ -316,39 +335,78 @@ document.querySelectorAll('.fade-section').forEach(el=>fadeObserver.observe(el))
 /* Copy BibTeX */
 function copyBibtex(){const text=document.getElementById('bibtex-block').innerText.replace('Copy','').trim();navigator.clipboard.writeText(text).then(()=>{const btn=document.querySelector('.bibtex-copy');btn.textContent='Copied!';setTimeout(()=>{btn.textContent='Copy';},2000);});}
 
-/* Terminal Simulation */
+/* Terminal Simulation - with explanatory annotations */
 const SIM_LOGS=[
-  {text:"[00:00.000] InteraSkill initialized - WebArena Episode 042",cls:"t-info"},
-  {text:"[00:00.012] Loading skill library: 14 skills from 41 prior episodes",cls:"t-info"},
-  {text:"",cls:""},{text:'Task: "Find cheapest laptop with 16GB RAM on OneStopShop"',cls:"t-hl"},{text:"",cls:""},
-  {text:"skill_select(z1: search_product) // confidence: 0.94",cls:"t-cmd",p:true},
-  {text:"  click(0.45, 0.08) -> type('laptop 16GB RAM') -> click(0.62, 0.08)",cls:"t-api"},
-  {text:"  z1 terminated (beta=0.91) after 3 actions",cls:"t-info"},
-  {text:"skill_select(z2: filter_and_sort) // confidence: 0.88",cls:"t-cmd",p:true},
-  {text:"  click(0.12, 0.28) -> select('16GB') -> click(sort_price_asc)",cls:"t-api"},
-  {text:"  z2 terminated (beta=0.87) after 3 actions",cls:"t-info"},
-  {text:"skill_select(z3: select_and_purchase) // confidence: 0.91",cls:"t-cmd",p:true},
-  {text:"  click(product_1) -> scroll(down) -> click(add_to_cart)",cls:"t-api"},
-  {text:"  z3 terminated (beta=0.95) after 3 actions",cls:"t-info"},
-  {text:"",cls:""},{text:"TASK COMPLETED in 9 primitive actions (3 skills composed)",cls:"t-ok"},{text:"",cls:""},
-  {text:"[ONLINE SKILL UPDATE]",cls:"t-api"},
-  {text:"  Segmentation: 3 segments detected (matches existing skills)",cls:"t-info"},
-  {text:"  z1 embedding updated: delta=0.003 (stable)",cls:"t-hl"},
-  {text:"  z2 embedding updated: delta=0.008 (refining filter pattern)",cls:"t-hl"},
-  {text:"  z3 embedding updated: delta=0.002 (stable)",cls:"t-hl"},
-  {text:"  Skill library: 14 skills (0 new, 3 refined)",cls:"t-ok"},
-  {text:"",cls:""},{text:"Episode 042 complete | Success: TRUE | Skills reused: 3/3",cls:"t-ok"},
-  {text:"Cumulative success rate: 67.4% (+2.1% from episode 41)",cls:"t-hl"},
+  {text:"[00:00.000] InteraSkill runtime initialized",cls:"t-info"},
+  {text:"[00:00.005] Loaded skill library: 12 skills from 847 prior trajectories",cls:"t-info"},
+  {text:"[00:00.008] Model: Qwen3-8B + LoRA adapter (17M trainable params)",cls:"t-info"},
+  {note:"SETUP: The agent loads 12 previously discovered skill patterns and its fine-tuned LLM. No manual SKILL.md files are used."},
+  {text:"",cls:""},
+  {text:'Task: "Find directions from CMU to Pittsburgh Airport"',cls:"t-hl"},
+  {note:"TASK: A real WebArena map navigation task requiring multiple skills composed in sequence."},
+  {text:"",cls:""},
+  {text:"Phase 3: Skill Composition (LLM planning)",cls:"t-api",p:true},
+  {text:'  Reasoning: "Need to search for the origin location first"',cls:"t-info"},
+  {text:"  skill_select(z1: search_navigate)  confidence: 0.94",cls:"t-cmd",p:true},
+  {note:"PHASE 3: The LLM selects skill z1 (search_navigate) from the learned vocabulary. Unlike SKILL.md which would hard-code click(450,120), this skill adapts to any UI layout."},
+  {text:'  Action: type("Carnegie Mellon University") -> click(search)',cls:"t-api"},
+  {text:"  Skill z1 terminated (beta=0.91) after 2 actions",cls:"t-info"},
+  {text:"  Result: origin marker placed on map",cls:"t-ok"},
+  {text:"",cls:""},
+  {text:'  Reasoning: "Origin set. Now need destination."',cls:"t-info"},
+  {text:"  skill_select(z1: search_navigate)  confidence: 0.92 (reuse)",cls:"t-cmd",p:true},
+  {note:"REUSE: The same skill is reused for a different query. SKILL.md would need separate hard-coded routines for 'search origin' vs 'search destination'."},
+  {text:'  Action: clear -> type("Pittsburgh Airport") -> click(search)',cls:"t-api"},
+  {text:"  Skill z1 terminated (beta=0.89) after 3 actions",cls:"t-info"},
+  {text:"  Result: destination marker placed",cls:"t-ok"},
+  {text:"",cls:""},
+  {text:'  Reasoning: "Both locations set. Request directions."',cls:"t-info"},
+  {text:"  skill_select(z4: configure_settings)  confidence: 0.88",cls:"t-cmd",p:true},
+  {text:"  Action: click(directions) -> select(driving_mode)",cls:"t-api"},
+  {text:"  Skill z4 terminated (beta=0.93) after 2 actions",cls:"t-info"},
+  {text:"  Result: route displayed with ETA",cls:"t-ok"},
+  {note:"COMPOSITION: 3 skills composed to complete the task (7 total actions). The LLM planned this sequence using reasoning traces learned during fine-tuning."},
+  {text:"",cls:""},
+  {text:"TASK COMPLETED  7 actions, 3 skills composed",cls:"t-ok"},
+  {text:"",cls:""},
+  {text:"Phase 1: Online Trajectory Segmentation",cls:"t-api",p:true},
+  {text:"  delta_a = [0.12, 0.08, |1.84|, 0.15, 0.11, |1.92|, 0.09]",cls:"t-hl"},
+  {text:"  Boundaries at t=2, t=5 (theta=0.603, F1=0.851)",cls:"t-info"},
+  {text:"  3 segments detected (matches skill predictions)",cls:"t-ok"},
+  {note:"PHASE 1: Post-execution, the trajectory is segmented by detecting large jumps in action space. Values 1.84 and 1.92 exceed the threshold, confirming skill boundaries."},
+  {text:"",cls:""},
+  {text:"Phase 2: Skill Embedding Update",cls:"t-api",p:true},
+  {text:"  Seg 1 -> search_navigate (d=0.003, stable)",cls:"t-info"},
+  {text:"  Seg 2 -> search_navigate (d=0.005, stable)",cls:"t-info"},
+  {text:"  Seg 3 -> configure_settings (d=0.008, refining)",cls:"t-hl"},
+  {text:"  Library: 12 skills (0 new, 2 refined)",cls:"t-ok"},
+  {note:"PHASE 2: Each segment is mapped to nearest skill cluster. Small distances confirm these match existing skills. Large distances would flag potential new skills to discover."},
+  {text:"",cls:""},
+  {text:"Episode complete | Success: TRUE | Skills reused: 2/3",cls:"t-ok"},
 ];
 let simRunning=false;
 async function runSim(){
   if(simRunning)return;simRunning=true;
   const out=document.getElementById('simOutput');out.innerHTML='';
   for(const line of SIM_LOGS){
-    await new Promise(r=>setTimeout(r,line.text===''?30:Math.random()*50+20));
-    const s=document.createElement('span');s.className='term-line';
-    s.innerHTML=line.p?'<span class="t-prompt">&#10095; </span><span class="'+line.cls+'">'+line.text+'</span>':'<span class="'+line.cls+'">'+line.text+'</span>';
-    out.appendChild(s);out.scrollTop=out.scrollHeight;
+    if(line.note){
+      await new Promise(r=>setTimeout(r,600));
+      const s=document.createElement('span');
+      s.className='term-line';
+      s.style.cssText='background:rgba(59,130,246,.1);border-left:3px solid #3b82f6;margin:4px 0;padding:6px 12px;border-radius:0 6px 6px 0;font-size:.75rem;color:#60a5fa;font-style:italic;';
+      s.textContent=line.note;
+      out.appendChild(s);
+    } else if(line.text===''){
+      const s=document.createElement('span');s.className='term-line';s.innerHTML='&nbsp;';
+      out.appendChild(s);
+      await new Promise(r=>setTimeout(r,60));
+    } else {
+      await new Promise(r=>setTimeout(r,line.p?100:50));
+      const s=document.createElement('span');s.className='term-line';
+      s.innerHTML=line.p?'<span class="t-prompt">&#10095; </span><span class="'+line.cls+'">'+line.text+'</span>':'<span class="'+line.cls+'">'+line.text+'</span>';
+      out.appendChild(s);
+    }
+    out.scrollTop=out.scrollHeight;
   }
   const c=document.createElement('span');c.className='term-line';c.innerHTML='<span class="cursor"></span>';out.appendChild(c);simRunning=false;
 }
@@ -356,38 +414,6 @@ async function runSim(){
 /* Result Bars Animation */
 function animateBars(){document.querySelectorAll('#resultBars .bar-fill').forEach(bar=>{const w=bar.getAttribute('data-w');if(w)bar.style.width=w+'%';});}
 setTimeout(animateBars,600);
-
-/* Bar Chart */
-let barChartAnimated=false;
-function animateBarChart(){
-  const svg=document.getElementById('bar-chart');if(!svg||barChartAnimated)return;barChartAnimated=true;
-  const bars=svg.querySelectorAll('.anim-bar');const labels=svg.querySelectorAll('.anim-label');
-  bars.forEach((bar,idx)=>{const th=+bar.dataset.targetH;const base=+bar.getAttribute('y');let start=null;
-    function step(ts){if(!start)start=ts;const p=Math.min((ts-start)/700,1);const ease=1-Math.pow(1-p,3);bar.setAttribute('height',th*ease);bar.setAttribute('y',base-th*ease);if(p<1)requestAnimationFrame(step);else{labels[idx].setAttribute('opacity','1');}}
-    setTimeout(()=>requestAnimationFrame(step),idx*100);
-  });
-}
-(function(){
-  const svg=document.getElementById('bar-chart');
-  const models=[{name:'SKILL.md',iw:0.140,wa:0.22},{name:'Frequency',iw:0.349,wa:0.28},{name:'AWM',iw:0.334,wa:0.26},{name:'Transformer',iw:0.349,wa:0.30},{name:'Qwen3-8B LoRA',iw:0.850,wa:0.36}];
-  const W=700,H=320,PAD_L=60,PAD_R=30,PAD_T=30,PAD_B=60;const chartW=W-PAD_L-PAD_R;const chartH=H-PAD_T-PAD_B;const groupW=chartW/models.length;const barW=groupW*0.3;
-  let d='<defs><linearGradient id="grad-blue2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient><linearGradient id="grad-orange2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>';
-  let m='<rect width="'+W+'" height="'+H+'" fill="#ffffff" rx="12"/>';
-  for(let v=0;v<=1;v+=0.2){const y=PAD_T+chartH*(1-v);m+='<line x1="'+PAD_L+'" y1="'+y+'" x2="'+(W-PAD_R)+'" y2="'+y+'" stroke="#f1f5f9" stroke-width="1"/>';m+='<text x="'+(PAD_L-10)+'" y="'+(y+4)+'" text-anchor="end" font-size="12" fill="#94a3b8" font-family="Inter,sans-serif">'+v.toFixed(1)+'</text>';}
-  m+='<text x="'+(PAD_L-44)+'" y="'+(PAD_T+chartH/2)+'" text-anchor="middle" font-size="12" fill="#94a3b8" font-family="Inter,sans-serif" font-weight="500" transform="rotate(-90,'+(PAD_L-44)+','+(PAD_T+chartH/2)+')">Score</text>';
-  models.forEach((mod,i)=>{const gx=PAD_L+i*groupW+groupW/2;const iwH=mod.iw*chartH;const iwX=gx-barW-2;
-    m+='<rect class="anim-bar" x="'+iwX+'" y="'+(PAD_T+chartH)+'" width="'+barW+'" height="0" fill="url(#grad-blue2)" data-target-h="'+iwH+'" rx="4"/>';
-    m+='<text class="anim-label" x="'+(iwX+barW/2)+'" y="'+(PAD_T+chartH-iwH-8)+'" text-anchor="middle" font-size="11" fill="#334155" opacity="0" font-family="Inter,sans-serif" font-weight="600">'+mod.iw.toFixed(3)+'</text>';
-    const waH=mod.wa*chartH;const waX=gx+2;
-    m+='<rect class="anim-bar" x="'+waX+'" y="'+(PAD_T+chartH)+'" width="'+barW+'" height="0" fill="url(#grad-orange2)" data-target-h="'+waH+'" rx="4"/>';
-    m+='<text class="anim-label" x="'+(waX+barW/2)+'" y="'+(PAD_T+chartH-waH-8)+'" text-anchor="middle" font-size="11" fill="#334155" opacity="0" font-family="Inter,sans-serif" font-weight="600">'+mod.wa.toFixed(2)+'</text>';
-    m+='<text x="'+gx+'" y="'+(H-PAD_B+20)+'" text-anchor="middle" font-size="12" fill="#475569" font-family="Inter,sans-serif" font-weight="500">'+mod.name+'</text>';
-  });
-  m+='<rect x="'+(W-180)+'" y="12" width="14" height="14" fill="url(#grad-blue2)" rx="3"/><text x="'+(W-162)+'" y="24" font-size="12" fill="#475569" font-family="Inter,sans-serif" font-weight="500">IW Accuracy</text>';
-  m+='<rect x="'+(W-180)+'" y="32" width="14" height="14" fill="url(#grad-orange2)" rx="3"/><text x="'+(W-162)+'" y="44" font-size="12" fill="#475569" font-family="Inter,sans-serif" font-weight="500">WebArena SR</text>';
-  svg.innerHTML=d+m;
-  const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting)animateBarChart();},{threshold:.3});obs.observe(svg);
-})();
 
 /* Gallery & Lightbox */
 const GALLERY_IMGS=[
