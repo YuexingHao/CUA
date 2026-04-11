@@ -1,21 +1,21 @@
 {
   "model": "Qwen/Qwen3-8B",
-  "adapter": "results/qwen3_lora/final_adapter",
+  "adapter": "results/qwen3_grpo/final_adapter",
   "dataset": "wa",
-  "overall_accuracy": 0.4369747899159664,
-  "normalized_edit_distance": 0.5622440476190479,
-  "exact_sequence_match": 0.085,
+  "overall_accuracy": 0.04441776710684274,
+  "normalized_edit_distance": 0.9647261904761905,
+  "exact_sequence_match": 0.0,
   "per_position_accuracy": {
-    "0": 0.515,
-    "1": 0.265,
-    "2": 0.45,
-    "3": 0.4742268041237113,
-    "4": 0.527027027027027,
-    "5": 0.6153846153846154,
-    "6": 0.3888888888888889,
-    "7": 0.4
+    "0": 0.0,
+    "1": 0.01,
+    "2": 0.015,
+    "3": 0.08247422680412371,
+    "4": 0.13513513513513514,
+    "5": 0.1794871794871795,
+    "6": 0.3333333333333333,
+    "7": 0.2
   },
   "total_samples": 833,
-  "correct": 364,
+  "correct": 37,
   "num_conversations": 200
 }
