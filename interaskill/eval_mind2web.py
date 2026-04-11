@@ -199,8 +199,9 @@ def evaluate_task(grounder: SkillGrounder, task: dict,
     return result
 
 
-def _checkpoint_path(short_name: str, split: str) -> Path:
-    return RESULTS_DIR / f"{short_name}_mind2web_{split}_checkpoint.json"
+def _checkpoint_path(short_name: str, split: str, composition: bool = False) -> Path:
+    suffix = "_comp" if composition else ""
+    return RESULTS_DIR / f"{short_name}_mind2web_{split}{suffix}_checkpoint.json"
 
 
 def save_checkpoint(path: Path, task_results: list[TaskResult], completed: int):
@@ -267,7 +268,14 @@ def main():
     args = parse_args()
     short_name = model_short_name(args.model)
     if args.adapter:
-        short_name += "_lora"
+        if "grpo" in args.adapter.lower():
+            short_name += "_grpo"
+        else:
+            short_name += "_lora"
+    if args.skill_mode != "llm":
+        short_name += f"_sk-{args.skill_mode}"
+    if args.grounding_mode != "llm":
+        short_name += f"_gr-{args.grounding_mode}"
 
     print("=" * 60)
     print(f"Mind2Web Evaluation")
@@ -325,7 +333,7 @@ def main():
     print(f"Loaded {len(tasks)} tasks", flush=True)
 
     # Resume from checkpoint
-    ckpt_path = _checkpoint_path(short_name, args.split)
+    ckpt_path = _checkpoint_path(short_name, args.split, args.composition)
     start_task = 0
     task_results = []
     if args.resume:
@@ -407,8 +415,10 @@ def main():
     eff = metrics["level3_efficiency"]
     if eff["avg_steps_to_complete"] is not None:
         print(f"Avg Steps to Completion: {eff['avg_steps_to_complete']:.1f}")
-    if eff["recovery_rate"] is not None:
-        print(f"Recovery Rate: {eff['recovery_rate']:.4f}")
+    if eff["task_recovery_rate"] is not None:
+        print(f"Task Recovery Rate: {eff['task_recovery_rate']:.4f}")
+    if eff["step_recovery_rate"] is not None:
+        print(f"Step Recovery Rate: {eff['step_recovery_rate']:.4f}")
 
     print(f"\nPer-domain TCR:")
     for domain, info in metrics["per_domain"].items():
@@ -422,6 +432,8 @@ def main():
 
     # Save results
     suffix = f"_{args.split}"
+    if args.composition:
+        suffix += "_comp"
     METRICS_DIR.mkdir(parents=True, exist_ok=True)
     results_path = METRICS_DIR / f"{short_name}_mind2web_metrics{suffix}.json"
     with open(results_path, "w") as f:
