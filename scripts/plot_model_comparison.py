@@ -38,7 +38,7 @@ plt.rcParams.update({
 
 COLORS = {
     "Qwen3-8B (zero-shot)": "#7EB0D5",
-    "Qwen3-8B LoRA": "#4C72B0",
+    "Qwen3-8B (GRPO)": "#C0392B",
     "Llama-3.1-70B": "#DD8452",
     "OLMo-3-7B": "#55A868",
     "Gemma-4-31B": "#C44E52",
@@ -51,7 +51,7 @@ COLORS = {
 
 SKILL_PRED_MODELS = {
     "Qwen3-8B (zero-shot)": "qwen3-8b",
-    "Qwen3-8B LoRA": "qwen3-8b_lora",
+    "Qwen3-8B (GRPO)": "qwen3-8b_lora",
     "Llama-3.1-70B": "llama3.1-70b",
     "OLMo-3-7B": "olmo-3-1025-7b",
     "Gemma-4-31B": "gemma4-31b",
@@ -210,7 +210,7 @@ def plot_baselines(ax):
         "skillmd": "SKILL.md",
         "awm": "AWM",
         "transformer": "Transformer",
-        "qwen3_lora": "Qwen3-8B LoRA",
+        "qwen3_lora": "Qwen3-8B GRPO",
     }
 
     datasets = ["iw", "wa"]
@@ -259,7 +259,7 @@ def plot_baselines(ax):
             ed = metrics.get("normalized_edit_distance", 1.0)
             offset = (4 - 2) * bar_width
             ax.bar(x[ds_i] + offset, 1 - ed, bar_width,
-                    label="Qwen3-8B LoRA" if ds_i == 0 else None,
+                    label="Qwen3-8B GRPO" if ds_i == 0 else None,
                     color=method_colors[4],
                     edgecolor="white", linewidth=0.5)
 
@@ -273,19 +273,19 @@ def plot_baselines(ax):
     ax.spines["right"].set_visible(False)
 
 
-# ── Panel 3: LoRA Improvement (zero-shot vs fine-tuned) ──────────────
+# ── Panel 3: Training Method Comparison (zero-shot vs GRPO) ─────────
 
-def plot_lora_improvement(ax):
-    """Show the impact of LoRA fine-tuning across datasets."""
+def plot_training_comparison(ax):
+    """Show zero-shot vs GRPO, highlighting GRPO's degradation."""
     datasets = ["iw", "wa", "bc"]
     ds_labels = ["IW", "WebArena", "BrowseComp+"]
 
-    zs_accs, lora_accs = [], []
+    zs_accs, grpo_accs = [], []
     for ds in datasets:
         zs = load_metrics("qwen3-8b", ds)
-        lora = load_metrics("qwen3-8b_lora", ds)
+        grpo = load_metrics("qwen3-8b_lora", ds)
         zs_accs.append(zs["overall_accuracy"] if zs else 0)
-        lora_accs.append(lora["overall_accuracy"] if lora else 0)
+        grpo_accs.append(grpo["overall_accuracy"] if grpo else 0)
 
     x = np.arange(len(datasets))
     bar_width = 0.3
@@ -293,31 +293,36 @@ def plot_lora_improvement(ax):
     bars_zs = ax.bar(x - bar_width / 2, zs_accs, bar_width,
                       label="Qwen3-8B (zero-shot)", color="#7EB0D5",
                       edgecolor="white")
-    bars_lora = ax.bar(x + bar_width / 2, lora_accs, bar_width,
-                        label="Qwen3-8B LoRA", color="#4C72B0",
+    bars_grpo = ax.bar(x + bar_width / 2, grpo_accs, bar_width,
+                        label="Qwen3-8B (GRPO)", color="#C0392B",
                         edgecolor="white")
 
-    # Add improvement arrows
+    # Add difference annotations -- red for degradation, green for improvement
     for j in range(len(datasets)):
-        if zs_accs[j] > 0 and lora_accs[j] > 0:
-            diff = lora_accs[j] - zs_accs[j]
+        if zs_accs[j] > 0 and grpo_accs[j] > 0:
+            diff = grpo_accs[j] - zs_accs[j]
             sign = "+" if diff > 0 else ""
             color = "#2ca02c" if diff > 0 else "#d62728"
-            mid_y = max(zs_accs[j], lora_accs[j]) + 0.03
-            ax.text(x[j], mid_y, f"{sign}{diff:.0%}",
-                    ha="center", fontsize=8, fontweight="bold", color=color)
-        for bars, vals in [(bars_zs, zs_accs), (bars_lora, lora_accs)]:
+            mid_y = max(zs_accs[j], grpo_accs[j]) + 0.03
+            ax.annotate(
+                f"{sign}{diff:.1%}",
+                xy=(x[j], mid_y), ha="center",
+                fontsize=9, fontweight="bold", color=color,
+                bbox=dict(boxstyle="round,pad=0.2", fc="white",
+                          ec=color, alpha=0.8, linewidth=1.2),
+            )
+        for bars, vals in [(bars_zs, zs_accs), (bars_grpo, grpo_accs)]:
             if vals[j] > 0:
                 ax.text(bars[j].get_x() + bars[j].get_width() / 2,
                         bars[j].get_height() + 0.005,
-                        f"{vals[j]:.0%}", ha="center", va="bottom",
+                        f"{vals[j]:.1%}", ha="center", va="bottom",
                         fontsize=7)
             elif vals[j] == 0:
                 ax.text(bars[j].get_x() + bars[j].get_width() / 2, 0.02,
-                        "—", ha="center", fontsize=7, color="gray")
+                        "---", ha="center", fontsize=7, color="gray")
 
     ax.set_ylabel("Overall Accuracy")
-    ax.set_title("(c) LoRA Fine-Tuning Impact")
+    ax.set_title("(c) Training Method Comparison (zero-shot vs GRPO)")
     ax.set_xticks(x)
     ax.set_xticklabels(ds_labels)
     ax.set_ylim(0, 1.05)
@@ -326,82 +331,83 @@ def plot_lora_improvement(ax):
     ax.spines["right"].set_visible(False)
 
 
-# ── Panel 4: End-to-End Benchmarks (WebShop / Mind2Web / Multimodal) ─
+# ── Panel 4: Mind2Web Teacher-Forcing Results ──────────────────────
+
+def _load_mind2web_checkpoint(path):
+    """Load a Mind2Web checkpoint and compute summary metrics."""
+    if not path.exists():
+        return None
+    with open(path) as f:
+        d = json.load(f)
+    results = d.get("results", [])
+    n = len(results)
+    if n == 0:
+        return None
+    completed = sum(1 for r in results if r.get("completed", False))
+    avg_reward = sum(r.get("reward", 0) for r in results) / n
+    total_steps, skill_correct = 0, 0
+    for r in results:
+        for s in r.get("steps", []):
+            total_steps += 1
+            if s.get("skill_correct", False):
+                skill_correct += 1
+    skill_acc = skill_correct / total_steps if total_steps else 0
+    return {
+        "n": n, "tcr": completed / n,
+        "avg_reward": avg_reward, "skill_acc": skill_acc,
+    }
+
 
 def plot_e2e_benchmarks(ax):
-    """Show end-to-end results when available, placeholder otherwise."""
-    benchmarks = []
+    """Show Mind2Web teacher-forcing TCR & reward for zero-shot vs GRPO."""
+    checkpoint_dir = RESULTS_DIR
 
-    # Check for WebShop results
-    for pattern in ["*webshop_metrics.json"]:
-        for f in METRICS_DIR.glob(pattern):
-            with open(f) as fh:
-                d = json.load(fh)
-            benchmarks.append({
-                "name": f"WebShop\n{d.get('model','?').split('/')[-1][:15]}",
-                "tcr": d.get("level1_tcr", 0),
-                "reward": d.get("average_reward", 0),
-                "type": "webshop",
-            })
+    configs = [
+        ("Zero-shot\n(test_task)", checkpoint_dir / "qwen3-8b_mind2web_test_task_checkpoint.json"),
+        ("GRPO\n(test_task)", checkpoint_dir / "qwen3-8b_lora_mind2web_test_task_checkpoint.json"),
+        ("GRPO\n(test_domain)", checkpoint_dir / "qwen3-8b_lora_mind2web_test_domain_checkpoint.json"),
+    ]
 
-    # Check for Mind2Web results
-    for pattern in ["*mind2web_metrics*.json"]:
-        for f in METRICS_DIR.glob(pattern):
-            with open(f) as fh:
-                d = json.load(fh)
-            benchmarks.append({
-                "name": f"Mind2Web\n{d.get('model','?').split('/')[-1][:15]}",
-                "tcr": d.get("level1_tcr", 0),
-                "skill_acc": d.get("skill_prediction_accuracy", 0),
-                "type": "mind2web",
-            })
+    labels, tcrs, rewards = [], [], []
+    for label, path in configs:
+        m = _load_mind2web_checkpoint(path)
+        if m:
+            labels.append(f"{label}\n(n={m['n']})")
+            tcrs.append(m["tcr"])
+            rewards.append(m["avg_reward"])
 
-    # Check for Multimodal results
-    for pattern in ["*vlm_metrics.json", "*clip_zeroshot_metrics.json"]:
-        for f in METRICS_DIR.glob(pattern):
-            with open(f) as fh:
-                d = json.load(fh)
-            benchmarks.append({
-                "name": f"Multimodal\n{d.get('mode','?')}",
-                "skill_acc": d.get("skill_prediction_accuracy", 0),
-                "type": "multimodal",
-            })
+    if not labels:
+        ax.text(0.5, 0.5, "No Mind2Web checkpoints found",
+                transform=ax.transAxes, ha="center", va="center",
+                fontsize=12, color="gray")
+        ax.set_title("(d) Mind2Web Teacher-Forcing")
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        return
 
-    if not benchmarks:
-        # Placeholder with expected experiments
-        expected = [
-            "WebShop\n(pending)", "Mind2Web\n(pending)",
-            "Qwen3-VL\n(pending)", "CLIP\n(pending)",
-        ]
-        x = np.arange(len(expected))
-        ax.bar(x, [0] * len(expected), 0.5, color="#E0E0E0", edgecolor="white")
-        for i, label in enumerate(expected):
-            ax.text(i, 0.05, label, ha="center", va="bottom",
-                    fontsize=8, color="gray", fontstyle="italic")
-        ax.set_title("(d) End-to-End & Multimodal (jobs running)")
-    else:
-        x = np.arange(len(benchmarks))
-        values = [b.get("tcr", b.get("skill_acc", 0)) for b in benchmarks]
-        type_colors = {
-            "webshop": "#DD8452",
-            "mind2web": "#55A868",
-            "multimodal": "#8172B3",
-        }
-        colors = [type_colors.get(b["type"], "#999") for b in benchmarks]
+    x = np.arange(len(labels))
+    bar_width = 0.35
 
-        bars = ax.bar(x, values, 0.6, color=colors, edgecolor="white")
-        for bar, v, b in zip(bars, values, benchmarks):
-            metric = "TCR" if "tcr" in b else "Skill Acc"
+    bars_tcr = ax.bar(x - bar_width / 2, tcrs, bar_width,
+                       label="Task Completion Rate", color="#55A868",
+                       edgecolor="white")
+    bars_rwd = ax.bar(x + bar_width / 2, rewards, bar_width,
+                       label="Avg Reward", color="#8172B3",
+                       edgecolor="white")
+
+    for bars, vals in [(bars_tcr, tcrs), (bars_rwd, rewards)]:
+        for bar, v in zip(bars, vals):
             ax.text(bar.get_x() + bar.get_width() / 2,
                     bar.get_height() + 0.01,
                     f"{v:.1%}", ha="center", va="bottom",
-                    fontsize=7, fontweight="bold")
-        ax.set_xticks(x)
-        ax.set_xticklabels([b["name"] for b in benchmarks], fontsize=7)
-        ax.set_title("(d) End-to-End & Multimodal Results")
+                    fontsize=7.5, fontweight="bold")
 
     ax.set_ylabel("Score")
+    ax.set_title("(d) Mind2Web Teacher-Forcing (zero-shot vs GRPO)")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, fontsize=8)
     ax.set_ylim(0, 1.05)
+    ax.legend(fontsize=8, loc="upper left")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 
@@ -413,7 +419,7 @@ def main():
 
     plot_skill_prediction(axes[0, 0])
     plot_baselines(axes[0, 1])
-    plot_lora_improvement(axes[1, 0])
+    plot_training_comparison(axes[1, 0])
     plot_e2e_benchmarks(axes[1, 1])
 
     fig.suptitle("InteraSkill: Comprehensive Model Comparison",

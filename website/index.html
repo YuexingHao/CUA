@@ -3,429 +3,586 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InteraSkill: Learning Reusable Skill Abstractions for Computer-Using Agents</title>
+<title>InteraSkill - Learning Skill Abstractions for Computer-Using Agents</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;
-  --slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;
-  --slate-100:#f1f5f9;--slate-50:#f8fafc;--white:#fff;
-  --blue-600:#2563eb;--blue-500:#3b82f6;--blue-400:#60a5fa;--blue-100:#dbeafe;--blue-50:#eff6ff;
-  --green-600:#16a34a;--green-500:#22c55e;--green-100:#dcfce7;
-  --red-500:#ef4444;--red-100:#fee2e2;
-  --amber-500:#f59e0b;--amber-100:#fef3c7;
-  --purple-500:#8b5cf6;--purple-100:#ede9fe;
-  --cyan-500:#06b6d4;
-  --radius:16px;--radius-sm:10px;--radius-xs:6px;
-  --shadow-sm:0 1px 3px rgba(0,0,0,.05);
-  --shadow:0 4px 12px rgba(0,0,0,.06);
-  --shadow-md:0 8px 24px rgba(0,0,0,.08);
-  --shadow-lg:0 20px 50px rgba(0,0,0,.12);
+  --ink: #0a0f1a;
+  --ink-soft: #1a2233;
+  --ink-muted: #2d3a4f;
+  --text: #c8d1e0;
+  --text-dim: #6b7a94;
+  --text-bright: #e8edf5;
+  --surface: #0e1422;
+  --surface-raised: #141c2e;
+  --surface-hover: #1a2540;
+  --border: #1e2a42;
+  --border-light: #263552;
+  --accent: #4f8fff;
+  --accent-glow: rgba(79,143,255,.15);
+  --accent-bright: #7ab4ff;
+  --success: #34d399;
+  --success-dim: rgba(52,211,153,.12);
+  --danger: #f87171;
+  --danger-dim: rgba(248,113,113,.1);
+  --danger-glow: rgba(248,113,113,.2);
+  --warn: #fbbf24;
+  --warn-dim: rgba(251,191,36,.1);
+  --purple: #a78bfa;
+  --purple-dim: rgba(167,139,250,.1);
+  --coral: #fb923c;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 5px;
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--white);color:var(--slate-800);line-height:1.7;-webkit-font-smoothing:antialiased;}
-.container{max-width:1100px;margin:0 auto;padding:0 32px;}
-a{color:var(--blue-600);text-decoration:none;}a:hover{text-decoration:underline;}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: var(--accent); color: #fff; }
+a { color: var(--accent-bright); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
 
-/* Animations */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
-@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* ===== NAV ===== */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,15,26,.8); backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner {
+  display: flex; align-items: center; height: 52px;
+  max-width: 1080px; margin: 0 auto; padding: 0 28px;
+}
+.topbar-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.15rem; color: var(--text-bright);
+  margin-right: auto; letter-spacing: -.01em;
+}
+.topbar-logo em { color: var(--accent); font-style: italic; }
+.topbar a.nav-link {
+  padding: 6px 14px; font-size: .8rem; color: var(--text-dim);
+  font-weight: 500; border-radius: 6px; transition: all .2s;
+  text-decoration: none;
+}
+.topbar a.nav-link:hover { color: var(--text-bright); background: var(--surface-hover); }
 
-/* Nav */
-.nav-full{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--slate-100);}
-.nav{display:flex;align-items:center;padding:0 32px;max-width:1100px;margin:0 auto;height:56px;}
-.nav-logo{font-size:.95rem;font-weight:800;color:var(--blue-600);margin-right:auto;letter-spacing:-.02em;}
-.nav a{padding:8px 16px;font-size:.82rem;color:var(--slate-500);font-weight:500;text-decoration:none;border-radius:8px;transition:all .2s;}
-.nav a:hover{color:var(--slate-800);background:var(--slate-50);text-decoration:none;}
-.nav a.active{color:var(--blue-600);background:var(--blue-50);}
+/* ===== HERO ===== */
+.hero {
+  position: relative; padding: 7rem 0 5rem; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(79,143,255,.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 85% 80%, rgba(167,139,250,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(248,113,113,.03) 0%, transparent 50%);
+}
+.hero .wrap { position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .72rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: .12em;
+  padding: 5px 14px; background: var(--accent-glow);
+  border: 1px solid rgba(79,143,255,.2); border-radius: 99px;
+  margin-bottom: 2rem;
+}
+.hero-eyebrow::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--success); box-shadow: 0 0 8px var(--success);
+  animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:.5} 50%{opacity:1} }
 
-/* Hero */
-.hero{background:linear-gradient(160deg,#0f172a 0%,#1e293b 40%,#1a2744 100%);color:#fff;padding:6rem 0 5rem;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:
-  radial-gradient(ellipse at 20% 30%,rgba(59,130,246,.15) 0%,transparent 60%),
-  radial-gradient(ellipse at 80% 70%,rgba(139,92,246,.1) 0%,transparent 50%);pointer-events:none;}
-.hero .container{position:relative;z-index:1;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.25);border-radius:99px;font-size:.78rem;font-weight:600;color:var(--blue-400);margin-bottom:1.5rem;}
-.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--green-500);animation:pulse 2s infinite;}
-.hero h1{font-size:3rem;font-weight:900;line-height:1.1;letter-spacing:-.04em;margin-bottom:1rem;max-width:700px;}
-.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--blue-400),var(--purple-500));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:1.15rem;color:var(--slate-300);max-width:620px;line-height:1.75;margin-bottom:2rem;}
-.hero-links{display:flex;gap:12px;flex-wrap:wrap;}
-.hero-links a{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:12px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .25s;}
-.hero-links .btn-primary{background:var(--blue-600);color:#fff;border:none;}
-.hero-links .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.4);text-decoration:none;}
-.hero-links .btn-outline{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.2);}
-.hero-links .btn-outline:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);transform:translateY(-2px);text-decoration:none;}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;margin-top:3rem;max-width:700px;}
-.hero-stat{padding:24px 20px;text-align:center;background:rgba(15,23,42,.5);backdrop-filter:blur(8px);}
-.hero-stat .num{font-size:2rem;font-weight:800;display:block;line-height:1;margin-bottom:4px;}
-.hero-stat .label{font-size:.7rem;color:var(--slate-400);text-transform:uppercase;letter-spacing:.08em;line-height:1.3;}
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 400; line-height: 1.12;
+  color: var(--text-bright); max-width: 720px;
+  letter-spacing: -.02em; margin-bottom: 1.2rem;
+}
+.hero h1 em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--accent-bright), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 1.08rem; color: var(--text-dim);
+  max-width: 560px; line-height: 1.8; margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 26px; border-radius: 10px; font-size: .85rem;
+  font-weight: 600; font-family: inherit; cursor: pointer;
+  border: none; transition: all .25s; text-decoration: none;
+}
+.btn-fill { background: var(--accent); color: #fff; }
+.btn-fill:hover { background: #3a7aee; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,143,255,.3); text-decoration:none; }
+.btn-ghost { background: var(--surface-raised); color: var(--text); border: 1px solid var(--border-light); }
+.btn-ghost:hover { background: var(--surface-hover); border-color: var(--text-dim); transform: translateY(-2px); text-decoration:none; }
 
-/* Section */
-section{padding:5rem 0;}
-.section-label{display:inline-block;font-size:.7rem;font-weight:700;color:var(--blue-600);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;}
-section h2{font-size:2rem;font-weight:800;letter-spacing:-.03em;color:var(--slate-900);margin-bottom:.5rem;line-height:1.2;}
-section .section-sub{font-size:1.05rem;color:var(--slate-500);max-width:600px;margin-bottom:2rem;}
-.alt-bg{background:var(--slate-50);}
+/* Hero metrics */
+.hero-metrics {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--border); border-radius: var(--radius); overflow: hidden;
+  max-width: 680px;
+}
+.hm {
+  padding: 22px 16px; text-align: center;
+  background: var(--surface-raised);
+}
+.hm-val {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.8rem; font-weight: 600; display: block; line-height: 1;
+  margin-bottom: 5px;
+}
+.hm-label {
+  font-size: .65rem; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .08em; line-height: 1.4;
+}
 
-/* Why CUA */
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:1rem;}
-.why-text h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem;color:var(--slate-900);}
-.why-text p{font-size:.93rem;color:var(--slate-600);margin-bottom:1rem;}
-.why-example{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.why-example-header{padding:12px 16px;background:var(--slate-50);border-bottom:1px solid var(--slate-200);font-size:.75rem;font-weight:600;color:var(--slate-500);text-transform:uppercase;letter-spacing:.06em;}
-.why-example-body{padding:16px;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.9;}
-.why-line{display:flex;gap:8px;align-items:flex-start;padding:2px 0;}
-.why-line .tag{font-size:.65rem;padding:2px 8px;border-radius:4px;font-weight:600;flex-shrink:0;margin-top:2px;}
-.tag-fail{background:var(--red-100);color:var(--red-500);}
-.tag-ok{background:var(--green-100);color:var(--green-600);}
-.tag-learn{background:var(--purple-100);color:var(--purple-500);}
+/* ===== SECTIONS ===== */
+section { padding: 5rem 0; }
+.section-tag {
+  font-size: .65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .14em; color: var(--accent); margin-bottom: .6rem;
+}
+section h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 400; color: var(--text-bright);
+  letter-spacing: -.02em; margin-bottom: .4rem; line-height: 1.2;
+}
+section .lead {
+  font-size: .95rem; color: var(--text-dim);
+  max-width: 540px; margin-bottom: 2rem;
+}
+.alt { background: var(--surface); }
+.divider { height: 1px; background: var(--border); margin: 0; border: none; }
 
-/* Problem cards */
-.problem-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:2rem;}
-.problem-card{padding:28px 24px;border-radius:var(--radius);border:1px solid var(--slate-200);background:var(--white);box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;}
-.problem-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
-.problem-icon{font-size:1.8rem;margin-bottom:12px;display:block;}
-.problem-card h4{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--slate-900);}
-.problem-card p{font-size:.85rem;color:var(--slate-500);line-height:1.7;}
+/* ===== PROBLEMS ===== */
+.problems { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.prob {
+  padding: 28px 24px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--surface-raised);
+  transition: border-color .3s, transform .3s;
+}
+.prob:hover { border-color: var(--border-light); transform: translateY(-3px); }
+.prob-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; filter: grayscale(.2); }
+.prob h4 { font-size: .95rem; font-weight: 600; color: var(--text-bright); margin-bottom: 6px; }
+.prob p { font-size: .82rem; color: var(--text-dim); line-height: 1.65; }
 
-/* Comparison */
-.compare-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-top:2rem;align-items:stretch;}
-.compare-card{border-radius:var(--radius);padding:28px;position:relative;}
-.compare-card.old{background:#fef2f2;border:1.5px solid #fecaca;}
-.compare-card.new{background:#f0fdf4;border:1.5px solid #bbf7d0;}
-.compare-arrow{display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--slate-300);}
-.compare-card h4{font-size:1rem;font-weight:700;margin-bottom:12px;}
-.compare-card.old h4{color:var(--red-500);}
-.compare-card.new h4{color:var(--green-600);}
-.compare-list{list-style:none;}
-.compare-list li{font-size:.84rem;padding:6px 0;display:flex;gap:8px;align-items:flex-start;color:var(--slate-700);line-height:1.5;}
-.compare-list li + li{border-top:1px solid rgba(0,0,0,.04);}
+/* ===== PIPELINE ===== */
+.pipeline { display: flex; align-items: stretch; gap: 0; margin-top: .5rem; }
+.pipe {
+  flex: 1; padding: 24px 20px; border: 1px solid var(--border);
+  background: var(--surface-raised); border-radius: var(--radius);
+  text-align: center; transition: transform .3s;
+}
+.pipe:hover { transform: translateY(-3px); }
+.pipe-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-size: .8rem; font-weight: 700; margin-bottom: 10px;
+}
+.pipe h4 { font-size: .88rem; font-weight: 600; color: var(--text-bright); margin-bottom: 5px; }
+.pipe p { font-size: .76rem; color: var(--text-dim); line-height: 1.6; }
+.pipe-metric {
+  display: inline-block; margin-top: 10px; padding: 4px 12px;
+  background: var(--accent-glow); border-radius: var(--radius-xs);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem; font-weight: 600; color: var(--accent-bright);
+}
+.pipe-arrow {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; flex-shrink: 0; color: var(--text-dim); font-size: 1.2rem;
+}
 
-/* Pipeline */
-.pipeline-wrap{display:flex;align-items:stretch;gap:0;margin:2rem 0;position:relative;}
-.pipe-step{flex:1;position:relative;padding:24px 20px;background:var(--white);border:1.5px solid var(--slate-200);border-radius:var(--radius);text-align:center;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;}
-.pipe-step:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
-.pipe-step .step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--blue-600);color:#fff;border-radius:50%;font-size:.85rem;font-weight:700;margin-bottom:10px;}
-.pipe-step h4{font-size:.95rem;font-weight:700;color:var(--slate-900);margin-bottom:6px;}
-.pipe-step p{font-size:.8rem;color:var(--slate-500);line-height:1.6;}
-.pipe-step .pipe-metric{margin-top:10px;padding:6px 12px;background:var(--blue-50);border-radius:var(--radius-xs);font-size:.78rem;font-weight:600;color:var(--blue-600);display:inline-block;}
-.pipe-connector{display:flex;align-items:center;justify-content:center;width:40px;flex-shrink:0;color:var(--slate-300);font-size:1.4rem;}
+/* ===== KEY FINDING (dramatic) ===== */
+.finding-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 1.5rem;
+}
+.finding-card {
+  padding: 32px 28px; border-radius: var(--radius);
+  position: relative; overflow: hidden;
+}
+.finding-card.win {
+  background: linear-gradient(135deg, rgba(52,211,153,.06), rgba(52,211,153,.02));
+  border: 1.5px solid rgba(52,211,153,.2);
+}
+.finding-card.fail {
+  background: linear-gradient(135deg, rgba(248,113,113,.06), rgba(248,113,113,.02));
+  border: 1.5px solid rgba(248,113,113,.2);
+}
+.finding-badge {
+  display: inline-block; font-size: .65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em;
+  padding: 3px 10px; border-radius: 4px; margin-bottom: 14px;
+}
+.finding-card.win .finding-badge { background: var(--success-dim); color: var(--success); }
+.finding-card.fail .finding-badge { background: var(--danger-dim); color: var(--danger); }
+.finding-card h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.35rem; color: var(--text-bright);
+  margin-bottom: 8px; line-height: 1.25;
+}
+.finding-card .big-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 2.8rem; font-weight: 600; display: block;
+  margin: 12px 0 8px; line-height: 1;
+}
+.finding-card.win .big-num { color: var(--success); }
+.finding-card.fail .big-num { color: var(--danger); }
+.finding-card .detail { font-size: .82rem; color: var(--text-dim); line-height: 1.7; }
+.finding-card .detail strong { color: var(--text); }
 
-/* Terminal */
-.terminal{background:#0c0e14;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.06);}
-.term-bar{padding:12px 16px;background:#161922;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.05);}
-.term-dot{width:12px;height:12px;border-radius:50%;}
-.td-r{background:#ff5f57;}.td-y{background:#febc2e;}.td-g{background:#28c840;}
-.term-title{font-size:.72rem;color:rgba(255,255,255,.3);margin-left:8px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em;}
-.term-body{padding:20px;min-height:340px;max-height:480px;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.9;}
-.sim-line{display:block;opacity:0;animation:countUp .4s ease forwards;}
-.sim-line.annotation{background:rgba(59,130,246,.08);border-left:3px solid var(--blue-500);margin:4px 0;padding:6px 12px;border-radius:0 6px 6px 0;font-size:.75rem;color:var(--blue-400);font-style:italic;}
-.t-prompt{color:#f97316;}.t-cmd{color:#c3e88d;}.t-info{color:#546e7a;}.t-ok{color:#28c840;}.t-warn{color:#febc2e;}.t-hl{color:#ffcb6b;}.t-api{color:#c792ea;}.t-white{color:#e2e8f0;}.t-dim{color:#4a5568;}
-.cursor{display:inline-block;width:8px;height:15px;background:#f97316;margin-left:2px;vertical-align:middle;animation:pulse 1s step-end infinite;}
-.sim-controls{display:flex;gap:10px;margin-top:14px;align-items:center;}
-.btn-sim{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--blue-600);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .25s;}
-.btn-sim:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.3);}
-.btn-sim:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
-.sim-status{font-size:.8rem;color:var(--slate-500);}
+/* ===== TABLES ===== */
+.table-card {
+  background: var(--surface-raised); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.table-title {
+  padding: 16px 20px; border-bottom: 1px solid var(--border);
+  font-size: .82rem; font-weight: 600; color: var(--text-bright);
+}
+table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+th {
+  padding: 11px 18px; text-align: left; font-size: .68rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--text-dim); background: rgba(255,255,255,.02);
+  border-bottom: 1px solid var(--border);
+}
+td { padding: 10px 18px; color: var(--text); }
+tr + tr { border-top: 1px solid var(--border); }
+tr:hover { background: rgba(255,255,255,.015); }
+.row-ours { background: var(--accent-glow) !important; }
+.row-ours td { color: var(--accent-bright); font-weight: 600; }
+.row-grpo { background: var(--danger-dim) !important; }
+.row-grpo td { color: var(--danger); }
+.val-best { color: var(--accent-bright); font-weight: 700; }
+.val-worst { color: var(--danger); font-weight: 600; }
+.val-drop {
+  display: inline-block; font-size: .7rem; font-weight: 600;
+  color: var(--danger); background: var(--danger-dim);
+  padding: 1px 6px; border-radius: 3px; margin-left: 4px;
+}
+.val-gain {
+  display: inline-block; font-size: .7rem; font-weight: 600;
+  color: var(--success); background: var(--success-dim);
+  padding: 1px 6px; border-radius: 3px; margin-left: 4px;
+}
 
-/* Results */
-.results-headline{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:3rem;}
-.result-card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);padding:28px 20px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .25s;}
-.result-card:hover{transform:translateY(-3px);}
-.result-card .big{font-size:2.6rem;font-weight:900;line-height:1;display:block;margin-bottom:6px;}
-.result-card .sub{font-size:.72rem;color:var(--slate-500);text-transform:uppercase;letter-spacing:.06em;line-height:1.4;}
+/* ===== BAR CHARTS (CSS) ===== */
+.chart-group { margin-bottom: 14px; }
+.chart-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.chart-label { width: 140px; font-size: .78rem; color: var(--text-dim); text-align: right; flex-shrink: 0; }
+.chart-track {
+  flex: 1; height: 26px; background: rgba(255,255,255,.03);
+  border-radius: 5px; overflow: hidden; position: relative;
+}
+.chart-bar {
+  height: 100%; border-radius: 5px;
+  transition: width 1.4s cubic-bezier(.22,1,.36,1);
+  display: flex; align-items: center; padding-left: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .7rem; font-weight: 600; color: #fff;
+}
+.chart-val { width: 60px; font-family: 'IBM Plex Mono', monospace; font-size: .78rem; font-weight: 600; text-align: right; flex-shrink: 0; }
 
-/* Tables */
-.table-wrap{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--slate-100);}
-table{width:100%;border-collapse:collapse;font-size:.86rem;}
-th{padding:14px 18px;text-align:left;font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-500);background:var(--slate-50);border-bottom:2px solid var(--slate-200);}
-td{padding:12px 18px;color:var(--slate-700);}
-tr+tr{border-top:1px solid var(--slate-100);}
-.row-ours{background:var(--blue-50);font-weight:600;}
-.row-ours td{color:var(--blue-600);}
-.val-best{font-weight:700;color:var(--blue-600);}
+/* ===== TWO COL ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
-/* Bar chart */
-.bar-group{margin-bottom:10px;}
-.bar-label-row{display:flex;justify-content:space-between;margin-bottom:4px;}
-.bar-name{font-size:.82rem;font-weight:500;color:var(--slate-700);}
-.bar-value{font-size:.82rem;font-weight:700;color:var(--slate-900);}
-.bar-track{height:28px;background:var(--slate-100);border-radius:6px;overflow:hidden;position:relative;}
-.bar-fill{height:100%;border-radius:6px;transition:width 1.2s cubic-bezier(.22,1,.36,1);display:flex;align-items:center;padding-left:10px;font-size:.72rem;font-weight:600;color:#fff;}
+/* ===== CALLOUT ===== */
+.callout {
+  padding: 20px 24px; border-radius: var(--radius-sm);
+  border-left: 3px solid; font-size: .84rem; line-height: 1.7;
+  margin-top: 1.5rem;
+}
+.callout-insight { background: var(--accent-glow); border-color: var(--accent); color: var(--text); }
+.callout-warn { background: var(--danger-dim); border-color: var(--danger); color: var(--text); }
+.callout strong { color: var(--text-bright); }
 
-/* Two col */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:2rem;}
+/* ===== BIBTEX ===== */
+.bib-block {
+  background: var(--surface-raised); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 24px;
+  font-family: 'IBM Plex Mono', monospace; font-size: .78rem;
+  line-height: 1.9; color: var(--success); white-space: pre-wrap;
+  position: relative; user-select: all;
+}
+.bib-copy {
+  position: absolute; top: 10px; right: 10px;
+  padding: 5px 14px; font-size: .7rem; font-weight: 600;
+  background: var(--surface-hover); color: var(--text-dim);
+  border: 1px solid var(--border); border-radius: 5px;
+  cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .2s;
+}
+.bib-copy:hover { background: var(--border); color: var(--text-bright); }
 
-/* Bibtex */
-.bibtex-wrap{background:#0f172a;border-radius:var(--radius);padding:20px 24px;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.8;color:#a6e3a1;position:relative;white-space:pre-wrap;user-select:all;box-shadow:var(--shadow-md);}
-.bibtex-copy{position:absolute;top:12px;right:12px;padding:6px 16px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.1);color:var(--slate-400);border:none;border-radius:6px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
-.bibtex-copy:hover{background:rgba(255,255,255,.2);color:#fff;}
+/* ===== FOOTER ===== */
+footer {
+  padding: 3rem 0 2rem; text-align: center;
+  border-top: 1px solid var(--border);
+}
+footer .f-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1rem; color: var(--text-dim); margin-bottom: 4px;
+}
+footer .f-sub { font-size: .75rem; color: var(--ink-muted); }
 
-/* Explore cards */
-.explore-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:2rem;}
-.explore-card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--radius);padding:28px 24px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .3s;text-decoration:none;display:block;}
-.explore-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);text-decoration:none;}
-.explore-card .card-icon{font-size:2.2rem;margin-bottom:12px;display:block;}
-.explore-card .card-title{font-size:1.05rem;font-weight:700;color:var(--slate-900);margin-bottom:6px;}
-.explore-card .card-desc{font-size:.82rem;color:var(--slate-500);line-height:1.6;}
+/* ===== REVEAL ===== */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+}
+.reveal.vis { opacity: 1; transform: translateY(0); }
 
-/* Footer */
-footer{background:var(--slate-900);color:var(--slate-400);text-align:center;padding:3rem 0 2rem;}
-footer .footer-title{font-size:1rem;font-weight:700;color:var(--slate-200);margin-bottom:4px;}
-footer .footer-sub{font-size:.8rem;color:var(--slate-500);}
-
-@media(max-width:900px){
-  .hero h1{font-size:2rem;}
-  .hero-stats{grid-template-columns:repeat(2,1fr);}
-  .why-grid,.two-col{grid-template-columns:1fr;}
-  .compare-grid{grid-template-columns:1fr;gap:16px;}
-  .compare-arrow{transform:rotate(90deg);}
-  .problem-cards{grid-template-columns:1fr;}
-  .results-headline{grid-template-columns:repeat(2,1fr);}
-  .pipeline-wrap{flex-direction:column;gap:12px;}
-  .pipe-connector{width:auto;height:24px;transform:rotate(90deg);}
-  .nav{flex-wrap:wrap;height:auto;padding:8px 16px;}
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
+  .hero-metrics { grid-template-columns: repeat(2, 1fr); }
+  .problems { grid-template-columns: 1fr; }
+  .pipeline { flex-direction: column; }
+  .pipe-arrow { width: auto; height: 24px; transform: rotate(90deg); }
+  .finding-split, .two-col { grid-template-columns: 1fr; }
+  .chart-label { width: 100px; font-size: .7rem; }
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<div class="nav-full">
-  <nav class="nav">
-    <div class="nav-logo">InteraSkill</div>
-    <a href="index.html" class="active">Home</a>
-    <a href="overview.html">Overview</a>
-    <a href="demos.html">Demos</a>
-    <a href="theory.html">Theory</a>
-    <a href="playground.html">Playground</a>
-  </nav>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-logo">Intera<em>Skill</em></div>
+    <a class="nav-link" href="#method">Method</a>
+    <a class="nav-link" href="#finding">Key Finding</a>
+    <a class="nav-link" href="#results">Results</a>
+    <a class="nav-link" href="#cite">Cite</a>
+  </div>
 </div>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="container">
-    <div class="hero-badge"><span></span> NeurIPS 2026 Submission</div>
-    <h1>Agents should <em>learn</em> skills,<br>not read manuals.</h1>
-    <p class="hero-sub">InteraSkill replaces hand-coded SKILL.md files with automatic skill discovery from interaction trajectories. Three phases &mdash; segment, embed, compose &mdash; yield reusable behaviors that generalize across domains.</p>
-    <div class="hero-links">
-      <a class="btn-primary" href="#">Paper PDF</a>
-      <a class="btn-outline" href="#">Code</a>
-      <a class="btn-outline" href="#results">Key Results</a>
+  <div class="wrap">
+    <div class="hero-eyebrow reveal">NeurIPS 2026</div>
+    <h1 class="reveal">Agents that <em>learn</em> skills from interaction &mdash; not from manuals</h1>
+    <p class="hero-sub reveal">InteraSkill replaces brittle, hand-coded SKILL.md files with automatic skill discovery from trajectory data. Supervised fine-tuning yields 85% accuracy &mdash; but reinforcement learning catastrophically fails. Understanding <em>why</em> is the key contribution.</p>
+    <div class="hero-actions reveal">
+      <a class="btn btn-fill" href="#">Paper PDF</a>
+      <a class="btn btn-ghost" href="https://github.com/YuexingHao/CUA">GitHub</a>
+      <a class="btn btn-ghost" href="#results">Results</a>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><span class="num" style="color:var(--blue-400);">85.0%</span><span class="label">Skill Prediction<br>Accuracy (IW)</span></div>
-      <div class="hero-stat"><span class="num" style="color:var(--green-500);">35.5%</span><span class="label">Task Completion<br>Rate (Mind2Web)</span></div>
-      <div class="hero-stat"><span class="num" style="color:var(--purple-500);">3.7x</span><span class="label">vs. Zero-Shot<br>Baseline</span></div>
-      <div class="hero-stat"><span class="num" style="color:var(--amber-500);">76%</span><span class="label">Cross-Domain<br>Transfer Retention</span></div>
+    <div class="hero-metrics reveal">
+      <div class="hm"><span class="hm-val" style="color:var(--accent-bright)">85.0%</span><span class="hm-label">Skill Prediction<br>Accuracy (LoRA)</span></div>
+      <div class="hm"><span class="hm-val" style="color:var(--success)">35.5%</span><span class="hm-label">Task Completion<br>Rate (Mind2Web)</span></div>
+      <div class="hm"><span class="hm-val" style="color:var(--danger)">4.4%</span><span class="hm-label">GRPO Collapse<br>(WebArena)</span></div>
+      <div class="hm"><span class="hm-val" style="color:var(--purple)">7</span><span class="hm-label">Models<br>Compared</span></div>
     </div>
   </div>
 </header>
 
-<!-- WHY CUA -->
-<section>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">The Problem</div>
-      <h2>Why do computer-using agents need better skills?</h2>
-      <p class="section-sub">Today's CUAs &mdash; agents that click, type, and scroll through GUIs to complete tasks &mdash; rely on <strong>manually authored skill files</strong> that break on every UI change and can't adapt to new domains.</p>
-    </div>
-    <div class="why-grid reveal">
-      <div class="why-text">
-        <h3>The real-world failure mode</h3>
-        <p>Consider an agent tasked with booking a flight. A <code>SKILL.md</code> agent has hard-coded coordinates for the "Search" button at position (450, 120). When the airline redesigns their page, the button moves &mdash; and the agent clicks empty space. It has <strong>no way to recover</strong> because it never understood <em>what</em> it was clicking, only <em>where</em>.</p>
-        <p>InteraSkill agents learn <strong>behavioral patterns</strong> from interaction data: "search" is a sequence of actions involving text input followed by a submit action, regardless of where UI elements appear. This understanding transfers across websites.</p>
-        <p>The stakes are real. Enterprise deployments require hundreds of hand-maintained skills per application. When UIs update &mdash; which they do constantly &mdash; teams spend weeks re-engineering skill files instead of building new capabilities.</p>
-      </div>
-      <div>
-        <div class="why-example">
-          <div class="why-example-header">Agent Execution Trace</div>
-          <div class="why-example-body">
-            <div class="why-line"><span class="tag tag-fail">SKILL.MD</span><span style="color:var(--slate-600)">click(450, 120) <span style="color:var(--red-500)">// button moved!</span></span></div>
-            <div class="why-line"><span class="tag tag-fail">RESULT</span><span style="color:var(--red-500)">ElementNotFound - silent failure</span></div>
-            <div class="why-line"><span class="tag tag-fail">SKILL.MD</span><span style="color:var(--slate-600)">retry click(450, 120) <span style="color:var(--red-500)">// same result</span></span></div>
-            <div class="why-line" style="margin:8px 0;border-top:1px dashed var(--slate-200);"></div>
-            <div class="why-line"><span class="tag tag-learn">INTERASKILL</span><span style="color:var(--slate-600)">skill: search_navigate (z=0.87)</span></div>
-            <div class="why-line"><span class="tag tag-ok">VISUAL</span><span style="color:var(--slate-600)">detect search input &rarr; type query</span></div>
-            <div class="why-line"><span class="tag tag-ok">VISUAL</span><span style="color:var(--slate-600)">detect submit element &rarr; click</span></div>
-            <div class="why-line"><span class="tag tag-ok">SUCCESS</span><span style="color:var(--green-600)">Skill completed in 3 actions</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<hr class="divider">
 
-<!-- THREE PROBLEMS -->
-<section class="alt-bg">
-  <div class="container">
+<!-- PROBLEM -->
+<section>
+  <div class="wrap">
     <div class="reveal">
-      <div class="section-label">Limitations of SKILL.md</div>
-      <h2>Three fundamental problems with manual skills</h2>
+      <div class="section-tag">The Problem</div>
+      <h2>SKILL.md doesn't scale</h2>
+      <p class="lead">Computer-using agents rely on hand-coded skill files that map intents to fixed UI coordinates. Three fundamental problems emerge at scale.</p>
     </div>
-    <div class="problem-cards reveal">
-      <div class="problem-card">
-        <span class="problem-icon">&#128165;</span>
+    <div class="problems reveal">
+      <div class="prob">
+        <span class="prob-icon">&#9889;</span>
         <h4>Brittleness</h4>
-        <p>Hard-coded coordinates and selectors break on any UI change &mdash; layout shifts, element renaming, even font size changes. A single CSS update can disable an entire skill library.</p>
+        <p>Hard-coded coordinates and selectors break on any UI change. A single CSS update disables entire skill libraries.</p>
       </div>
-      <div class="problem-card">
-        <span class="problem-icon">&#128274;</span>
+      <div class="prob">
+        <span class="prob-icon">&#128274;</span>
         <h4>Inflexibility</h4>
-        <p>Every new interaction pattern requires a human to write a new skill definition. Agents can't discover behaviors autonomously &mdash; they're limited to what was anticipated and hard-coded.</p>
+        <p>Every new interaction pattern requires manual engineering. Agents can't discover behaviors autonomously.</p>
       </div>
-      <div class="problem-card">
-        <span class="problem-icon">&#128200;</span>
-        <h4>Scalability Crisis</h4>
-        <p>Enterprise deployments need hundreds of skills per application. With 50+ apps and monthly UI updates, maintenance costs grow exponentially. This doesn't scale.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARISON -->
-<section>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Our Approach</div>
-      <h2>From hard-coded to learned</h2>
-      <p class="section-sub">InteraSkill replaces manual engineering with a data-driven pipeline that discovers, embeds, and composes skills automatically.</p>
-    </div>
-    <div class="compare-grid reveal">
-      <div class="compare-card old">
-        <h4>SKILL.md Agent (Status Quo)</h4>
-        <ul class="compare-list">
-          <li><span style="color:var(--red-500)">&#x2717;</span> Hard-coded x,y coordinates break on UI changes</li>
-          <li><span style="color:var(--red-500)">&#x2717;</span> Each new domain requires manual re-engineering</li>
-          <li><span style="color:var(--red-500)">&#x2717;</span> Hundreds of skills to write and maintain per app</li>
-          <li><span style="color:var(--red-500)">&#x2717;</span> No failure detection &mdash; fails silently</li>
-          <li><span style="color:var(--red-500)">&#x2717;</span> 14% accuracy on diverse workflows</li>
-        </ul>
-      </div>
-      <div class="compare-arrow">&rarr;</div>
-      <div class="compare-card new">
-        <h4>InteraSkill Agent (Ours)</h4>
-        <ul class="compare-list">
-          <li><span style="color:var(--green-600)">&#x2713;</span> Learns behavioral patterns from trajectory data</li>
-          <li><span style="color:var(--green-600)">&#x2713;</span> Skills transfer across domains (76% retention)</li>
-          <li><span style="color:var(--green-600)">&#x2713;</span> Zero manual skill engineering required</li>
-          <li><span style="color:var(--green-600)">&#x2713;</span> Reasons about failures and adapts</li>
-          <li><span style="color:var(--green-600)">&#x2713;</span> 85% accuracy with fine-tuned LLM</li>
-        </ul>
+      <div class="prob">
+        <span class="prob-icon">&#128200;</span>
+        <h4>Scalability</h4>
+        <p>Enterprise deployments need hundreds of skills per app. Maintenance costs grow exponentially with UI updates.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PIPELINE -->
-<section class="alt-bg">
-  <div class="container">
+<hr class="divider">
+
+<!-- METHOD -->
+<section class="alt" id="method">
+  <div class="wrap">
     <div class="reveal">
-      <div class="section-label">Method</div>
+      <div class="section-tag">Method</div>
       <h2>Three-phase pipeline</h2>
-      <p class="section-sub">Raw interaction trajectories in, reusable skill compositions out.</p>
+      <p class="lead">Raw interaction trajectories in, reusable skill compositions out. No manual skill engineering required.</p>
     </div>
-    <div class="pipeline-wrap reveal">
-      <div class="pipe-step">
-        <div class="step-num">1</div>
-        <h4>Trajectory Segmentation</h4>
-        <p>Detect skill boundaries via action-space discontinuities. Partitions raw trajectories into candidate skill segments.</p>
-        <div class="pipe-metric">F1 = 0.851 (WebArena)</div>
+    <div class="pipeline reveal">
+      <div class="pipe">
+        <div class="pipe-num">1</div>
+        <h4>Segment</h4>
+        <p>Detect skill boundaries via action-space discontinuities in raw trajectories.</p>
+        <div class="pipe-metric">F1 = 0.851</div>
       </div>
-      <div class="pipe-connector">&rarr;</div>
-      <div class="pipe-step">
-        <div class="step-num">2</div>
-        <h4>Contrastive Embedding</h4>
-        <p>Cluster segments with Wasserstein distance, then refine with InfoNCE contrastive learning into a 16-dim skill space.</p>
+      <div class="pipe-arrow">&rarr;</div>
+      <div class="pipe">
+        <div class="pipe-num">2</div>
+        <h4>Embed</h4>
+        <p>Cluster segments with Wasserstein distance, then refine with InfoNCE contrastive learning.</p>
         <div class="pipe-metric">NMI: 0.531 &rarr; 0.871</div>
       </div>
-      <div class="pipe-connector">&rarr;</div>
-      <div class="pipe-step">
-        <div class="step-num">3</div>
-        <h4>LLM Skill Composition</h4>
-        <p>Fine-tune Qwen3-8B with LoRA on multi-turn conversations with reasoning traces and failure recovery.</p>
+      <div class="pipe-arrow">&rarr;</div>
+      <div class="pipe">
+        <div class="pipe-num">3</div>
+        <h4>Compose</h4>
+        <p>Fine-tune an LLM on multi-turn conversations with reasoning traces and failure recovery.</p>
         <div class="pipe-metric">85.0% accuracy</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- LIVE SIMULATION -->
-<section id="simulation">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Live Simulation</div>
-      <h2>Watch the agent discover and compose skills</h2>
-      <p class="section-sub">This simulation replays a WebArena agent session, showing how InteraSkill segments actions into skills, selects skill compositions, and handles failures in real-time. <strong>Annotations in blue</strong> explain each step.</p>
-    </div>
-    <div class="reveal">
-      <div class="terminal">
-        <div class="term-bar">
-          <div class="term-dot td-r"></div><div class="term-dot td-y"></div><div class="term-dot td-g"></div>
-          <span class="term-title">interaskill-runtime &middot; webarena-map-navigation</span>
-        </div>
-        <div class="term-body" id="simOutput">
-          <span class="sim-line" style="opacity:1"><span class="t-info"># Click "Run Simulation" to see the full pipeline in action</span></span>
-          <span class="sim-line" style="opacity:1"><span class="cursor"></span></span>
-        </div>
-      </div>
-      <div class="sim-controls">
-        <button class="btn-sim" id="simBtn" onclick="runSim()">&#9654; Run Simulation</button>
-        <span class="sim-status" id="simStatus"></span>
-      </div>
+    <div class="callout callout-insight reveal" style="margin-top:2rem;">
+      <strong>Phase 3 is where it gets interesting.</strong> We compare two fine-tuning strategies &mdash; supervised LoRA and GRPO reinforcement learning &mdash; and find they produce opposite outcomes. LoRA yields a 4.6x gain; GRPO causes catastrophic forgetting.
     </div>
   </div>
 </section>
 
-<!-- KEY RESULTS -->
-<section class="alt-bg" id="results">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Results</div>
-      <h2>Key experimental findings</h2>
-      <p class="section-sub">Evaluated across 4 benchmarks, 6 models, and 3 composition architectures.</p>
-    </div>
+<hr class="divider">
 
-    <div class="results-headline reveal">
-      <div class="result-card"><span class="big" style="color:var(--blue-600);">85.0%</span><span class="sub">Skill Prediction<br>Accuracy (IW)</span></div>
-      <div class="result-card"><span class="big" style="color:var(--green-600);">35.5%</span><span class="sub">Task Completion<br>Rate (Mind2Web)</span></div>
-      <div class="result-card"><span class="big" style="color:var(--purple-500);">0.871</span><span class="sub">Clustering NMI<br>(InfoNCE)</span></div>
-      <div class="result-card"><span class="big" style="color:var(--amber-500);">6&times;</span><span class="sub">vs. SKILL.md<br>Baseline</span></div>
-    </div>
-
-    <!-- Six-model comparison -->
+<!-- KEY FINDING -->
+<section id="finding">
+  <div class="wrap">
     <div class="reveal">
-      <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Six-Model Comparison Across Benchmarks</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Model</th><th>Params</th><th>IW (Enterprise)</th><th>WebArena</th><th>BrowseComp+</th></tr>
-          </thead>
-          <tbody>
-            <tr class="row-ours"><td>Qwen3-8B (LoRA)</td><td>8B</td><td class="val-best">85.0%</td><td>43.7%</td><td>44.8%</td></tr>
-            <tr><td>Llama-3.1-70B</td><td>70B</td><td>30.0%</td><td class="val-best">56.2%</td><td>51.9%</td></tr>
-            <tr><td>OLMo-3-7B</td><td>7B</td><td>14.3%</td><td>54.5%</td><td class="val-best">61.4%</td></tr>
-            <tr><td>Qwen3-8B (zero-shot)</td><td>8B</td><td>18.5%</td><td>55.8%</td><td>43.5%</td></tr>
-            <tr><td>DeepSeek-R1-Distill-32B</td><td>32B</td><td>14.3%</td><td>45.1%</td><td>0.05%</td></tr>
-            <tr><td>Gemma-4-31B</td><td>31B</td><td>16.5%</td><td>37.7%</td><td>11.2%</td></tr>
-          </tbody>
-        </table>
+      <div class="section-tag">Key Finding</div>
+      <h2>Supervised fine-tuning succeeds. RL catastrophically fails.</h2>
+      <p class="lead">Same base model (Qwen3-8B). Same skill prediction task. Radically different outcomes depending on the learning algorithm.</p>
+    </div>
+    <div class="finding-split reveal">
+      <div class="finding-card win">
+        <div class="finding-badge">Supervised LoRA</div>
+        <h3>Behavioral cloning works</h3>
+        <span class="big-num">85.0%</span>
+        <p class="detail">
+          LoRA fine-tuning on 1,275 multi-turn conversations with reasoning traces achieves <strong>85% skill prediction</strong> on enterprise workflows &mdash; a <strong>4.6x gain</strong> over zero-shot Qwen3-8B and <strong>2.8x</strong> over Llama-70B (9x larger).
+          <br><br>
+          On Mind2Web, task completion jumps from 9.5% to <strong>35.5%</strong>, with <strong>76% cross-domain retention</strong>.
+        </p>
       </div>
-      <p style="font-size:.8rem;color:var(--slate-500);margin-top:.5rem;">LoRA fine-tuning on interaction data yields 4.6x gains over the same model zero-shot, outperforming 9x larger models on in-domain tasks.</p>
+      <div class="finding-card fail">
+        <div class="finding-badge">GRPO Reinforcement Learning</div>
+        <h3>Reward hacking destroys generalization</h3>
+        <span class="big-num">4.4%</span>
+        <p class="detail">
+          GRPO training converges in reward (0.45 &rarr; 1.37) but <strong>degrades evaluation</strong> across all benchmarks. WebArena collapses from 55.8% to <strong>4.4%</strong> &mdash; a 92% relative drop.
+          <br><br>
+          <strong>Root causes:</strong> reward saturation (near-zero variance eliminates relative ranking signal), distributional collapse to 12 synthetic skill types, and catastrophic forgetting of general capabilities.
+        </p>
+      </div>
     </div>
 
-    <!-- Mind2Web results -->
-    <div class="two-col reveal" style="margin-top:2.5rem;">
+    <!-- GRPO degradation chart -->
+    <div class="reveal" style="margin-top:2.5rem;">
+      <h3 style="font-size:1rem;font-weight:600;color:var(--text-bright);margin-bottom:1rem;">GRPO Degradation vs. Base Model</h3>
+      <div class="chart-group" id="grpo-chart">
+        <div class="chart-row">
+          <span class="chart-label">IW (Enterprise)</span>
+          <div class="chart-track">
+            <div class="chart-bar" style="width:0;background:var(--text-dim);" data-w="18.5">18.5%</div>
+          </div>
+          <span class="chart-val" style="color:var(--text-dim)">18.5%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label" style="color:var(--danger)">IW (GRPO)</span>
+          <div class="chart-track">
+            <div class="chart-bar" style="width:0;background:var(--danger);" data-w="15.8"></div>
+          </div>
+          <span class="chart-val" style="color:var(--danger)">15.8% <span class="val-drop">-15%</span></span>
+        </div>
+        <div style="height:8px"></div>
+        <div class="chart-row">
+          <span class="chart-label">WebArena (Base)</span>
+          <div class="chart-track">
+            <div class="chart-bar" style="width:0;background:var(--accent);" data-w="55.8">55.8%</div>
+          </div>
+          <span class="chart-val" style="color:var(--accent)">55.8%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label" style="color:var(--danger)">WebArena (GRPO)</span>
+          <div class="chart-track">
+            <div class="chart-bar" style="width:0;background:var(--danger);" data-w="4.4"></div>
+          </div>
+          <span class="chart-val" style="color:var(--danger)">4.4% <span class="val-drop">-92%</span></span>
+        </div>
+        <div style="height:8px"></div>
+        <div class="chart-row">
+          <span class="chart-label">BrowseComp+ (Base)</span>
+          <div class="chart-track">
+            <div class="chart-bar" style="width:0;background:var(--purple);" data-w="43.5">43.5%</div>
+          </div>
+          <span class="chart-val" style="color:var(--purple)">43.5%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label" style="color:var(--danger)">BrowseComp+ (GRPO)</span>
+          <div class="chart-track">
+            <div class="chart-bar" style="width:0;background:var(--danger);" data-w="36.8"></div>
+          </div>
+          <span class="chart-val" style="color:var(--danger)">36.8% <span class="val-drop">-15%</span></span>
+        </div>
+      </div>
+      <div class="callout callout-warn reveal">
+        <strong>Why does GRPO fail?</strong> The composite reward (+1.0 correct skill, +0.3 format, +0.1 reasoning) saturates early, leaving near-zero variance across candidates. GRPO's relative ranking mechanism requires meaningful reward differences &mdash; without them, training degenerates into random optimization that destroys the base model's prior knowledge.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- RESULTS -->
+<section class="alt" id="results">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Results</div>
+      <h2>Seven-model comparison across three benchmarks</h2>
+      <p class="lead">Next-skill prediction accuracy (%). LoRA dominates in-domain; zero-shot large models win out-of-distribution.</p>
+    </div>
+
+    <div class="table-card reveal">
+      <div class="table-title">Skill Prediction Accuracy &mdash; Next-Skill</div>
+      <table>
+        <thead>
+          <tr><th>Model</th><th>Params</th><th>IW (Enterprise)</th><th>WebArena</th><th>BrowseComp+</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-ours"><td>Qwen3-8B (LoRA)</td><td>8B</td><td class="val-best">85.0%</td><td>43.7%</td><td>44.8%</td></tr>
+          <tr><td>Llama-3.1-70B</td><td>70B</td><td>30.0%</td><td class="val-best">56.2%</td><td>51.9%</td></tr>
+          <tr><td>Qwen3-8B (zero-shot)</td><td>8B</td><td>18.5%</td><td>55.8%</td><td>43.5%</td></tr>
+          <tr><td>OLMo-3-7B</td><td>7B</td><td>14.3%</td><td>54.5%</td><td class="val-best">61.4%</td></tr>
+          <tr><td>DeepSeek-R1-32B</td><td>32B</td><td>14.3%</td><td>45.1%</td><td class="val-worst">0.05%</td></tr>
+          <tr><td>Gemma-4-31B</td><td>31B</td><td>16.5%</td><td>37.7%</td><td>11.2%</td></tr>
+          <tr class="row-grpo"><td>Qwen3-8B (GRPO)</td><td>8B</td><td class="val-worst">15.8%</td><td class="val-worst">4.4%</td><td>36.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mind2Web + Baselines -->
+    <div class="two-col reveal" style="margin-top:2rem;">
       <div>
-        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Mind2Web End-to-End Results</h3>
-        <div class="table-wrap">
+        <div class="table-card">
+          <div class="table-title">Mind2Web End-to-End (Teacher Forcing)</div>
           <table>
             <thead><tr><th>Configuration</th><th>TCR</th><th>Action Acc.</th></tr></thead>
             <tbody>
@@ -437,82 +594,128 @@ footer .footer-sub{font-size:.8rem;color:var(--slate-500);}
         </div>
       </div>
       <div>
-        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Per-Domain Breakdown</h3>
-        <div class="bar-group">
-          <div class="bar-label-row"><span class="bar-name">Entertainment</span><span class="bar-value">49.1%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:0;background:linear-gradient(90deg,var(--blue-600),var(--blue-400));" data-w="49.1"></div></div>
+        <div class="table-card">
+          <div class="table-title">Baseline Comparison (IW)</div>
+          <table>
+            <thead><tr><th>Method</th><th>IW Acc.</th><th>WA Acc.</th></tr></thead>
+            <tbody>
+              <tr><td>SKILL.md</td><td>14.0%</td><td>8.7%</td></tr>
+              <tr><td>Frequency</td><td>34.9%</td><td>28.5%</td></tr>
+              <tr><td>AWM</td><td>33.4%</td><td class="val-best">78.8%</td></tr>
+              <tr><td>Transformer</td><td>34.9%</td><td>41.0%</td></tr>
+              <tr class="row-ours"><td>Qwen3-8B LoRA</td><td class="val-best">85.0%</td><td>43.7%</td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="bar-group">
-          <div class="bar-label-row"><span class="bar-name">Shopping</span><span class="bar-value">41.3%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:0;background:linear-gradient(90deg,var(--purple-500),#a78bfa);" data-w="41.3"></div></div>
-        </div>
-        <div class="bar-group">
-          <div class="bar-label-row"><span class="bar-name">Travel</span><span class="bar-value">21.3%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:0;background:linear-gradient(90deg,var(--amber-500),#fbbf24);" data-w="21.3"></div></div>
-        </div>
-        <p style="font-size:.78rem;color:var(--slate-400);margin-top:8px;">Travel workflows are hardest due to complex multi-step booking patterns.</p>
       </div>
     </div>
 
-    <!-- Baselines -->
+    <!-- Per-domain bars -->
+    <div class="reveal" style="margin-top:2rem;">
+      <h3 style="font-size:1rem;font-weight:600;color:var(--text-bright);margin-bottom:1rem;">Mind2Web Per-Domain Task Completion</h3>
+      <div id="domain-chart">
+        <div class="chart-row">
+          <span class="chart-label">Entertainment</span>
+          <div class="chart-track"><div class="chart-bar" style="width:0;background:linear-gradient(90deg,var(--accent),var(--accent-bright));" data-w="49.1">49.1%</div></div>
+          <span class="chart-val" style="color:var(--accent-bright)">49.1%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Shopping</span>
+          <div class="chart-track"><div class="chart-bar" style="width:0;background:linear-gradient(90deg,var(--purple),#c4b5fd);" data-w="41.3">41.3%</div></div>
+          <span class="chart-val" style="color:var(--purple)">41.3%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Travel</span>
+          <div class="chart-track"><div class="chart-bar" style="width:0;background:linear-gradient(90deg,var(--coral),#fdba74);" data-w="21.3">21.3%</div></div>
+          <span class="chart-val" style="color:var(--coral)">21.3%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture comparison -->
+    <div class="reveal" style="margin-top:2rem;">
+      <h3 style="font-size:1rem;font-weight:600;color:var(--text-bright);margin-bottom:1rem;">Composition Architecture Comparison</h3>
+      <div id="arch-chart">
+        <div class="chart-row">
+          <span class="chart-label">MLP</span>
+          <div class="chart-track"><div class="chart-bar" style="width:0;background:var(--text-dim);" data-w="21">21%</div></div>
+          <span class="chart-val" style="color:var(--text-dim)">21.0%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Transformer</span>
+          <div class="chart-track"><div class="chart-bar" style="width:0;background:var(--warn);" data-w="34.9">34.9%</div></div>
+          <span class="chart-val" style="color:var(--warn)">34.9%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Qwen3-8B LoRA</span>
+          <div class="chart-track"><div class="chart-bar" style="width:0;background:linear-gradient(90deg,var(--accent),var(--success));" data-w="85">85%</div></div>
+          <span class="chart-val" style="color:var(--success)">85.0%</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label" style="color:var(--danger)">Qwen3-8B GRPO</span>
+          <div class="chart-track"><div class="chart-bar" style="width:0;background:var(--danger);" data-w="15.8"></div></div>
+          <span class="chart-val" style="color:var(--danger)">15.8%</span>
+        </div>
+      </div>
+      <div class="callout callout-insight reveal">
+        <strong>The progression from MLP (21%) to Transformer (35%) to LLM (85%)</strong> demonstrates that skill composition is a contextual reasoning problem, not pattern matching. The GRPO result shows that reward optimization is not a substitute for learning from diverse demonstrations.
+      </div>
+    </div>
+
+    <!-- What's running -->
     <div class="reveal" style="margin-top:2.5rem;">
-      <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Baseline Comparison (IW Dataset)</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Method</th><th>Type</th><th>IW Accuracy</th><th>WebArena Accuracy</th><th>Edit Distance</th></tr></thead>
-          <tbody>
-            <tr><td>SKILL.md</td><td>Fixed table</td><td>14.0%</td><td>8.7%</td><td>0.633</td></tr>
-            <tr><td>Frequency</td><td>Most common</td><td>34.9%</td><td>28.5%</td><td>0.480</td></tr>
-            <tr><td>AWM</td><td>Learned transitions</td><td>33.4%</td><td class="val-best">78.8%</td><td>0.479</td></tr>
-            <tr><td>Transformer (ours)</td><td>Sequence model</td><td>34.9%</td><td>41.0%</td><td>0.480</td></tr>
-            <tr class="row-ours"><td>Qwen3-8B LoRA (ours)</td><td>Fine-tuned LLM</td><td class="val-best">85.0%</td><td>43.7%</td><td class="val-best">0.148</td></tr>
-          </tbody>
-        </table>
+      <div style="padding:24px;border-radius:var(--radius);border:1px dashed var(--border-light);background:rgba(255,255,255,.01);">
+        <h3 style="font-size:.95rem;font-weight:600;color:var(--warn);margin-bottom:8px;">&#9203; Full Trajectory Evaluation In Progress</h3>
+        <p style="font-size:.84rem;color:var(--text-dim);line-height:1.7;">
+          All 7 models are being evaluated in <strong>composition mode</strong> (autoregressive &mdash; model uses its own predicted actions in history). This tests real task completion where errors compound. Results coming soon.
+        </p>
       </div>
-      <p style="font-size:.8rem;color:var(--slate-500);margin-top:.5rem;">AWM excels on homogeneous WebArena (78.8%) via learned self-transitions, but plateaus at 33.4% on diverse enterprise workflows where contextual reasoning is needed.</p>
     </div>
   </div>
 </section>
 
-<!-- EXPLORE -->
+<hr class="divider">
+
+<!-- TAKEAWAYS -->
 <section>
-  <div class="container">
+  <div class="wrap">
     <div class="reveal">
-      <div class="section-label">Explore</div>
-      <h2>Dive deeper</h2>
-      <p class="section-sub">Navigate through interactive demos, theoretical foundations, and experimental visualizations.</p>
+      <div class="section-tag">Takeaways</div>
+      <h2>What we learned</h2>
     </div>
-    <div class="explore-grid reveal">
-      <a class="explore-card" href="overview.html">
-        <span class="card-icon">&#128202;</span>
-        <div class="card-title">Full Overview</div>
-        <div class="card-desc">Pipeline details, all experimental figures, results across all phases and benchmarks.</div>
-      </a>
-      <a class="explore-card" href="demos.html">
-        <span class="card-icon">&#127916;</span>
-        <div class="card-title">Interaction Demos</div>
-        <div class="card-desc">WebArena scenario replays, failure mode analysis, and interactive chat demos with skill composition.</div>
-      </a>
-      <a class="explore-card" href="theory.html">
-        <span class="card-icon">&#128218;</span>
-        <div class="card-title">Theory</div>
-        <div class="card-desc">Key equations explained step-by-step: InfoNCE, Wasserstein clustering, hierarchical options framework.</div>
-      </a>
-      <a class="explore-card" href="playground.html">
-        <span class="card-icon">&#127918;</span>
-        <div class="card-title">Playground</div>
-        <div class="card-desc">Interactive t-SNE visualization, skill composition sandbox, and trajectory replay player.</div>
-      </a>
+    <div class="problems reveal" style="grid-template-columns:1fr 1fr;">
+      <div class="prob" style="border-color:rgba(52,211,153,.2);">
+        <span class="prob-icon" style="filter:none;">&#10003;</span>
+        <h4 style="color:var(--success);">Training signal &gt; model scale</h4>
+        <p>An 8B model fine-tuned on interaction data outperforms a 70B model zero-shot by 2.8x. What you learn from matters more than parameter count.</p>
+      </div>
+      <div class="prob" style="border-color:rgba(248,113,113,.2);">
+        <span class="prob-icon" style="filter:none;">&#10007;</span>
+        <h4 style="color:var(--danger);">Naive RL destroys generalization</h4>
+        <p>GRPO with coarse rewards on synthetic data causes distributional collapse. RL for skill composition needs KL regularization, multi-domain data, or finer-grained rewards.</p>
+      </div>
+      <div class="prob" style="border-color:rgba(167,139,250,.2);">
+        <span class="prob-icon" style="filter:none;">&#127760;</span>
+        <h4 style="color:var(--purple);">Skills transfer across domains</h4>
+        <p>Cross-domain evaluation retains 76% of in-domain performance, suggesting learned skill abstractions capture domain-agnostic behavioral patterns.</p>
+      </div>
+      <div class="prob" style="border-color:rgba(251,191,36,.2);">
+        <span class="prob-icon" style="filter:none;">&#128293;</span>
+        <h4 style="color:var(--warn);">No single model dominates</h4>
+        <p>Llama-70B leads on WebArena, OLMo-7B on BrowseComp+, LoRA-Qwen on IW. The best approach depends on domain diversity and task structure.</p>
+      </div>
     </div>
   </div>
 </section>
+
+<hr class="divider">
 
 <!-- CITATION -->
-<section class="alt-bg">
-  <div class="container reveal">
-    <div class="section-label">Reference</div>
+<section class="alt" id="cite">
+  <div class="wrap reveal">
+    <div class="section-tag">Reference</div>
     <h2>Citation</h2>
-    <div class="bibtex-wrap" id="bibtex-block"><button class="bibtex-copy" onclick="copyBibtex()">Copy</button>@inproceedings{interaskill2026,
+    <div class="bib-block" id="bib"><button class="bib-copy" onclick="copyBib()">Copy</button>@inproceedings{interaskill2026,
   title     = {InteraSkill: Learning Reusable Skill Abstractions
                for Computer-Using Agents from Interaction Trajectories},
   author    = {Anonymous},
@@ -523,145 +726,39 @@ footer .footer-sub{font-size:.8rem;color:var(--slate-500);}
 </section>
 
 <footer>
-  <div class="container">
-    <div class="footer-title">InteraSkill</div>
-    <div class="footer-sub">NeurIPS 2026 Submission &middot; Anonymous Authors</div>
+  <div class="wrap">
+    <div class="f-title">InteraSkill</div>
+    <div class="f-sub">NeurIPS 2026 &middot; Anonymous Authors</div>
   </div>
 </footer>
 
 <script>
 /* Reveal on scroll */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: .06, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: .05, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-/* Animate bars on scroll */
+/* Animate chart bars on scroll */
 const barObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      e.target.querySelectorAll('.bar-fill').forEach(bar => {
+      e.target.querySelectorAll('.chart-bar').forEach(bar => {
         const w = bar.getAttribute('data-w');
-        if (w) bar.style.width = w + '%';
+        if (w) setTimeout(() => { bar.style.width = w + '%'; }, 100);
       });
     }
   });
-}, { threshold: .3 });
-document.querySelectorAll('.bar-group').forEach(el => barObs.observe(el.closest('.two-col') || el));
+}, { threshold: .2 });
+document.querySelectorAll('#grpo-chart, #domain-chart, #arch-chart').forEach(el => barObs.observe(el));
 
 /* Copy BibTeX */
-function copyBibtex() {
-  const text = document.getElementById('bibtex-block').innerText.replace('Copy','').trim();
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.bibtex-copy');
-    btn.textContent = 'Copied!';
-    setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+function copyBib() {
+  const t = document.getElementById('bib').innerText.replace('Copy','').trim();
+  navigator.clipboard.writeText(t).then(() => {
+    const b = document.querySelector('.bib-copy');
+    b.textContent = 'Copied!'; setTimeout(() => b.textContent = 'Copy', 2000);
   });
-}
-
-/* ===== SIMULATION ===== */
-const SIM_LINES = [
-  // Init
-  { text: '[00:00.000] InteraSkill runtime initialized', cls: 't-info' },
-  { text: '[00:00.005] Loaded skill library: 12 skills from 847 prior trajectories', cls: 't-info' },
-  { text: '[00:00.008] Model: Qwen3-8B + LoRA adapter (17M params, 0.2% of base)', cls: 't-info' },
-  { note: 'The agent loads its previously learned skill vocabulary -- 12 behavioral patterns discovered from clustering 847 interaction trajectories. No manual skill definitions needed.' },
-  { text: '' },
-  { text: 'Task: "Find directions from Carnegie Mellon University to Pittsburgh Airport"', cls: 't-hl' },
-  { note: 'This is a real WebArena map navigation task. The agent must compose multiple skills to complete it.' },
-  { text: '' },
-  // Phase 3: Composition - skill 1
-  { text: 'Phase 3: Skill Composition', cls: 't-api', prompt: true },
-  { text: '  LLM reasoning: "Need to search for origin location first"', cls: 't-dim' },
-  { text: '  skill_select(z1: search_navigate)  confidence: 0.94', cls: 't-cmd', prompt: true },
-  { note: 'Phase 3 (Composition): The LLM selects the first skill. Unlike SKILL.md which would hard-code "click(450,120)", InteraSkill selects a learned behavioral pattern and adapts it to the current visual context.' },
-  { text: '  Action: type("Carnegie Mellon University") -> click(search_button)', cls: 't-api' },
-  { text: '  Skill z1 terminated (beta=0.91) after 2 actions', cls: 't-info' },
-  { text: '  Result: origin marker placed on map', cls: 't-ok' },
-  { text: '' },
-  // Skill 2
-  { text: '  LLM reasoning: "Origin set. Now need destination."', cls: 't-dim' },
-  { text: '  skill_select(z1: search_navigate)  confidence: 0.92  (reuse)', cls: 't-cmd', prompt: true },
-  { note: 'The same skill (search_navigate) is reused for a different query. SKILL.md would need separate definitions for "search origin" and "search destination". Learned skills are naturally reusable.' },
-  { text: '  Action: clear_input -> type("Pittsburgh Airport") -> click(search_button)', cls: 't-api' },
-  { text: '  Skill z1 terminated (beta=0.89) after 3 actions', cls: 't-info' },
-  { text: '  Result: destination marker placed on map', cls: 't-ok' },
-  { text: '' },
-  // Skill 3
-  { text: '  LLM reasoning: "Both locations set. Request directions."', cls: 't-dim' },
-  { text: '  skill_select(z4: configure_settings)  confidence: 0.88', cls: 't-cmd', prompt: true },
-  { text: '  Action: click(directions_button) -> select(driving_mode)', cls: 't-api' },
-  { text: '  Skill z4 terminated (beta=0.93) after 2 actions', cls: 't-info' },
-  { text: '  Result: route displayed with distance and ETA', cls: 't-ok' },
-  { note: 'The agent composed 3 skills (search, search, configure) to complete a task that would require a hand-written multi-step procedure in SKILL.md. The composition was planned by the LLM using reasoning traces.' },
-  { text: '' },
-  { text: 'TASK COMPLETED  7 primitive actions, 3 skills composed', cls: 't-ok' },
-  { text: '' },
-  // Phase 1: Segmentation
-  { text: 'Phase 1: Online Trajectory Segmentation', cls: 't-api', prompt: true },
-  { text: '  Computing action discontinuities...', cls: 't-info' },
-  { text: '  delta_a = [0.12, 0.08, |1.84|, 0.15, 0.11, |1.92|, 0.09]', cls: 't-hl' },
-  { text: '  Boundaries detected at t=2, t=5 (theta=0.603)', cls: 't-info' },
-  { text: '  Segments: 3 detected (matches skill predictions)', cls: 't-ok' },
-  { note: 'Phase 1 (Segmentation): After execution, the trajectory is segmented by detecting large jumps in action space. Values |1.84| and |1.92| exceed the threshold, marking skill boundaries. This confirms the composition was correct.' },
-  { text: '' },
-  // Phase 2: Embedding update
-  { text: 'Phase 2: Skill Embedding Update', cls: 't-api', prompt: true },
-  { text: '  Segment 1 -> nearest cluster: search_navigate (d=0.003)', cls: 't-info' },
-  { text: '  Segment 2 -> nearest cluster: search_navigate (d=0.005)', cls: 't-info' },
-  { text: '  Segment 3 -> nearest cluster: configure_settings (d=0.008)', cls: 't-info' },
-  { text: '  Embeddings updated: 2 skills refined, 0 new skills discovered', cls: 't-hl' },
-  { note: 'Phase 2 (Embedding): Each segment is mapped to the nearest skill cluster. Small distances (0.003-0.008) confirm these segments match existing skills. If a segment were far from all clusters, it would be flagged as a potential new skill.' },
-  { text: '' },
-  { text: 'Episode complete | Success: TRUE | Skills reused: 2/3', cls: 't-ok' },
-  { text: 'Skill library: 12 skills (0 new, 2 refined)', cls: 't-hl' },
-];
-
-let simRunning = false;
-async function runSim() {
-  if (simRunning) return;
-  simRunning = true;
-  const btn = document.getElementById('simBtn');
-  const status = document.getElementById('simStatus');
-  btn.disabled = true;
-  btn.innerHTML = '&#9632; Running...';
-  const out = document.getElementById('simOutput');
-  out.innerHTML = '';
-  let lineIdx = 0;
-
-  for (const line of SIM_LINES) {
-    status.textContent = `Step ${++lineIdx}/${SIM_LINES.length}`;
-    const el = document.createElement('span');
-
-    if (line.note) {
-      // Annotation line
-      el.className = 'sim-line annotation';
-      el.textContent = line.note;
-      out.appendChild(el);
-      await new Promise(r => setTimeout(r, 800));
-    } else if (line.text === '') {
-      el.className = 'sim-line';
-      el.innerHTML = '&nbsp;';
-      out.appendChild(el);
-      await new Promise(r => setTimeout(r, 80));
-    } else {
-      el.className = 'sim-line';
-      const prompt = line.prompt ? '<span class="t-prompt">&#10095; </span>' : '  ';
-      el.innerHTML = prompt + '<span class="' + (line.cls || 't-white') + '">' + line.text + '</span>';
-      out.appendChild(el);
-      await new Promise(r => setTimeout(r, line.prompt ? 120 : 60));
-    }
-    out.scrollTop = out.scrollHeight;
-  }
-
-  const cursor = document.createElement('span');
-  cursor.className = 'sim-line';
-  cursor.innerHTML = '<span class="cursor"></span>';
-  out.appendChild(cursor);
-  status.textContent = 'Simulation complete';
-  btn.disabled = false;
-  btn.innerHTML = '&#8635; Replay';
-  simRunning = false;
 }
 </script>
 </body>
