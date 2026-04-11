@@ -671,6 +671,50 @@ footer .f-sub { font-size: .75rem; color: var(--ink-muted); }
         </p>
       </div>
     </div>
+
+    <!-- Figures -->
+    <div class="reveal" style="margin-top:3rem;">
+      <div class="section-tag">Figures</div>
+      <h3 style="font-family:'Instrument Serif',serif;font-size:1.4rem;color:var(--text-bright);margin-bottom:1.5rem;">Experimental Visualizations</h3>
+
+      <div style="margin-bottom:2rem;">
+        <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:10px;">Seven-model comparison across IW, WebArena, and BrowseComp+ with baselines, training method analysis, and Mind2Web end-to-end results.</p>
+        <img src="../results/figures/model_comparison.png" alt="Model Comparison (4-panel)" style="width:100%;border-radius:var(--radius);border:1px solid var(--border);">
+      </div>
+
+      <div class="two-col" style="margin-bottom:2rem;">
+        <div>
+          <p style="font-size:.78rem;color:var(--text-dim);margin-bottom:8px;">t-SNE of learned 16-dim skill embeddings. Colors = ground-truth skill types.</p>
+          <img src="../results/figures/tsne.png" alt="t-SNE Skill Embeddings" style="width:100%;border-radius:var(--radius);border:1px solid var(--border);">
+        </div>
+        <div>
+          <p style="font-size:.78rem;color:var(--text-dim);margin-bottom:8px;">InfoNCE contrastive training curves (200 epochs). Smooth convergence, no overfitting.</p>
+          <img src="../results/figures/training_curves.png" alt="Training Curves" style="width:100%;border-radius:var(--radius);border:1px solid var(--border);">
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-bottom:2rem;">
+        <div>
+          <p style="font-size:.78rem;color:var(--text-dim);margin-bottom:8px;">Action discontinuity distribution with optimal segmentation threshold.</p>
+          <img src="../results/figures/segmentation_hist.png" alt="Segmentation Histogram" style="width:100%;border-radius:var(--radius);border:1px solid var(--border);">
+        </div>
+        <div>
+          <p style="font-size:.78rem;color:var(--text-dim);margin-bottom:8px;">Clustering confusion matrix &mdash; Wasserstein assignments vs. ground-truth skill labels.</p>
+          <img src="../results/figures/clustering_confusion.png" alt="Clustering Confusion Matrix" style="width:100%;border-radius:var(--radius);border:1px solid var(--border);">
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <p style="font-size:.78rem;color:var(--text-dim);margin-bottom:8px;">MLP vs. Transformer per-position skill prediction accuracy on IW data.</p>
+          <img src="../results/figures/composition_comparison.png" alt="Composition Comparison" style="width:100%;border-radius:var(--radius);border:1px solid var(--border);">
+        </div>
+        <div>
+          <p style="font-size:.78rem;color:var(--text-dim);margin-bottom:8px;">Per-position accuracy across sequence positions for all models.</p>
+          <img src="../results/figures/position_accuracy.png" alt="Position Accuracy" style="width:100%;border-radius:var(--radius);border:1px solid var(--border);">
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
