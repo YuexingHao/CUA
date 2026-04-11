@@ -29,7 +29,7 @@
 \maketitle
 
 \begin{abstract}
-Computer-using agents typically rely on manually engineered skill libraries---hard-coded mappings from semantic intents to fixed UI actions---that are brittle under interface changes and costly to maintain. We introduce \textsc{InteraSkill}, a three-phase framework that replaces manual skill specification with data-driven skill discovery, embedding, and composition. In Phase~1, trajectory segmentation via action discontinuity detection achieves boundary recall of 0.805 (F1\,=\,0.534) on fabricated data and F1\,=\,0.851 on real WebArena trajectories. In Phase~2, contrastive skill embedding with InfoNCE improves clustering NMI from 0.531 (Wasserstein baseline) to 0.871. In Phase~3, a LoRA-fine-tuned Qwen3-8B achieves 85.0\% skill prediction accuracy on enterprise workflows---a $4\times$ gain over a Transformer baseline and $6\times$ over a hard-coded transition table. On Mind2Web end-to-end evaluation, our method achieves 35.5\% task completion rate versus 9.5\% for the zero-shot baseline, with cross-domain transfer retaining 27.0\%. A six-model comparison across three benchmarks reveals that fine-tuning on interaction-derived data is critical: the LoRA-adapted 8B model outperforms zero-shot 70B models on in-domain tasks. Our results demonstrate that meaningful skill abstractions emerge from trajectory data without manual engineering, and that LLM-based composition with reasoning traces is essential for handling the contextual complexity of real workflows.
+Computer-using agents typically rely on manually engineered skill libraries---hard-coded mappings from semantic intents to fixed UI actions---that are brittle under interface changes and costly to maintain. We introduce \textsc{InteraSkill}, a three-phase framework that replaces manual skill specification with data-driven skill discovery, embedding, and composition. In Phase~1, trajectory segmentation via action discontinuity detection achieves boundary F1\,=\,0.534 on fabricated data and F1\,=\,0.851 on WebArena trajectories. In Phase~2, contrastive skill embedding improves clustering NMI from 0.531 to 0.871. In Phase~3, a LoRA-fine-tuned Qwen3-8B achieves 85.0\% skill prediction accuracy on enterprise workflows---a $4\times$ gain over a Transformer baseline. On Mind2Web, our method achieves 35.5\% task completion rate versus 9.5\% zero-shot, with cross-domain transfer retaining 76\%. A seven-model comparison across three benchmarks reveals that supervised fine-tuning is critical, while GRPO reinforcement learning causes catastrophic forgetting (55.8\%$\to$4.4\% on WebArena), demonstrating that naive RL on synthetic data destroys generalization.
 \end{abstract}
 
 %==============================================================================
@@ -53,7 +53,7 @@ Our central claim is empirical: \emph{agents that discover and compose skills fr
     \item Contrastive skill embedding improves clustering NMI from 0.531 to 0.871 over an unsupervised Wasserstein baseline, recovering semantically meaningful skill structure.
     \item A LoRA-fine-tuned Qwen3-8B achieves 85.0\% skill prediction accuracy on IW data---outperforming a hard-coded \texttt{SKILL.md} table (14.0\%), AWM-style learned transitions (33.4\%), and a Transformer baseline (34.9\%).
     \item On Mind2Web end-to-end evaluation, InteraSkill achieves 35.5\% task completion rate (TCR) versus 9.5\% zero-shot, with cross-domain transfer retaining 76\% of in-domain performance (27.0\% TCR).
-    \item A six-model comparison reveals that interaction-derived fine-tuning is critical: the LoRA-adapted 8B model outperforms zero-shot models up to 9$\times$ larger on in-domain tasks.
+    \item A seven-model comparison reveals that supervised LoRA fine-tuning is critical (the 8B model outperforms zero-shot 70B models on in-domain tasks), while GRPO reinforcement learning on synthetic data causes catastrophic forgetting across all benchmarks.
 \end{itemize}
 
 %==============================================================================
@@ -62,13 +62,13 @@ Our central claim is empirical: \emph{agents that discover and compose skills fr
 
 \subsection{GUI Agents and the \texttt{SKILL.md} Paradigm}
 
-Modern CUAs operate over structured UI representations with manually designed action spaces. WebShop~\cite{yao2022webshop} and Mind2Web~\cite{deng2023mind2web} established standard primitives (click, type, scroll), while WebArena~\cite{zhou2024webarena} and VisualWebArena~\cite{koh2024visualwebarena} provide realistic evaluation with 812 and 910 tasks respectively. Recent systems push performance substantially: OpAgent~\cite{guo2026opagent} achieves 71.6\% on WebArena via multi-agent architecture, OpenCUA~\cite{wang2025opencua} provides large-scale trajectory data (22.6K trajectories), and OSWorld~\cite{xie2024osworld} extends to full desktop environments. However, all assume predefined action primitives---the \texttt{SKILL.md} paradigm we seek to replace.
+Modern CUAs operate over structured UI representations with manually designed action spaces. WebShop~\cite{yao2022webshop} and Mind2Web~\cite{deng2023mind2web} established standard primitives, while WebArena~\cite{zhou2024webarena}, VisualWebArena~\cite{koh2024visualwebarena}, and OSWorld~\cite{xie2024osworld} provide realistic evaluation environments. Recent systems achieve strong performance---OpAgent~\cite{guo2026opagent} reaches 71.6\% on WebArena, OpenCUA~\cite{wang2025opencua} provides 22.6K trajectories---but all assume predefined action primitives.
 
 \subsection{Skill Discovery and Workflow Learning}
 
-Several works address skill rigidity from different angles. Agent Workflow Memory (AWM)~\cite{wang2024awm} induces reusable workflow routines from trajectories, improving WebArena success by 51.1\% relative. SkillWeaver~\cite{zheng2025skillweaver} enables autonomous skill discovery through self-exploration, achieving 31.8\% WebArena improvement. AutoManual~\cite{chen2024automanual} constructs instruction manuals via agent exploration. ICAL~\cite{sarch2024ical} distills demonstrations and feedback into cognitive abstractions. LearnAct~\cite{liu2025learnact} shows that even a single demonstration improves performance by 198.9\% on mobile GUI tasks.
+Several works address skill rigidity. AWM~\cite{wang2024awm} induces reusable workflow routines (+51.1\% on WebArena), SkillWeaver~\cite{zheng2025skillweaver} enables autonomous skill discovery (+31.8\%), AutoManual~\cite{chen2024automanual} constructs instruction manuals, ICAL~\cite{sarch2024ical} distills demonstrations into cognitive abstractions, and LearnAct~\cite{liu2025learnact} shows single demonstrations improve mobile GUI performance by 198.9\%.
 
-A critical gap remains (Table~\ref{tab:gap}): no existing work combines (1)~online skill discovery, (2)~learning from interaction trajectories rather than manual engineering, (3)~producing transferable skill abstractions, and (4)~continuous improvement. AWM mines workflows via LLM induction but not from grounded interaction patterns. SkillWeaver discovers skills autonomously but through self-exploration, not user-facing traces. ICAL produces per-instance memories rather than transferable abstractions. InteraSkill bridges this gap by learning reusable, composable skills directly from interaction data.
+A critical gap remains (Table~\ref{tab:gap}): no existing work combines online skill discovery, learning from interaction trajectories, and producing transferable skill abstractions. InteraSkill bridges this gap by learning reusable, composable skills directly from interaction data.
 
 \begin{table}[t]
 \centering
@@ -91,9 +91,7 @@ ICAL \cite{sarch2024ical} & Demos + feedback & \checkmark & Partial & \texttimes
 
 \subsection{Unsupervised Skill Discovery}
 
-The options framework~\cite{sutton1999between} and option-critic architecture~\cite{bacon2017option} formalize hierarchical behavior learning. DIAYN~\cite{eysenbach2018diversity} discovers diverse skills by maximizing mutual information $I(z; s)$ between skills and states. DADS~\cite{sharma2020dads} extends this to dynamics-aware discovery. CIC~\cite{laskin2022cic} uses contrastive learning to scale skill discovery to high-dimensional observations.
-
-However, existing methods typically operate in low-dimensional robotic control with predefined actions. Our contribution is two-fold: (1)~we extend skill discovery to high-dimensional GUI environments where both perception and action are complex, and (2)~we use \emph{trajectory-level} mutual information $I(z; \tau \mid s_0)$ rather than state-level $I(z; s)$, capturing the temporal structure critical for multi-step GUI skills such as ``fill form'' or ``navigate menu.''
+The options framework~\cite{sutton1999between} and option-critic~\cite{bacon2017option} formalize hierarchical behavior learning. DIAYN~\cite{eysenbach2018diversity} discovers skills by maximizing $I(z; s)$, extended by DADS~\cite{sharma2020dads} and CIC~\cite{laskin2022cic}. However, these operate in low-dimensional robotic control. We extend skill discovery to high-dimensional GUI environments using \emph{trajectory-level} mutual information $I(z; \tau \mid s_0)$, capturing the temporal structure critical for multi-step GUI skills.
 
 %==============================================================================
 \section{Problem Formulation}
@@ -291,12 +289,7 @@ On WebArena, segmentation quality is high (F1 = 0.851), but embedding quality is
 \caption{Phase 2 skill embedding results on IW data.}
 \end{figure}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{../results/figures/clustering_confusion.png}
-\caption{Normalized confusion matrix of Wasserstein clustering assignments versus ground-truth skill labels on IW data. Skills with distinctive action signatures (\texttt{document\_edit}, \texttt{data\_transfer}) are recovered most cleanly, while ambiguous skills (\texttt{generic\_action}) split across clusters.}
-\label{fig:confusion}
-\end{figure}
+% Confusion matrix moved to Appendix (Figure~\ref{fig:confusion})
 
 \subsection{Phase 3: Skill Composition}
 \label{sec:results_composition}
@@ -324,30 +317,7 @@ Transformer & 0.349 & 0.076 & 0.480 & 45K & Embeddings \\
 \end{table}
 
 \paragraph{Per-Skill Analysis.}
-Table~\ref{tab:perskill} reports per-skill accuracy for the LoRA model. Skills with distinctive action signatures (\texttt{search\_navigate}: 94.1\%, \texttt{organize\_files}: 91.7\%) are predicted most reliably. Skills sharing action patterns (\texttt{presentation\_edit}: 55.6\%) remain challenging, suggesting that visual grounding could further disambiguate them.
-
-\begin{table}[h]
-\centering
-\caption{Per-skill prediction accuracy of the LoRA-fine-tuned Qwen3-8B on IW data, sorted by accuracy. Skills with distinctive action patterns are easiest to predict.}
-\label{tab:perskill}
-\small
-\begin{tabular}{lcc}
-\toprule
-\textbf{Skill} & \textbf{Accuracy} & \textbf{$n$} \\
-\midrule
-search\_navigate & 0.941 & 51 \\
-organize\_files & 0.917 & 12 \\
-data\_transfer & 0.897 & 39 \\
-review\_content & 0.893 & 28 \\
-document\_edit & 0.878 & 74 \\
-collaborate & 0.831 & 71 \\
-export\_publish & 0.821 & 28 \\
-send\_message & 0.809 & 68 \\
-schedule\_meeting & 0.778 & 18 \\
-presentation\_edit & 0.556 & 9 \\
-\bottomrule
-\end{tabular}
-\end{table}
+Per-skill accuracy (Table~\ref{tab:perskill}, Appendix) ranges from 94.1\% (\texttt{search\_navigate}) to 55.6\% (\texttt{presentation\_edit}). Skills with distinctive action signatures are predicted most reliably; those sharing action patterns remain challenging.
 
 \begin{figure}[h]
 \centering
@@ -356,19 +326,13 @@ presentation\_edit & 0.556 & 9 \\
 \label{fig:composition}
 \end{figure}
 
-\subsubsection{Six-Model Comparison Across Benchmarks}
+\subsubsection{Seven-Model Comparison Across Benchmarks}
 
-Table~\ref{tab:sixmodel} presents the central empirical result: a comparison of six models across three benchmarks. Several findings emerge:
-
-\textbf{Fine-tuning dominates on in-domain data.} The LoRA-adapted Qwen3-8B (8B params) achieves 85.0\% on IW, compared to 30.0\% for Llama-3.1-70B (9$\times$ larger) and 18.5\% for zero-shot Qwen3-8B. This $4.6\times$ gain from LoRA demonstrates that interaction-derived training signal is far more valuable than model scale for skill prediction.
-
-\textbf{Zero-shot models are competitive out-of-distribution.} On WebArena and BrowseComp+, zero-shot Llama-70B (56.2\%, 51.9\%) and OLMo-7B (54.5\%, 61.4\%) match or exceed the LoRA model (43.7\%, 44.8\%). This is expected: LoRA was fine-tuned on IW enterprise data and suffers distribution shift on web navigation tasks.
-
-\textbf{Reasoning specialization does not help.} DeepSeek-R1-Distill-32B, despite being explicitly trained for reasoning, achieves only 14.3\% on IW and 0.05\% on BrowseComp+. Skill prediction requires domain-grounded pattern recognition, not abstract reasoning.
+Table~\ref{tab:sixmodel} presents the central empirical result. \textbf{Supervised fine-tuning dominates in-domain:} LoRA-adapted Qwen3-8B achieves 85.0\% on IW versus 30.0\% for Llama-70B ($9\times$ larger)---a $4.6\times$ gain showing training signal outweighs scale. \textbf{Zero-shot models win out-of-distribution:} Llama-70B (56.2\%) and OLMo-7B (54.5\%) lead on WebArena, as expected from distribution shift. \textbf{GRPO degrades all benchmarks:} despite reward convergence, GRPO collapses WebArena from 55.8\% to 4.4\% (Section~\ref{sec:results_grpo}). \textbf{Reasoning specialization does not help:} DeepSeek-R1-32B achieves only 14.3\% on IW and 0.05\% on BrowseComp+.
 
 \begin{table}[h]
 \centering
-\caption{Six-model comparison: skill prediction accuracy (\%) across three benchmarks. LoRA fine-tuning on IW data yields massive in-domain gains but expected out-of-distribution degradation. Best per-column in \textbf{bold}.}
+\caption{Seven-model comparison: skill prediction accuracy (\%) across three benchmarks. Supervised LoRA yields massive in-domain gains; GRPO causes catastrophic degradation. Best per-column in \textbf{bold}, worst \underline{underlined}.}
 \label{tab:sixmodel}
 \small
 \begin{tabular}{llccc}
@@ -377,10 +341,11 @@ Table~\ref{tab:sixmodel} presents the central empirical result: a comparison of 
 \midrule
 Qwen3-8B (zero-shot) & 8B & 18.5 & 55.8 & 43.5 \\
 \textbf{Qwen3-8B (LoRA)} & \textbf{8B} & \textbf{85.0} & 43.7 & 44.8 \\
+Qwen3-8B (GRPO) & 8B & \underline{15.8} & \underline{4.4} & 36.8 \\
 Llama-3.1-70B & 70B & 30.0 & \textbf{56.2} & 51.9 \\
 OLMo-3-7B & 7B & 14.3 & 54.5 & \textbf{61.4} \\
 Gemma-4-31B & 31B & 16.5 & 37.7 & 11.2 \\
-DeepSeek-R1-Distill-32B & 32B & 14.3 & 45.1 & 0.05 \\
+DeepSeek-R1-Distill-32B & 32B & 14.3 & 45.1 & \underline{0.05} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -389,11 +354,7 @@ DeepSeek-R1-Distill-32B & 32B & 14.3 & 45.1 & 0.05 \\
 
 Table~\ref{tab:baselines} contextualizes InteraSkill against structural baselines.
 
-\textbf{\texttt{SKILL.md} is consistently worst.} The fixed transition table achieves 14.0\% on IW and 8.7\% on WebArena, confirming that static specifications fail to capture workflow diversity.
-
-\textbf{AWM excels on homogeneous domains.} AWM's learned bigram transitions achieve 78.8\% on WebArena---outperforming all LLM-based approaches---by learning strong self-transition priors (e.g., \texttt{search\_navigate} $\rightarrow$ \texttt{search\_navigate} at 69\%). However, on diverse IW data, AWM achieves only 33.4\%, barely above the frequency baseline (34.9\%). This highlights AWM's limitation: bigram statistics capture domain-specific patterns but lack the compositional understanding needed for diverse multi-skill workflows.
-
-\textbf{The LoRA model's WebArena gap.} Our Qwen3-8B LoRA achieves only 43.7\% on WebArena versus AWM's 78.8\%. This 35-point gap reflects distribution shift: the model was fine-tuned on enterprise conversation data, not web navigation patterns. Domain-specific fine-tuning or multi-domain training would likely close this gap, and we view this as a natural next step rather than a fundamental limitation of the approach.
+\textbf{\texttt{SKILL.md} is consistently worst} (14.0\% IW, 8.7\% WA), confirming static specifications fail to capture workflow diversity. \textbf{AWM excels on homogeneous domains:} its learned bigram transitions achieve 78.8\% on WebArena via strong self-transition priors, but only 33.4\% on diverse IW data---barely above the frequency baseline. \textbf{The LoRA model's WebArena gap} (43.7\% vs.\ AWM's 78.8\%) reflects distribution shift from enterprise fine-tuning; domain-specific or multi-domain training would likely close this gap.
 
 \begin{table}[h]
 \centering
@@ -420,11 +381,11 @@ Transformer (ours) & Sequence model & 0.349 & 0.410 & 0.480 \\
 
 To evaluate whether improved skill composition translates to downstream task performance, we conduct end-to-end evaluation on Mind2Web using the InteraSkill pipeline (Table~\ref{tab:e2e}).
 
-\paragraph{Task Completion.} The LoRA-fine-tuned model achieves 35.5\% task completion rate (71/200 tasks) on the test\_task split, compared to 9.5\% (19/200) for zero-shot Qwen3-8B---a $3.7\times$ improvement. Per-step action accuracy is 83.1\% (LoRA) versus 28.8\% (zero-shot), confirming that fine-tuning improves both skill selection and action grounding.
+\paragraph{Task Completion.} The LoRA model achieves 35.5\% TCR (71/200 tasks) versus 9.5\% zero-shot---a $3.7\times$ improvement. Per-step action accuracy is 83.1\% (LoRA) versus 28.8\% (zero-shot).
 
-\paragraph{Cross-Domain Transfer.} On the test\_domain split (entirely unseen website domains), TCR drops from 35.5\% to 27.0\% (54/200)---retaining 76\% of in-domain performance. This demonstrates meaningful cross-domain transfer: skills learned from one set of websites generalize to unseen ones, despite differences in visual layout and interaction patterns.
+\paragraph{Cross-Domain Transfer.} On unseen domains (test\_domain), TCR drops to 27.0\%---retaining 76\% of in-domain performance, demonstrating meaningful skill generalization.
 
-\paragraph{Domain-Level Analysis.} Performance varies substantially across domains (Table~\ref{tab:e2e_domain}). Entertainment tasks are easiest (49.1\% TCR), likely due to more stereotyped interaction patterns. Travel tasks are hardest (21.3\%), reflecting the complexity of multi-step booking workflows. The zero-shot model struggles most on Travel (2.5\%), suggesting that these workflows require the structured reasoning that fine-tuning provides.
+\paragraph{Domain-Level Analysis.} Performance varies across domains (Table~\ref{tab:e2e_domain}): entertainment is easiest (49.1\% TCR) due to stereotyped patterns, while travel is hardest (21.3\%) due to complex multi-step booking workflows.
 
 \begin{table}[h]
 \centering
@@ -458,81 +419,57 @@ Travel & 80 & 21.3\% & 2.5\% & 0.804 \\
 \end{tabular}
 \end{table}
 
-\paragraph{Skill vs.\ Action Accuracy Gap.} An important finding is that step-level \emph{skill} accuracy is only 14.6\% (LoRA) while \emph{action} accuracy is 83.1\%. This gap indicates that the skill label taxonomy learned from IW data does not directly align with Mind2Web's action annotations, but the model still selects correct low-level actions. The skill abstraction serves as a useful intermediate representation even when the label vocabulary differs across domains.
+\paragraph{Skill vs.\ Action Accuracy Gap.} Step-level skill accuracy is only 14.6\% while action accuracy is 83.1\%, indicating that the IW skill taxonomy does not align with Mind2Web's annotations---yet the model still selects correct actions, suggesting skills serve as useful intermediate representations even when labels differ across domains.
 
 \subsection{Multimodal Analysis}
 
-We evaluate CLIP-based visual grounding as a potential path to domain-agnostic skill transfer.
+CLIP embeddings of Mind2Web screenshots show high cross-domain cosine similarity (mean\,=\,0.878), confirming that web interfaces share substantial visual structure. However, CLIP-based zero-shot skill prediction achieves only 17.8\% accuracy and 3.0\% TCR, with 0.0\% action grounding. CLIP captures domain-level visual semantics but lacks fine-grained UI element understanding, motivating specialized GUI vision-language encoders for future work.
 
-\paragraph{Cross-Domain Visual Similarity.} CLIP embeddings of screenshots from different Mind2Web domains show high cosine similarity (mean = 0.878; Entertainment--Shopping: 0.889, Shopping--Travel: 0.890, Entertainment--Travel: 0.856). This confirms that web interfaces share substantial visual structure across domains, supporting the premise that visual grounding could enable zero-shot skill transfer.
+\subsection{GRPO Reinforcement Learning}
+\label{sec:results_grpo}
 
-\paragraph{CLIP Zero-Shot Skill Prediction.} However, directly using CLIP embeddings for zero-shot skill prediction achieves only 17.8\% accuracy and 3.0\% TCR (6/200 tasks), with 0.0\% action grounding accuracy. The high cross-domain similarity but low discriminative power suggests that CLIP captures domain-level visual semantics but lacks the fine-grained UI element understanding needed for action selection. This motivates specialized vision-language encoders for GUI environments as a direction for future work.
+We trained Qwen3-8B with Group Relative Policy Optimization (GRPO) for 4,598 steps ($\sim$56 hours on 4$\times$A6000). Training loss converged to $10^{-4}$ and mean reward reached 1.37 (of 1.4 max), indicating the model learned to produce correctly formatted skill predictions on the training distribution.
 
-\subsection{GRPO Reinforcement Learning (Preliminary)}
+However, GRPO \textbf{degraded performance relative to the base model} across all three benchmarks (Table~\ref{tab:sixmodel}): IW accuracy dropped from 18.5\% to 15.8\%, BrowseComp+ from 43.5\% to 36.8\%, and WebArena collapsed from 55.8\% to 4.4\%---a 92\% relative decrease. Exact sequence match dropped to 0\% on all benchmarks.
 
-We report preliminary results from ongoing GRPO training of Qwen3-8B. At step 2,250 (epoch $\approx$ 0.98 of 2), the mean reward has increased from 0.45 to 1.37---a $3\times$ improvement---indicating that the model is learning to produce correctly formatted, skill-appropriate responses. However, reward variance across samples within each batch is near zero (\texttt{frac\_reward\_zero\_std} = 1.0), suggesting that the current reward function may be too coarse to provide a meaningful learning signal for GRPO's relative ranking mechanism. Training is ongoing with approximately 24 hours remaining; final results and comparison with supervised LoRA will be reported in the camera-ready version.
+We identify three contributing factors: (1)~\textbf{Reward saturation}: the composite reward (correct skill $+1.0$, format $+0.3$, reasoning $+0.1$) saturated early, with near-zero reward variance across candidates within each batch, eliminating the relative ranking signal GRPO requires. (2)~\textbf{Domain-specific overfitting}: training exclusively on IW synthetic conversations caused catastrophic forgetting of general web navigation capabilities. (3)~\textbf{Distributional collapse}: the model converged to a narrow output distribution optimized for the 12 IW skill types, losing the flexibility to handle diverse WebArena and BrowseComp+ action patterns.
 
-\subsection{Context: WebArena Task Success Rates}
-
-For broader context, Table~\ref{tab:webarena_lit} summarizes published end-to-end task success rates on the full WebArena benchmark (812 tasks). Our work evaluates \emph{skill composition}---a component that could be integrated with any of these agent architectures---rather than end-to-end task execution. We view InteraSkill as complementary: it provides the skill planning layer that these systems currently implement via manual specification.
-
-\begin{table}[h]
-\centering
-\caption{Published WebArena task success rates for reference. InteraSkill addresses the skill composition layer, which is complementary to these end-to-end agent systems.}
-\label{tab:webarena_lit}
-\small
-\begin{tabular}{lcc}
-\toprule
-\textbf{Agent} & \textbf{Success Rate} & \textbf{Source} \\
-\midrule
-Human performance & 78.2\% & Zhou et al.\ 2024 \\
-OpAgent (multi-agent) & 71.6\% & Guo et al.\ 2026 \\
-OpenAI CUA / Operator & 58.1\% & OpenAI 2025 \\
-AWM (GPT-4) & 35.5\% & Wang et al.\ 2025 \\
-SteP (human workflows) & 33.5\% & Sodhi et al.\ 2024 \\
-GPT-4 (zero-shot) & 14.4\% & Zhou et al.\ 2024 \\
-\bottomrule
-\end{tabular}
-\end{table}
+This negative result is significant: it demonstrates that naive RL fine-tuning with skill-specific rewards on synthetic data not only fails to improve over supervised LoRA but actively destroys the base model's zero-shot capabilities. Effective RL for skill composition likely requires finer-grained reward signals, KL regularization against the base policy, or multi-domain training data.
 
 %==============================================================================
 \section{Discussion}
 \label{sec:discussion}
 %==============================================================================
 
-\paragraph{Skill discovery works, but requires behavioral diversity.} On IW data with 12 diverse skill types, contrastive embedding recovers semantically meaningful clusters (NMI = 0.871). On WebArena's homogeneous map navigation, embedding quality collapses (NMI = 0.049). This reveals a precondition for our approach: the trajectory data must contain sufficient behavioral diversity for contrastive learning to find discriminative structure.
+\paragraph{Skill discovery requires behavioral diversity.} Contrastive embedding recovers meaningful clusters on diverse IW data (NMI\,=\,0.871) but collapses on homogeneous WebArena navigation (NMI\,=\,0.049), revealing a precondition: trajectory data must contain sufficient behavioral diversity.
 
-\paragraph{Composition requires contextual reasoning, not pattern matching.} The MLP $\rightarrow$ Transformer $\rightarrow$ LLM progression (21\% $\rightarrow$ 35\% $\rightarrow$ 85\%) demonstrates that skill composition is not a simple prediction problem. Static transition models (AWM, frequency baseline) plateau at $\sim$35\% on diverse data because they lack capacity to reason about task goals, user corrections, and failure recovery. The LLM's ability to leverage conversation history and world knowledge yields a $2.4\times$ improvement over the best non-LLM approach.
+\paragraph{Composition requires contextual reasoning.} The MLP$\to$Transformer$\to$LLM progression (21\%$\to$35\%$\to$85\%) shows skill composition is fundamentally a reasoning problem. Static transition models plateau at $\sim$35\% on diverse data, while the LLM's conversational context yields a $2.4\times$ improvement.
 
-\paragraph{Fine-tuning vs.\ scale.} The six-model comparison reveals a striking result: LoRA-adapted Qwen3-8B outperforms zero-shot Llama-70B by $2.8\times$ on in-domain data, despite being $9\times$ smaller. This suggests that \emph{what} a model learns from matters more than raw capacity for skill prediction. However, this advantage does not transfer out-of-distribution, where larger zero-shot models are more robust.
+\paragraph{Supervised fine-tuning vs.\ scale vs.\ RL.} The seven-model comparison reveals two striking results. First, LoRA-adapted Qwen3-8B outperforms zero-shot Llama-70B by $2.8\times$ on in-domain data despite being $9\times$ smaller, showing that \emph{training signal} matters more than capacity. Second, GRPO RL \emph{destroys} capabilities: despite reward convergence in training, evaluation accuracy drops catastrophically (WebArena: 55.8\%$\to$4.4\%). The contrast between supervised LoRA's success and GRPO's failure suggests that next-skill prediction benefits from behavioral cloning on diverse conversations, while RL with coarse rewards on synthetic data induces distributional collapse.
 
-\paragraph{AWM's strength and our weakness.} AWM's 78.8\% on WebArena versus our 43.7\% deserves honest analysis. AWM learns bigram transition statistics that perfectly capture the repetitive structure of map navigation. Our LLM-based approach, trained on diverse enterprise data, does not learn these domain-specific priors. This is not a fundamental limitation---domain-specific fine-tuning would likely close the gap---but it highlights that InteraSkill's current advantage is on diverse, multi-skill workflows, not on specialized single-domain tasks.
+\paragraph{AWM's domain-specific advantage.} AWM's 78.8\% on WebArena versus our 43.7\% reflects that bigram statistics perfectly capture repetitive navigation patterns. Our approach excels on diverse multi-skill workflows but requires domain-specific fine-tuning for specialized tasks.
 
-\paragraph{End-to-end impact.} The Mind2Web results bridge the gap between skill prediction and task completion. A $3.7\times$ improvement in TCR (35.5\% vs.\ 9.5\%) demonstrates that better skill composition directly improves downstream performance. Cross-domain retention of 76\% suggests that learned skills have genuine transferability, though substantial room for improvement remains.
+\paragraph{End-to-end impact.} Mind2Web TCR improves $3.7\times$ (35.5\% vs.\ 9.5\%), with cross-domain retention of 76\%, demonstrating that better skill composition directly improves task completion.
 
 \subsection{Limitations}
 
-\textbf{Pseudo-supervised pipeline.} Our approach uses cluster-derived pseudo-labels rather than being fully unsupervised. While the clustering itself requires no manual annotation, the contrastive encoder leverages structured pseudo-labels, placing our method between fully unsupervised and supervised approaches.
+\textbf{Pseudo-supervised pipeline.} The contrastive encoder leverages cluster-derived pseudo-labels, placing our method between fully unsupervised and supervised.
+\textbf{Domain transfer gap.} The LoRA model's strong IW performance does not transfer to WebArena or BrowseComp+; multi-domain fine-tuning is needed.
+\textbf{Fabricated data.} IW is synthetically generated and may not capture real enterprise complexity.
+\textbf{No end-to-end WebArena evaluation.} We evaluate skill composition but not full task execution on WebArena.
+\textbf{Visual grounding gap.} CLIP achieves only 3\% TCR, motivating specialized GUI vision encoders.
 
-\textbf{Domain-specific fine-tuning.} The LoRA model's strong IW performance does not transfer to WebArena or BrowseComp+. Multi-domain fine-tuning or domain-adaptive techniques are needed for a genuinely general-purpose system.
-
-\textbf{Fabricated data.} The IW dataset, while diverse in skill types, is synthetically generated and may not capture the full complexity of real enterprise workflows. Our Mind2Web results partially address this, but evaluation on real enterprise environments remains future work.
-
-\textbf{No end-to-end WebArena evaluation.} We evaluate skill composition accuracy on WebArena trajectories but do not run end-to-end task execution. Integrating InteraSkill with a full WebArena agent is an important next step.
-
-\textbf{Visual grounding gap.} CLIP-based zero-shot skill prediction achieves only 3\% TCR, indicating that current vision-language models lack the fine-grained UI understanding needed for action grounding. Specialized GUI encoders (e.g., trained on UI screenshots with element annotations) are a promising direction.
-
-\textbf{GRPO reward saturation.} Preliminary GRPO results show reward convergence but near-zero reward variance, suggesting the reward function is too coarse for effective policy optimization. Reward shaping with finer-grained signals (partial credit, intermediate step rewards) may be necessary.
+\textbf{GRPO catastrophic forgetting.} GRPO training converged in reward but degraded evaluation performance across all benchmarks, with WebArena accuracy collapsing from 55.8\% to 4.4\%. RL-based skill learning requires KL regularization, multi-domain training, or finer-grained reward signals to prevent distributional collapse.
 
 \subsection{Broader Impact}
 
-Computer-using agents have the potential to automate repetitive digital work, improving productivity and accessibility. However, they also raise concerns about misuse: automated agents could enable large-scale phishing, UI manipulation, or unauthorized access to systems. Our work on skill discovery adds a layer of interpretability---discovered skills are inspectable and auditable, which could aid in detecting malicious behavior patterns. We advocate for deployment with human oversight and access controls, particularly in enterprise settings where agents interact with sensitive systems.
+CUAs can automate repetitive work but raise misuse concerns. Our skill discovery approach adds interpretability---discovered skills are inspectable and auditable, aiding in detecting malicious behavior. We advocate for deployment with human oversight, particularly in enterprise settings.
 
 %==============================================================================
 \section{Conclusion}
 %==============================================================================
 
-We introduced InteraSkill, a framework for automatic skill discovery, embedding, and composition that replaces manually engineered \texttt{SKILL.md} specifications with data-driven abstractions. Our three-phase pipeline---trajectory segmentation, contrastive skill embedding, and LLM-based composition---achieves 85\% skill prediction accuracy on enterprise workflows and 35.5\% task completion rate on Mind2Web, with meaningful cross-domain transfer. A six-model comparison demonstrates that interaction-derived fine-tuning outperforms model scale, while analysis of failure modes (WebArena distribution shift, CLIP's visual grounding gap, GRPO reward saturation) charts a clear path for future work. The key takeaway is that meaningful skill abstractions emerge from trajectory data without manual engineering, and that LLM-based composition with reasoning traces is essential for handling the contextual complexity of real-world workflows.
+We introduced InteraSkill, a framework for automatic skill discovery, embedding, and composition that replaces manually engineered \texttt{SKILL.md} specifications with data-driven abstractions. Our pipeline achieves 85\% skill prediction accuracy on enterprise workflows and 35.5\% task completion rate on Mind2Web, with 76\% cross-domain retention. A seven-model comparison demonstrates that supervised fine-tuning outperforms model scale, while GRPO reinforcement learning causes catastrophic forgetting---showing that RL on synthetic data with coarse rewards destroys generalization rather than improving it. These results demonstrate that meaningful skill abstractions emerge from trajectory data without manual engineering, and that the choice of learning algorithm matters as much as the data: behavioral cloning via LoRA succeeds where RL fails.
 
 %==============================================================================
 \section*{Acknowledgments}
@@ -614,6 +551,39 @@ R(y) = \begin{cases}
 \end{cases}
 \end{equation}
 These components are additive: a response with correct skill, proper format, and reasoning receives $R = 1.4$. The maximum possible reward is 1.4, which explains the observed convergence to $\sim$1.37 in training logs.
+
+\section{Per-Skill Accuracy and Confusion Matrix}
+\label{app:perskill}
+
+\begin{table}[h]
+\centering
+\caption{Per-skill prediction accuracy of the LoRA-fine-tuned Qwen3-8B on IW data, sorted by accuracy.}
+\label{tab:perskill}
+\small
+\begin{tabular}{lcc}
+\toprule
+\textbf{Skill} & \textbf{Accuracy} & \textbf{$n$} \\
+\midrule
+search\_navigate & 0.941 & 51 \\
+organize\_files & 0.917 & 12 \\
+data\_transfer & 0.897 & 39 \\
+review\_content & 0.893 & 28 \\
+document\_edit & 0.878 & 74 \\
+collaborate & 0.831 & 71 \\
+export\_publish & 0.821 & 28 \\
+send\_message & 0.809 & 68 \\
+schedule\_meeting & 0.778 & 18 \\
+presentation\_edit & 0.556 & 9 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{../results/figures/clustering_confusion.png}
+\caption{Normalized confusion matrix of Wasserstein clustering assignments versus ground-truth skill labels on IW data.}
+\label{fig:confusion}
+\end{figure}
 
 \section{Additional Mind2Web Results}
 \label{app:mind2web}
