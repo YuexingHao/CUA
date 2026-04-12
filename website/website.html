@@ -1093,6 +1093,23 @@ footer .footer-sub { font-size: 0.78rem; color: var(--slate-500); }
   <div class="container fade-section">
     <div class="section-badge">Figures</div>
     <h2>Experimental Results</h2>
+    <p class="section-intro">Latest multi-model benchmark below, followed by the InteraSkill pipeline diagnostics gallery.</p>
+
+    <!-- Latest multi-model benchmark (2026-04-11 eval sweep) -->
+    <div style="margin:1rem 0 2rem 0;">
+      <figure style="margin:0;">
+        <img src="img/model_comparison.png" alt="Multi-model comparison across IW, WebArena, BrowseComp+ and Mind2Web" style="width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);" loading="lazy">
+        <figcaption style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-400);">
+          <b>Figure.</b> Multi-model comparison across 6 LLMs (Qwen3-8B zero-shot/GRPO, OLMo-3-7B, Llama-3.1-70B, Gemma-4-11B, DeepSeek-R1-32B).
+          (a) Per-core skill-prediction accuracy with 95% bootstrap CIs on IW / WebArena / BrowseComp+.
+          (b) Learned (Transformer / Qwen3-8B GRPO) vs baseline (frequency / SKILL.md / MLP) on 1 − edit distance.
+          (c) Zero-shot vs GRPO overall accuracy on IW / WebArena / BrowseComp+ (absolute deltas in red).
+          (d) Mind2Web teacher-forcing task completion rate and reward, zero-shot vs GRPO on task / domain splits.
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3 style="margin-top:2rem;">InteraSkill pipeline diagnostics</h3>
     <p class="section-intro">Click any figure to zoom. Use arrow keys or navigation buttons to browse.</p>
     <div class="gallery-tabs">
       <button class="active" onclick="switchGallery('iw',this)">IW Benchmark</button>
