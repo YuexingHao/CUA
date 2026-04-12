@@ -1,0 +1,115 @@
+{
+  "model": "Qwen/Qwen3-8B",
+  "benchmark": "mind2web",
+  "level1_tcr": 0.27,
+  "level1_ci_lo": 0.21,
+  "level1_ci_hi": 0.335,
+  "level2_pts": {
+    "mean": 0.8265286370050836,
+    "per_step": [
+      0.78,
+      0.755,
+      0.7437185929648241,
+      0.8756756756756757,
+      0.8375,
+      0.8611111111111112,
+      0.888,
+      0.8932038834951457,
+      0.8488372093023255,
+      0.7887323943661971,
+      0.8771929824561403,
+      0.8181818181818182,
+      0.9166666666666666,
+      0.9090909090909091,
+      0.896551724137931,
+      0.9230769230769231,
+      0.8636363636363636,
+      0.9411764705882353,
+      0.9166666666666666,
+      0.75,
+      0.8571428571428571,
+      0.8333333333333334,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "level2_skill_breakdown": {
+    "collaborate": {
+      "accuracy": 1.0,
+      "correct": 10,
+      "total": 10
+    },
+    "data_transfer": {
+      "accuracy": 0.5,
+      "correct": 2,
+      "total": 4
+    },
+    "document_edit": {
+      "accuracy": 0.43089430894308944,
+      "correct": 159,
+      "total": 369
+    },
+    "generic_action": {
+      "accuracy": 0.9371231696813093,
+      "correct": 1088,
+      "total": 1161
+    },
+    "monitor_status": {
+      "accuracy": 1.0,
+      "correct": 11,
+      "total": 11
+    },
+    "review_content": {
+      "accuracy": 1.0,
+      "correct": 49,
+      "total": 49
+    },
+    "schedule_meeting": {
+      "accuracy": 0.9318181818181818,
+      "correct": 41,
+      "total": 44
+    },
+    "search_navigate": {
+      "accuracy": 0.8653846153846154,
+      "correct": 90,
+      "total": 104
+    },
+    "send_message": {
+      "accuracy": 0.9,
+      "correct": 27,
+      "total": 30
+    }
+  },
+  "level3_efficiency": {
+    "avg_steps_to_complete": 6.481481481481482,
+    "median_steps_to_complete": 5.0,
+    "avg_skill_switches": 0.215,
+    "task_recovery_rate": 0.0,
+    "step_recovery_attempts": 17,
+    "step_recovery_successes": 7,
+    "step_recovery_rate": 0.4117647058823529,
+    "tasks_with_failures": 146,
+    "recovered_tasks": 0
+  },
+  "skill_prediction_accuracy": 0.08529741863075196,
+  "action_grounding_accuracy": 0.8288439955106621,
+  "n_tasks": 200,
+  "n_completed": 54,
+  "n_steps_total": 1782,
+  "split": "test_domain",
+  "adapter": "results/qwen3_lora/final_adapter",
+  "skill_mode": "llm",
+  "grounding_mode": "llm",
+  "composition": true,
+  "per_domain": {
+    "Travel": {
+      "tcr": 0.27,
+      "n_tasks": 200
+    }
+  }
+}

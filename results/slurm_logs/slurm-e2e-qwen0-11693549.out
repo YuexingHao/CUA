@@ -1,0 +1,64 @@
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+=== Qwen3-8B zero-shot — composition (test_task) ===
+Node: node3902 | Date: Sat Apr 11 18:43:35 EDT 2026
+============================================================
+Mind2Web Evaluation
+Model: Qwen/Qwen3-8B
+Split: test_task
+Max tasks: 200
+Skill mode: llm
+Grounding mode: llm
+Composition: True
+============================================================
+Loading tokenizer for Qwen/Qwen3-8B...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:01<08:26,  1.27s/it]Loading weights:   1%|          | 2/399 [00:02<07:47,  1.18s/it]Loading weights:   1%|          | 4/399 [00:02<03:09,  2.09it/s]Loading weights:   2%|▏         | 6/399 [00:02<01:56,  3.39it/s]Loading weights:   4%|▍         | 15/399 [00:02<00:33, 11.44it/s]Loading weights:   5%|▍         | 18/399 [00:03<00:30, 12.46it/s]Loading weights:   7%|▋         | 26/399 [00:03<00:19, 19.42it/s]Loading weights:   7%|▋         | 29/399 [00:03<00:19, 18.78it/s]Loading weights:   9%|▉         | 37/399 [00:03<00:14, 25.82it/s]Loading weights:  10%|█         | 41/399 [00:03<00:14, 24.90it/s]Loading weights:  12%|█▏        | 48/399 [00:03<00:11, 29.52it/s]Loading weights:  13%|█▎        | 52/399 [00:04<00:12, 27.52it/s]Loading weights:  15%|█▍        | 59/399 [00:04<00:10, 31.66it/s]Loading weights:  16%|█▌        | 63/399 [00:04<00:11, 28.97it/s]Loading weights:  18%|█▊        | 70/399 [00:04<00:09, 32.93it/s]Loading weights:  19%|█▊        | 74/399 [00:04<00:10, 29.92it/s]Loading weights:  20%|██        | 81/399 [00:04<00:09, 33.59it/s]Loading weights:  21%|██▏       | 85/399 [00:05<00:10, 29.94it/s]Loading weights:  23%|██▎       | 92/399 [00:05<00:09, 32.93it/s]Loading weights:  24%|██▍       | 96/399 [00:05<00:10, 29.35it/s]Loading weights:  26%|██▌       | 103/399 [00:05<00:08, 33.06it/s]Loading weights:  27%|██▋       | 107/399 [00:05<00:09, 29.42it/s]Loading weights:  29%|██▊       | 114/399 [00:05<00:08, 32.99it/s]Loading weights:  30%|██▉       | 118/399 [00:06<00:09, 29.35it/s]Loading weights:  31%|███▏      | 125/399 [00:06<00:08, 32.94it/s]Loading weights:  32%|███▏      | 129/399 [00:06<00:09, 29.61it/s]Loading weights:  34%|███▍      | 136/399 [00:06<00:08, 32.86it/s]Loading weights:  35%|███▌      | 140/399 [00:06<00:08, 29.39it/s]Loading weights:  37%|███▋      | 147/399 [00:07<00:07, 32.73it/s]Loading weights:  38%|███▊      | 151/399 [00:07<00:08, 29.49it/s]Loading weights:  40%|███▉      | 158/399 [00:07<00:07, 32.86it/s]Loading weights:  41%|████      | 162/399 [00:07<00:07, 29.78it/s]Loading weights:  42%|████▏     | 169/399 [00:07<00:06, 33.48it/s]Loading weights:  43%|████▎     | 173/399 [00:07<00:07, 30.09it/s]Loading weights:  45%|████▌     | 180/399 [00:08<00:06, 33.83it/s]Loading weights:  46%|████▌     | 184/399 [00:08<00:07, 30.14it/s]Loading weights:  48%|████▊     | 191/399 [00:08<00:06, 32.75it/s]Loading weights:  49%|████▉     | 195/399 [00:08<00:06, 29.55it/s]Loading weights:  51%|█████     | 202/399 [00:08<00:05, 33.23it/s]Loading weights:  52%|█████▏    | 206/399 [00:08<00:06, 29.38it/s]Loading weights:  53%|█████▎    | 213/399 [00:09<00:05, 33.10it/s]Loading weights:  54%|█████▍    | 217/399 [00:09<00:06, 29.96it/s]Loading weights:  56%|█████▌    | 224/399 [00:09<00:05, 33.73it/s]Loading weights:  57%|█████▋    | 228/399 [00:09<00:05, 30.42it/s]Loading weights:  59%|█████▉    | 235/399 [00:09<00:04, 34.08it/s]Loading weights:  60%|█████▉    | 239/399 [00:10<00:05, 30.65it/s]Loading weights:  62%|██████▏   | 246/399 [00:10<00:04, 34.30it/s]Loading weights:  63%|██████▎   | 250/399 [00:10<00:04, 30.62it/s]Loading weights:  64%|██████▍   | 257/399 [00:10<00:04, 34.25it/s]Loading weights:  65%|██████▌   | 261/399 [00:10<00:04, 30.75it/s]Loading weights:  67%|██████▋   | 268/399 [00:10<00:03, 34.31it/s]Loading weights:  68%|██████▊   | 272/399 [00:11<00:04, 30.77it/s]Loading weights:  70%|██████▉   | 279/399 [00:11<00:03, 34.37it/s]Loading weights:  71%|███████   | 283/399 [00:11<00:03, 30.82it/s]Loading weights:  73%|███████▎  | 290/399 [00:11<00:03, 34.41it/s]Loading weights:  74%|███████▎  | 294/399 [00:11<00:03, 30.82it/s]Loading weights:  75%|███████▌  | 301/399 [00:11<00:02, 34.39it/s]Loading weights:  76%|███████▋  | 305/399 [00:12<00:03, 30.81it/s]Loading weights:  78%|███████▊  | 312/399 [00:12<00:02, 34.40it/s]Loading weights:  79%|███████▉  | 316/399 [00:12<00:02, 30.81it/s]Loading weights:  81%|████████  | 323/399 [00:12<00:02, 34.41it/s]Loading weights:  82%|████████▏ | 327/399 [00:12<00:02, 30.71it/s]Loading weights:  84%|████████▎ | 334/399 [00:12<00:01, 34.29it/s]Loading weights:  85%|████████▍ | 338/399 [00:13<00:01, 30.74it/s]Loading weights:  86%|████████▋ | 345/399 [00:13<00:01, 34.34it/s]Loading weights:  87%|████████▋ | 349/399 [00:13<00:01, 30.81it/s]Loading weights:  89%|████████▉ | 356/399 [00:13<00:01, 34.37it/s]Loading weights:  90%|█████████ | 360/399 [00:13<00:01, 30.78it/s]Loading weights:  92%|█████████▏| 367/399 [00:13<00:00, 34.37it/s]Loading weights:  93%|█████████▎| 371/399 [00:14<00:00, 30.79it/s]Loading weights:  95%|█████████▍| 378/399 [00:14<00:00, 34.38it/s]Loading weights:  96%|█████████▌| 382/399 [00:14<00:00, 30.79it/s]Loading weights:  97%|█████████▋| 389/399 [00:14<00:00, 34.35it/s]Loading weights:  98%|█████████▊| 393/399 [00:14<00:00, 30.81it/s]Loading weights: 100%|██████████| 399/399 [00:14<00:00, 26.95it/s]
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+Loading from cached data/mind2web_test_task.json...
+Loaded 200 tasks
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  10/200 tasks: TCR=2/10 (0.200), step_acc=19/113 (0.168)
+  20/200 tasks: TCR=3/20 (0.150), step_acc=47/218 (0.216)
+  30/200 tasks: TCR=5/30 (0.167), step_acc=72/299 (0.241)
+  40/200 tasks: TCR=6/40 (0.150), step_acc=94/372 (0.253)
+  50/200 tasks: TCR=6/50 (0.120), step_acc=117/450 (0.260)
+  60/200 tasks: TCR=6/60 (0.100), step_acc=120/512 (0.234)
+  70/200 tasks: TCR=8/70 (0.114), step_acc=130/569 (0.228)
+  80/200 tasks: TCR=8/80 (0.100), step_acc=142/628 (0.226)
+  90/200 tasks: TCR=8/90 (0.089), step_acc=150/700 (0.214)
+  100/200 tasks: TCR=9/100 (0.090), step_acc=166/774 (0.214)
+  110/200 tasks: TCR=11/110 (0.100), step_acc=186/846 (0.220)
+  120/200 tasks: TCR=11/120 (0.092), step_acc=227/938 (0.242)
+  130/200 tasks: TCR=11/130 (0.085), step_acc=252/1026 (0.246)
+  140/200 tasks: TCR=12/140 (0.086), step_acc=309/1129 (0.274)
+  150/200 tasks: TCR=13/150 (0.087), step_acc=346/1218 (0.284)
+  160/200 tasks: TCR=14/160 (0.087), step_acc=388/1285 (0.302)
+  170/200 tasks: TCR=14/170 (0.082), step_acc=397/1337 (0.297)
+  180/200 tasks: TCR=15/180 (0.083), step_acc=417/1422 (0.293)
+  190/200 tasks: TCR=15/190 (0.079), step_acc=443/1535 (0.289)
+  200/200 tasks: TCR=16/200 (0.080), step_acc=470/1629 (0.289)
+
+============================================================
+RESULTS
+============================================================
+
+Task Completion Rate: 0.0800 (16/200)
+Skill Prediction Accuracy: 0.1037
+Action Grounding Accuracy: 0.2885
+Partial Task Success (mean): 0.2703
+Avg Steps to Completion: 6.5
+Task Recovery Rate: 0.0000
+Step Recovery Rate: 0.1500
+
+Per-domain TCR:
+  Entertainment       : 0.070 (57 tasks)
+  Shopping            : 0.159 (63 tasks)
+  Travel              : 0.025 (80 tasks)
+
+Saved metrics to results/metrics/qwen3-8b_mind2web_metrics_test_task_comp.json
+Saved predictions to results/predictions/qwen3-8b_mind2web_predictions_test_task_comp.json
+Removed checkpoint results/qwen3-8b_mind2web_test_task_comp_checkpoint.json
+Done: Sat Apr 11 20:09:15 EDT 2026

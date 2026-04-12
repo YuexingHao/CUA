@@ -33,3 +33,6 @@ results/*/checkpoint-*/rng_state.pth
 
 # BrowseComp+ external repo (has its own git history)
 data/browsecomp-plus/repo
+
+# WebArena Apptainer images (multi-GB)
+containers/

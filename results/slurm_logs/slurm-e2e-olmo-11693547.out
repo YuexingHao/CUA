@@ -1,0 +1,69 @@
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+=== OLMo-3-7B — composition (test_task) ===
+Node: node3801 | Date: Sat Apr 11 18:43:33 EDT 2026
+============================================================
+Mind2Web Evaluation
+Model: allenai/Olmo-3-1025-7B
+Split: test_task
+Max tasks: 200
+Skill mode: llm
+Grounding mode: llm
+Composition: True
+============================================================
+Loading tokenizer for allenai/Olmo-3-1025-7B...
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Loading model (4-bit): allenai/Olmo-3-1025-7B...
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:   0%|          | 1/355 [00:00<00:48,  7.33it/s]Loading weights:   1%|          | 2/355 [00:00<00:43,  8.11it/s]Loading weights:   3%|▎         | 12/355 [00:00<00:07, 44.88it/s]Loading weights:   8%|▊         | 27/355 [00:00<00:04, 79.98it/s]Loading weights:  13%|█▎        | 46/355 [00:00<00:02, 116.62it/s]Loading weights:  17%|█▋        | 60/355 [00:00<00:02, 122.81it/s]Loading weights:  23%|██▎       | 81/355 [00:00<00:01, 145.09it/s]Loading weights:  28%|██▊       | 100/355 [00:00<00:01, 158.17it/s]Loading weights:  33%|███▎      | 116/355 [00:01<00:01, 149.31it/s]Loading weights:  38%|███▊      | 135/355 [00:01<00:01, 155.44it/s]Loading weights:  43%|████▎     | 151/355 [00:01<00:01, 154.96it/s]Loading weights:  47%|████▋     | 167/355 [00:01<00:01, 153.35it/s]Loading weights:  52%|█████▏    | 183/355 [00:01<00:01, 148.06it/s]Loading weights:  56%|█████▋    | 200/355 [00:01<00:01, 154.13it/s]Loading weights:  61%|██████    | 216/355 [00:02<00:02, 60.39it/s] Loading weights:  64%|██████▍   | 228/355 [00:02<00:02, 48.80it/s]Loading weights:  67%|██████▋   | 238/355 [00:02<00:02, 40.70it/s]Loading weights:  69%|██████▉   | 246/355 [00:03<00:02, 36.80it/s]Loading weights:  71%|███████   | 252/355 [00:03<00:02, 37.19it/s]Loading weights:  73%|███████▎  | 258/355 [00:03<00:03, 30.88it/s]Loading weights:  75%|███████▍  | 265/355 [00:03<00:02, 35.95it/s]Loading weights:  76%|███████▋  | 271/355 [00:04<00:02, 30.12it/s]Loading weights:  78%|███████▊  | 277/355 [00:04<00:02, 32.87it/s]Loading weights:  79%|███████▉  | 282/355 [00:04<00:02, 27.91it/s]Loading weights:  81%|████████  | 287/355 [00:04<00:02, 31.18it/s]Loading weights:  82%|████████▏ | 291/355 [00:04<00:02, 23.82it/s]Loading weights:  84%|████████▍ | 298/355 [00:05<00:01, 30.95it/s]Loading weights:  85%|████████▌ | 303/355 [00:05<00:02, 25.21it/s]Loading weights:  87%|████████▋ | 309/355 [00:05<00:01, 30.66it/s]Loading weights:  88%|████████▊ | 314/355 [00:05<00:01, 25.20it/s]Loading weights:  90%|█████████ | 320/355 [00:05<00:01, 30.88it/s]Loading weights:  92%|█████████▏| 325/355 [00:06<00:01, 25.01it/s]Loading weights:  94%|█████████▎| 332/355 [00:06<00:00, 30.73it/s]Loading weights:  95%|█████████▍| 336/355 [00:06<00:00, 24.92it/s]Loading weights:  97%|█████████▋| 343/355 [00:06<00:00, 30.87it/s]Loading weights:  98%|█████████▊| 347/355 [00:06<00:00, 25.05it/s]Loading weights: 100%|█████████▉| 354/355 [00:07<00:00, 31.06it/s]Loading weights: 100%|██████████| 355/355 [00:07<00:00, 50.04it/s]
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+Loading from cached data/mind2web_test_task.json...
+Loaded 200 tasks
+  10/200 tasks: TCR=2/10 (0.200), step_acc=87/113 (0.770)
+  20/200 tasks: TCR=4/20 (0.200), step_acc=168/218 (0.771)
+  30/200 tasks: TCR=8/30 (0.267), step_acc=237/299 (0.793)
+  40/200 tasks: TCR=12/40 (0.300), step_acc=299/372 (0.804)
+  50/200 tasks: TCR=15/50 (0.300), step_acc=361/450 (0.802)
+  60/200 tasks: TCR=21/60 (0.350), step_acc=417/512 (0.814)
+  70/200 tasks: TCR=24/70 (0.343), step_acc=459/569 (0.807)
+  80/200 tasks: TCR=28/80 (0.350), step_acc=512/628 (0.815)
+  90/200 tasks: TCR=32/90 (0.356), step_acc=570/700 (0.814)
+  100/200 tasks: TCR=34/100 (0.340), step_acc=631/774 (0.815)
+  110/200 tasks: TCR=38/110 (0.345), step_acc=686/846 (0.811)
+  120/200 tasks: TCR=42/120 (0.350), step_acc=759/938 (0.809)
+  130/200 tasks: TCR=44/130 (0.338), step_acc=829/1026 (0.808)
+  140/200 tasks: TCR=45/140 (0.321), step_acc=907/1129 (0.803)
+  150/200 tasks: TCR=50/150 (0.333), step_acc=980/1218 (0.805)
+  160/200 tasks: TCR=53/160 (0.331), step_acc=1034/1285 (0.805)
+  170/200 tasks: TCR=57/170 (0.335), step_acc=1076/1337 (0.805)
+  180/200 tasks: TCR=59/180 (0.328), step_acc=1151/1422 (0.809)
+  190/200 tasks: TCR=63/190 (0.332), step_acc=1246/1535 (0.812)
+  200/200 tasks: TCR=68/200 (0.340), step_acc=1326/1629 (0.814)
+
+============================================================
+RESULTS
+============================================================
+
+Task Completion Rate: 0.3400 (68/200)
+Skill Prediction Accuracy: 0.2234
+Action Grounding Accuracy: 0.8140
+Partial Task Success (mean): 0.8152
+Avg Steps to Completion: 6.3
+Task Recovery Rate: 0.0000
+Step Recovery Rate: 0.5591
+
+Per-domain TCR:
+  Entertainment       : 0.474 (57 tasks)
+  Shopping            : 0.397 (63 tasks)
+  Travel              : 0.200 (80 tasks)
+
+Saved metrics to results/metrics/olmo-3-1025-7b_mind2web_metrics_test_task_comp.json
+Saved predictions to results/predictions/olmo-3-1025-7b_mind2web_predictions_test_task_comp.json
+Removed checkpoint results/olmo-3-1025-7b_mind2web_test_task_comp_checkpoint.json
+Done: Sun Apr 12 00:38:37 EDT 2026
