@@ -19,11 +19,12 @@ echo "Node: $(hostname) | Date: $(date)"
 echo "Apptainer: $(apptainer --version)"
 echo ""
 
-SIF_DIR="/orcd/home/002/yuexing/CUA2026/containers"
+SIF_DIR="/orcd/compute/mghassem/001/gobi1/huggingface/datasets/webarena_containers"
 mkdir -p "$SIF_DIR"
 
-export APPTAINER_TMPDIR="${SIF_DIR}/tmp"
-export APPTAINER_CACHEDIR="${SIF_DIR}/cache"
+# Use local /tmp on compute node (much faster, no quota issues)
+export APPTAINER_TMPDIR="/tmp/apptainer_tmp_$$"
+export APPTAINER_CACHEDIR="/tmp/apptainer_cache_$$"
 mkdir -p "$APPTAINER_TMPDIR" "$APPTAINER_CACHEDIR"
 
 pull_image() {

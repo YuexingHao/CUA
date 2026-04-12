@@ -34,7 +34,7 @@ conda activate base
 module load apptainer/1.1.9
 export PYTHONUNBUFFERED=1
 
-SIF_DIR="containers"
+SIF_DIR="/orcd/compute/mghassem/001/gobi1/huggingface/datasets/webarena_containers"
 LOG_DIR="results/slurm_logs/webarena_services"
 mkdir -p "$LOG_DIR"
 

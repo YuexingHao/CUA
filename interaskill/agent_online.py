@@ -43,6 +43,12 @@ try:
 except ImportError:
     HAS_GYM = False
 
+try:
+    from browsergym.utils.obs import flatten_axtree_to_str
+    HAS_FLATTEN = True
+except ImportError:
+    HAS_FLATTEN = False
+
 from .data import SKILL_TYPES
 from .grounding import (
     SkillGrounder,
@@ -238,7 +244,18 @@ What skill should be executed next?"""},
             action: BrowserGym action string (e.g., "click(bid_123)")
         """
         # Extract text observation (prefer accessibility tree)
-        obs_text = obs.get("axtree_txt", obs.get("text", ""))
+        # BrowserGym returns raw axtree_object; flatten to text with bid markers
+        obs_text = ""
+        if HAS_FLATTEN and "axtree_object" in obs:
+            try:
+                obs_text = flatten_axtree_to_str(
+                    obs["axtree_object"],
+                    extra_properties=obs.get("extra_element_properties", {}),
+                )
+            except Exception:
+                pass
+        if not obs_text:
+            obs_text = obs.get("axtree_txt", obs.get("text", ""))
         if not obs_text:
             obs_text = obs.get("dom_txt", "(empty page)")
 
