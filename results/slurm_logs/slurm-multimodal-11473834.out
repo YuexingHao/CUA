@@ -1,0 +1,142 @@
+=== Multimodal Evaluation Suite ===
+Node: node3800
+GPUs: NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+Date: Mon Apr  6 15:58:35 EDT 2026
+
+=== Qwen3-VL-8B: Screenshot → Skill (teacher forcing) ===
+============================================================
+Multimodal Skill Prediction (VLM)
+Model: Qwen/Qwen3-VL-8B-Instruct
+Max tasks: 200
+============================================================
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 437, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 429, in main
+    evaluate_vlm(args)
+    ~~~~~~~~~~~~^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 134, in evaluate_vlm
+    vlm = VLMSkillPredictor(args.model)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/multimodal.py", line 178, in __init__
+    from transformers import AutoModelForVision2Seq, AutoProcessor
+ImportError: cannot import name 'AutoModelForVision2Seq' from 'transformers' (/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/__init__.py)
+
+=== Qwen3-VL-8B: Screenshot → Skill (composition) ===
+============================================================
+Multimodal Skill Prediction (VLM)
+Model: Qwen/Qwen3-VL-8B-Instruct
+Max tasks: 200
+============================================================
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 437, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 429, in main
+    evaluate_vlm(args)
+    ~~~~~~~~~~~~^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 134, in evaluate_vlm
+    vlm = VLMSkillPredictor(args.model)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/multimodal.py", line 178, in __init__
+    from transformers import AutoModelForVision2Seq, AutoProcessor
+ImportError: cannot import name 'AutoModelForVision2Seq' from 'transformers' (/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/__init__.py)
+
+=== CLIP ViT-L/14: Zero-Shot Skill Classification ===
+============================================================
+CLIP Zero-Shot Skill Classification
+CLIP model: openai/clip-vit-large-patch14
+============================================================
+Loading CLIP: openai/clip-vit-large-patch14...
+Loading weights:   0%|          | 0/590 [00:00<?, ?it/s]Loading weights:  24%|██▎       | 140/590 [00:00<00:00, 1395.00it/s]Loading weights: 100%|██████████| 590/590 [00:00<00:00, 3075.94it/s]
+[1mCLIPModel LOAD REPORT[0m from: openai/clip-vit-large-patch14
+Key                                  | Status     |  | 
+-------------------------------------+------------+--+-
+text_model.embeddings.position_ids   | UNEXPECTED |  | 
+vision_model.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  CLIP loaded on cuda
+Loading Multimodal-Mind2Web from HuggingFace...
+  Loaded 200 tasks (1440 steps total)
+  20/200: skill_acc=0.215
+  40/200: skill_acc=0.185
+  60/200: skill_acc=0.161
+  80/200: skill_acc=0.161
+  100/200: skill_acc=0.164
+  120/200: skill_acc=0.151
+  140/200: skill_acc=0.167
+  160/200: skill_acc=0.185
+  180/200: skill_acc=0.182
+  200/200: skill_acc=0.178
+
+============================================================
+RESULTS (clip_zeroshot)
+============================================================
+Skill Prediction Accuracy: 0.1778
+Tasks: 200
+
+Per-domain:
+  Entertainment       : 0.202 (56 tasks)
+  Shopping            : 0.291 (55 tasks)
+  Travel              : 0.093 (89 tasks)
+
+Saved to results/clip_vit_large_patch14_clip_zeroshot_metrics.json
+Saved predictions to results/clip_vit_large_patch14_clip_zeroshot_predictions.json
+
+=== Cross-Domain Visual Transfer (CLIP) ===
+============================================================
+Cross-Domain Visual Transfer Analysis
+CLIP model: openai/clip-vit-large-patch14
+============================================================
+Loading CLIP: openai/clip-vit-large-patch14...
+Loading weights:   0%|          | 0/590 [00:00<?, ?it/s]Loading weights:  42%|████▏     | 247/590 [00:00<00:00, 2465.29it/s]Loading weights: 100%|██████████| 590/590 [00:00<00:00, 4109.47it/s]
+[1mCLIPModel LOAD REPORT[0m from: openai/clip-vit-large-patch14
+Key                                  | Status     |  | 
+-------------------------------------+------------+--+-
+text_model.embeddings.position_ids   | UNEXPECTED |  | 
+vision_model.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  CLIP loaded on cuda
+Loading Multimodal-Mind2Web from HuggingFace...
+/home/yuexing/miniconda/lib/python3.13/site-packages/PIL/Image.py:3432: DecompressionBombWarning: Image size (108679428 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+  Loaded 500 tasks (3774 steps total)
+
+Domains: ['Entertainment', 'Shopping', 'Travel']
+  Entertainment: 50 screenshots
+  Shopping: 50 screenshots
+  Travel: 50 screenshots
+
+Computing cross-domain visual similarity...
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 437, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 433, in main
+    evaluate_cross_domain(args)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_multimodal.py", line 316, in evaluate_cross_domain
+    cross_domain = compute_cross_domain_similarity(clip, dict(domain_screenshots))
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/multimodal.py", line 412, in compute_cross_domain_similarity
+    embs = clip_encoder.batch_encode_images(imgs)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/multimodal.py", line 113, in batch_encode_images
+    emb = torch.nn.functional.normalize(emb, dim=-1)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/torch/nn/functional.py", line 5571, in normalize
+    denom = input.norm(p, dim, keepdim=True).clamp_min(eps).expand_as(input)
+            ^^^^^^^^^^
+AttributeError: 'BaseModelOutputWithPooling' object has no attribute 'norm'
+
+=== Done ===
+Date: Mon Apr  6 16:07:06 EDT 2026

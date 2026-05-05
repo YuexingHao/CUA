@@ -1,0 +1,215 @@
+=== Llama-3.1-70B-Instruct: Skill Prediction Evaluation ===
+Node: node3801
+GPUs: NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+Date: Sun Apr  5 16:33:44 EDT 2026
+
+=== Step 1: Evaluating on IW ===
+============================================================
+Model: meta-llama/Meta-Llama-3.1-70B-Instruct
+Dataset: IW (Fabricated)
+Max conversations: 50
+============================================================
+Loading tokenizer for meta-llama/Meta-Llama-3.1-70B-Instruct...
+Loading model (4-bit): meta-llama/Meta-Llama-3.1-70B-Instruct...
+Loading checkpoint shards:   0%|          | 0/30 [00:00<?, ?it/s]Loading checkpoint shards:   3%|▎         | 1/30 [00:04<02:05,  4.31s/it]Loading checkpoint shards:   7%|▋         | 2/30 [00:08<01:57,  4.20s/it]Loading checkpoint shards:  10%|█         | 3/30 [00:12<01:56,  4.31s/it]Loading checkpoint shards:  13%|█▎        | 4/30 [00:17<01:52,  4.33s/it]Loading checkpoint shards:  17%|█▋        | 5/30 [00:21<01:46,  4.25s/it]Loading checkpoint shards:  20%|██        | 6/30 [00:25<01:40,  4.21s/it]Loading checkpoint shards:  23%|██▎       | 7/30 [00:29<01:35,  4.17s/it]Loading checkpoint shards:  27%|██▋       | 8/30 [00:33<01:33,  4.24s/it]Loading checkpoint shards:  30%|███       | 9/30 [00:38<01:29,  4.27s/it]Loading checkpoint shards:  33%|███▎      | 10/30 [00:42<01:24,  4.23s/it]Loading checkpoint shards:  37%|███▋      | 11/30 [00:46<01:19,  4.19s/it]Loading checkpoint shards:  40%|████      | 12/30 [00:51<01:17,  4.29s/it]Loading checkpoint shards:  43%|████▎     | 13/30 [00:55<01:15,  4.47s/it]Loading checkpoint shards:  47%|████▋     | 14/30 [01:00<01:13,  4.57s/it]Loading checkpoint shards:  50%|█████     | 15/30 [01:05<01:08,  4.55s/it]Loading checkpoint shards:  53%|█████▎    | 16/30 [01:09<01:03,  4.54s/it]Loading checkpoint shards:  57%|█████▋    | 17/30 [01:14<00:59,  4.54s/it]Loading checkpoint shards:  60%|██████    | 18/30 [01:19<00:55,  4.63s/it]Loading checkpoint shards:  63%|██████▎   | 19/30 [01:23<00:51,  4.68s/it]Loading checkpoint shards:  67%|██████▋   | 20/30 [01:28<00:46,  4.62s/it]Loading checkpoint shards:  70%|███████   | 21/30 [01:32<00:41,  4.58s/it]Loading checkpoint shards:  73%|███████▎  | 22/30 [01:37<00:36,  4.55s/it]Loading checkpoint shards:  77%|███████▋  | 23/30 [01:42<00:32,  4.63s/it]Loading checkpoint shards:  80%|████████  | 24/30 [01:46<00:28,  4.68s/it]Loading checkpoint shards:  83%|████████▎ | 25/30 [01:51<00:23,  4.62s/it]Loading checkpoint shards:  87%|████████▋ | 26/30 [01:55<00:18,  4.58s/it]Loading checkpoint shards:  90%|█████████ | 27/30 [02:00<00:13,  4.55s/it]Loading checkpoint shards:  93%|█████████▎| 28/30 [02:05<00:09,  4.63s/it]Loading checkpoint shards:  97%|█████████▋| 29/30 [02:10<00:04,  4.68s/it]Loading checkpoint shards: 100%|██████████| 30/30 [02:12<00:00,  3.88s/it]Loading checkpoint shards: 100%|██████████| 30/30 [02:12<00:00,  4.40s/it]
+  GPU memory: 3.9 GB
+  Using 8 GPUs
+
+Loaded 50 IW (Fabricated) conversations
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:636: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+  10/50 conversations: accuracy = 0.282 (22/78)
+  20/50 conversations: accuracy = 0.304 (48/158)
+  30/50 conversations: accuracy = 0.315 (76/241)
+  40/50 conversations: accuracy = 0.310 (99/319)
+  50/50 conversations: accuracy = 0.300 (120/400)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.3000 (120/400)
+
+Per-position accuracy:
+  Position 0: 0.520 (26/50)
+  Position 1: 0.260 (13/50)
+  Position 2: 0.440 (22/50)
+  Position 3: 0.320 (16/50)
+  Position 4: 0.300 (15/50)
+  Position 5: 0.208 (10/48)
+  Position 6: 0.233 (10/43)
+  Position 7: 0.129 (4/31)
+  Position 8: 0.235 (4/17)
+  Position 9: 0.000 (0/9)
+  Position 10: 0.000 (0/2)
+
+Per-skill accuracy:
+  collaborate         : 0.085 (4/47)
+  data_transfer       : 0.436 (17/39)
+  document_edit       : 0.589 (43/73)
+  export_publish      : 0.167 (5/30)
+  monitor_status      : 0.000 (0/4)
+  organize_files      : 0.200 (2/10)
+  presentation_edit   : 0.000 (0/7)
+  review_content      : 0.000 (0/30)
+  schedule_meeting    : 0.071 (1/14)
+  search_navigate     : 0.319 (29/91)
+  send_message        : 0.345 (19/55)
+
+Top 10 errors:
+  collaborate          -> document_edit        (22 times)
+  search_navigate      -> monitor_status       (20 times)
+  document_edit        -> search_navigate      (18 times)
+  send_message         -> document_edit        (14 times)
+  data_transfer        -> search_navigate      (12 times)
+  send_message         -> export_publish       (12 times)
+  review_content       -> search_navigate      (11 times)
+  export_publish       -> document_edit        (11 times)
+  review_content       -> document_edit        (11 times)
+  search_navigate      -> generic_action       (10 times)
+
+Normalized edit distance: 0.6312
+Exact sequence match: 0.0000 (0/50)
+
+Saved results to results/llama3.1-70b_eval_metrics.json
+Saved predictions to results/llama3.1-70b_predictions.json
+
+=== Step 2: Evaluating on WebArena ===
+============================================================
+Model: meta-llama/Meta-Llama-3.1-70B-Instruct
+Dataset: WebArena
+Max conversations: 200
+============================================================
+Loading tokenizer for meta-llama/Meta-Llama-3.1-70B-Instruct...
+Loading model (4-bit): meta-llama/Meta-Llama-3.1-70B-Instruct...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/723 [00:00<?, ?it/s]Loading weights:   0%|          | 1/723 [00:00<02:57,  4.08it/s]Loading weights:   0%|          | 2/723 [00:00<02:56,  4.08it/s]Loading weights:   1%|          | 5/723 [00:00<01:15,  9.51it/s]Loading weights:   2%|▏         | 13/723 [00:00<00:31, 22.75it/s]Loading weights:   2%|▏         | 16/723 [00:00<00:30, 23.48it/s]Loading weights:   3%|▎         | 23/723 [00:01<00:23, 30.43it/s]Loading weights:   4%|▍         | 31/723 [00:01<00:18, 36.96it/s]Loading weights:   5%|▍         | 35/723 [00:01<00:19, 36.00it/s]Loading weights:   6%|▌         | 41/723 [00:01<00:18, 36.77it/s]Loading weights:   7%|▋         | 49/723 [00:01<00:16, 41.07it/s]Loading weights:   7%|▋         | 54/723 [00:01<00:16, 39.57it/s]Loading weights:   8%|▊         | 59/723 [00:01<00:17, 38.48it/s]Loading weights:   9%|▉         | 65/723 [00:02<00:15, 43.37it/s]Loading weights:  10%|▉         | 70/723 [00:02<00:17, 37.81it/s]Loading weights:  11%|█         | 76/723 [00:02<00:15, 42.85it/s]Loading weights:  11%|█         | 81/723 [00:02<00:15, 40.79it/s]Loading weights:  12%|█▏        | 86/723 [00:02<00:16, 39.36it/s]Loading weights:  13%|█▎        | 94/723 [00:02<00:14, 42.89it/s]Loading weights:  14%|█▎        | 99/723 [00:02<00:15, 40.82it/s]Loading weights:  14%|█▍        | 104/723 [00:03<00:15, 39.29it/s]Loading weights:  15%|█▌        | 110/723 [00:03<00:13, 44.00it/s]Loading weights:  16%|█▌        | 115/723 [00:03<00:16, 37.14it/s]Loading weights:  17%|█▋        | 122/723 [00:03<00:15, 39.44it/s]Loading weights:  18%|█▊        | 130/723 [00:03<00:13, 42.85it/s]Loading weights:  19%|█▊        | 135/723 [00:03<00:14, 41.15it/s]Loading weights:  19%|█▉        | 140/723 [00:03<00:14, 39.82it/s]Loading weights:  20%|██        | 148/723 [00:04<00:13, 43.42it/s]Loading weights:  21%|██        | 153/723 [00:04<00:13, 41.62it/s]Loading weights:  22%|██▏       | 158/723 [00:04<00:14, 40.12it/s]Loading weights:  23%|██▎       | 164/723 [00:04<00:12, 44.69it/s]Loading weights:  23%|██▎       | 169/723 [00:04<00:14, 38.52it/s]Loading weights:  24%|██▍       | 175/723 [00:04<00:12, 43.44it/s]Loading weights:  25%|██▍       | 180/723 [00:04<00:13, 41.14it/s]Loading weights:  26%|██▌       | 185/723 [00:05<00:13, 39.59it/s]Loading weights:  27%|██▋       | 193/723 [00:05<00:12, 43.23it/s]Loading weights:  27%|██▋       | 198/723 [00:05<00:12, 41.08it/s]Loading weights:  28%|██▊       | 203/723 [00:05<00:13, 39.66it/s]Loading weights:  29%|██▉       | 211/723 [00:05<00:12, 41.93it/s]Loading weights:  30%|██▉       | 216/723 [00:05<00:12, 40.17it/s]Loading weights:  31%|███       | 221/723 [00:05<00:12, 38.95it/s]Loading weights:  32%|███▏      | 229/723 [00:06<00:11, 42.69it/s]Loading weights:  32%|███▏      | 234/723 [00:06<00:11, 40.86it/s]Loading weights:  33%|███▎      | 239/723 [00:06<00:12, 39.50it/s]Loading weights:  34%|███▍      | 245/723 [00:06<00:10, 44.21it/s]Loading weights:  35%|███▍      | 250/723 [00:06<00:12, 38.24it/s]Loading weights:  35%|███▌      | 256/723 [00:06<00:10, 43.13it/s]Loading weights:  36%|███▌      | 261/723 [00:06<00:11, 40.83it/s]Loading weights:  37%|███▋      | 266/723 [00:06<00:11, 39.36it/s]Loading weights:  38%|███▊      | 272/723 [00:07<00:10, 44.31it/s]Loading weights:  38%|███▊      | 277/723 [00:07<00:11, 38.44it/s]Loading weights:  39%|███▉      | 284/723 [00:07<00:10, 40.48it/s]Loading weights:  40%|████      | 292/723 [00:07<00:09, 43.82it/s]Loading weights:  41%|████      | 297/723 [00:07<00:10, 41.88it/s]Loading weights:  42%|████▏     | 302/723 [00:07<00:10, 40.44it/s]Loading weights:  43%|████▎     | 310/723 [00:08<00:09, 42.61it/s]Loading weights:  44%|████▎     | 315/723 [00:08<00:10, 40.73it/s]Loading weights:  44%|████▍     | 320/723 [00:08<00:10, 39.47it/s]Loading weights:  45%|████▌     | 328/723 [00:08<00:09, 43.07it/s]Loading weights:  46%|████▌     | 333/723 [00:08<00:09, 41.08it/s]Loading weights:  47%|████▋     | 338/723 [00:08<00:09, 39.50it/s]Loading weights:  48%|████▊     | 344/723 [00:08<00:08, 44.13it/s]Loading weights:  48%|████▊     | 349/723 [00:09<00:09, 38.22it/s]Loading weights:  49%|████▉     | 356/723 [00:09<00:09, 40.15it/s]Loading weights:  50%|█████     | 364/723 [00:09<00:08, 43.45it/s]Loading weights:  51%|█████     | 369/723 [00:09<00:08, 41.40it/s]Loading weights:  52%|█████▏    | 374/723 [00:09<00:08, 40.07it/s]Loading weights:  53%|█████▎    | 382/723 [00:09<00:07, 43.41it/s]Loading weights:  54%|█████▎    | 387/723 [00:09<00:08, 41.26it/s]Loading weights:  54%|█████▍    | 392/723 [00:10<00:08, 39.75it/s]Loading weights:  55%|█████▌    | 400/723 [00:10<00:07, 43.22it/s]Loading weights:  56%|█████▌    | 405/723 [00:10<00:07, 41.25it/s]Loading weights:  57%|█████▋    | 410/723 [00:10<00:08, 38.51it/s]Loading weights:  58%|█████▊    | 416/723 [00:10<00:07, 43.20it/s]Loading weights:  58%|█████▊    | 421/723 [00:10<00:08, 37.64it/s]Loading weights:  59%|█████▉    | 428/723 [00:10<00:07, 39.71it/s]Loading weights:  60%|██████    | 435/723 [00:11<00:06, 46.41it/s]Loading weights:  61%|██████    | 440/723 [00:11<00:07, 39.80it/s]Loading weights:  62%|██████▏   | 446/723 [00:11<00:07, 39.46it/s]Loading weights:  63%|██████▎   | 454/723 [00:11<00:06, 42.90it/s]Loading weights:  63%|██████▎   | 459/723 [00:11<00:06, 41.04it/s]Loading weights:  64%|██████▍   | 464/723 [00:11<00:06, 39.70it/s]Loading weights:  65%|██████▌   | 471/723 [00:11<00:05, 46.60it/s]Loading weights:  66%|██████▌   | 476/723 [00:12<00:06, 39.61it/s]Loading weights:  67%|██████▋   | 482/723 [00:12<00:06, 39.10it/s]Loading weights:  67%|██████▋   | 488/723 [00:12<00:05, 43.60it/s]Loading weights:  68%|██████▊   | 493/723 [00:12<00:06, 37.77it/s]Loading weights:  69%|██████▉   | 499/723 [00:12<00:05, 42.65it/s]Loading weights:  70%|██████▉   | 504/723 [00:12<00:05, 40.53it/s]Loading weights:  70%|███████   | 509/723 [00:12<00:05, 37.83it/s]Loading weights:  71%|███████   | 515/723 [00:13<00:04, 42.90it/s]Loading weights:  72%|███████▏  | 520/723 [00:13<00:05, 37.61it/s]Loading weights:  73%|███████▎  | 527/723 [00:13<00:04, 39.82it/s]Loading weights:  74%|███████▍  | 535/723 [00:13<00:04, 43.33it/s]Loading weights:  75%|███████▍  | 540/723 [00:13<00:04, 41.51it/s]Loading weights:  75%|███████▌  | 545/723 [00:13<00:04, 40.12it/s]Loading weights:  76%|███████▋  | 553/723 [00:13<00:03, 43.42it/s]Loading weights:  77%|███████▋  | 558/723 [00:14<00:04, 41.18it/s]Loading weights:  78%|███████▊  | 563/723 [00:14<00:04, 39.58it/s]Loading weights:  79%|███████▊  | 569/723 [00:14<00:03, 44.20it/s]Loading weights:  79%|███████▉  | 574/723 [00:14<00:03, 38.31it/s]Loading weights:  80%|████████  | 581/723 [00:14<00:03, 40.15it/s]Loading weights:  81%|████████▏ | 589/723 [00:14<00:03, 43.35it/s]Loading weights:  82%|████████▏ | 594/723 [00:14<00:03, 41.21it/s]Loading weights:  83%|████████▎ | 599/723 [00:15<00:03, 39.63it/s]Loading weights:  84%|████████▎ | 605/723 [00:15<00:02, 44.17it/s]Loading weights:  84%|████████▍ | 610/723 [00:15<00:03, 37.11it/s]Loading weights:  85%|████████▌ | 616/723 [00:15<00:02, 42.07it/s]Loading weights:  86%|████████▌ | 621/723 [00:15<00:02, 40.07it/s]Loading weights:  87%|████████▋ | 626/723 [00:15<00:02, 38.65it/s]Loading weights:  87%|████████▋ | 632/723 [00:15<00:02, 43.54it/s]Loading weights:  88%|████████▊ | 637/723 [00:16<00:02, 37.97it/s]Loading weights:  89%|████████▉ | 644/723 [00:16<00:01, 40.04it/s]Loading weights:  90%|█████████ | 652/723 [00:16<00:01, 43.33it/s]Loading weights:  91%|█████████ | 657/723 [00:16<00:01, 41.26it/s]Loading weights:  92%|█████████▏| 662/723 [00:16<00:01, 39.58it/s]Loading weights:  92%|█████████▏| 668/723 [00:16<00:01, 44.06it/s]Loading weights:  93%|█████████▎| 673/723 [00:16<00:01, 38.12it/s]Loading weights:  94%|█████████▍| 679/723 [00:17<00:01, 42.94it/s]Loading weights:  95%|█████████▍| 684/723 [00:17<00:00, 40.70it/s]Loading weights:  95%|█████████▌| 689/723 [00:17<00:00, 39.14it/s]Loading weights:  96%|█████████▌| 695/723 [00:17<00:00, 43.99it/s]Loading weights:  97%|█████████▋| 700/723 [00:17<00:00, 38.15it/s]Loading weights:  98%|█████████▊| 706/723 [00:17<00:00, 43.20it/s]Loading weights:  98%|█████████▊| 711/723 [00:17<00:00, 40.91it/s]Loading weights:  99%|█████████▉| 716/723 [00:17<00:00, 39.18it/s]Loading weights: 100%|█████████▉| 722/723 [00:18<00:00, 44.12it/s]Loading weights: 100%|██████████| 723/723 [00:18<00:00, 40.02it/s]
+  GPU memory: 2.5 GB
+  Using 8 GPUs
+
+Loaded 200 WebArena conversations
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  10/200 conversations: accuracy = 0.636 (28/44)
+  20/200 conversations: accuracy = 0.637 (58/91)
+  30/200 conversations: accuracy = 0.621 (82/132)
+  40/200 conversations: accuracy = 0.621 (108/174)
+  50/200 conversations: accuracy = 0.579 (121/209)
+  60/200 conversations: accuracy = 0.592 (151/255)
+  70/200 conversations: accuracy = 0.594 (177/298)
+  80/200 conversations: accuracy = 0.577 (198/343)
+  90/200 conversations: accuracy = 0.571 (218/382)
+  100/200 conversations: accuracy = 0.569 (242/425)
+  110/200 conversations: accuracy = 0.586 (272/464)
+  120/200 conversations: accuracy = 0.579 (292/504)
+  130/200 conversations: accuracy = 0.573 (311/543)
+  140/200 conversations: accuracy = 0.570 (337/591)
+  150/200 conversations: accuracy = 0.564 (353/626)
+  160/200 conversations: accuracy = 0.562 (378/672)
+  170/200 conversations: accuracy = 0.562 (401/713)
+  180/200 conversations: accuracy = 0.559 (421/753)
+  190/200 conversations: accuracy = 0.558 (443/794)
+  200/200 conversations: accuracy = 0.562 (468/833)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.5618 (468/833)
+
+Per-position accuracy:
+  Position 0: 0.520 (104/200)
+  Position 1: 0.730 (146/200)
+  Position 2: 0.460 (92/200)
+  Position 3: 0.660 (64/97)
+  Position 4: 0.486 (36/74)
+  Position 5: 0.462 (18/39)
+  Position 6: 0.333 (6/18)
+  Position 7: 0.400 (2/5)
+
+Per-skill accuracy:
+  collaborate         : 0.286 (10/35)
+  document_edit       : 0.276 (27/98)
+  export_publish      : 0.632 (12/19)
+  generic_action      : 0.500 (2/4)
+  review_content      : 0.579 (184/318)
+  search_navigate     : 0.690 (220/319)
+  send_message        : 0.325 (13/40)
+
+Top 10 errors:
+  review_content       -> search_navigate      (48 times)
+  document_edit        -> search_navigate      (43 times)
+  review_content       -> you're               (41 times)
+  search_navigate      -> you're               (28 times)
+  search_navigate      -> review_content       (22 times)
+  search_navigate      -> generic_action       (21 times)
+  send_message         -> you're               (18 times)
+  review_content       -> **[thinking]**       (12 times)
+  document_edit        -> you're               (11 times)
+  review_content       -> generic_action       (10 times)
+
+Normalized edit distance: 0.4655
+Exact sequence match: 0.0400 (8/200)
+
+Saved results to results/llama3.1-70b_eval_metrics_wa.json
+Saved predictions to results/llama3.1-70b_predictions_wa.json
+
+=== Done ===
+Date: Sun Apr  5 22:09:18 EDT 2026
+
+=== Results Summary ===
+IW:
+{
+  "model": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+  "adapter": null,
+  "dataset": "iw",
+  "overall_accuracy": 0.3,
+  "normalized_edit_distance": 0.6311594516594518,
+  "exact_sequence_match": 0.0,
+  "per_position_accuracy": {
+    "0": 0.52,
+    "1": 0.26,
+    "2": 0.44,
+    "3": 0.32,
+    "4": 0.3,
+    "5": 0.20833333333333334,
+    "6": 0.23255813953488372,
+    "7": 0.12903225806451613,
+    "8": 0.23529411764705882,
+    "9": 0.0,
+    "10": 0.0
+  },
+  "total_samples": 400,
+  "correct": 120,
+  "num_conversations": 50
+}
+WebArena:
+{
+  "model": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+  "adapter": null,
+  "dataset": "wa",
+  "overall_accuracy": 0.5618247298919568,
+  "normalized_edit_distance": 0.4655,
+  "exact_sequence_match": 0.04,
+  "per_position_accuracy": {
+    "0": 0.52,
+    "1": 0.73,
+    "2": 0.46,
+    "3": 0.6597938144329897,
+    "4": 0.4864864864864865,
+    "5": 0.46153846153846156,
+    "6": 0.3333333333333333,
+    "7": 0.4
+  },
+  "total_samples": 833,
+  "correct": 468,
+  "num_conversations": 200
+}

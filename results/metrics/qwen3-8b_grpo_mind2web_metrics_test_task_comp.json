@@ -1,0 +1,116 @@
+{
+  "model": "Qwen/Qwen3-8B",
+  "benchmark": "mind2web",
+  "level1_tcr": 0.0,
+  "level1_ci_lo": 0.0,
+  "level1_ci_hi": 0.0,
+  "level2_pts": {
+    "mean": 0.08060094489672495,
+    "per_step": [
+      0.38,
+      0.01,
+      0.02040816326530612,
+      0.022857142857142857,
+      0.04,
+      0.064,
+      0.0761904761904762,
+      0.04597701149425287,
+      0.05555555555555555,
+      0.016666666666666666,
+      0.02040816326530612,
+      0.025,
+      0.034482758620689655,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.09090909090909091,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "level2_skill_breakdown": {
+    "collaborate": {
+      "accuracy": 0.3333333333333333,
+      "correct": 6,
+      "total": 18
+    },
+    "document_edit": {
+      "accuracy": 0.033707865168539325,
+      "correct": 12,
+      "total": 356
+    },
+    "generic_action": {
+      "accuracy": 0.0763888888888889,
+      "correct": 77,
+      "total": 1008
+    },
+    "monitor_status": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 4
+    },
+    "review_content": {
+      "accuracy": 0.21951219512195122,
+      "correct": 9,
+      "total": 41
+    },
+    "schedule_meeting": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 14
+    },
+    "search_navigate": {
+      "accuracy": 0.09929078014184398,
+      "correct": 14,
+      "total": 141
+    },
+    "send_message": {
+      "accuracy": 0.06382978723404255,
+      "correct": 3,
+      "total": 47
+    }
+  },
+  "level3_efficiency": {
+    "avg_steps_to_complete": null,
+    "median_steps_to_complete": null,
+    "avg_skill_switches": 0.0,
+    "task_recovery_rate": 0.0,
+    "step_recovery_attempts": 189,
+    "step_recovery_successes": 18,
+    "step_recovery_rate": 0.09523809523809523,
+    "tasks_with_failures": 200,
+    "recovered_tasks": 0
+  },
+  "skill_prediction_accuracy": 0.028852056476365868,
+  "action_grounding_accuracy": 0.07427869858809086,
+  "n_tasks": 200,
+  "n_completed": 0,
+  "n_steps_total": 1629,
+  "split": "test_task",
+  "adapter": "results/qwen3_grpo/final_adapter",
+  "skill_mode": "llm",
+  "grounding_mode": "llm",
+  "composition": true,
+  "per_domain": {
+    "Entertainment": {
+      "tcr": 0.0,
+      "n_tasks": 57
+    },
+    "Shopping": {
+      "tcr": 0.0,
+      "n_tasks": 63
+    },
+    "Travel": {
+      "tcr": 0.0,
+      "n_tasks": 80
+    }
+  }
+}

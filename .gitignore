@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Dataset files under data/ are intentionally versioned when small enough for
+# GitHub. Large third-party corpora/repos remain ignored below.
+data/interaskill/raw/iw-benchmark-examples.json
+data/interaskill/processed/parsed_trajectories.json
+data/interaskill/processed/iw_summary.json
+data/interaskill/processed/iw_skill_templates.json
+data/mind2web/cache/*.json
+data/webarena/trajectories/*.json
+data/workarena/workarena_nlp.json
+data/browsecomp_plus/repo
+
+# Private paper drafts / local scratch work
+Xiaomin_MedGUIDE_paper/
+grace_paper/
+mit_calc_paper/
+new_folder/
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.log
+paper/*.bbl
+paper/*.blg
+paper/*.out
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk
+
+# Overleaf zip (uploaded separately)
+paper/Neurips SKILL Paper.zip
+paper/uploads/
+
+# API keys (never commit)
+.env
+passkey.env
+*.env
+
+# OS
+.DS_Store
+
+# Large optimizer checkpoints (exceed GitHub 100MB limit)
+results/*/checkpoint-*/optimizer.pt
+results/*/checkpoint-*/rng_state.pth
+
+# Heavy generated experiment outputs
+results/**/*.safetensors
+results/**/tokenizer.json
+results/**/checkpoint-*/
+results/slurm_logs/
+local_models/
+
+# WebArena Apptainer images (multi-GB)
+containers/

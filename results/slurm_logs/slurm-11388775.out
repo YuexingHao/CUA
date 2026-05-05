@@ -1,0 +1,110 @@
+=== InteraSkill Pipeline ===
+Node: node3900
+GPU: NVIDIA A100 80GB PCIe
+Date: Sat Apr  4 14:25:46 EDT 2026
+
+Device: cuda
+============================================================
+
+[1/7] Loading and featurizing trajectories...
+  500 trajectories, 2108 segments, 12 skill types
+
+[2/7] Phase 1: Trajectory Segmentation
+  Best theta=1.5502: P=0.415 R=0.805 F1=0.534
+    p50: theta=1.5502 P=0.415 R=0.805 F1=0.534
+    p60: theta=1.5907 P=0.407 R=0.688 F1=0.493
+    p70: theta=1.6374 P=0.408 R=0.555 F1=0.443
+    p75: theta=1.6621 P=0.397 R=0.474 F1=0.399
+    p80: theta=1.6907 P=0.416 R=0.393 F1=0.356
+    p85: theta=1.7204 P=0.441 R=0.303 F1=0.300
+    p90: theta=1.7548 P=0.485 R=0.217 F1=0.233
+    p95: theta=1.8087 P=0.651 R=0.118 F1=0.139
+  Saved: results/segmentation_hist.png
+
+[3/7] Phase 2a: Gaussian Representation + Wasserstein Clustering
+  k=8: NMI=0.531, Purity=0.528
+  k=10: NMI=0.531, Purity=0.528
+  k=12: NMI=0.502, Purity=0.532
+  k=14: NMI=0.508, Purity=0.581
+  k=16: NMI=0.508, Purity=0.597
+  Best k=10: NMI=0.531
+  Saved: results/clustering_confusion.png
+
+[4/7] Phase 2b: InfoNCE Contrastive Encoder Training
+  Epoch 50/200: train=3.5420 val=4.4180
+  Epoch 100/200: train=3.4568 val=4.3698
+  Epoch 150/200: train=3.4446 val=4.3588
+  Epoch 200/200: train=3.4375 val=4.3487
+  Saved: results/training_curves.png
+  Embeddings: torch.Size([2108, 16])
+  Latent KMeans: NMI=0.871, Silhouette=0.561, Purity=0.869
+  Saved: results/tsne.png
+
+[5/7] Phase 3a: MLP Skill Composition (baseline)
+  Composition dataset: 3216 samples
+  Epoch 25/150: loss=2.9754 skill_acc=0.336
+  Epoch 50/150: loss=2.8190 skill_acc=0.297
+  Epoch 75/150: loss=2.4658 skill_acc=0.352
+  Epoch 100/150: loss=2.3712 skill_acc=0.398
+  Epoch 125/150: loss=2.3925 skill_acc=0.469
+  Epoch 150/150: loss=2.4365 skill_acc=0.414
+  [MLP] Exact match: 0.054
+  [MLP] Edit distance: 0.579
+  [MLP] Per-position accuracy: {0: 1.0, 1: 0.222, 2: 0.17687074829931973, 3: 0.21929824561403508, 4: 0.18232044198895028, 5: 0.17204301075268819, 6: 0.27450980392156865}
+
+[6/7] Phase 3b: Transformer Skill Composition
+  Sequence dataset: 500 sequences
+  Epoch 50/500: train=2.0693 val=2.1289 acc=0.319
+  Epoch 100/500: train=1.9584 val=2.1157 acc=0.327
+  Epoch 150/500: train=1.9928 val=2.1286 acc=0.327
+  Epoch 200/500: train=2.0115 val=2.1530 acc=0.327
+  Epoch 250/500: train=1.8876 val=2.1516 acc=0.327
+  Epoch 300/500: train=2.0015 val=2.1517 acc=0.327
+  Epoch 350/500: train=2.0215 val=2.1589 acc=0.327
+  Epoch 400/500: train=2.0832 val=2.1677 acc=0.327
+  Epoch 450/500: train=2.0204 val=2.1642 acc=0.327
+  Epoch 500/500: train=1.9877 val=2.1653 acc=0.327
+  [Transformer] Exact match: 0.076
+  [Transformer] Edit distance: 0.480
+  [Transformer] Per-position accuracy: {0: 1.0, 1: 0.342, 2: 0.3333333333333333, 3: 0.3567251461988304, 4: 0.32044198895027626, 5: 0.2903225806451613, 6: 0.45098039215686275}
+  Saved: results/position_accuracy.png
+
+[7/7] Generating comparison plots
+  Saved: results/composition_comparison.png
+  Saved: results/transformer_training.png
+
+============================================================
+RESULTS SUMMARY
+============================================================
+
+  phase1_segmentation:
+    best_theta: 1.5502
+    boundary_precision: 0.4153
+    boundary_recall: 0.8049
+    boundary_f1: 0.5345
+
+  phase2_clustering:
+    wasserstein_best_k: 10
+    wasserstein_nmi: 0.5313
+
+  phase2_infonce:
+    latent_nmi: 0.8707
+    latent_silhouette: 0.5610
+    latent_purity: 0.8691
+
+  phase3_mlp:
+    sequence_exact_match: 0.0540
+    normalized_edit_distance: 0.5794
+    per_position_accuracy: {'0': 1.0, '1': 0.222, '2': 0.17687074829931973, '3': 0.21929824561403508, '4': 0.18232044198895028, '5': 0.17204301075268819, '6': 0.27450980392156865}
+
+  phase3_transformer:
+    sequence_exact_match: 0.0760
+    normalized_edit_distance: 0.4799
+    per_position_accuracy: {'0': 1.0, '1': 0.342, '2': 0.3333333333333333, '3': 0.3567251461988304, '4': 0.32044198895027626, '5': 0.2903225806451613, '6': 0.45098039215686275}
+
+  Saved metrics to results/metrics.json
+  Plots saved to results/
+  Models saved to results/
+
+=== Done ===
+Date: Sat Apr  4 14:26:11 EDT 2026

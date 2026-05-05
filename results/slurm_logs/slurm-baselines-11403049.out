@@ -1,0 +1,114 @@
+=== Baseline Evaluation ===
+Node: node3800
+Date: Sat Apr  4 22:42:12 EDT 2026
+
+======================================================================
+DATASET: Fabricated (IW Benchmark)
+======================================================================
+Loaded 500 trajectories
+============================================================
+BASELINE EVALUATION
+============================================================
+
+  [Frequency (most common)]
+    Exact match:     0.0760
+    Edit distance:   0.4799
+    Per-position:    {0: 1.0, 1: 0.342, 2: 0.3333333333333333, 3: 0.3567251461988304, 4: 0.32044198895027626, 5: 0.2903225806451613, 6: 0.45098039215686275}
+    Mean pos acc:    0.3490
+
+  [SKILL.md (fixed table)]
+    Exact match:     0.0120
+    Edit distance:   0.6334
+    Per-position:    {0: 1.0, 1: 0.164, 2: 0.09070294784580499, 3: 0.0847953216374269, 4: 0.09392265193370165, 5: 0.15053763440860216, 6: 0.2549019607843137}
+    Mean pos acc:    0.1398
+
+  [AWM (learned transitions)]
+    Exact match:     0.0700
+    Edit distance:   0.4791
+    Per-position:    {0: 1.0, 1: 0.35, 2: 0.26744186046511625, 3: 0.3283582089552239, 4: 0.41025641025641024, 5: 0.23809523809523808, 6: 0.4117647058823529}
+    Mean pos acc:    0.3343
+
+  [AWM (full data, oracle)]
+    Exact match:     0.0760
+    Edit distance:   0.4799
+    Per-position:    {0: 1.0, 1: 0.342, 2: 0.3333333333333333, 3: 0.3567251461988304, 4: 0.32044198895027626, 5: 0.2903225806451613, 6: 0.45098039215686275}
+    Mean pos acc:    0.3490
+
+  AWM Learned Transitions (top-1):
+    collaborate          → document_edit(0.40), review_content(0.13), generic_action(0.13)
+    data_transfer        → document_edit(0.44), schedule_meeting(0.11), generic_action(0.11)
+    document_edit        → document_edit(0.33), send_message(0.12), schedule_meeting(0.12)
+    export_publish       → document_edit(0.27), schedule_meeting(0.20), review_content(0.13)
+    generic_action       → document_edit(0.36), send_message(0.15), schedule_meeting(0.11)
+    monitor_status       → document_edit(0.47), collaborate(0.10), generic_action(0.10)
+    organize_files       → document_edit(0.31), review_content(0.20), schedule_meeting(0.14)
+    presentation_edit    → document_edit(0.33), generic_action(0.15), schedule_meeting(0.13)
+    review_content       → document_edit(0.34), review_content(0.14), generic_action(0.13)
+    schedule_meeting     → document_edit(0.31), generic_action(0.16), schedule_meeting(0.12)
+    search_navigate      → document_edit(0.42), send_message(0.15), generic_action(0.15)
+    send_message         → document_edit(0.30), generic_action(0.14), send_message(0.14)
+
+Saved to results/baseline_metrics_iw.json
+
+
+
+======================================================================
+DATASET: WebArena (Go-Browse-WA)
+======================================================================
+Loaded 1000 trajectories
+============================================================
+BASELINE EVALUATION
+============================================================
+
+  [Frequency (most common)]
+    Exact match:     0.3670
+    Edit distance:   0.3682
+    Per-position:    {0: 1.0, 1: 0.425, 2: 0.435361216730038, 3: 0.34705882352941175, 4: 0.21621621621621623, 5: 0.23880597014925373, 6: 0.2857142857142857, 7: 0.3333333333333333, 8: 0.0}
+    Mean pos acc:    0.2852
+
+  [SKILL.md (fixed table)]
+    Exact match:     0.0120
+    Edit distance:   0.5867
+    Per-position:    {0: 1.0, 1: 0.048, 2: 0.09125475285171103, 3: 0.020588235294117647, 4: 0.1783783783783784, 5: 0.3582089552238806, 6: 0.0, 7: 0.0, 8: 0.0}
+    Mean pos acc:    0.0871
+
+  [AWM (learned transitions)]
+    Exact match:     0.7000
+    Edit distance:   0.1583
+    Per-position:    {0: 1.0, 1: 0.77, 2: 0.7142857142857143, 3: 0.6428571428571429, 4: 0.4594594594594595, 5: 0.7142857142857143, 6: 1.0, 7: 1.0, 8: 1.0}
+    Mean pos acc:    0.7876
+
+  [AWM (full data, oracle)]
+    Exact match:     0.6770
+    Edit distance:   0.1600
+    Per-position:    {0: 1.0, 1: 0.756, 2: 0.7566539923954373, 3: 0.6735294117647059, 4: 0.5513513513513514, 5: 0.582089552238806, 6: 0.8571428571428571, 7: 1.0, 8: 1.0}
+    Mean pos acc:    0.7721
+
+  AWM Learned Transitions (top-1):
+    collaborate          → collaborate(0.88), review_content(0.07), search_navigate(0.04)
+    data_transfer        → search_navigate(0.43), data_transfer(0.29), review_content(0.14)
+    document_edit        → document_edit(0.65), search_navigate(0.18), review_content(0.15)
+    export_publish       → export_publish(0.89), review_content(0.11)
+    generic_action       → send_message(0.89), document_edit(0.11)
+    review_content       → review_content(0.78), search_navigate(0.09), send_message(0.06)
+    search_navigate      → search_navigate(0.69), review_content(0.19), send_message(0.05)
+    send_message         → review_content(1.00)
+
+Saved to results/baseline_metrics_wa.json
+
+
+
+======================================================================
+SUMMARY: All Models on Fabricated Data
+======================================================================
+Model                      Exact Match  Edit Dist Mean Pos Acc
+--------------------------------------------------------------
+Frequency (most common)          0.076      0.480        0.349
+SKILL.md (fixed table)           0.012      0.633        0.140
+AWM (learned transitions)        0.070      0.479        0.334
+MLP (ours)                       0.054      0.579        0.208
+Transformer (ours)               0.076      0.480        0.349
+Qwen3-8B LoRA (ours)                 —          —        0.850
+
+=== Done ===
+Date: Sat Apr  4 22:42:19 EDT 2026

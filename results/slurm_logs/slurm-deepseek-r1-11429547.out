@@ -1,0 +1,115 @@
+=== DeepSeek-R1: Skill Prediction Evaluation ===
+Node: node3800
+GPUs: NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+Date: Sun Apr  5 17:50:14 EDT 2026
+
+=== Step 1: Evaluating on IW ===
+============================================================
+Model: deepseek-ai/DeepSeek-R1
+Dataset: IW (Fabricated)
+Max conversations: 50
+============================================================
+Loading tokenizer for deepseek-ai/DeepSeek-R1...
+A new version of the following files was downloaded from https://huggingface.co/deepseek-ai/DeepSeek-R1:
+- configuration_deepseek.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Loading model (4-bit): deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+A new version of the following files was downloaded from https://huggingface.co/deepseek-ai/DeepSeek-R1:
+- modeling_deepseek.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 359, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 213, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 80, in load_model_and_tokenizer
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+    ...<3 lines>...
+        torch_dtype=torch.bfloat16,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 369, in from_pretrained
+    model_class = get_class_from_dynamic_module(
+        class_ref, pretrained_model_name_or_path, code_revision=code_revision, **hub_kwargs, **kwargs
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/dynamic_module_utils.py", line 583, in get_class_from_dynamic_module
+    return get_class_in_module(class_name, final_module, force_reload=force_download)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/dynamic_module_utils.py", line 309, in get_class_in_module
+    module_spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/orcd/compute/mghassem/001/gobi1/huggingface/modules/transformers_modules/deepseek_hyphen_ai/DeepSeek_hyphen_R1/56d4cbbb4d29f4355bab4b9a39ccb717a14ad5ad/modeling_deepseek.py", line 56, in <module>
+    from transformers.utils.import_utils import is_torch_fx_available
+ImportError: cannot import name 'is_torch_fx_available' from 'transformers.utils.import_utils' (/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/import_utils.py)
+
+=== Step 2: Evaluating on WebArena ===
+============================================================
+Model: deepseek-ai/DeepSeek-R1
+Dataset: WebArena
+Max conversations: 200
+============================================================
+Loading tokenizer for deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Loading model (4-bit): deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 359, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 213, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 80, in load_model_and_tokenizer
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+    ...<3 lines>...
+        torch_dtype=torch.bfloat16,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 369, in from_pretrained
+    model_class = get_class_from_dynamic_module(
+        class_ref, pretrained_model_name_or_path, code_revision=code_revision, **hub_kwargs, **kwargs
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/dynamic_module_utils.py", line 583, in get_class_from_dynamic_module
+    return get_class_in_module(class_name, final_module, force_reload=force_download)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/dynamic_module_utils.py", line 309, in get_class_in_module
+    module_spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/orcd/compute/mghassem/001/gobi1/huggingface/modules/transformers_modules/deepseek_hyphen_ai/DeepSeek_hyphen_R1/56d4cbbb4d29f4355bab4b9a39ccb717a14ad5ad/modeling_deepseek.py", line 56, in <module>
+    from transformers.utils.import_utils import is_torch_fx_available
+ImportError: cannot import name 'is_torch_fx_available' from 'transformers.utils.import_utils' (/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/import_utils.py)
+
+=== Done ===
+Date: Sun Apr  5 17:51:03 EDT 2026
+
+=== Results Summary ===
+IW:
+
+WebArena:

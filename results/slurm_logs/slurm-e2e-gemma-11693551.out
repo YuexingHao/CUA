@@ -1,0 +1,162 @@
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+=== Gemma-4-31B — composition (test_task) ===
+Node: node3800 | Date: Sat Apr 11 19:14:39 EDT 2026
+============================================================
+Mind2Web Evaluation
+Model: google/gemma-4-31B-it
+Split: test_task
+Max tasks: 200
+Skill mode: llm
+Grounding mode: llm
+Composition: True
+============================================================
+Loading tokenizer for google/gemma-4-31B-it...
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_unix.py", line 55, in _acquire
+    fd = os.open(self.lock_file, open_flags, open_mode)
+PermissionError: [Errno 13] Permission denied: '/orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--google--gemma-4-31B-it/5f291aa9973fbb38982f9bade924989edc7b895d.lock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 422, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<15 lines>...
+        dry_run=dry_run,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1206, in _hf_hub_download_to_cache_dir
+    with WeakFileLock(lock_path):
+         ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_fixes.py", line 99, in WeakFileLock
+    lock.acquire(timeout=min(log_interval, timeout - elapsed_time) if timeout else log_interval)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_api.py", line 498, in acquire
+    self._acquire()
+    ~~~~~~~~~~~~~^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_unix.py", line 69, in _acquire
+    fd = os.open(self.lock_file, open_flags & ~os.O_CREAT, open_mode)
+PermissionError: [Errno 13] Permission denied: '/orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--google--gemma-4-31B-it/5f291aa9973fbb38982f9bade924989edc7b895d.lock'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 685, in from_pretrained
+    config = AutoConfig.from_pretrained(
+        pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/configuration_auto.py", line 1483, in from_pretrained
+    config_dict, unused_kwargs = PreTrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 667, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 722, in _get_config_dict
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<9 lines>...
+        _commit_hash=commit_hash,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 467, in cached_files
+    raise OSError(
+    ...<3 lines>...
+    ) from e
+OSError: PermissionError at /orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--google--gemma-4-31B-it/5f291aa9973fbb38982f9bade924989edc7b895d.lock when downloading google/gemma-4-31B-it. Check cache directory permissions. Common causes: 1) another user is downloading the same model (please wait); 2) a previous download was canceled and the lock file needs manual removal.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_unix.py", line 55, in _acquire
+    fd = os.open(self.lock_file, open_flags, open_mode)
+PermissionError: [Errno 13] Permission denied: '/orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--google--gemma-4-31B-it/5f291aa9973fbb38982f9bade924989edc7b895d.lock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 422, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 995, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<15 lines>...
+        dry_run=dry_run,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/file_download.py", line 1206, in _hf_hub_download_to_cache_dir
+    with WeakFileLock(lock_path):
+         ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/huggingface_hub/utils/_fixes.py", line 99, in WeakFileLock
+    lock.acquire(timeout=min(log_interval, timeout - elapsed_time) if timeout else log_interval)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_api.py", line 498, in acquire
+    self._acquire()
+    ~~~~~~~~~~~~~^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/filelock/_unix.py", line 69, in _acquire
+    fd = os.open(self.lock_file, open_flags & ~os.O_CREAT, open_mode)
+PermissionError: [Errno 13] Permission denied: '/orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--google--gemma-4-31B-it/5f291aa9973fbb38982f9bade924989edc7b895d.lock'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 480, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 293, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 87, in load_model_and_tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(
+        tokenizer_path, trust_remote_code=True
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in from_pretrained
+    config = PreTrainedConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 626, in from_pretrained
+    config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 667, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/configuration_utils.py", line 722, in _get_config_dict
+    resolved_config_file = cached_file(
+        pretrained_model_name_or_path,
+    ...<9 lines>...
+        _commit_hash=commit_hash,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/utils/hub.py", line 467, in cached_files
+    raise OSError(
+    ...<3 lines>...
+    ) from e
+OSError: PermissionError at /orcd/compute/mghassem/001/gobi1/huggingface/hub/.locks/models--google--gemma-4-31B-it/5f291aa9973fbb38982f9bade924989edc7b895d.lock when downloading google/gemma-4-31B-it. Check cache directory permissions. Common causes: 1) another user is downloading the same model (please wait); 2) a previous download was canceled and the lock file needs manual removal.
+Done: Sat Apr 11 19:14:58 EDT 2026

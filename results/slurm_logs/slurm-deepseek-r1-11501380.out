@@ -1,0 +1,117 @@
+=== DeepSeek-R1: Skill Prediction Evaluation ===
+Node: node3801
+GPUs: NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+Date: Tue Apr  7 11:22:38 EDT 2026
+
+=== Step 1: Evaluating on IW ===
+============================================================
+Model: deepseek-ai/DeepSeek-R1
+Dataset: IW (Fabricated)
+Max conversations: 50
+============================================================
+Loading tokenizer for deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+  Model has existing quantization — will load with BnB 4-bit override
+Loading model (4-bit): deepseek-ai/DeepSeek-R1...
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 468, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 291, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 111, in load_model_and_tokenizer
+    model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 380, in from_pretrained
+    return model_class.from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/modeling_utils.py", line 4031, in from_pretrained
+    hf_quantizer, config, device_map = get_hf_quantizer(
+                                       ~~~~~~~~~~~~~~~~^
+        config, quantization_config, device_map, weights_only, user_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/quantizers/auto.py", line 323, in get_hf_quantizer
+    if pre_quantized and not AutoHfQuantizer.supports_quant_method(config.quantization_config):
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/quantizers/auto.py", line 270, in supports_quant_method
+    quant_method = quantization_config_dict.get("quant_method", None)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+=== Step 2: Evaluating on WebArena ===
+============================================================
+Model: deepseek-ai/DeepSeek-R1
+Dataset: WebArena
+Max conversations: 200
+============================================================
+Loading tokenizer for deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+  Model has existing quantization — will load with BnB 4-bit override
+Loading model (4-bit): deepseek-ai/DeepSeek-R1...
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 468, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 291, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 111, in load_model_and_tokenizer
+    model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 380, in from_pretrained
+    return model_class.from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/modeling_utils.py", line 4031, in from_pretrained
+    hf_quantizer, config, device_map = get_hf_quantizer(
+                                       ~~~~~~~~~~~~~~~~^
+        config, quantization_config, device_map, weights_only, user_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/quantizers/auto.py", line 323, in get_hf_quantizer
+    if pre_quantized and not AutoHfQuantizer.supports_quant_method(config.quantization_config):
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/quantizers/auto.py", line 270, in supports_quant_method
+    quant_method = quantization_config_dict.get("quant_method", None)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+=== Done ===
+Date: Tue Apr  7 11:23:21 EDT 2026
+
+=== Results Summary ===
+IW:
+
+WebArena:

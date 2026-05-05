@@ -1,0 +1,429 @@
+=== End-to-End Task Completion Evaluation ===
+Node: node3802
+GPUs: NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+Date: Wed Apr  8 10:27:12 EDT 2026
+
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+=== Downloading Mind2Web dataset ===
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+Downloading test_task...
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 100 examples [00:06, 15.77 examples/s]Generating train split: 200 examples [00:13, 14.67 examples/s]Generating train split: 209 examples [00:14, 14.21 examples/s]Generating train split: 309 examples [00:19, 16.23 examples/s]Generating train split: 409 examples [00:26, 15.26 examples/s]Generating train split: 509 examples [00:33, 15.18 examples/s]Generating train split: 609 examples [00:39, 15.24 examples/s]Generating train split: 709 examples [00:45, 15.91 examples/s]Generating train split: 809 examples [00:51, 16.21 examples/s]Generating train split: 909 examples [00:58, 16.06 examples/s]Generating train split: 1009 examples [01:04, 15.96 examples/s]Generating train split: 1009 examples [01:05, 15.42 examples/s]
+  Warning: Could not load split 'test_task': Unknown split "test_task". Should be one of ['train'].
+Downloading test_website...
+  Warning: Could not load split 'test_website': Unknown split "test_website". Should be one of ['train'].
+Downloading test_domain...
+  Warning: Could not load split 'test_domain': Unknown split "test_domain". Should be one of ['train'].
+
+Mind2Web dataset downloaded.
+Splits for generalization evaluation:
+  test_task:    Unseen tasks on seen websites
+  test_website: Unseen websites in seen domains
+  test_domain:  Unseen domains entirely
+
+=== [1/6] Qwen3-8B LoRA — teacher forcing (test_task) ===
+============================================================
+Mind2Web Evaluation
+Model: Qwen/Qwen3-8B
+Adapter: results/qwen3_lora/final_adapter
+Split: test_task
+Max tasks: 200
+Skill mode: llm
+Grounding mode: llm
+Composition: False
+============================================================
+Loading tokenizer for results/qwen3_lora/final_adapter...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:01<08:44,  1.32s/it]Loading weights:   1%|          | 2/399 [00:02<08:36,  1.30s/it]Loading weights:   1%|          | 4/399 [00:02<03:30,  1.88it/s]Loading weights:   1%|▏         | 5/399 [00:02<02:37,  2.50it/s]Loading weights:   2%|▏         | 6/399 [00:02<02:01,  3.23it/s]Loading weights:   4%|▍         | 15/399 [00:03<00:30, 12.42it/s]Loading weights:   5%|▍         | 18/399 [00:03<00:29, 12.89it/s]Loading weights:   7%|▋         | 26/399 [00:03<00:19, 19.38it/s]Loading weights:   7%|▋         | 29/399 [00:03<00:20, 17.86it/s]Loading weights:   9%|▉         | 37/399 [00:04<00:15, 23.87it/s]Loading weights:  10%|█         | 40/399 [00:04<00:21, 16.85it/s]Loading weights:  12%|█▏        | 48/399 [00:04<00:15, 22.34it/s]Loading weights:  13%|█▎        | 51/399 [00:04<00:17, 20.03it/s]Loading weights:  15%|█▍        | 59/399 [00:05<00:13, 25.24it/s]Loading weights:  16%|█▌        | 62/399 [00:05<00:15, 22.01it/s]Loading weights:  18%|█▊        | 70/399 [00:05<00:12, 26.95it/s]Loading weights:  18%|█▊        | 73/399 [00:05<00:13, 23.41it/s]Loading weights:  20%|██        | 81/399 [00:05<00:11, 27.90it/s]Loading weights:  21%|██        | 84/399 [00:06<00:13, 23.59it/s]Loading weights:  23%|██▎       | 92/399 [00:06<00:10, 28.25it/s]Loading weights:  24%|██▍       | 95/399 [00:06<00:12, 23.74it/s]Loading weights:  26%|██▌       | 103/399 [00:06<00:10, 28.31it/s]Loading weights:  27%|██▋       | 106/399 [00:06<00:12, 23.84it/s]Loading weights:  29%|██▊       | 114/399 [00:07<00:10, 28.29it/s]Loading weights:  29%|██▉       | 117/399 [00:07<00:11, 23.86it/s]Loading weights:  31%|███▏      | 125/399 [00:07<00:09, 28.48it/s]Loading weights:  32%|███▏      | 128/399 [00:07<00:11, 24.40it/s]Loading weights:  34%|███▍      | 136/399 [00:07<00:09, 28.99it/s]Loading weights:  35%|███▍      | 139/399 [00:08<00:10, 24.55it/s]Loading weights:  37%|███▋      | 147/399 [00:08<00:08, 29.29it/s]Loading weights:  38%|███▊      | 150/399 [00:08<00:10, 24.42it/s]Loading weights:  40%|███▉      | 158/399 [00:08<00:08, 29.58it/s]Loading weights:  41%|████      | 162/399 [00:08<00:08, 26.50it/s]Loading weights:  42%|████▏     | 169/399 [00:09<00:07, 29.06it/s]Loading weights:  43%|████▎     | 172/399 [00:09<00:10, 20.84it/s]Loading weights:  45%|████▌     | 180/399 [00:09<00:08, 26.13it/s]Loading weights:  46%|████▌     | 183/399 [00:09<00:09, 22.95it/s]Loading weights:  48%|████▊     | 191/399 [00:10<00:07, 27.40it/s]Loading weights:  49%|████▊     | 194/399 [00:10<00:08, 23.44it/s]Loading weights:  51%|█████     | 202/399 [00:10<00:07, 27.99it/s]Loading weights:  51%|█████▏    | 205/399 [00:10<00:08, 23.72it/s]Loading weights:  53%|█████▎    | 213/399 [00:10<00:06, 28.32it/s]Loading weights:  54%|█████▍    | 216/399 [00:11<00:07, 24.00it/s]Loading weights:  56%|█████▌    | 224/399 [00:11<00:06, 28.37it/s]Loading weights:  57%|█████▋    | 227/399 [00:11<00:07, 23.91it/s]Loading weights:  59%|█████▉    | 235/399 [00:11<00:05, 28.52it/s]Loading weights:  60%|█████▉    | 238/399 [00:11<00:06, 24.64it/s]Loading weights:  62%|██████▏   | 246/399 [00:12<00:05, 29.51it/s]Loading weights:  62%|██████▏   | 249/399 [00:12<00:06, 24.78it/s]Loading weights:  64%|██████▍   | 257/399 [00:12<00:04, 29.43it/s]Loading weights:  65%|██████▌   | 260/399 [00:12<00:05, 24.54it/s]Loading weights:  67%|██████▋   | 268/399 [00:12<00:04, 28.87it/s]Loading weights:  68%|██████▊   | 271/399 [00:13<00:05, 24.18it/s]Loading weights:  70%|██████▉   | 279/399 [00:13<00:04, 28.65it/s]Loading weights:  71%|███████   | 282/399 [00:13<00:04, 24.51it/s]Loading weights:  73%|███████▎  | 290/399 [00:13<00:03, 29.81it/s]Loading weights:  74%|███████▎  | 294/399 [00:13<00:03, 27.02it/s]Loading weights:  75%|███████▌  | 301/399 [00:14<00:03, 29.42it/s]Loading weights:  76%|███████▌  | 304/399 [00:14<00:03, 24.42it/s]Loading weights:  77%|███████▋  | 307/399 [00:14<00:04, 19.10it/s]Loading weights:  78%|███████▊  | 312/399 [00:14<00:03, 21.93it/s]Loading weights:  79%|███████▉  | 315/399 [00:15<00:04, 19.42it/s]Loading weights:  80%|████████  | 321/399 [00:15<00:02, 26.24it/s]Loading weights:  81%|████████▏ | 325/399 [00:15<00:03, 20.29it/s]Loading weights:  84%|████████▎ | 334/399 [00:15<00:02, 27.08it/s]Loading weights:  85%|████████▍ | 338/399 [00:15<00:02, 24.52it/s]Loading weights:  86%|████████▋ | 345/399 [00:16<00:01, 27.66it/s]Loading weights:  87%|████████▋ | 349/399 [00:16<00:02, 24.95it/s]Loading weights:  89%|████████▉ | 356/399 [00:16<00:01, 27.69it/s]Loading weights:  90%|████████▉ | 359/399 [00:16<00:01, 23.34it/s]Loading weights:  92%|█████████▏| 367/399 [00:16<00:01, 27.97it/s]Loading weights:  93%|█████████▎| 370/399 [00:17<00:01, 23.71it/s]Loading weights:  95%|█████████▍| 378/399 [00:17<00:00, 28.78it/s]Loading weights:  95%|█████████▌| 381/399 [00:17<00:00, 23.94it/s]Loading weights:  97%|█████████▋| 389/399 [00:17<00:00, 28.45it/s]Loading weights:  98%|█████████▊| 392/399 [00:17<00:00, 23.89it/s]Loading weights: 100%|██████████| 399/399 [00:18<00:00, 22.08it/s]
+Loading LoRA adapter from results/qwen3_lora/final_adapter...
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+Loading Mind2Web from HuggingFace (split=test_task)...
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 450, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 307, in main
+    tasks = load_mind2web(args.split, args.max_tasks, args.cache_dir)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/data.py", line 194, in load_mind2web
+    dataset = load_dataset("osunlp/Mind2Web", split=split, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/load.py", line 1520, in load_dataset
+    ds = builder_instance.as_dataset(split=split, verification_mode=verification_mode, in_memory=keep_in_memory)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1052, in as_dataset
+    datasets = map_nested(
+        partial(
+    ...<7 lines>...
+        disable_tqdm=True,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/utils/py_utils.py", line 493, in map_nested
+    mapped = function(data_struct)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1082, in _build_single_dataset
+    ds = self._as_dataset(
+        split=split,
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1156, in _as_dataset
+    dataset_kwargs = ArrowReader(cache_dir, self.info).read(
+        name=dataset_name,
+    ...<2 lines>...
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 248, in read
+    files = self.get_file_instructions(name, instructions, split_infos)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 221, in get_file_instructions
+    file_instructions = make_file_instructions(
+        name, split_infos, instruction, filetype_suffix=self._filetype_suffix, prefix_path=self._path
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 130, in make_file_instructions
+    absolute_instructions = instruction.to_absolute(name2len)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 620, in to_absolute
+    return [_rel_to_abs_instr(rel_instr, name2len) for rel_instr in self._relative_instructions]
+            ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 437, in _rel_to_abs_instr
+    raise ValueError(f'Unknown split "{split}". Should be one of {list(name2len)}.')
+ValueError: Unknown split "test_task". Should be one of ['train'].
+
+=== [2/6] Qwen3-8B LoRA — COMPOSITION (test_task) ===
+============================================================
+Mind2Web Evaluation
+Model: Qwen/Qwen3-8B
+Adapter: results/qwen3_lora/final_adapter
+Split: test_task
+Max tasks: 200
+Skill mode: llm
+Grounding mode: llm
+Composition: True
+============================================================
+Loading tokenizer for results/qwen3_lora/final_adapter...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:00<01:54,  3.47it/s]Loading weights:   1%|          | 2/399 [00:00<02:15,  2.94it/s]Loading weights:   1%|▏         | 5/399 [00:00<00:47,  8.27it/s]Loading weights:   4%|▍         | 16/399 [00:00<00:13, 29.01it/s]Loading weights:   7%|▋         | 26/399 [00:00<00:08, 45.13it/s]Loading weights:  10%|▉         | 38/399 [00:01<00:06, 60.09it/s]Loading weights:  13%|█▎        | 50/399 [00:01<00:04, 71.08it/s]Loading weights:  16%|█▌        | 64/399 [00:01<00:03, 88.38it/s]Loading weights:  19%|█▉        | 76/399 [00:01<00:03, 95.19it/s]Loading weights:  22%|██▏       | 89/399 [00:01<00:03, 102.87it/s]Loading weights:  26%|██▌       | 103/399 [00:01<00:02, 105.91it/s]Loading weights:  29%|██▉       | 115/399 [00:01<00:02, 103.39it/s]Loading weights:  32%|███▏      | 127/399 [00:01<00:02, 101.43it/s]Loading weights:  35%|███▌      | 141/399 [00:02<00:02, 111.33it/s]Loading weights:  38%|███▊      | 153/399 [00:02<00:02, 110.81it/s]Loading weights:  41%|████▏     | 165/399 [00:02<00:02, 113.04it/s]Loading weights:  44%|████▍     | 177/399 [00:02<00:01, 112.36it/s]Loading weights:  47%|████▋     | 189/399 [00:02<00:01, 113.66it/s]Loading weights:  50%|█████     | 201/399 [00:02<00:01, 110.94it/s]Loading weights:  53%|█████▎    | 213/399 [00:02<00:01, 106.66it/s]Loading weights:  56%|█████▌    | 224/399 [00:02<00:01, 107.45it/s]Loading weights:  59%|█████▉    | 236/399 [00:02<00:01, 104.29it/s]Loading weights:  62%|██████▏   | 248/399 [00:03<00:01, 102.39it/s]Loading weights:  66%|██████▌   | 262/399 [00:03<00:01, 111.89it/s]Loading weights:  69%|██████▊   | 274/399 [00:03<00:01, 111.32it/s]Loading weights:  72%|███████▏  | 287/399 [00:03<00:00, 113.90it/s]Loading weights:  75%|███████▍  | 299/399 [00:03<00:00, 114.63it/s]Loading weights:  78%|███████▊  | 311/399 [00:03<00:00, 115.94it/s]Loading weights:  81%|████████  | 323/399 [00:03<00:00, 109.68it/s]Loading weights:  84%|████████▍ | 335/399 [00:03<00:00, 105.67it/s]Loading weights:  87%|████████▋ | 346/399 [00:03<00:00, 106.79it/s]Loading weights:  90%|████████▉ | 358/399 [00:04<00:00, 103.73it/s]Loading weights:  93%|█████████▎| 372/399 [00:04<00:00, 113.01it/s]Loading weights:  96%|█████████▌| 384/399 [00:04<00:00, 112.58it/s]Loading weights:  99%|█████████▉| 397/399 [00:04<00:00, 115.34it/s]Loading weights: 100%|██████████| 399/399 [00:04<00:00, 91.91it/s] 
+Loading LoRA adapter from results/qwen3_lora/final_adapter...
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+Loading Mind2Web from HuggingFace (split=test_task)...
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 450, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 307, in main
+    tasks = load_mind2web(args.split, args.max_tasks, args.cache_dir)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/data.py", line 194, in load_mind2web
+    dataset = load_dataset("osunlp/Mind2Web", split=split, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/load.py", line 1520, in load_dataset
+    ds = builder_instance.as_dataset(split=split, verification_mode=verification_mode, in_memory=keep_in_memory)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1052, in as_dataset
+    datasets = map_nested(
+        partial(
+    ...<7 lines>...
+        disable_tqdm=True,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/utils/py_utils.py", line 493, in map_nested
+    mapped = function(data_struct)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1082, in _build_single_dataset
+    ds = self._as_dataset(
+        split=split,
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1156, in _as_dataset
+    dataset_kwargs = ArrowReader(cache_dir, self.info).read(
+        name=dataset_name,
+    ...<2 lines>...
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 248, in read
+    files = self.get_file_instructions(name, instructions, split_infos)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 221, in get_file_instructions
+    file_instructions = make_file_instructions(
+        name, split_infos, instruction, filetype_suffix=self._filetype_suffix, prefix_path=self._path
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 130, in make_file_instructions
+    absolute_instructions = instruction.to_absolute(name2len)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 620, in to_absolute
+    return [_rel_to_abs_instr(rel_instr, name2len) for rel_instr in self._relative_instructions]
+            ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 437, in _rel_to_abs_instr
+    raise ValueError(f'Unknown split "{split}". Should be one of {list(name2len)}.')
+ValueError: Unknown split "test_task". Should be one of ['train'].
+
+=== [3/6] Qwen3-8B zero-shot — COMPOSITION (test_task) ===
+============================================================
+Mind2Web Evaluation
+Model: Qwen/Qwen3-8B
+Split: test_task
+Max tasks: 200
+Skill mode: llm
+Grounding mode: llm
+Composition: True
+============================================================
+Loading tokenizer for Qwen/Qwen3-8B...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:00<01:54,  3.47it/s]Loading weights:   1%|          | 2/399 [00:00<02:14,  2.94it/s]Loading weights:   1%|▏         | 5/399 [00:00<00:47,  8.26it/s]Loading weights:   4%|▍         | 16/399 [00:00<00:13, 28.92it/s]Loading weights:   7%|▋         | 26/399 [00:01<00:08, 41.81it/s]Loading weights:  10%|▉         | 38/399 [00:01<00:06, 56.93it/s]Loading weights:  13%|█▎        | 50/399 [00:01<00:05, 68.32it/s]Loading weights:  16%|█▌        | 64/399 [00:01<00:03, 85.68it/s]Loading weights:  19%|█▉        | 76/399 [00:01<00:03, 92.97it/s]Loading weights:  22%|██▏       | 89/399 [00:01<00:03, 101.03it/s]Loading weights:  25%|██▌       | 101/399 [00:01<00:02, 106.15it/s]Loading weights:  29%|██▊       | 114/399 [00:01<00:02, 105.82it/s]Loading weights:  32%|███▏      | 126/399 [00:01<00:02, 103.32it/s]Loading weights:  35%|███▍      | 138/399 [00:02<00:02, 101.48it/s]Loading weights:  38%|███▊      | 152/399 [00:02<00:02, 111.41it/s]Loading weights:  41%|████      | 164/399 [00:02<00:02, 111.64it/s]Loading weights:  44%|████▍     | 177/399 [00:02<00:01, 114.03it/s]Loading weights:  47%|████▋     | 189/399 [00:02<00:01, 114.95it/s]Loading weights:  50%|█████     | 201/399 [00:02<00:01, 111.99it/s]Loading weights:  53%|█████▎    | 213/399 [00:02<00:01, 107.41it/s]Loading weights:  56%|█████▋    | 225/399 [00:02<00:01, 104.37it/s]Loading weights:  59%|█████▉    | 237/399 [00:02<00:01, 102.18it/s]Loading weights:  63%|██████▎   | 251/399 [00:03<00:01, 112.04it/s]Loading weights:  66%|██████▌   | 263/399 [00:03<00:01, 112.37it/s]Loading weights:  69%|██████▉   | 276/399 [00:03<00:01, 115.28it/s]Loading weights:  73%|███████▎  | 290/399 [00:03<00:00, 114.34it/s]Loading weights:  76%|███████▌  | 302/399 [00:03<00:00, 109.17it/s]Loading weights:  79%|███████▊  | 314/399 [00:03<00:00, 105.74it/s]Loading weights:  82%|████████▏ | 328/399 [00:03<00:00, 114.77it/s]Loading weights:  85%|████████▌ | 340/399 [00:03<00:00, 114.24it/s]Loading weights:  88%|████████▊ | 353/399 [00:03<00:00, 116.49it/s]Loading weights:  91%|█████████▏| 365/399 [00:04<00:00, 116.83it/s]Loading weights:  95%|█████████▍| 378/399 [00:04<00:00, 113.51it/s]Loading weights:  98%|█████████▊| 390/399 [00:04<00:00, 108.57it/s]Loading weights: 100%|██████████| 399/399 [00:04<00:00, 91.73it/s] 
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+Loading Mind2Web from HuggingFace (split=test_task)...
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 450, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 307, in main
+    tasks = load_mind2web(args.split, args.max_tasks, args.cache_dir)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/data.py", line 194, in load_mind2web
+    dataset = load_dataset("osunlp/Mind2Web", split=split, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/load.py", line 1520, in load_dataset
+    ds = builder_instance.as_dataset(split=split, verification_mode=verification_mode, in_memory=keep_in_memory)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1052, in as_dataset
+    datasets = map_nested(
+        partial(
+    ...<7 lines>...
+        disable_tqdm=True,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/utils/py_utils.py", line 493, in map_nested
+    mapped = function(data_struct)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1082, in _build_single_dataset
+    ds = self._as_dataset(
+        split=split,
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1156, in _as_dataset
+    dataset_kwargs = ArrowReader(cache_dir, self.info).read(
+        name=dataset_name,
+    ...<2 lines>...
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 248, in read
+    files = self.get_file_instructions(name, instructions, split_infos)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 221, in get_file_instructions
+    file_instructions = make_file_instructions(
+        name, split_infos, instruction, filetype_suffix=self._filetype_suffix, prefix_path=self._path
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 130, in make_file_instructions
+    absolute_instructions = instruction.to_absolute(name2len)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 620, in to_absolute
+    return [_rel_to_abs_instr(rel_instr, name2len) for rel_instr in self._relative_instructions]
+            ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 437, in _rel_to_abs_instr
+    raise ValueError(f'Unknown split "{split}". Should be one of {list(name2len)}.')
+ValueError: Unknown split "test_task". Should be one of ['train'].
+
+=== [4/6] Qwen3-8B LoRA — composition (test_domain) ===
+============================================================
+Mind2Web Evaluation
+Model: Qwen/Qwen3-8B
+Adapter: results/qwen3_lora/final_adapter
+Split: test_domain
+Max tasks: 200
+Skill mode: llm
+Grounding mode: llm
+Composition: True
+============================================================
+Loading tokenizer for results/qwen3_lora/final_adapter...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:00<01:54,  3.47it/s]Loading weights:   1%|          | 2/399 [00:00<02:14,  2.94it/s]Loading weights:   1%|▏         | 5/399 [00:00<00:47,  8.27it/s]Loading weights:   4%|▍         | 16/399 [00:00<00:13, 29.01it/s]Loading weights:   7%|▋         | 26/399 [00:00<00:08, 45.05it/s]Loading weights:  10%|▉         | 38/399 [00:01<00:05, 60.18it/s]Loading weights:  13%|█▎        | 50/399 [00:01<00:04, 71.23it/s]Loading weights:  16%|█▌        | 64/399 [00:01<00:03, 88.54it/s]Loading weights:  19%|█▉        | 76/399 [00:01<00:03, 95.00it/s]Loading weights:  22%|██▏       | 89/399 [00:01<00:03, 102.48it/s]Loading weights:  25%|██▌       | 101/399 [00:01<00:02, 107.27it/s]Loading weights:  29%|██▊       | 114/399 [00:01<00:02, 106.58it/s]Loading weights:  32%|███▏      | 126/399 [00:01<00:02, 103.90it/s]Loading weights:  35%|███▍      | 138/399 [00:02<00:02, 101.99it/s]Loading weights:  38%|███▊      | 152/399 [00:02<00:02, 111.97it/s]Loading weights:  41%|████      | 164/399 [00:02<00:02, 111.96it/s]Loading weights:  44%|████▍     | 177/399 [00:02<00:01, 115.00it/s]Loading weights:  47%|████▋     | 189/399 [00:02<00:01, 116.23it/s]Loading weights:  50%|█████     | 201/399 [00:02<00:01, 112.45it/s]Loading weights:  53%|█████▎    | 213/399 [00:02<00:01, 107.88it/s]Loading weights:  56%|█████▋    | 225/399 [00:02<00:01, 104.88it/s]Loading weights:  59%|█████▉    | 237/399 [00:02<00:01, 102.94it/s]Loading weights:  63%|██████▎   | 251/399 [00:03<00:01, 112.69it/s]Loading weights:  66%|██████▌   | 263/399 [00:03<00:01, 112.81it/s]Loading weights:  69%|██████▉   | 276/399 [00:03<00:01, 115.66it/s]Loading weights:  73%|███████▎  | 290/399 [00:03<00:00, 114.68it/s]Loading weights:  76%|███████▌  | 302/399 [00:03<00:00, 109.63it/s]Loading weights:  79%|███████▊  | 314/399 [00:03<00:00, 106.08it/s]Loading weights:  82%|████████▏ | 329/399 [00:03<00:00, 115.11it/s]Loading weights:  86%|████████▌ | 342/399 [00:03<00:00, 117.28it/s]Loading weights:  89%|████████▉ | 355/399 [00:03<00:00, 120.77it/s]Loading weights:  92%|█████████▏| 368/399 [00:04<00:00, 109.13it/s]Loading weights:  95%|█████████▌| 380/399 [00:04<00:00, 105.98it/s]Loading weights:  99%|█████████▉| 395/399 [00:04<00:00, 114.91it/s]Loading weights: 100%|██████████| 399/399 [00:04<00:00, 92.77it/s] 
+Loading LoRA adapter from results/qwen3_lora/final_adapter...
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+Loading Mind2Web from HuggingFace (split=test_domain)...
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 450, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 307, in main
+    tasks = load_mind2web(args.split, args.max_tasks, args.cache_dir)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/data.py", line 194, in load_mind2web
+    dataset = load_dataset("osunlp/Mind2Web", split=split, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/load.py", line 1520, in load_dataset
+    ds = builder_instance.as_dataset(split=split, verification_mode=verification_mode, in_memory=keep_in_memory)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1052, in as_dataset
+    datasets = map_nested(
+        partial(
+    ...<7 lines>...
+        disable_tqdm=True,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/utils/py_utils.py", line 493, in map_nested
+    mapped = function(data_struct)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1082, in _build_single_dataset
+    ds = self._as_dataset(
+        split=split,
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1156, in _as_dataset
+    dataset_kwargs = ArrowReader(cache_dir, self.info).read(
+        name=dataset_name,
+    ...<2 lines>...
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 248, in read
+    files = self.get_file_instructions(name, instructions, split_infos)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 221, in get_file_instructions
+    file_instructions = make_file_instructions(
+        name, split_infos, instruction, filetype_suffix=self._filetype_suffix, prefix_path=self._path
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 130, in make_file_instructions
+    absolute_instructions = instruction.to_absolute(name2len)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 620, in to_absolute
+    return [_rel_to_abs_instr(rel_instr, name2len) for rel_instr in self._relative_instructions]
+            ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 437, in _rel_to_abs_instr
+    raise ValueError(f'Unknown split "{split}". Should be one of {list(name2len)}.')
+ValueError: Unknown split "test_domain". Should be one of ['train'].
+
+=== [5/6] ABLATION: direct action, no skill stage (test_task) ===
+============================================================
+Mind2Web Evaluation
+Model: Qwen/Qwen3-8B
+Adapter: results/qwen3_lora/final_adapter
+Split: test_task
+Max tasks: 200
+Skill mode: llm
+Grounding mode: direct
+Composition: True
+============================================================
+Loading tokenizer for results/qwen3_lora/final_adapter...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:00<01:54,  3.48it/s]Loading weights:   1%|          | 2/399 [00:00<02:14,  2.94it/s]Loading weights:   1%|▏         | 5/399 [00:00<00:47,  8.28it/s]Loading weights:   4%|▍         | 16/399 [00:00<00:13, 29.01it/s]Loading weights:   7%|▋         | 26/399 [00:00<00:08, 45.20it/s]Loading weights:  10%|▉         | 38/399 [00:01<00:06, 60.08it/s]Loading weights:  13%|█▎        | 50/399 [00:01<00:04, 71.01it/s]Loading weights:  16%|█▌        | 64/399 [00:01<00:03, 88.28it/s]Loading weights:  19%|█▉        | 76/399 [00:01<00:03, 95.24it/s]Loading weights:  22%|██▏       | 89/399 [00:01<00:03, 103.03it/s]Loading weights:  26%|██▌       | 103/399 [00:01<00:02, 106.19it/s]Loading weights:  29%|██▉       | 115/399 [00:01<00:02, 103.58it/s]Loading weights:  32%|███▏      | 127/399 [00:01<00:02, 101.89it/s]Loading weights:  36%|███▌      | 142/399 [00:02<00:02, 112.03it/s]Loading weights:  39%|███▉      | 155/399 [00:02<00:02, 115.17it/s]Loading weights:  42%|████▏     | 169/399 [00:02<00:02, 114.38it/s]Loading weights:  45%|████▌     | 181/399 [00:02<00:01, 109.31it/s]Loading weights:  48%|████▊     | 193/399 [00:02<00:02, 101.86it/s]Loading weights:  52%|█████▏    | 207/399 [00:02<00:01, 111.64it/s]Loading weights:  55%|█████▍    | 219/399 [00:02<00:01, 112.02it/s]Loading weights:  58%|█████▊    | 232/399 [00:02<00:01, 114.95it/s]Loading weights:  62%|██████▏   | 246/399 [00:02<00:01, 114.14it/s]Loading weights:  65%|██████▍   | 258/399 [00:03<00:01, 109.24it/s]Loading weights:  68%|██████▊   | 270/399 [00:03<00:01, 105.98it/s]Loading weights:  71%|███████▏  | 285/399 [00:03<00:00, 115.16it/s]Loading weights:  75%|███████▍  | 298/399 [00:03<00:00, 117.35it/s]Loading weights:  78%|███████▊  | 312/399 [00:03<00:00, 115.83it/s]Loading weights:  81%|████████  | 324/399 [00:03<00:00, 110.59it/s]Loading weights:  84%|████████▍ | 336/399 [00:03<00:00, 107.00it/s]Loading weights:  88%|████████▊ | 350/399 [00:03<00:00, 115.42it/s]Loading weights:  91%|█████████ | 362/399 [00:03<00:00, 114.15it/s]Loading weights:  94%|█████████▍| 375/399 [00:04<00:00, 116.53it/s]Loading weights:  97%|█████████▋| 389/399 [00:04<00:00, 115.17it/s]Loading weights: 100%|██████████| 399/399 [00:04<00:00, 92.94it/s] 
+Loading LoRA adapter from results/qwen3_lora/final_adapter...
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+Loading Mind2Web from HuggingFace (split=test_task)...
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 450, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 307, in main
+    tasks = load_mind2web(args.split, args.max_tasks, args.cache_dir)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/data.py", line 194, in load_mind2web
+    dataset = load_dataset("osunlp/Mind2Web", split=split, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/load.py", line 1520, in load_dataset
+    ds = builder_instance.as_dataset(split=split, verification_mode=verification_mode, in_memory=keep_in_memory)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1052, in as_dataset
+    datasets = map_nested(
+        partial(
+    ...<7 lines>...
+        disable_tqdm=True,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/utils/py_utils.py", line 493, in map_nested
+    mapped = function(data_struct)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1082, in _build_single_dataset
+    ds = self._as_dataset(
+        split=split,
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1156, in _as_dataset
+    dataset_kwargs = ArrowReader(cache_dir, self.info).read(
+        name=dataset_name,
+    ...<2 lines>...
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 248, in read
+    files = self.get_file_instructions(name, instructions, split_infos)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 221, in get_file_instructions
+    file_instructions = make_file_instructions(
+        name, split_infos, instruction, filetype_suffix=self._filetype_suffix, prefix_path=self._path
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 130, in make_file_instructions
+    absolute_instructions = instruction.to_absolute(name2len)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 620, in to_absolute
+    return [_rel_to_abs_instr(rel_instr, name2len) for rel_instr in self._relative_instructions]
+            ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 437, in _rel_to_abs_instr
+    raise ValueError(f'Unknown split "{split}". Should be one of {list(name2len)}.')
+ValueError: Unknown split "test_task". Should be one of ['train'].
+
+=== [6/6] ABLATION: oracle skills (test_task) ===
+============================================================
+Mind2Web Evaluation
+Model: Qwen/Qwen3-8B
+Adapter: results/qwen3_lora/final_adapter
+Split: test_task
+Max tasks: 200
+Skill mode: oracle
+Grounding mode: llm
+Composition: True
+============================================================
+Loading tokenizer for results/qwen3_lora/final_adapter...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:00<01:54,  3.46it/s]Loading weights:   1%|          | 2/399 [00:00<02:15,  2.94it/s]Loading weights:   1%|▏         | 5/399 [00:00<00:47,  8.27it/s]Loading weights:   4%|▍         | 16/399 [00:00<00:13, 29.01it/s]Loading weights:   7%|▋         | 26/399 [00:00<00:08, 45.16it/s]Loading weights:  10%|▉         | 38/399 [00:01<00:05, 60.21it/s]Loading weights:  13%|█▎        | 50/399 [00:01<00:04, 71.11it/s]Loading weights:  16%|█▌        | 64/399 [00:01<00:03, 88.30it/s]Loading weights:  19%|█▉        | 76/399 [00:01<00:03, 95.00it/s]Loading weights:  22%|██▏       | 89/399 [00:01<00:03, 102.58it/s]Loading weights:  25%|██▌       | 101/399 [00:01<00:02, 107.37it/s]Loading weights:  29%|██▊       | 114/399 [00:01<00:02, 106.99it/s]Loading weights:  32%|███▏      | 126/399 [00:01<00:02, 104.09it/s]Loading weights:  35%|███▍      | 138/399 [00:02<00:02, 102.11it/s]Loading weights:  38%|███▊      | 152/399 [00:02<00:02, 111.96it/s]Loading weights:  41%|████      | 164/399 [00:02<00:02, 112.10it/s]Loading weights:  44%|████▍     | 177/399 [00:02<00:01, 114.98it/s]Loading weights:  47%|████▋     | 189/399 [00:02<00:01, 116.00it/s]Loading weights:  50%|█████     | 201/399 [00:02<00:01, 112.53it/s]Loading weights:  53%|█████▎    | 213/399 [00:02<00:01, 107.77it/s]Loading weights:  56%|█████▋    | 225/399 [00:02<00:01, 104.74it/s]Loading weights:  59%|█████▉    | 237/399 [00:02<00:01, 102.56it/s]Loading weights:  63%|██████▎   | 251/399 [00:03<00:01, 112.33it/s]Loading weights:  66%|██████▌   | 263/399 [00:03<00:01, 112.44it/s]Loading weights:  69%|██████▉   | 276/399 [00:03<00:01, 115.20it/s]Loading weights:  72%|███████▏  | 289/399 [00:03<00:00, 119.32it/s]Loading weights:  76%|███████▌  | 302/399 [00:03<00:00, 107.80it/s]Loading weights:  79%|███████▊  | 314/399 [00:03<00:00, 104.80it/s]Loading weights:  82%|████████▏ | 329/399 [00:03<00:00, 114.06it/s]Loading weights:  86%|████████▌ | 342/399 [00:03<00:00, 116.31it/s]Loading weights:  89%|████████▊ | 354/399 [00:03<00:00, 117.08it/s]Loading weights:  92%|█████████▏| 367/399 [00:04<00:00, 113.55it/s]Loading weights:  95%|█████████▍| 379/399 [00:04<00:00, 108.72it/s]Loading weights:  98%|█████████▊| 391/399 [00:04<00:00, 105.32it/s]Loading weights: 100%|██████████| 399/399 [00:04<00:00, 92.59it/s] 
+Loading LoRA adapter from results/qwen3_lora/final_adapter...
+  GPU memory: 0.0 GB
+  Using 4 GPUs
+Loading Mind2Web from HuggingFace (split=test_task)...
+/home/yuexing/miniconda/lib/python3.13/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.4.0.post2)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 450, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_mind2web.py", line 307, in main
+    tasks = load_mind2web(args.split, args.max_tasks, args.cache_dir)
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/data.py", line 194, in load_mind2web
+    dataset = load_dataset("osunlp/Mind2Web", split=split, **kwargs)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/load.py", line 1520, in load_dataset
+    ds = builder_instance.as_dataset(split=split, verification_mode=verification_mode, in_memory=keep_in_memory)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1052, in as_dataset
+    datasets = map_nested(
+        partial(
+    ...<7 lines>...
+        disable_tqdm=True,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/utils/py_utils.py", line 493, in map_nested
+    mapped = function(data_struct)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1082, in _build_single_dataset
+    ds = self._as_dataset(
+        split=split,
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/builder.py", line 1156, in _as_dataset
+    dataset_kwargs = ArrowReader(cache_dir, self.info).read(
+        name=dataset_name,
+    ...<2 lines>...
+        in_memory=in_memory,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 248, in read
+    files = self.get_file_instructions(name, instructions, split_infos)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 221, in get_file_instructions
+    file_instructions = make_file_instructions(
+        name, split_infos, instruction, filetype_suffix=self._filetype_suffix, prefix_path=self._path
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 130, in make_file_instructions
+    absolute_instructions = instruction.to_absolute(name2len)
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 620, in to_absolute
+    return [_rel_to_abs_instr(rel_instr, name2len) for rel_instr in self._relative_instructions]
+            ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/datasets/arrow_reader.py", line 437, in _rel_to_abs_instr
+    raise ValueError(f'Unknown split "{split}". Should be one of {list(name2len)}.')
+ValueError: Unknown split "test_task". Should be one of ['train'].
+
+=== All Done ===
+Date: Wed Apr  8 10:32:11 EDT 2026

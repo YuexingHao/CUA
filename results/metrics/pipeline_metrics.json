@@ -1,0 +1,43 @@
+{
+  "phase1_segmentation": {
+    "best_theta": 1.5502467155456543,
+    "boundary_precision": 0.4152962222291102,
+    "boundary_recall": 0.8049333333333333,
+    "boundary_f1": 0.5344894694908844
+  },
+  "phase2_clustering": {
+    "wasserstein_best_k": 10,
+    "wasserstein_nmi": 0.5312845319823216
+  },
+  "phase2_infonce": {
+    "latent_nmi": 0.870659352583158,
+    "latent_silhouette": 0.5609784126281738,
+    "latent_purity": 0.8690702087286527
+  },
+  "phase3_mlp": {
+    "sequence_exact_match": 0.054,
+    "normalized_edit_distance": 0.5793523809523808,
+    "per_position_accuracy": {
+      "0": 1.0,
+      "1": 0.222,
+      "2": 0.17687074829931973,
+      "3": 0.21929824561403508,
+      "4": 0.18232044198895028,
+      "5": 0.17204301075268819,
+      "6": 0.27450980392156865
+    }
+  },
+  "phase3_transformer": {
+    "sequence_exact_match": 0.076,
+    "normalized_edit_distance": 0.47987619047619046,
+    "per_position_accuracy": {
+      "0": 1.0,
+      "1": 0.342,
+      "2": 0.3333333333333333,
+      "3": 0.3567251461988304,
+      "4": 0.32044198895027626,
+      "5": 0.2903225806451613,
+      "6": 0.45098039215686275
+    }
+  }
+}

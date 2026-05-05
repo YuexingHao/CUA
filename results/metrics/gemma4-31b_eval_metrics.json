@@ -1,0 +1,24 @@
+{
+  "model": "google/gemma-4-31B-it",
+  "adapter": null,
+  "dataset": "iw",
+  "overall_accuracy": 0.165,
+  "normalized_edit_distance": 0.7321926406926409,
+  "exact_sequence_match": 0.0,
+  "per_position_accuracy": {
+    "0": 0.04,
+    "1": 0.14,
+    "2": 0.16,
+    "3": 0.26,
+    "4": 0.26,
+    "5": 0.1875,
+    "6": 0.16279069767441862,
+    "7": 0.0967741935483871,
+    "8": 0.23529411764705882,
+    "9": 0.0,
+    "10": 0.0
+  },
+  "total_samples": 400,
+  "correct": 66,
+  "num_conversations": 50
+}

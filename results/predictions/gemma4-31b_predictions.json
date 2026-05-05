@@ -1,0 +1,3202 @@
+[
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "this",
+    "correct": false,
+    "pred_response_preview": "This is a high-priority compliance task. To ensure a thorough audit, I will need to identify all \"customer-facing\" documents, locate the current approved version of the privacy disclaimer, and then ve"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to filter the shared drive for Word documents (.docx) that have been modified within the last 90 days to create a list for the privacy disclaimer audit.\n\n**[Action: search_naviga"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I first need to locate the \"compliance tracker\" to see the master list of customer-facing documents. Once I have that list, I will compare it against the Word document"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to iterate through the list of documents identified in the previous steps. I will use **review_content** to open each document and search for the specific 2026 "
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to perform a repetitive cycle of **review_content** (to identify outdated text) and **document_edit** (to replace it with the 2026 version). I will process the "
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I have paused all current actions. I am ready to pivot.\n\nPlease let me know the new approach you'd like me to take. For example, would you prefer that I:\n*   **Flag the documents** with comments for a"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To report the findings, I need to communicate the results to the specific team channel. This requires the **send_message** skill.\n\n**[Action: send_message]** Composing and sending the a"
+  },
+  {
+    "conversation_id": "conv_00259",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the privacy disclaimers audited and updated across your documents.\n\n**Summary of actions completed:**\n1. **Searched** for all Word documents modified"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you put together the weekly status report. Since I don't have the specific details for this week yet, I'll need to gather the necessary information from your workspace first.\n\nHer"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To find the task completion data, I need to access the project board. Since project boards are typically managed in Teams (via Planner/Tasks) or a shared document, I will use `search_na"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to include \"latest numbers,\" which likely refers to a specific data source like an Excel sheet or a dashboard. I need to find where these numbers are stored before I can "
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 3,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the data on my clipboard, I need to place it into the specific report document. I will use **document_edit** to open the template and insert the metrics.\n\n**[Action: doc"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that the template is open, I need to modify the content of the slide. I will use the **presentation_edit** skill to update the text in the highlights section.\n\n**[Action: presentati"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I understand. Transparency is key for status reports. I will go back into the document to refine the highlights section before finalizing.\n\n**[Thinking]** Since I need to modify the tex"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To share the document in a specific channel, I need to use the **send_message** skill to upload the file and notify the team.\n\n**[Action: send_message]** Navigating to the #leadership c"
+  },
+  {
+    "conversation_id": "conv_00140",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the weekly status report finalized and shared with leadership. \n\nSince we've completed the data transfer, template updates, and the final post to the"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "To complete this task, I will need to coordinate data from your spreadsheets, format it into a professional document, and distribute it via email. Since I don't have the specific file names or recipie"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To get the specific numbers for March 2026, I need to access the data source. Since this is a database query, I will use `search_navigate` to locate the sales database/spreadsheet and `"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the March 2026 sales data, I need to move it into the Word report template and ensure it is formatted correctly. I will use **data_transfer** to move the raw data and **"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I will continue using the **document_edit** skill to apply specific formatting styles to the table to ensure it is professional and readable.\n\n**[Action: document_edit]** Applying table"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** This is a continuation of the formatting process, so I will use the **document_edit** skill to apply specific styling and brand colors to the table.\n\n**[Action: document_edit]** Applyin"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To generate the executive summary, I first need to analyze the data I just imported. I will use **review_content** to synthesize the key trends and then **document_edit** to write the s"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "**[adapting]**",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** No problem at all. I can certainly redo that for you.\n\nTo make sure I get it exactly right this time, could you please specify how you'd like the formatting changed? For example:\n*   Ar"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants the final document in PDF format. I will use the **export_publish** skill to convert the Word document to a PDF.\n\n**[Action: export_publish]** Selecting \"Export to PDF\" f"
+  },
+  {
+    "conversation_id": "conv_00563",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad we could get that monthly sales report finalized and sent out. \n\nTo recap, we:\n1. Queried the March 2026 sales data.\n2. Imported and formatted the data into your report t"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you resolve those calendar conflicts and get the quarterly review scheduled. To get started, I need a bit more information to narrow down the search.\n\n**Please provide the followi"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To check availability for 8 different people, I need to access the scheduling assistant in Outlook. I will first need to identify who the 8 VPs are (likely from a distribution list or a"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user has instructed me to use the \"fallback,\" which in this context means treating the 'Focus Time' blocks as soft blocks (ignorable) to find the best possible slot for all 8 VPs. I"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to analyze the calendars of all 8 VPs to find a common 2-hour window next week. I will use the `search_navigate` skill to access the shared calendars and the `monitor_status` ski"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to communicate the proposed time to the leadership team. I will use the **send_message** skill to post this update to the specific Teams channel.\n\n**[Action: send_message]** Post"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user has changed the strategy. Instead of waiting for confirmation in the channel, I need to proactively book the time. I will use the **schedule_meeting** skill to create the calen"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 6,
+    "ground_truth": "monitor_status",
+    "prediction": "monitor_status",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** This requires a combination of **monitor_status** to track the responses and **schedule_meeting** to execute the invite once the condition is met.\n\n**[Action: monitor_status]** Checking"
+  },
+  {
+    "conversation_id": "conv_00339",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you navigate those calendar conflicts and get the quarterly review organized.\n\nIf you need help monitoring the responses to those invites or preparing any ma"
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "i'd",
+    "correct": false,
+    "pred_response_preview": "I'd be happy to help you get the logistics for the team offsite started. Since this is a broad request, I'll need to gather some information and then I can execute the tasks across your Microsoft 365 "
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 1,
+    "ground_truth": "schedule_meeting",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create this agenda, I need to start a new Word document and structure it with the specific requirements for Day 1 (Strategy) and Day 2 (Team Building). I will use `document_edit` to "
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 2,
+    "ground_truth": "schedule_meeting",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to expand the offsite from 2 days to 3 days to include a hackathon. I need to update the agenda document I previously started. I will use **document_edit** to add the thi"
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To schedule this call, I need to use the **schedule_meeting** skill. I will check the availability for the admin team for this Friday at 3:00 PM and create the calendar invite.\n\n**[Acti"
+  },
+  {
+    "conversation_id": "conv_01331",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help get the offsite logistics and planning moving. \n\nIf you need help drafting the detailed agenda, sending out the official invites, or coordinating with the ad"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can help you with that. To ensure I process the correct files and send them to the right people, I need a few more details:\n\n1. **File Location:** Where are the proposal documents stored? (e.g., a s"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate the specific folder 'Board-Q3' and identify all documents within it that are proposals. I will use the `search_navigate` skill to access the folder and list the files.\n"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** The user wants to add a specific note regarding the deadline to the bottom of the documents. I will use the **document_edit** skill to append this text to the end of each proposal docum"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 3,
+    "ground_truth": "organize_files",
+    "prediction": "organize_files",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To organize these files by department, I need to categorize the documents found in the 'Board-Q3' folder and move them into specific sub-folders. I will use the **organize_files** skill"
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To add watermarks to multiple documents, I will use the **document_edit** skill. I'll iterate through the organized folders (Finance, Engineering, Marketing) and apply the watermark to "
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I will use the **export_publish** skill to convert the Word documents into PDF format. Since I have already organized them by department, I will process them folder by folder to ensure "
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since I have already handled the large engineering deck during the previous recovery step, I now need to ensure all remaining PowerPoint presentations in the 'Board-Q3' folder are also "
+  },
+  {
+    "conversation_id": "conv_00497",
+    "skill_position": 7,
+    "ground_truth": "organize_files",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get those board materials organized, watermarked, and converted. \n\nTo summarize, I have:\n1. Located all proposals in the 'Board-Q3' folder.\n2. Organized "
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you put together the weekly status report. Since I don't have the specific details for this week yet, I'll need to gather the necessary information from your workspace first.\n\nHer"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To get the task completion data, I need to access the project board. Since project boards are typically managed in Teams (via Planner/Tasks) or a shared dashboard, I will use `search_na"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** Now that I have the data on my clipboard from the project board, I need to insert it into the Word document. I will use **document_edit** to place the metrics into the correct section o"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify specific text within the document to reflect these achievements. I will use the **document_edit** skill to locate the \"Highlights\" section and insert the new informatio"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** This is a direct modification to the document, so I will use the **document_edit** skill to append the note to the end of the report.\n\n**[Action: document_edit]** Navigating to the end "
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To share the draft for feedback, I need to use **send_message** to notify the leadership team and **review_content** to set up the document for comments.\n\n**[Action: send_message]** Pos"
+  },
+  {
+    "conversation_id": "conv_00446",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the weekly status report finalized and shared with leadership. \n\nSince we've completed the data pull, the document updates, and the final export/shar"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you process those feedback emails. To get started, I need to understand how you'd like this information handled.\n\nSince \"processing\" can mean many things, could you please clarify"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate specific emails in the user's Outlook inbox. I will use the `search_navigate` skill to filter for emails with \"feedback\" in the subject line received within the last se"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate the specific email from Acme Corp within the filtered search results and open it so the user can review the content. I will use the `search_navigate` skill to isolate t"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to refine the search criteria to a shorter timeframe (last 3 days instead of 7). I need to go back to the inbox and apply a more specific filter to the search results.\n\n*"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a summary document, I first need to extract the key points from the filtered emails and then create a new Word document to organize them. I will use **search_navigate** to re-"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To add a priority column and mark specific items as critical, I need to modify the content of the summary document I just created. I will use the **document_edit** skill to update the t"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To share the summary document with the product team, I need to send the file or a link to it within the specific Teams channel. I will use the **send_message** skill to post the documen"
+  },
+  {
+    "conversation_id": "conv_00180",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you organize that client feedback and get it over to the product team.\n\nIf you need help following up on those critical login issues or scheduling a meeting "
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "I can help you organize this evaluation. To get started, I need to know where you currently stand with the data and how you'd like the final comparison to look.\n\nDepending on your needs, I can handle "
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 1,
+    "ground_truth": "organize_files",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate specific documents (vendor proposals) sent via email within a specific timeframe (last week). I will use the `search_navigate` skill to filter Outlook for emails with a"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to first locate the specific proposal attachments from last week's emails and then move them into a newly created folder. I will use `search_navigate` to find the emails and `org"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 3,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a comparison matrix, I need to start a new document and structure it as a table. I will use the **document_edit** skill to create the file and build the matrix with the specif"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 4,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To add a new column to the comparison matrix, I need to modify the structure of the document. This requires the **document_edit** skill to update the table layout.\n\n**[Action: document_"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 5,
+    "ground_truth": "schedule_meeting",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the user wants to review the document, I need to ensure it is fully prepared and then provide them with the access path or a preview. I will use **review_content** to perform a fi"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 6,
+    "ground_truth": "presentation_edit",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to coordinate a calendar event. I will use the **schedule_meeting** skill to create the invite for the infrastructure team.\n\n**[Action: schedule_meeting]** Creating a calendar ev"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I first need to extract the data from the comparison matrix I created earlier and then translate that into a presentation. I will use **data_transfer** to move the fin"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** Understood. I will pivot from the previous approach to ensure the deck is concise and high-impact for the VP. I'll consolidate the findings to fit the 5-slide limit.\n\n**[Thinking]** Thi"
+  },
+  {
+    "conversation_id": "conv_00626",
+    "skill_position": 9,
+    "ground_truth": "organize_files",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I've organized your vendor proposals, created the comparison matrix with the compliance column, scheduled the decision meeting with the infrastructure team, and prepared the conci"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you draft that announcement. To make sure the draft is effective and aligned with your goals, I need a bit more information.\n\n**Could you please provide the following details?**\n1"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to create a new Word document and draft the initial announcement content based on the \"SmartSync\" feature details provided. I will use the `document_edit` skill to initialize the"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to pivot from the blank document to a specific template. I will first search for the \"company announcement template\" in the organization's files, then create a new document based"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the user wants to review the current progress, I need to ensure the document is open and visible, or provide a summary of the content I've placed into the template. I will use **s"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to move the content from the Word document to the Teams channel. I will use **data_transfer** to copy the draft and **send_message** to post it in the specific "
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To finalize this, I need to convert the Word document into a portable format. This requires the **export_publish** skill.\n\n**[Action: export_publish]** Converting the 'SmartSync Announc"
+  },
+  {
+    "conversation_id": "conv_00898",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the 'SmartSync' announcement drafted, reviewed, shared, and exported.\n\nIf you need help managing the feedback from the marketing team or scheduling t"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you put together the weekly status report. Since I don't have the specific details for this week yet, I'll need to gather the necessary information from your workspace first.\n\nHer"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To get the task completion data, I need to access the project management tool (likely integrated into Teams or a Planner board). I will use `search_navigate` to locate the project board"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants the data reformatted. Since the data was just transferred, I need to go back to the source (the project board), extract the data again, and apply a different formatting s"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the metrics have already been copied to the clipboard in the previous step, I now need to place them into the specific status report document. I will use **data_transfer** to move"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify specific text within the document to reflect these achievements. I will use the **document_edit** skill to locate the \"Highlights\" section and update the bullet points."
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I understand. Transparency is key for status reports. I will update the highlights section to reflect the delay and the subsequent recovery.\n\n**[Thinking]** I need to modify the specifi"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To share the draft for feedback, I need to send the document link or file to a specific Teams channel. I will use the **send_message** skill to post the draft in the #leadership channel"
+  },
+  {
+    "conversation_id": "conv_00620",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the weekly status report finalized and shared with leadership.\n\nHave a great weekend! Feel free to reach out if you need anything else."
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "I will help you update the weekly report with the latest project metrics and send it out. Here is my plan:\n\n1. **Extract Metrics**: I'll use `search_navigate` to go to the Teams dashboard and `generic"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to access the specific Teams channel to retrieve the current metrics. I will use `search_navigate` to go to the #analytics channel and `generic_action` to scrape/copy the KPI dat"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the KPI data from Teams, I need to insert it into the specific \"Weekly Report\" Word document. I will use **search_navigate** to locate the exact file and then **document"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** Now that the raw data is in the document, I need to synthesize those numbers into the narrative summary. I will use the **document_edit** skill to modify the text in the Word/PowerPoint"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** The user has provided a correction regarding the date in the summary paragraph. I need to modify the text in the document to reflect \"next week\" instead of \"this week.\" This requires th"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since I previously identified that the burn-down chart is a Power BI visual that cannot be simply copied and pasted, I will now execute the recovery plan I formulated earlier: exporting"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to finalize the document and distribute it. This requires two steps: first, using **export_publish** to create the PDF, and second, using **send_message** to email it to the stak"
+  },
+  {
+    "conversation_id": "conv_00629",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I've successfully pulled the KPI data and burn-down chart from Teams, updated the weekly report with the corrected dates, exported it as a PDF, and emailed it to your stakeholders"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "I will help you update the weekly report with the latest project metrics and send it out. Here is my plan:\n\n1. **Extract Metrics**: I'll use `search_navigate` to go to the Teams dashboard and `generic"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to access the specific channel in Teams to retrieve the current metrics. I will use `search_navigate` to go to the #analytics channel and then `data_transfer` to copy the KPI dat"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the KPI data on my clipboard, I need to locate the \"Weekly Report\" document and insert the data. I will use **search_navigate** to find the specific file and then **docu"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 3,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify the existing text in the Word document to reflect the specific KPI numbers I just pasted. I will use the **document_edit** skill to locate the summary section and rewri"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I will now execute the recovery plan I identified. I need to capture the visual from the dashboard and insert it into the document. I'll use **data_transfer** to handle the image move a"
+  },
+  {
+    "conversation_id": "conv_01208",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I have successfully:\n1. Extracted the KPI data from the Teams #analytics channel.\n2. Updated the weekly report document with the new metrics and summary.\n3. Exported the high-reso"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you draft that announcement. To make sure the draft is effective and aligned with your goals, I need a bit more information.\n\n**Could you please provide the following details?**\n1"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to create a new Word document and draft the announcement content based on the provided details about 'SmartSync'. I will use the `document_edit` skill to initialize the file and "
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to append a specific piece of information to the end of the existing document. I will use the **document_edit** skill to navigate to the bottom of the page and insert the note re"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the user wants to review the current state of the document, I need to provide the content I've drafted. I will use **review_content** to extract the current text from the Word doc"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To share the draft with the marketing team, I need to send the document link or content to a specific Teams channel. This requires the **send_message** skill.\n\n**[Action: send_message]*"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To convert the Word document into a PDF format for the press kit, I need to use the **export_publish** skill.\n\n**[Action: export_publish]** Navigating to File > Export > Create PDF/XPS "
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to extract the key highlights from the Word document and then use the **send_message** skill to compose and send the email to the staff distribution list.\n\n**[A"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Adapting]** I will update the email recipients to include the CEO in the CC field.\n\n**[Thinking]** Since the email is already composed but not yet sent, I will use **send_message** to modify the re"
+  },
+  {
+    "conversation_id": "conv_01268",
+    "skill_position": 8,
+    "ground_truth": "collaborate",
+    "prediction": "collaborate",
+    "correct": true,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the 'SmartSync' announcement drafted, exported, and communicated to the team.\n\nTo summarize what we've accomplished:\n1. **Drafted** the product launc"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "I understand. You need to migrate all files and data related to \"Project Alpha\" from the old SharePoint site to the new Teams workspace.\n\nTo ensure I move everything accurately without missing any cri"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To list all files in the old SharePoint site, I first need to locate the specific site for \"Project Alpha.\" I will use `search_navigate` to find the SharePoint directory and then `monit"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have resolved the metadata schema conflict and created the mapping file, I can proceed with the actual migration of the files from the old SharePoint site to the new Teams wo"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 3,
+    "ground_truth": "organize_files",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To migrate conversation history from an external source (Slack) into a Microsoft 365 environment (Teams), I need to use the **data_transfer** skill to move the communication logs.\n\n**[A"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 4,
+    "ground_truth": "review_content",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to set up the directory structure in the new Teams workspace. I will use the **organize_files** skill to create these specific folders.\n\n**[Action: organize_files]** Creating fol"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To verify the migration, I need to compare the source (Old SharePoint/Slack) with the destination (New Teams workspace). I will use **monitor_status** to check the file dashboards and *"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To verify permissions and security settings, I need to inspect the access levels of the migrated files. I will use the **monitor_status** skill to check the permissions dashboard and ac"
+  },
+  {
+    "conversation_id": "conv_00175",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! Project Alpha has been successfully migrated from SharePoint and Slack to the new Teams workspace, including the folder structure, conversation history, and verified permissions.\n"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you process those feedback emails. To get started, I need to understand how you'd like this information handled.\n\nSince \"processing\" can mean many things, could you please clarify"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate specific emails from the last seven days that contain the word \"feedback\" in the subject line. I will use the `search_navigate` skill to filter the Outlook inbox.\n\n**[A"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants me to redo the previous action (searching for feedback emails) but with a different format. Since I previously just \"reviewed\" them, I need to actually extract the inform"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To open a specific email, I need to navigate to the inbox and select the message from Acme Corp. I will use **search_navigate** to locate the specific email and then a **generic_action*"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I understand. I will narrow the search window to the last 3 days to ensure we are only looking at the most recent feedback.\n\n**[Thinking]** To do this, I need to use **search_navigate**"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a summary document, I first need to extract the key points from the filtered emails and then create a new Word document to organize them. I will use **search_navigate** to re-"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To add a priority column and mark specific items as critical, I need to modify the content of the summary document I just created. This requires the **document_edit** skill.\n\n**[Action:"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To share the summary document with the product team, I need to locate the document I just created and then post it to the specific Teams channel. I will use **search_navigate** to ensur"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 8,
+    "ground_truth": "search_navigate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To draft this response, I need to use the **send_message** skill. I will reference the feedback from the Acme Corp email and the summary document we just created to ensure the \"next ste"
+  },
+  {
+    "conversation_id": "conv_00517",
+    "skill_position": 9,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get those client feedback emails processed and communicated to the team.\n\nIf you need help with any other tasks\u2014whether it's following up on those next s"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "To complete this task, I will need to coordinate data from your spreadsheets, format it into a professional document, and distribute it via email. Since I don't have the specific file names or recipie"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To get the March 2026 numbers, I need to access the sales data. Since I don't have a direct SQL connector, I will search for the sales database file or the central tracking spreadsheet "
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the March 2026 sales data, I need to move it into the official report template. I will use **search_navigate** to find the template file and then **data_transfer** to po"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I will continue using the **document_edit** skill to apply specific formatting to the table. I need to modify the table properties to include borders, a distinct header row, and a bande"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I will continue using the **document_edit** skill to apply specific styling to the table to match the company's brand guidelines.\n\n**[Action: document_edit]** Applying navy blue fill to"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To write the executive summary, I first need to analyze the data I just imported. I will use **review_content** to synthesize the key trends from the March 2026 numbers and then use **d"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I've resolved the chart rendering issue, I can proceed with the final export. I will use the **export_publish** skill to generate the PDF version of the report.\n\n**[Action: exp"
+  },
+  {
+    "conversation_id": "conv_00378",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the March 2026 sales report completed and sent out.\n\nTo recap, we:\n1. Queried the sales database (handling a rate-limit hiccup along the way).\n2. Imp"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "I will help you update the weekly report with the latest project metrics and send it out. Here is my plan:\n\n1. **Extract Metrics**: I'll use `search_navigate` to go to the Teams dashboard and `generic"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to access the specific channel in Teams to retrieve the current KPI data. I will use `search_navigate` to go to the #analytics channel and `monitor_status` to read the dashboard "
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the KPI data on my clipboard, I need to locate the \"Weekly Report\" document and insert the data. I will use **search_navigate** to find the file and **document_edit** to"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify specific existing text within the document to reflect the new KPI data. I will use the **document_edit** skill to locate the summary paragraph and replace the old metri"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since I have already recovered from the previous error by exporting the high-resolution PNG from Power BI, I will now use the **document_edit** skill to insert that image into the repor"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I have already exported the document to PDF in the previous step. Now I need to send it to the stakeholders. I will use the **send_message** skill to compose and send the email with the"
+  },
+  {
+    "conversation_id": "conv_00148",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could get that report updated and sent out for you. \n\nJust to recap, I have:\n1. Extracted the KPI data from the **#analytics** Teams channel.\n2. Updated the **Weekly Re"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "I understand. You need to migrate all files and data related to \"Project Alpha\" from the old SharePoint site to the new Teams workspace.\n\nTo ensure I move everything accurately without missing any cri"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To list all files, I first need to navigate to the specific SharePoint site for \"Project Alpha\" to see the directory structure. Once I have the site open, I can identify all the documen"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the file list and a plan to handle the metadata schema mismatch, I will execute the actual migration. I'll use `organize_files` to move the documents and `data_transfer`"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** The user wants to redo the migration with a different format. Since the previous attempt involved flattening threads and using a companion JSON for metadata, I need to clarify exactly h"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 4,
+    "ground_truth": "organize_files",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** This task involves moving data between two different platforms (Slack and Teams), which requires the **data_transfer** skill. Since we previously encountered issues with attachments and"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I will use the **organize_files** skill to create the specific directory hierarchy requested in the Teams workspace.\n\n**[Action: organize_files]** Creating folders: `/docs`, `/design`, "
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To verify the migration, I need to compare the source (old SharePoint) with the destination (new Teams workspace). I will use **monitor_status** to check the file properties and counts "
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To verify permissions and security settings, I need to use the **monitor_status** skill to check the access dashboards and permission levels of the new workspace.\n\n**[Action: monitor_st"
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To announce the migration, I need to send messages to two different platforms. I will use the **send_message** skill to notify the users in both the old Slack channel and the new Teams "
+  },
+  {
+    "conversation_id": "conv_01483",
+    "skill_position": 9,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get Project Alpha successfully migrated to the new Teams workspace. \n\nTo recap, we have:\n1. Listed and mapped the legacy SharePoint files.\n2. Transferred"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 0,
+    "ground_truth": "schedule_meeting",
+    "prediction": "i'd",
+    "correct": false,
+    "pred_response_preview": "I'd be happy to help you get the logistics for the team offsite started. Since this is a broad request, I'll need to gather some information and then I can execute the tasks across your Microsoft 365 "
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to create a new Word document to serve as the agenda. I will use the `document_edit` skill to generate the structure and content based on the user's requirements (Day 1: Strategy"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to update the existing agenda document to reflect the change from a 2-day to a 3-day event. I will use **document_edit** to add the third day dedicated to the hackathon.\n\n**[Acti"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to use the **schedule_meeting** skill to create a calendar event for the admin team this coming Friday at 3:00 PM.\n\n**[Action: schedule_meeting]** Creating a calendar event for t"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I first need to locate the agenda document I just created using **search_navigate**, and then use **send_message** to distribute it to the team with the request for su"
+  },
+  {
+    "conversation_id": "conv_00536",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the logistics for the team offsite organized. \n\nTo recap, we have:\n1. Scheduled the planning call with the admin team.\n2. Created and updated the 3-d"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "I will help you update the weekly report with the latest project metrics and send it out. Here is my plan:\n\n1. **Extract Metrics**: I'll use `search_navigate` to go to the Teams dashboard and `generic"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to retrieve the specific KPI data from the Teams #analytics channel. I will use the `monitor_status` skill to access the dashboard/channel data and then `data_transfer` to prepar"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to add a specific note about the deadline to the report. Since the report is a document, I will use the `document_edit` skill to append this information to the bottom of "
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** Now that I have the KPI data and the deadline note on my clipboard, I need to insert them into the specific report file. I will use **document_edit** to modify the Word document.\n\n**[Ac"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 4,
+    "ground_truth": "data_transfer",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to refine the summary paragraph to ensure the narrative matches the new KPI data I just pasted. I will use **document_edit** to rewrite the summary section.\n\n**[Action: document_"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since I've already identified that the burn-down chart is a Power BI visual and handled the high-resolution export in the previous recovery step, I will now finalize the placement of th"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this final request, I need to perform two distinct actions: first, use **export_publish** to generate the PDF version of the report, and second, use **send_message** to dist"
+  },
+  {
+    "conversation_id": "conv_00026",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get that report finalized and sent out. \n\n**Summary of actions completed:**\n1. **Extracted** KPI data from the Teams #analytics channel.\n2. **Updated** t"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "To complete this task, I will need to coordinate data from your spreadsheets, format it into a professional document, and distribute it via email. Since I don't have the specific file names or recipie"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To get the March 2026 numbers, I need to access the sales data source. Since this is a database query, I will use `search_navigate` to locate the specific sales dashboard or spreadsheet"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the March 2026 sales data, I need to move it into the report document. This requires **data_transfer** to move the raw data and **document_edit** to ensure it fits the t"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "**[thinking]**",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to change the current approach. Since they haven't specified the new direction yet, I need to pause the current workflow and ask for clarification to ensure I don't make "
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** This requires further **document_edit** to apply specific styling and formatting to the table structure to ensure it is professional and readable.\n\n**[Action: document_edit]** Applying "
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 5,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** This is a continuation of the formatting process, requiring **document_edit** to apply specific styling and brand colors to the table elements.\n\n**[Action: document_edit]** Applying cus"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create the executive summary, I first need to analyze the data I just imported to identify key trends (growth, declines, or milestones). Then, I will use **document_edit** to write t"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** This requires the **export_publish** skill to convert the final Word document into a PDF format.\n\n**[Action: export_publish]** Converting the sales report document to PDF...\n\n**[Observa"
+  },
+  {
+    "conversation_id": "conv_00398",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get that monthly sales report generated, formatted, and sent out.\n\nTo recap, we:\n1. Queried the March 2026 sales data.\n2. Imported and formatted the data"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "this",
+    "correct": false,
+    "pred_response_preview": "This is a high-priority compliance task. To ensure a thorough audit, I will need to identify all \"customer-facing\" documents, locate the current approved version of the privacy disclaimer, and then ve"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To fulfill this request, I need to access the shared drive and apply specific filters for file type (Word documents) and modification date (last 90 days). I will use the `search_navigat"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 2,
+    "ground_truth": "monitor_status",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I first need to locate the \"compliance tracker\" to see which documents are officially designated as customer-facing. Once I have that list, I will compare it against t"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 3,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that the compliance tracker is fixed and I have the list of customer-facing documents, I need to inspect the content of each file. This requires a combination of **search_navigate**"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** Now that I've identified the documents with missing or outdated disclaimers, I need to update them. This requires **document_edit** to modify the text in the Word files.\n\n**[Action: doc"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** This requires the **send_message** skill to communicate the results of the audit to the team in Microsoft Teams.\n\n**[Action: send_message]** Composing a summary report for the #complian"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "i've",
+    "correct": false,
+    "pred_response_preview": "I've paused the process. I haven't sent the message to the #compliance channel yet.\n\nPlease let me know how you'd like to change the approach. For example, would you prefer:\n- A detailed summary repor"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** This requires the **send_message** skill to communicate the final results to the Legal department. I will compile the findings from the audit and the updates I made to the documents int"
+  },
+  {
+    "conversation_id": "conv_00117",
+    "skill_position": 8,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the privacy disclaimers audited and updated across your documents.\n\nIf you need any more help with your Microsoft 365 tasks\u2014whether it's more complia"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you put together the weekly status report. Since I don't have the specific details for this week yet, I'll need to gather the necessary information from your workspace first.\n\nHer"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To find the task completion data, I need to access the project management tool (likely integrated via Teams or a Planner board) to identify which tasks were marked as \"Complete\" during "
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To get the metrics from the project board into the report, I need to extract the data from one source and place it into another. I will use **data_transfer** to move the completion metr"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to update the text within the status report document. I will use the **document_edit** skill to modify the \"Highlights\" section with the specific achievements mentioned.\n\n**[Acti"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to modify the content of the status report to include a specific detail about a delay. Since this involves modifying the text within the report document, I will use the *"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To share the draft for feedback, I need to send the document link or file to a specific Teams channel and notify the stakeholders. I will use the **send_message** skill to post the draf"
+  },
+  {
+    "conversation_id": "conv_01092",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad we could get that status report finalized and shared with leadership. \n\nSince it's Friday and your report is in, is there anything else I can help you wrap up before you "
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you get everything ready for the new engineers. To ensure the onboarding is seamless, I'll need a bit more information to determine which skills to deploy.\n\n**Could you please pro"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 1,
+    "ground_truth": "presentation_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate the specific \"onboarding checklist template\" within the HR shared drive. I will use the `search_navigate` skill to browse the shared drive and identify the correct file"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to modify the onboarding checklist document. Since this is a text-based document (likely Word), I will use the `document_edit` skill to add the team-specific requirements to the "
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to add one more item to the onboarding checklist. Since I am already working within the document, I will use the **document_edit** skill again to insert this mandatory requiremen"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 4,
+    "ground_truth": "organize_files",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify the welcome presentation. This requires the **presentation_edit** skill to update the team name throughout the deck and specifically modify the organizational chart on "
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 5,
+    "ground_truth": "schedule_meeting",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to create a specific directory for these materials and move the updated checklist and presentation into it to keep the shared drive organized.\n\n**[Action: organize_files]** Creat"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I will use the **schedule_meeting** skill to create the calendar event for Monday at 9:00 AM, inviting the new engineers and the existing team members.\n\n**[Action: schedule_meeting]** C"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I understand. I will adjust the meeting time to avoid the conflict with your standup.\n\n**[Thinking]** I need to use the **schedule_meeting** skill again to modify the existing calendar "
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 8,
+    "ground_truth": "collaborate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to combine information from the folder I created and the meeting I scheduled. I will use the **send_message** skill to compose a professional welcome email to t"
+  },
+  {
+    "conversation_id": "conv_00567",
+    "skill_position": 9,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get everything ready for the new engineers. \n\nTo recap, we have:\n1. Updated the **Onboarding Checklist** with dev environment, GitHub, Slack, and securit"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "I understand. You need to migrate all files and data related to \"Project Alpha\" from the old SharePoint site to the new Teams workspace.\n\nTo ensure I move everything accurately without missing any cri"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To list the files, I need to access the specific old SharePoint site associated with Project Alpha. I will use the `search_navigate` skill to locate the site and retrieve the directory "
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have mapped the metadata to avoid data loss, I need to execute the actual movement of the files from the old SharePoint site to the new Teams workspace. I will use the `organ"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to include \"the latest numbers,\" which implies there is a specific data source (likely an Excel sheet or a report) that wasn't part of the general file migration. I need "
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 4,
+    "ground_truth": "organize_files",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** This task requires moving communication data between two different platforms. I will use **data_transfer** to migrate the conversation history from Slack to the Teams workspace.\n\n**[Act"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a specific folder hierarchy in the Teams workspace, I need to use the **organize_files** skill.\n\n**[Action: organize_files]** Creating folders: /docs, /design, /meeting-notes,"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To verify the migration, I need to compare the source (SharePoint/Slack) with the destination (Teams). I will use **monitor_status** to check the file properties and counts across both "
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To verify permissions and security settings, I need to use the **monitor_status** skill to check the access dashboards and permission levels of the newly created folders.\n\n**[Action: mo"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to send notifications to two different platforms. I will use the **send_message** skill to communicate the migration status to the team.\n\n**[Action: send_messag"
+  },
+  {
+    "conversation_id": "conv_00428",
+    "skill_position": 9,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get Project Alpha migrated over to the new Teams workspace successfully.\n\nIf you need any more help organizing your files, scheduling follow-up meetings,"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 0,
+    "ground_truth": "schedule_meeting",
+    "prediction": "i'd",
+    "correct": false,
+    "pred_response_preview": "I'd be happy to help you get the logistics for the team offsite started. Since this is a broad request, I'll need to gather some information and then I can execute the tasks across your Microsoft 365 "
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To create the agenda, I need to generate a new Word document and structure it according to the user's requirements (Day 1: Strategy, Day 2: Team Building). I will use the `document_edit"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to update the existing agenda document to reflect the change from a 2-day to a 3-day event. I will add a third day specifically for the \"Hackathon\" as requested. I'll use the **d"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to coordinate a meeting with the admin team. I will use the **schedule_meeting** skill to create the calendar event for this Friday at 3:00 PM.\n\n**[Action: schedule_meeting]** Se"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I first need to locate the agenda document I just created, then I will use the **send_message** skill to email it to the team with the request for suggestions.\n\n**[Act"
+  },
+  {
+    "conversation_id": "conv_01315",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the offsite logistics and agenda sorted. \n\nIf you need help tracking the topic suggestions from the team, finalizing the venue, or scheduling any oth"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "To complete this task, I will need to coordinate data from your spreadsheets, format it into a professional document, and distribute it via email. Since I don't have the specific file names or recipie"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To get the specific numbers for March 2026, I need to access the sales database. Since this involves retrieving specific data from a source to be used in a report, I will use the `searc"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To move the data from the database results into the report document, I need to use the **data_transfer** skill. This will allow me to map the raw sales numbers into the specific fields "
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the data was imported into a report template (which we established as a PowerPoint file in the previous step), I will use the **presentation_edit** skill to apply the requested fo"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to add a specific piece of text to the end of the document. I will use the **document_edit** skill to append this note to the bottom of the report.\n\n**[Action: document_edit]** N"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create the executive summary, I first need to analyze the data I just imported. I will use **review_content** to synthesize the key trends and then **document_edit** to write the sum"
+  },
+  {
+    "conversation_id": "conv_00773",
+    "skill_position": 6,
+    "ground_truth": "data_transfer",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could get that report sorted for you, including the technical hiccups along the way.\n\nThe March 2026 sales report is now fully populated, formatted, and sent out. Is th"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 0,
+    "ground_truth": "review_content",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you process those feedback emails. To get started, I need to understand how you'd like this information handled.\n\nSince \"processing\" can mean many things, could you please clarify"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to locate specific emails based on a keyword and a timeframe. I will use the `search_navigate` skill to filter the Outlook inbox for emails with \"feedback\" in the subject line re"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 2,
+    "ground_truth": "search_navigate",
+    "prediction": "i've",
+    "correct": false,
+    "pred_response_preview": "I've stopped the current process. I'm ready to pivot\u2014how would you like to handle these feedback emails instead? \n\nPlease let me know the new approach you have in mind, and I'll adjust my steps accord"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to access the specific email from Acme Corp. I will use **search_navigate** to isolate the email and then **review_content** to display the text for the user.\n\n**[Action: search_"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I understand. I will refine the search parameters to narrow the window from the last week to just the last 3 days.\n\n**[Thinking]** I need to use **search_navigate** again to filter the "
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a summary document, I first need to extract the key points from the emails I've found and then create a new Word document to organize them. I will use **data_transfer** to mov"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To add a column and update specific data points in a document, I need to use the **document_edit** skill. I will modify the summary table to include a \"Priority\" column and label the \"l"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To share the summary document with the product team, I need to use the **send_message** skill to post the file or a link to it in the specific Teams channel.\n\n**[Action: send_message]**"
+  },
+  {
+    "conversation_id": "conv_00014",
+    "skill_position": 8,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you organize that client feedback and get it over to the product team.\n\nIf you need help with any other tasks\u2014whether it's following up on those critical log"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you process those feedback emails. To get started, I need to understand how you'd like this information handled.\n\nSince \"processing\" can mean many things, could you please clarify"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to filter the user's inbox for specific criteria: the keyword 'feedback' in the subject line and a date range limited to the last seven days. I will use the `search_navigate` ski"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To open a specific email, I need to use the **search_navigate** skill to locate the exact message from Acme Corp and then use a **generic_action** to click and open it for the user.\n\n**"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to refine the search criteria to a shorter timeframe. I need to go back to the inbox and apply a more specific filter for the last 3 days. This requires the **search_navi"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a summary document, I first need to extract the key points from the filtered emails and then create a new Word document to organize them. I will use **search_navigate** to re-"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "**[adapting]**",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I've stopped the current process. I'm ready to pivot to a new approach.\n\nPlease let me know how you'd like to handle the feedback summary instead. For example, would you prefer:\n- A bul"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To share the summary document with the product team, I need to send the file or a link to it within the specific Teams channel. I will use the **send_message** skill to compose and post"
+  },
+  {
+    "conversation_id": "conv_01112",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you process that client feedback and get the summary over to the product team.\n\nIf you need help with any other tasks in Word, PowerPoint, Outlook, or Teams,"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you process those feedback emails. To get started, I need to understand how you'd like this information handled.\n\nSince \"processing\" can mean many things, could you please clarify"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to filter the user's inbox for specific criteria: subject contains \"feedback\" and the date is within the last 7 days. I will use the `search_navigate` skill to locate these email"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate the specific email from Acme Corp within the filtered search results and open it for the user to view. I will use the **search_navigate** skill to isolate and open the "
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to append a specific note to the end of the current document. I will use the **document_edit** skill to navigate to the bottom of the page and insert the text.\n\n**[Action: docume"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to synthesize information from multiple emails and create a new structured document. I will use **search_navigate** to re-verify all feedback emails, **review_c"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To modify the structure of the summary document and add specific data points, I need to use the **document_edit** skill.\n\n**[Action: document_edit]** Inserting a new column for \"Priorit"
+  },
+  {
+    "conversation_id": "conv_00722",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you organize that client feedback and get the summary document ready.\n\nIf you need help sending that summary to the team, scheduling a follow-up meeting to d"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "To complete this task, I will need to coordinate data from your spreadsheets, format it into a professional document, and distribute it via email. Since I don't have the specific file names or recipie"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To get the specific numbers for March 2026, I need to access the sales database. Since this is an external data source, I will use `generic_action` to navigate to the company's sales da"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the March 2026 sales data from the database, I need to integrate it into the document. I will use **data_transfer** to move the raw data and **document_edit** to ensure "
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To format the table according to the user's specifications, I need to use the **document_edit** skill to apply specific styling attributes to the table object in the Word document.\n\n**["
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** This is a continuation of the formatting process, requiring **document_edit** to apply specific style attributes (colors) to the table elements to align with brand guidelines.\n\n**[Actio"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 5,
+    "ground_truth": "search_navigate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create the executive summary, I first need to analyze the data I just imported to identify key trends (growth, declines, or milestones). Then, I will use **document_edit** to write t"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that the executive summary is added and the chart issue is resolved, I need to finalize the document. This requires the **export_publish** skill.\n\n**[Action: export_publish]** Conve"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to use the **send_message** skill to distribute the final PDF to the specific distribution list.\n\n**[Action: send_message]** Composing email to 'Sales Leadershi"
+  },
+  {
+    "conversation_id": "conv_00714",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you automate the March 2026 sales report, from querying the data and formatting the document with brand colors to exporting the PDF and sending it to the lea"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "To complete this task, I will need to coordinate data from your spreadsheets, format it into a professional document, and distribute it via email. Since I don't have the specific file names or recipie"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To get the specific numbers for March 2026, I need to access the sales database. Since this involves retrieving specific data from a source to be used in a report, I will use `search_na"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the March 2026 sales data, I need to move it into the report template. I will use **data_transfer** to move the raw numbers and then **document_edit** to ensure the form"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 3,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I will continue using the **document_edit** skill to apply specific formatting to the table in the Word document to ensure it is professional and readable.\n\n**[Action: document_edit]** "
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to apply specific styling to the table. Since this involves modifying the visual layout and formatting of a Word document, I will use the **document_edit** skill.\n\n**[Action: doc"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 5,
+    "ground_truth": "document_edit",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create the executive summary, I first need to analyze the data I just imported. I will use **review_content** to synthesize the key trends and then **document_edit** to write the sum"
+  },
+  {
+    "conversation_id": "conv_01399",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could get that sorted for you, including the technical hiccups with the API and the PDF rendering.\n\nThe March 2026 sales report is now formatted with the company brandi"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you put together the weekly status report. Since I don't have the specific details for this week yet, I'll need to gather the necessary information from your workspace first.\n\nHer"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To find the task completion data, I need to access the project board. Since project boards are typically managed in Teams (via Planner/Tasks) or a shared document, I will use `search_na"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 2,
+    "ground_truth": "collaborate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the data, I need to insert it into the specific document. I will use **document_edit** to modify the status report template with the metrics I just retrieved.\n\n**[Action"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To update the text within the status report document, I need to use the **document_edit** skill. I will locate the \"Highlights\" section and insert the specific achievements mentioned.\n\n"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** The user wants to modify the previously added text to include a specific detail about a delay. This requires another **document_edit** to refine the \"highlights\" section for transparenc"
+  },
+  {
+    "conversation_id": "conv_00332",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the weekly status report sorted. \n\nSince we've updated the metrics and the highlights, would you like me to **export/publish** the report as a PDF, o"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "I am on it. To coordinate this response effectively, I need to gather the current state of the issue and get the right people in a room immediately.\n\nHere is my proposed plan of action:\n\n1.  **Informa"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate the most recent support ticket and corresponding email threads from BigCorp to understand the context of the outage. I will start by searching Outlook for emails and th"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 2,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to access the specific Teams channel to get the latest updates on the BigCorp incident. I will use **search_navigate** to locate the #support-escalations channel and then **revie"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To notify the on-call engineer, I need to send a direct message or a mention within the specific Teams channel. I will use the **send_message** skill to ensure the request is delivered "
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create this document, I need to synthesize the information I gathered from the support ticket, the emails, and the Teams thread. I will use **document_edit** to create a new Word doc"
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To add the timeline to the incident response document, I need to use **document_edit**. I will locate the draft created in the previous step and insert the specific timestamp and event "
+  },
+  {
+    "conversation_id": "conv_01404",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you coordinate the response for the BigCorp escalation. \n\nI have:\n1. Searched for the relevant support tickets and emails.\n2. Checked the incident thread in "
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you prepare the Quarterly Business Review (QBR) materials. Since this involves multiple steps and likely several applications, I'll need a bit more information to get started.\n\nTo"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate the specific report from the previous quarter. Since the user mentioned a \"shared drive,\" I will use `search_navigate` to filter for documents created in the last 3-6 m"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate the revenue section in the document and update the figures to reflect the Q3 data provided ($4.2M, +12%). I will use the **document_edit** skill to modify the text.\n\n**"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 3,
+    "ground_truth": "presentation_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To move visual elements like charts from a Word document to a PowerPoint presentation, I need to use the **data_transfer** skill to copy the specific objects and paste them into the sli"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 4,
+    "ground_truth": "presentation_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to replace a chart in the PowerPoint deck with a specific one from the appendix of the Word document. This requires navigating back to the source document, identifying th"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** This requires **presentation_edit** to modify the title slide of the PowerPoint deck.\n\n**[Action: presentation_edit]** Navigating to the title slide and updating the text to 'Q3 2026 Bu"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 6,
+    "ground_truth": "review_content",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I understand. I will correct the date to reflect next week's schedule.\n\n**[Thinking]** Since this involves updating a specific detail in the presentation, I will use **presentation_edit"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the user wants to review the materials, I need to ensure both the Word document and the PowerPoint deck are easily accessible and saved in their final versions. I will use **organ"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 8,
+    "ground_truth": "export_publish",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I'll pause the export process and verify those numbers immediately. I will compare the data on slide 4 of the PowerPoint deck with the source data in the Word document.\n\n**[Thinking]** "
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 9,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user has approved the content and requested a final export. I will use the **export_publish** skill to convert the PowerPoint deck into a PDF format.\n\n**[Action: export_publish]** E"
+  },
+  {
+    "conversation_id": "conv_00875",
+    "skill_position": 10,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad we could get the QBR materials finalized and exported. \n\nTo recap, we have:\n1. Located and updated the Q3 revenue data in the Word report.\n2. Transferred the key charts ("
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "this",
+    "correct": false,
+    "pred_response_preview": "This is a high-priority compliance task. To ensure a thorough audit, I will need to identify all \"customer-facing\" documents, locate the current approved version of the privacy disclaimer, and then ve"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To fulfill this request, I need to filter the shared drive for Word documents (.docx) specifically modified within the last 90 days. I will use the `search_navigate` skill to apply thes"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to access the compliance tracker (likely an Excel file or a SharePoint list) and compare its entries against the Word documents I've identified. I will use **se"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to first identify the exact \"2026 privacy disclaimer\" text from the official source, then iterate through the list of customer-facing documents identified in th"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To add a note to the bottom of the documents, I need to use the **document_edit** skill. Since the user mentioned \"the deadline,\" I first need to verify what the specific deadline date "
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to identify the correct \"current version\" of the disclaimer, locate the documents that failed the audit, and then apply the text updates. I will use **search_na"
+  },
+  {
+    "conversation_id": "conv_01365",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the privacy disclaimer audit sorted and fix those broken references in the compliance tracker.\n\nAll customer-facing documents have been verified, out"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "i'd",
+    "correct": false,
+    "pred_response_preview": "I'd be happy to help you get the logistics for the team offsite started. Since this is a broad request, I'll need to gather some information and then I can execute the tasks across your Microsoft 365 "
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 1,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to create a new Word document to serve as the agenda. I will use the `document_edit` skill to generate the structure, including the specific themes for Day 1 (Strategy) and Day 2"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 2,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to modify the agenda to be 3 days instead of 2, adding a hackathon. Since the goal is to \"create an agenda document,\" I need to use the **document_edit** skill to create/"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 3,
+    "ground_truth": "schedule_meeting",
+    "prediction": "schedule_meeting",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to create a calendar event for the planning call. I will use the **schedule_meeting** skill to set this up for Friday at 3:00 PM and invite the admin team.\n\n**[Action: schedule_m"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 4,
+    "ground_truth": "schedule_meeting",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To include the latest numbers in the meeting invite or a related document, I first need to find where those numbers are stored. I'll use **search_navigate** to locate the most recent bu"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I first need to locate the agenda document I created earlier using **search_navigate**, then I will use **send_message** to share it with the team and request their in"
+  },
+  {
+    "conversation_id": "conv_01041",
+    "skill_position": 6,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I've successfully:\n1. Drafted the 3-day offsite agenda (Strategy, Team Building, and Hackathon).\n2. Scheduled the planning call with the admin team for this Friday at 3 PM.\n3. Sha"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "To help you sync these notes, I need a bit more information to ensure I'm moving the right data to the right places.\n\n**Could you please clarify:**\n1. **Where are the notes currently located?** (e.g.,"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to access the Outlook calendar to locate the specific meeting entry for today, which should contain the links to the recording and the generated transcript.\n\n**[Action: search_na"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 2,
+    "ground_truth": "send_message",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a clean summary, I first need to retrieve the transcript from the Outlook calendar event, process the text to extract key takeaways, and then create a new Word document to hou"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants a more detailed summary where action items are specifically assigned to owners. Since I previously attempted to send a message without actually creating the summary docum"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "collaborate",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To share the document in a specific Teams channel, I need to use the **collaborate** skill to post the file/link to the project group.\n\n**[Action: collaborate]** Uploading the summary d"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 5,
+    "ground_truth": "collaborate",
+    "prediction": "**[adapting]**",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I've paused the current process. I'm ready to pivot to a new approach.\n\nPlease let me know how you'd like to handle this instead. For example, would you prefer:\n- Creating a dedicated *"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 6,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To move specific data from the summary document into a spreadsheet, I need to use the **data_transfer** skill. This will allow me to extract the tagged action items and map them to the "
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this request, I need to use the **organize_files** skill to move the transcript from its current location to the designated project archive folder.\n\n**[Action: organize_file"
+  },
+  {
+    "conversation_id": "conv_00905",
+    "skill_position": 8,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get everything synced and organized across your systems. \n\nTo recap, we have:\n1. Located the recording and transcript.\n2. Created a clean summary documen"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "To complete this task, I will need to coordinate data from your spreadsheets, format it into a professional document, and distribute it via email. Since I don't have the specific file names or recipie"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To retrieve specific data from a database, I need to use `search_navigate` to locate the data source (likely an Excel sheet or a connected database dashboard) and `generic_action` to ex"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the March 2026 sales data, I need to move it into the document. I will use **data_transfer** to move the raw data and **document_edit** to ensure it is formatted correct"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 3,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** This is a continuation of the document modification process. I will use the **document_edit** skill to apply specific table styling to the imported data.\n\n**[Action: document_edit]** Ap"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I will continue using the **document_edit** skill to apply specific styling and branding to the table.\n\n**[Action: document_edit]** Applying custom hex codes for navy blue to the header"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 5,
+    "ground_truth": "export_publish",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To do this, I first need to analyze the data I just imported to identify key trends (growth, declines, or milestones). Then, I will use the **document_edit** skill to write and insert t"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I will use the **export_publish** skill to convert the final Word document into a PDF format.\n\n**[Action: export_publish]** Selecting 'Export to PDF' from the File menu and saving it as"
+  },
+  {
+    "conversation_id": "conv_00674",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad we could get that report finalized and sent out.\n\nTo recap, we:\n1. Pulled the March 2026 sales data (handling a brief API rate limit).\n2. Imported and formatted the data "
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "I understand. You need to migrate all files and data related to \"Project Alpha\" from the old SharePoint site to the new Teams workspace.\n\nTo ensure I move everything accurately without missing any cri"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To list all files in the old SharePoint site, I first need to locate the specific site for \"Project Alpha.\" I will use the `search_navigate` skill to find the SharePoint directory and t"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 2,
+    "ground_truth": "data_transfer",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have identified the files and handled the metadata mapping to avoid data loss, I need to physically move the files from the old SharePoint site to the new Teams workspace. I "
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 3,
+    "ground_truth": "organize_files",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To migrate conversation history from an external platform (Slack) to a Microsoft 365 application (Teams), I need to use **data_transfer** to move the messages and **generic_action** to "
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a specific folder hierarchy in the Teams workspace, I will use the **organize_files** skill. This will ensure the project is structured correctly for the team.\n\n**[Action: org"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To verify the migration, I need to compare the source (Old SharePoint/Slack) with the destination (Teams). I will use **monitor_status** to check the file properties and counts in both "
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 6,
+    "ground_truth": "review_content",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to change direction. Since I have already performed several migration and organization steps, I need to stop the current process and understand the new requirements befor"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To announce the migration, I need to communicate across different platforms. I will use the **send_message** skill to post updates in both the legacy Slack channel and the new Teams wor"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to use the **send_message** skill to compose and send an email to the project team containing the new links and instructions.\n\n**[Action: send_message]** Openin"
+  },
+  {
+    "conversation_id": "conv_00173",
+    "skill_position": 9,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you migrate Project Alpha to the new Teams workspace. \n\nTo summarize, we have:\n1. Listed and migrated all files from SharePoint.\n2. Handled metadata schema m"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you prepare the Quarterly Business Review (QBR) materials. Since this involves multiple steps and likely several applications, I'll need a bit more information to get started.\n\nTo"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate the specific QBR report from the previous quarter. I will use the `search_navigate` skill to look for files containing \"QBR\" and \"Report\" within the shared drive/team f"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 2,
+    "ground_truth": "presentation_edit",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I will use the **document_edit** skill to locate the revenue section in the Word document and update the figures with the provided Q3 data.\n\n**[Action: document_edit]** Searching for \"R"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To move visual elements from a Word document to a PowerPoint presentation, I need to use the **data_transfer** skill. This allows me to copy specific content (charts/tables) from one ap"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 4,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** The user has changed the source of the data. I need to go back to the Word document, navigate to the appendix, and transfer that specific chart to the PowerPoint deck instead of the one"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 5,
+    "ground_truth": "review_content",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify the text on the title slide of the PowerPoint presentation. I will use the **presentation_edit** skill for this.\n\n**[Action: presentation_edit]** Navigating to slide 1 "
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the user wants to review the materials, I need to ensure both the Word document and the PowerPoint deck are easily accessible and saved in their final state. I will use **organize"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 7,
+    "ground_truth": "export_publish",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I'll double-check those numbers immediately to ensure the presentation is accurate.\n\n**[Thinking]** I need to compare data across two different applications, so I will use **data_transf"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the user has confirmed the content is now correct and requested a PDF, I will use the **export_publish** skill to convert the PowerPoint presentation into a PDF format.\n\n**[Action"
+  },
+  {
+    "conversation_id": "conv_01260",
+    "skill_position": 9,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get the QBR materials ready for Monday's leadership meeting. \n\nTo recap, we've:\n1. Located last quarter's report.\n2. Updated the revenue figures in the W"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can help you with that. To ensure I process the correct files and send them to the right people, I need a few more details:\n\n1. **File Location:** Where are the proposal documents stored? (e.g., a s"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 1,
+    "ground_truth": "organize_files",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to locate all documents specifically within the 'Board-Q3' folder to ensure I have the correct set of proposal documents before proceeding with the PDF conversion and watermarkin"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To organize these documents by department, I need to review the content of each proposal to identify which department it belongs to, and then move them into corresponding sub-folders. I"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 3,
+    "ground_truth": "export_publish",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To add watermarks to multiple documents, I need to use the **document_edit** skill for Word files and **presentation_edit** for PowerPoint files. Since I previously identified which fil"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "export_publish",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to convert all the processed Word documents in the 'Board-Q3' folder (now organized by department) into PDF format. This requires the **export_publish** skill.\n\n**[Action: export"
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the user wants to convert the PowerPoint decks to PDF as well, I will use the **export_publish** skill. I will apply the same logic used for the Word documents, ensuring that any "
+  },
+  {
+    "conversation_id": "conv_00183",
+    "skill_position": 6,
+    "ground_truth": "organize_files",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get those board materials organized, watermarked, and converted.\n\nJust to recap, we have:\n1. Organized the proposals by department.\n2. Added the \"CONFIDE"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "I will help you update the weekly report with the latest project metrics and send it out. Here is my plan:\n\n1. **Extract Metrics**: I'll use `search_navigate` to go to the Teams dashboard and `generic"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 1,
+    "ground_truth": "data_transfer",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to access the specific data from the Teams channel. I will use `search_navigate` to go to the #analytics channel and `review_content` to extract the latest KPI metrics.\n\n**[Actio"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 2,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the KPI data from the Teams channel, I need to locate the \"Weekly Report\" document and insert the metrics into the correct section. I will use `search_navigate` to find "
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 3,
+    "ground_truth": "data_transfer",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify specific existing text within the document to reflect the new KPI data. This requires the **document_edit** skill to locate the summary paragraph and replace the old me"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 4,
+    "ground_truth": "export_publish",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I have already initiated the recovery process for the burn-down chart since the direct copy-paste failed. I will now execute the alternative approach: exporting the visual from the dash"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "export_publish",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this request, I need to perform two distinct actions: first, use **export_publish** to convert the Word document into a PDF, and second, use **send_message** to distribute t"
+  },
+  {
+    "conversation_id": "conv_00647",
+    "skill_position": 6,
+    "ground_truth": "export_publish",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I have successfully:\n1. Extracted the KPI data from the Teams #analytics channel.\n2. Updated the weekly report document and summary paragraph.\n3. Exported the burn-down chart and "
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you with that. To ensure the minutes are accurate and professional, I'll need to gather the source information first.\n\nDepending on how the meeting was conducted, here is how I pr"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to create a new Word document and populate it with the meeting details provided. I will use the `document_edit` skill to initialize the file and add the header information.\n\n**[A"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 2,
+    "ground_truth": "review_content",
+    "prediction": "i've",
+    "correct": false,
+    "pred_response_preview": "I've paused the current process. I'm ready to pivot to a different approach.\n\nPlease let me know how you'd like to handle this instead. For example, would you prefer:\n*   **A specific template?** (e.g"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since you want to review the document and add items yourself, I will open the document and put it in a state where you can easily edit it. I'll use **document_edit** to ensure the \"Acti"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 4,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to update the attendee list in the document. I will use the **document_edit** skill to locate the \"Attendees\" section and add Lisa to the list.\n\n**[Action: document_edit]** Navig"
+  },
+  {
+    "conversation_id": "conv_00271",
+    "skill_position": 5,
+    "ground_truth": "document_edit",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad we could get those meeting minutes finalized and updated.\n\nIf you need help sending the document out to the team, scheduling the follow-up meeting, or anything else acros"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you get everything ready for the new engineers. To ensure the onboarding is seamless, I'll need a bit more information to determine which skills to deploy.\n\n**Could you please pro"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** I need to locate a specific file (\"onboarding checklist template\") within a specific location (\"HR shared drive\"). I will use the `search_navigate` skill to browse the shared drive and "
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 2,
+    "ground_truth": "search_navigate",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to add a specific note to the document I was working on. I will use the **document_edit** skill to append this information to the bottom of the file.\n\n**[Action: document"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 3,
+    "ground_truth": "presentation_edit",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Now that I have the onboarding checklist template open, I need to modify the content to include the team-specific requirements. I will use the **document_edit** skill to add these items"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 4,
+    "ground_truth": "presentation_edit",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** I've noted the change. I will add the security training requirement to the checklist immediately.\n\n**[Thinking]** Since I am working on the onboarding checklist (which is a document), I"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 5,
+    "ground_truth": "organize_files",
+    "prediction": "presentation_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify an existing presentation. I will use **presentation_edit** to update the team name throughout the deck and specifically modify the org chart on slide 3.\n\n**[Action: pre"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 6,
+    "ground_truth": "schedule_meeting",
+    "prediction": "organize_files",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this request, I need to use the **organize_files** skill to create a new directory and move the relevant documents into it.\n\n**[Action: organize_files]** Creating folder 'On"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to use the **schedule_meeting** skill to create the calendar event and send the invites to the new engineers and the existing team.\n\n**[Action: schedule_meeting]** Creating a cal"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 8,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** No problem, I'll adjust the meeting time to accommodate your standup. I'll use the **schedule_meeting** skill to update the existing invite.\n\n**[Action: schedule_meeting]** Updating the"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 9,
+    "ground_truth": "collaborate",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to combine information from previous steps. I'll use **send_message** to compose the email, but first I need to ensure I have the correct link to the 'Onboardin"
+  },
+  {
+    "conversation_id": "conv_00746",
+    "skill_position": 10,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I've successfully:\n1. Located and updated the onboarding checklist with your team-specific items and the mandatory security training.\n2. Updated the welcome presentation with the "
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "To help you sync these notes, I need a bit more information to ensure I'm moving the right data to the right places.\n\n**Could you please clarify:**\n1. **Where are the notes currently located?** (e.g.,"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 1,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To find the recording and transcript, I need to access the calendar for today's date, locate the specific meeting entry, and then navigate to the attached recording or the linked transc"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 2,
+    "ground_truth": "collaborate",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To complete this, I first need to retrieve the transcript found in the previous step, analyze the content to create a summary, and then generate a new Word document. I will use `data_tr"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "review_content",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To ensure action items are specifically assigned, I need to cross-reference the transcript with the attendee list and then update the summary document. I will use **review_content** to "
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "send_message",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To share the document in the Teams project channel, I need to use the **send_message** skill to post the link or file to the specific channel.\n\n**[Action: send_message]** Uploading the "
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 5,
+    "ground_truth": "data_transfer",
+    "prediction": "data_transfer",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to move specific data from the summary document I just created into the shared Excel tracker. I will use the **data_transfer** skill to ensure the action items "
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 6,
+    "ground_truth": "organize_files",
+    "prediction": "organize_files",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to move the file from its current location to a specific archive folder. I will use the **organize_files** skill.\n\n**[Action: organize_files]** Locating the tra"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 7,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to use **send_message** to compose and send the email to the meeting participants.\n\n**[Action: send_message]** Drafting the follow-up email to the attendee list"
+  },
+  {
+    "conversation_id": "conv_00535",
+    "skill_position": 8,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get everything synced and organized. \n\nTo recap, I have:\n1. Located the meeting recording and transcript.\n2. Created a clean summary document with tagged"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 0,
+    "ground_truth": "schedule_meeting",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you resolve those calendar conflicts and get the quarterly review scheduled. To get started, I need a bit more information to narrow down the search.\n\n**Please provide the followi"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 1,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To check availability across both Outlook and Teams, I need to access the scheduling assistant and the organizational directory to ensure I have the correct list of the 8 VPs. I will us"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 2,
+    "ground_truth": "search_navigate",
+    "prediction": "search_navigate",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** Understood. I will bypass the conflict resolution for VP Chen and proceed with checking the availability for the remaining 7 VPs across both Outlook and Teams to find the best common wi"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 3,
+    "ground_truth": "search_navigate",
+    "prediction": "i've",
+    "correct": false,
+    "pred_response_preview": "I've paused the current process. I'm ready to pivot.\n\nPlease let me know the new approach you'd like me to take. For example, would you like me to:\n*   **Prioritize a specific date/time** and see who "
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 4,
+    "ground_truth": "collaborate",
+    "prediction": "monitor_status",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To find a common 2-hour window for 8 VPs, I need to analyze multiple calendars. I will use **monitor_status** to check the scheduling assistant/availability dashboards and **search_navi"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 5,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To complete this, I need to communicate the specific time slot to a group. I will use the **send_message** skill to post in the designated Teams channel.\n\n**[Action: send_message]** Pos"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "schedule_meeting",
+    "correct": false,
+    "pred_response_preview": "**[Adapting]** Understood. We're switching from a \"confirm first\" approach to a \"send and adjust\" approach to save time.\n\n**[Thinking]** I need to use the **schedule_meeting** skill to send the formal"
+  },
+  {
+    "conversation_id": "conv_01292",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I've scheduled the review and sent out the invites to the VPs. \n\nIf any conflicts arise or if you need me to reschedule based on the declines, just let me know. Have a great day!"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 0,
+    "ground_truth": "search_navigate",
+    "prediction": "i",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you process those feedback emails. To get started, I need to understand how you'd like this information handled.\n\nSince \"processing\" can mean many things, could you please clarify"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to filter the user's inbox for specific criteria: subject contains \"feedback\" and the date is within the last seven days. I will use the `search_navigate` skill to access Outlook"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 2,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To open the specific email, I need to use the **search_navigate** skill to locate the exact message from Acme Corp within the filtered results and then trigger the action to open it.\n\n*"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 3,
+    "ground_truth": "collaborate",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** The user wants to refine the search criteria to a shorter timeframe (last 3 days instead of 7). I need to go back to the inbox and apply a new filter to the search results.\n\n**[Action: "
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "data_transfer",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create a summary document, I first need to extract the data from the filtered emails and then generate a new document. I will use **data_transfer** to gather the key points and **doc"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 5,
+    "ground_truth": "document_edit",
+    "prediction": "document_edit",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To add a priority column and mark specific items as critical, I need to modify the structure and content of the summary document. I will use the **document_edit** skill to insert the co"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 6,
+    "ground_truth": "send_message",
+    "prediction": "send_message",
+    "correct": true,
+    "pred_response_preview": "**[Thinking]** To share the document with the team, I need to use the **send_message** skill to post the link or file into the specific Teams channel.\n\n**[Action: send_message]** Composing a message t"
+  },
+  {
+    "conversation_id": "conv_00192",
+    "skill_position": 7,
+    "ground_truth": "collaborate",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you organize that client feedback and get it over to the product team.\n\nIf you need help tracking the responses to those critical login issues or updating th"
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 0,
+    "ground_truth": "document_edit",
+    "prediction": "search_navigate",
+    "correct": false,
+    "pred_response_preview": "I can certainly help you with that. To ensure the minutes are accurate and professional, I'll need to gather the source information first.\n\nDepending on how the meeting was conducted, here is how I pr"
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 1,
+    "ground_truth": "review_content",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** To create the meeting minutes, I need to start a new document in Word and input the specific details provided (date and attendees). I will use the `document_edit` skill to generate this"
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 2,
+    "ground_truth": "send_message",
+    "prediction": "generic_action",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** Since the user wants to review and edit the document themselves, I need to ensure the document is open, saved, and accessible to them. I will use **organize_files** to ensure it's in a "
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 3,
+    "ground_truth": "send_message",
+    "prediction": "document_edit",
+    "correct": false,
+    "pred_response_preview": "**[Thinking]** I need to modify the existing document to include Lisa in the attendees list. I will use the **document_edit** skill to locate the attendees section and add her name.\n\n**[Action: docume"
+  },
+  {
+    "conversation_id": "conv_00208",
+    "skill_position": 4,
+    "ground_truth": "document_edit",
+    "prediction": "you're",
+    "correct": false,
+    "pred_response_preview": "You're very welcome! I'm glad I could help you get those meeting minutes finalized and updated.\n\nIf you need help sending the document to the team, scheduling the follow-up meeting, or anything else i"
+  }
+]

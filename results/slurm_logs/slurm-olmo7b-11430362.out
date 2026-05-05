@@ -1,0 +1,213 @@
+=== OLMo-3-1025-7B: Skill Prediction Evaluation ===
+Node: node3802
+GPUs: NVIDIA RTX A6000, 49140 MiB
+NVIDIA RTX A6000, 49140 MiB
+Date: Sun Apr  5 17:12:25 EDT 2026
+
+=== Step 1: Evaluating on IW ===
+============================================================
+Model: allenai/Olmo-3-1025-7B
+Dataset: IW (Fabricated)
+Max conversations: 50
+============================================================
+Loading tokenizer for allenai/Olmo-3-1025-7B...
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Loading model (4-bit): allenai/Olmo-3-1025-7B...
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:   0%|          | 1/355 [00:00<01:27,  4.02it/s]Loading weights:   1%|          | 2/355 [00:00<01:17,  4.55it/s]Loading weights:   1%|▏         | 5/355 [00:00<00:30, 11.34it/s]Loading weights:   5%|▍         | 16/355 [00:00<00:08, 38.20it/s]Loading weights:   8%|▊         | 27/355 [00:00<00:05, 57.44it/s]Loading weights:  11%|█         | 38/355 [00:00<00:04, 71.13it/s]Loading weights:  14%|█▍        | 49/355 [00:00<00:03, 80.86it/s]Loading weights:  17%|█▋        | 60/355 [00:01<00:03, 87.66it/s]Loading weights:  20%|█▉        | 70/355 [00:01<00:03, 88.77it/s]Loading weights:  23%|██▎       | 80/355 [00:01<00:03, 91.20it/s]Loading weights:  25%|██▌       | 90/355 [00:01<00:02, 92.93it/s]Loading weights:  28%|██▊       | 100/355 [00:01<00:02, 89.70it/s]Loading weights:  31%|███       | 110/355 [00:01<00:02, 87.54it/s]Loading weights:  34%|███▎      | 119/355 [00:01<00:02, 83.60it/s]Loading weights:  36%|███▌      | 128/355 [00:01<00:02, 80.92it/s]Loading weights:  39%|███▊      | 137/355 [00:02<00:02, 76.86it/s]Loading weights:  41%|████▏     | 147/355 [00:02<00:02, 82.25it/s]Loading weights:  44%|████▍     | 157/355 [00:02<00:02, 86.41it/s]Loading weights:  47%|████▋     | 167/355 [00:02<00:02, 89.27it/s]Loading weights:  50%|████▉     | 177/355 [00:02<00:02, 87.22it/s]Loading weights:  52%|█████▏    | 186/355 [00:02<00:02, 83.35it/s]Loading weights:  55%|█████▍    | 195/355 [00:02<00:01, 83.07it/s]Loading weights:  57%|█████▋    | 204/355 [00:02<00:01, 78.26it/s]Loading weights:  60%|██████    | 213/355 [00:02<00:01, 80.75it/s]Loading weights:  63%|██████▎   | 223/355 [00:03<00:01, 85.37it/s]Loading weights:  66%|██████▌   | 233/355 [00:03<00:01, 88.69it/s]Loading weights:  68%|██████▊   | 242/355 [00:03<00:01, 86.79it/s]Loading weights:  71%|███████   | 251/355 [00:03<00:01, 82.91it/s]Loading weights:  73%|███████▎  | 260/355 [00:03<00:01, 80.44it/s]Loading weights:  76%|███████▌  | 269/355 [00:03<00:01, 76.49it/s]Loading weights:  79%|███████▊  | 279/355 [00:03<00:00, 82.10it/s]Loading weights:  81%|████████▏ | 289/355 [00:03<00:00, 86.27it/s]Loading weights:  84%|████████▍ | 299/355 [00:03<00:00, 89.33it/s]Loading weights:  87%|████████▋ | 309/355 [00:04<00:00, 87.17it/s]Loading weights:  90%|████████▉ | 318/355 [00:04<00:00, 82.98it/s]Loading weights:  92%|█████████▏| 327/355 [00:04<00:00, 82.76it/s]Loading weights:  95%|█████████▍| 336/355 [00:04<00:00, 77.71it/s]Loading weights:  97%|█████████▋| 345/355 [00:04<00:00, 80.14it/s]Loading weights: 100%|██████████| 355/355 [00:04<00:00, 77.72it/s]
+  GPU memory: 1.4 GB
+  Using 2 GPUs
+
+Loaded 50 IW (Fabricated) conversations
+  10/50 conversations: accuracy = 0.064 (5/78)
+  20/50 conversations: accuracy = 0.108 (17/158)
+  30/50 conversations: accuracy = 0.145 (35/241)
+  40/50 conversations: accuracy = 0.132 (42/319)
+  50/50 conversations: accuracy = 0.142 (57/400)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.1425 (57/400)
+
+Per-position accuracy:
+  Position 0: 0.000 (0/50)
+  Position 1: 0.120 (6/50)
+  Position 2: 0.240 (12/50)
+  Position 3: 0.180 (9/50)
+  Position 4: 0.180 (9/50)
+  Position 5: 0.146 (7/48)
+  Position 6: 0.116 (5/43)
+  Position 7: 0.161 (5/31)
+  Position 8: 0.118 (2/17)
+  Position 9: 0.222 (2/9)
+  Position 10: 0.000 (0/2)
+
+Per-skill accuracy:
+  collaborate         : 0.021 (1/47)
+  data_transfer       : 0.333 (13/39)
+  document_edit       : 0.179 (21/117)
+  export_publish      : 0.143 (4/28)
+  monitor_status      : 0.000 (0/2)
+  organize_files      : 0.091 (1/11)
+  presentation_edit   : 0.000 (0/7)
+  review_content      : 0.036 (1/28)
+  schedule_meeting    : 0.100 (1/10)
+  search_navigate     : 0.115 (6/52)
+  send_message        : 0.153 (9/59)
+
+Top 10 errors:
+  search_navigate      -> okay,                (25 times)
+  document_edit        -> review_content       (19 times)
+  data_transfer        -> search_navigate      (19 times)
+  document_edit        -> data_transfer        (18 times)
+  document_edit        -> search_navigate      (18 times)
+  send_message         -> export_publish       (12 times)
+  send_message         -> document_edit        (12 times)
+  review_content       -> search_navigate      (11 times)
+  document_edit        -> monitor_status       (11 times)
+  export_publish       -> data_transfer        (9 times)
+
+Normalized edit distance: 0.6848
+Exact sequence match: 0.0000 (0/50)
+
+Saved results to results/olmo-3-1025-7b_eval_metrics.json
+Saved predictions to results/olmo-3-1025-7b_predictions.json
+
+=== Step 2: Evaluating on WebArena ===
+============================================================
+Model: allenai/Olmo-3-1025-7B
+Dataset: WebArena
+Max conversations: 200
+============================================================
+Loading tokenizer for allenai/Olmo-3-1025-7B...
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Loading model (4-bit): allenai/Olmo-3-1025-7B...
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:   0%|          | 1/355 [00:00<01:27,  4.02it/s]Loading weights:   1%|          | 2/355 [00:00<01:17,  4.56it/s]Loading weights:   1%|▏         | 5/355 [00:00<00:30, 11.40it/s]Loading weights:   5%|▍         | 16/355 [00:00<00:08, 38.43it/s]Loading weights:   8%|▊         | 27/355 [00:00<00:05, 57.78it/s]Loading weights:  11%|█         | 38/355 [00:00<00:04, 71.57it/s]Loading weights:  14%|█▍        | 49/355 [00:00<00:03, 81.38it/s]Loading weights:  17%|█▋        | 60/355 [00:01<00:03, 88.26it/s]Loading weights:  20%|█▉        | 70/355 [00:01<00:03, 89.32it/s]Loading weights:  23%|██▎       | 80/355 [00:01<00:03, 91.65it/s]Loading weights:  25%|██▌       | 90/355 [00:01<00:02, 93.35it/s]Loading weights:  28%|██▊       | 100/355 [00:01<00:02, 90.08it/s]Loading weights:  31%|███       | 110/355 [00:01<00:02, 87.89it/s]Loading weights:  34%|███▎      | 119/355 [00:01<00:02, 83.89it/s]Loading weights:  36%|███▌      | 128/355 [00:01<00:02, 81.17it/s]Loading weights:  39%|███▊      | 137/355 [00:02<00:02, 77.09it/s]Loading weights:  41%|████▏     | 147/355 [00:02<00:02, 82.55it/s]Loading weights:  44%|████▍     | 157/355 [00:02<00:02, 86.70it/s]Loading weights:  47%|████▋     | 167/355 [00:02<00:02, 89.73it/s]Loading weights:  50%|████▉     | 177/355 [00:02<00:02, 87.65it/s]Loading weights:  52%|█████▏    | 186/355 [00:02<00:02, 83.73it/s]Loading weights:  55%|█████▍    | 195/355 [00:02<00:01, 83.42it/s]Loading weights:  57%|█████▋    | 204/355 [00:02<00:01, 78.56it/s]Loading weights:  60%|██████    | 213/355 [00:02<00:01, 81.05it/s]Loading weights:  63%|██████▎   | 223/355 [00:02<00:01, 85.67it/s]Loading weights:  66%|██████▌   | 233/355 [00:03<00:01, 89.01it/s]Loading weights:  68%|██████▊   | 242/355 [00:03<00:01, 87.11it/s]Loading weights:  71%|███████   | 251/355 [00:03<00:01, 83.20it/s]Loading weights:  73%|███████▎  | 260/355 [00:03<00:01, 80.48it/s]Loading weights:  76%|███████▌  | 269/355 [00:03<00:01, 76.60it/s]Loading weights:  79%|███████▊  | 279/355 [00:03<00:00, 82.22it/s]Loading weights:  81%|████████▏ | 289/355 [00:03<00:00, 86.44it/s]Loading weights:  84%|████████▍ | 299/355 [00:03<00:00, 89.56it/s]Loading weights:  87%|████████▋ | 309/355 [00:04<00:00, 87.57it/s]Loading weights:  90%|████████▉ | 318/355 [00:04<00:00, 83.57it/s]Loading weights:  92%|█████████▏| 327/355 [00:04<00:00, 83.37it/s]Loading weights:  95%|█████████▍| 336/355 [00:04<00:00, 78.44it/s]Loading weights:  97%|█████████▋| 345/355 [00:04<00:00, 80.97it/s]Loading weights: 100%|██████████| 355/355 [00:04<00:00, 78.10it/s]
+  GPU memory: 1.4 GB
+  Using 2 GPUs
+
+Loaded 200 WebArena conversations
+  10/200 conversations: accuracy = 0.523 (23/44)
+  20/200 conversations: accuracy = 0.505 (46/91)
+  30/200 conversations: accuracy = 0.485 (64/132)
+  40/200 conversations: accuracy = 0.494 (86/174)
+  50/200 conversations: accuracy = 0.493 (103/209)
+  60/200 conversations: accuracy = 0.498 (127/255)
+  70/200 conversations: accuracy = 0.520 (155/298)
+  80/200 conversations: accuracy = 0.531 (182/343)
+  90/200 conversations: accuracy = 0.534 (204/382)
+  100/200 conversations: accuracy = 0.544 (231/425)
+  110/200 conversations: accuracy = 0.552 (256/464)
+  120/200 conversations: accuracy = 0.548 (276/504)
+  130/200 conversations: accuracy = 0.545 (296/543)
+  140/200 conversations: accuracy = 0.552 (326/591)
+  150/200 conversations: accuracy = 0.545 (341/626)
+  160/200 conversations: accuracy = 0.552 (371/672)
+  170/200 conversations: accuracy = 0.550 (392/713)
+  180/200 conversations: accuracy = 0.546 (411/753)
+  190/200 conversations: accuracy = 0.547 (434/794)
+  200/200 conversations: accuracy = 0.545 (454/833)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.5450 (454/833)
+
+Per-position accuracy:
+  Position 0: 0.165 (33/200)
+  Position 1: 0.840 (168/200)
+  Position 2: 0.505 (101/200)
+  Position 3: 0.784 (76/97)
+  Position 4: 0.554 (41/74)
+  Position 5: 0.667 (26/39)
+  Position 6: 0.500 (9/18)
+  Position 7: 0.000 (0/5)
+
+Per-skill accuracy:
+  collaborate         : 0.600 (21/35)
+  document_edit       : 0.415 (44/106)
+  export_publish      : 0.619 (13/21)
+  generic_action      : 0.500 (2/4)
+  review_content      : 0.543 (157/289)
+  search_navigate     : 0.566 (201/355)
+  send_message        : 0.696 (16/23)
+
+Top 10 errors:
+  review_content       -> search_navigate      (52 times)
+  search_navigate      -> **[thinking]**       (45 times)
+  search_navigate      -> i                    (26 times)
+  search_navigate      -> okay,                (22 times)
+  document_edit        -> **[thinking]**       (21 times)
+  document_edit        -> search_navigate      (21 times)
+  review_content       -> okay,                (20 times)
+  review_content       -> **[thinking]**       (16 times)
+  search_navigate      -> document_edit        (15 times)
+  review_content       -> document_edit        (13 times)
+
+Normalized edit distance: 0.4862
+Exact sequence match: 0.0300 (6/200)
+
+Saved results to results/olmo-3-1025-7b_eval_metrics_wa.json
+Saved predictions to results/olmo-3-1025-7b_predictions_wa.json
+
+=== Done ===
+Date: Sun Apr  5 20:35:31 EDT 2026
+
+=== Results Summary ===
+IW:
+{
+  "model": "allenai/Olmo-3-1025-7B",
+  "adapter": null,
+  "dataset": "iw",
+  "overall_accuracy": 0.1425,
+  "normalized_edit_distance": 0.684842712842713,
+  "exact_sequence_match": 0.0,
+  "per_position_accuracy": {
+    "0": 0.0,
+    "1": 0.12,
+    "2": 0.24,
+    "3": 0.18,
+    "4": 0.18,
+    "5": 0.14583333333333334,
+    "6": 0.11627906976744186,
+    "7": 0.16129032258064516,
+    "8": 0.11764705882352941,
+    "9": 0.2222222222222222,
+    "10": 0.0
+  },
+  "total_samples": 400,
+  "correct": 57,
+  "num_conversations": 50
+}
+WebArena:
+{
+  "model": "allenai/Olmo-3-1025-7B",
+  "adapter": null,
+  "dataset": "wa",
+  "overall_accuracy": 0.5450180072028812,
+  "normalized_edit_distance": 0.48622023809523846,
+  "exact_sequence_match": 0.03,
+  "per_position_accuracy": {
+    "0": 0.165,
+    "1": 0.84,
+    "2": 0.505,
+    "3": 0.7835051546391752,
+    "4": 0.5540540540540541,
+    "5": 0.6666666666666666,
+    "6": 0.5,
+    "7": 0.0
+  },
+  "total_samples": 833,
+  "correct": 454,
+  "num_conversations": 200
+}

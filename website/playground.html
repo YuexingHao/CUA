@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playground - InteraSkill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;--slate-100:#f1f5f9;--slate-50:#f8fafc;--white:#ffffff;--accent:#3b82f6;--accent-dark:#2563eb;--accent-light:#dbeafe;--accent-50:#eff6ff;--text:#1e293b;--text-muted:#64748b;--success:#16a34a;--fail:#dc2626;--warn:#d97706;--learn:#7c3aed;--skill1:#60aff0;--skill2:#c084fc;--skill3:#6ee7b7;--skill4:#fbbf24;--skill5:#fb923c;--radius:12px;--radius-sm:8px;--shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--shadow:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05);--shadow-md:0 10px 25px -3px rgba(0,0,0,.08),0 4px 6px -4px rgba(0,0,0,.04);--shadow-lg:0 20px 40px -4px rgba(0,0,0,.1),0 8px 16px -8px rgba(0,0,0,.06);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--white);color:var(--text);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+.container{max-width:1020px;margin:0 auto;padding:0 28px;}
+a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+.fade-section{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}.fade-section.visible{opacity:1;transform:translateY(0);}
+.nav-full{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--slate-200);}
+.nav{display:flex;align-items:stretch;padding:0 28px;gap:0;max-width:1020px;margin:0 auto;}
+.nav-logo{font-size:.95rem;font-weight:800;color:var(--accent);padding:0 20px 0 0;display:flex;align-items:center;border-right:1px solid var(--slate-200);margin-right:8px;white-space:nowrap;}
+.nav a{padding:14px 20px;font-size:.82rem;letter-spacing:.02em;color:var(--slate-400);font-weight:500;text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.nav a:hover{color:var(--slate-600);text-decoration:none;}.nav a.active{color:var(--accent);border-bottom-color:var(--accent);}
+section{padding:3.5rem 0;}section h2{font-size:1.55rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em;color:var(--slate-900);}
+.section-badge{display:inline-block;font-size:.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem;}
+section p{margin-bottom:1rem;color:var(--slate-600);font-size:.93rem;}
+.section-intro{font-size:1rem;color:var(--slate-500);margin-bottom:1.5rem;max-width:680px;}
+/* t-SNE */
+.tsne-wrap{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;}
+.tsne-svg-wrap{flex:1 1 520px;min-width:320px;}
+.tsne-svg-wrap svg{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);}
+.tsne-detail{flex:0 0 240px;background:var(--white);border-radius:var(--radius);padding:20px;font-size:.85rem;min-height:140px;box-shadow:var(--shadow);border:1px solid var(--slate-100);}
+.tsne-detail h4{font-size:1rem;margin-bottom:8px;font-weight:700;}.tsne-detail p{font-size:.85rem;margin-bottom:4px;}
+.tsne-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:.8rem;}
+.tsne-legend span{display:flex;align-items:center;gap:6px;color:var(--slate-600);}
+.tsne-tooltip{position:absolute;background:var(--slate-900);color:#fff;padding:6px 12px;border-radius:8px;font-size:.78rem;pointer-events:none;display:none;white-space:nowrap;z-index:10;box-shadow:var(--shadow-md);}
+/* Playground */
+.playground{background:var(--white);border-radius:var(--radius);padding:24px;margin:1.5rem 0;box-shadow:var(--shadow);border:1px solid var(--slate-100);}
+.playground label{font-weight:600;font-size:.85rem;color:var(--slate-700);}
+.slot-row{display:flex;gap:8px;margin:12px 0;align-items:center;flex-wrap:wrap;}
+.slot{width:115px;height:42px;border:2px dashed var(--slate-300);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:var(--slate-400);font-weight:500;cursor:pointer;position:relative;overflow:hidden;transition:border-color .25s,border-style .25s,background .25s,transform .2s;}
+.slot:hover{border-color:var(--accent);transform:translateY(-1px);}
+.slot.filled{border-style:solid;border-color:var(--accent);color:var(--white);background:var(--accent);font-weight:600;box-shadow:0 2px 8px rgba(59,130,246,.25);}
+.palette{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 18px;}
+.palette button{padding:5px 13px;font-size:.76rem;font-weight:500;border:1.5px solid var(--slate-200);border-radius:9999px;background:var(--white);cursor:pointer;font-family:inherit;transition:all .2s ease;color:var(--slate-600);}
+.palette button:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);box-shadow:var(--shadow-sm);}
+.palette button.active{color:#fff;border-color:transparent;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
+.pred-box{margin-top:14px;padding:14px 18px;background:var(--slate-50);border-radius:var(--radius-sm);font-size:.85rem;}
+.pred-row{display:flex;justify-content:space-between;padding:3px 0;font-size:.82rem;color:var(--slate-700);}
+.pred-bar{height:6px;background:linear-gradient(90deg,var(--accent),#60a5fa);border-radius:3px;margin-top:3px;margin-bottom:6px;transition:width .5s cubic-bezier(.16,1,.3,1);}
+.pred-bar.awm{background:linear-gradient(90deg,#10b981,#34d399);}
+.example-select{font-size:.82rem;padding:7px 12px;border:1.5px solid var(--slate-200);border-radius:var(--radius-sm);margin-bottom:10px;font-family:inherit;color:var(--slate-700);background:var(--white);transition:border-color .2s;}
+.example-select:focus{border-color:var(--accent);outline:none;}
+.clear-btn{font-size:.76rem;margin-left:10px;padding:4px 14px;border:1.5px solid var(--slate-200);border-radius:9999px;background:var(--white);cursor:pointer;font-family:inherit;color:var(--slate-500);transition:all .2s;}
+.clear-btn:hover{border-color:#ef4444;color:#ef4444;}
+/* Trajectory Player */
+.player{background:#1e1e2e;color:#cdd6f4;border-radius:var(--radius);padding:18px 22px;margin:1.5rem 0;font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:.82rem;box-shadow:var(--shadow-lg);border:1px solid #313244;}
+.player-titlebar{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #313244;}
+.player-titlebar .dots{display:flex;gap:6px;}
+.player-titlebar .dot{width:12px;height:12px;border-radius:50%;}
+.player-titlebar .dot.red{background:#f38ba8;}.player-titlebar .dot.yellow{background:#f9e2af;}.player-titlebar .dot.green{background:#a6e3a1;}
+.player-titlebar .title{font-size:.75rem;color:#6c7086;margin-left:auto;font-family:'Inter',sans-serif;font-weight:500;}
+.player-controls{display:flex;gap:8px;margin-bottom:12px;align-items:center;}
+.player-controls button{padding:6px 16px;font-size:.78rem;border:1px solid #45475a;border-radius:6px;background:#313244;color:#cdd6f4;cursor:pointer;font-family:inherit;transition:all .2s ease;}
+.player-controls button:hover{background:#45475a;border-color:#585b70;transform:translateY(-1px);}
+.player-line{padding:3px 8px;white-space:pre-wrap;line-height:1.7;border-radius:4px;transition:background .2s,opacity .3s;}
+.player-line.active{background:rgba(59,130,246,.15);}
+.player-line .kw{color:#cba6f7;}.player-line .str{color:#a6e3a1;}.player-line .fn{color:#89b4fa;}.player-line .op{color:#f38ba8;}
+.player-line .skill-tag{display:inline-block;padding:2px 10px;border-radius:9999px;font-size:.7rem;font-weight:600;margin-left:10px;font-family:'Inter',sans-serif;letter-spacing:.02em;}
+.player-line .boundary{border-top:1px dashed #585b70;display:block;margin:6px 0;}
+/* Footer */
+.bibtex{background:var(--slate-900);color:#a6e3a1;padding:18px 22px;border-radius:var(--radius);font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:.8rem;white-space:pre-wrap;overflow-x:auto;user-select:all;margin:.8rem 0;position:relative;box-shadow:var(--shadow-md);}
+.bibtex-copy{position:absolute;top:12px;right:12px;padding:6px 14px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.1);color:#94a3b8;border:none;border-radius:6px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}.bibtex-copy:hover{background:rgba(255,255,255,.2);color:#fff;}
+footer{text-align:center;padding:2.5rem 0 1.5rem;font-size:.82rem;color:var(--slate-400);background:var(--slate-900);}
+footer .footer-line{font-weight:600;color:var(--slate-300);margin-bottom:4px;font-size:.88rem;}footer .footer-sub{font-size:.78rem;color:var(--slate-500);}
+@media(max-width:768px){section{padding:2rem 0;}section h2{font-size:1.3rem;}.tsne-wrap{flex-direction:column;}.tsne-detail{flex:1 1 auto;}.slot{width:90px;height:38px;}.nav{flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+<div class="nav-full">
+  <nav class="nav">
+    <div class="nav-logo">InteraSkill</div>
+    <a href="index.html">Home</a>
+    <a href="overview.html">Overview</a>
+    <a href="demos.html">Demos</a>
+    <a href="theory.html">Theory</a>
+    <a href="playground.html" class="active">Playground</a>
+  </nav>
+</div>
+
+<!-- Interactive t-SNE -->
+<section class="section-white" style="padding-top:2rem;">
+  <div class="container fade-section">
+    <div class="section-badge">Visualization</div>
+    <h2>Skill Embedding Visualization</h2>
+    <p class="section-intro">t-SNE projection of 5,226 interaction segments into the 12-skill vocabulary. Hover over points for details; click to highlight a cluster. Double-click to reset.</p>
+    <div class="tsne-wrap">
+      <div class="tsne-svg-wrap"><svg id="tsne-svg" viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg"></svg></div>
+      <div class="tsne-detail" id="tsne-detail"><h4>Cluster Details</h4><p style="color:var(--slate-400)">Click a point to see details.</p></div>
+    </div>
+    <div class="tsne-legend" id="tsne-legend"></div>
+    <div class="tsne-tooltip" id="tsne-tooltip"></div>
+  </div>
+</section>
+
+<!-- SKILL COMPOSITION PLAYGROUND -->
+<section style="background:var(--slate-50);">
+  <div class="container fade-section">
+    <div class="section-badge">Interactive Demo</div>
+    <h2>Skill Composition Playground</h2>
+    <p class="section-intro">Build a skill sequence and see what each model predicts as the next skill.</p>
+    <div class="playground" id="playground">
+      <label>Load example: </label>
+      <select class="example-select" id="example-select">
+        <option value="">-- select --</option>
+        <option value="0">Map navigation (search + review)</option>
+        <option value="1">Document workflow (edit + export)</option>
+        <option value="2">Team coordination (message + schedule)</option>
+      </select>
+      <div style="margin-bottom:4px"><strong style="font-size:.85rem;color:var(--slate-700)">Palette</strong><span style="font-size:.78rem;color:var(--slate-400)"> -- click to select, then click a slot</span></div>
+      <div class="palette" id="palette"></div>
+      <div style="display:flex;align-items:center;margin-bottom:4px"><strong style="font-size:.85rem;color:var(--slate-700)">Pipeline</strong><button class="clear-btn" id="clear-btn">Clear all</button></div>
+      <div class="slot-row" id="slot-row"></div>
+      <div class="pred-box" id="pred-box" style="display:none"><strong>Predicted next skill:</strong><div id="pred-content"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAJECTORY PLAYER -->
+<section class="section-white">
+  <div class="container fade-section">
+    <div class="section-badge">Replay</div>
+    <h2>Trajectory Replay</h2>
+    <p class="section-intro">Replay of a WebArena map-navigation trajectory with skill segmentation overlay.</p>
+    <div class="player" id="player">
+      <div class="player-titlebar">
+        <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+        <span class="title">trajectory-replay.log</span>
+      </div>
+      <div class="player-controls">
+        <button id="play-btn">Play</button>
+        <button id="step-back-btn">Step Back</button>
+        <button id="step-fwd-btn">Step Fwd</button>
+        <span style="margin-left:auto;font-size:.78rem;color:#6c7086;font-family:'Inter',sans-serif" id="step-counter">Step 0 / 0</span>
+      </div>
+      <div id="player-lines"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CITATION -->
+<section style="background:var(--slate-50);">
+  <div class="container fade-section">
+    <div class="section-badge">Reference</div>
+    <h2>Citation</h2>
+    <div class="bibtex" id="bibtex-block"><button class="bibtex-copy" onclick="copyBibtex()">Copy</button>@inproceedings{interaskill2026,
+  title     = {From Hard-Coded {SKILL.md} to Learned Behaviors:
+               Automatic Skill Discovery for Computer-Using Agents},
+  author    = {Anonymous},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
+}</div>
+  </div>
+</section>
+
+<footer><div class="container"><div class="footer-line">InteraSkill</div><div class="footer-sub">NeurIPS 2026 Submission</div></div></footer>
+
+<script>
+const fadeObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-section').forEach(el=>fadeObserver.observe(el));
+function copyBibtex(){const text=document.getElementById('bibtex-block').innerText.replace('Copy','').trim();navigator.clipboard.writeText(text).then(()=>{const btn=document.querySelector('.bibtex-copy');btn.textContent='Copied!';setTimeout(()=>{btn.textContent='Copy';},2000);});}
+
+/* ========== DATA ========== */
+const SKILLS=[
+  {id:'document_edit',color:'#e67e22',cx:-15,cy:-5,n:32,actions:'type, click_field, paste, format_text'},
+  {id:'search_navigate',color:'#2980b9',cx:20,cy:-8,n:28,actions:'goto_url, click_link, type_search, scroll'},
+  {id:'review_content',color:'#27ae60',cx:5,cy:10,n:25,actions:'scroll, read_text, compare, verify'},
+  {id:'collaborate',color:'#16a085',cx:-5,cy:15,n:20,actions:'mention_user, assign, comment, share'},
+  {id:'send_message',color:'#00bcd4',cx:25,cy:5,n:22,actions:'click_compose, type_body, attach, send'},
+  {id:'data_transfer',color:'#c0392b',cx:-20,cy:0,n:18,actions:'download, upload, copy_data, import'},
+  {id:'presentation_edit',color:'#e91e9e',cx:0,cy:-20,n:24,actions:'add_slide, insert_image, format, arrange'},
+  {id:'schedule_meeting',color:'#8e44ad',cx:10,cy:-15,n:20,actions:'open_calendar, set_time, invite, confirm'},
+  {id:'export_publish',color:'#7cb342',cx:-10,cy:-18,n:18,actions:'select_format, export, publish, share_link'},
+  {id:'organize_files',color:'#795548',cx:-25,cy:10,n:22,actions:'create_folder, move_file, rename, delete'},
+  {id:'monitor_status',color:'#78909c',cx:15,cy:18,n:20,actions:'check_status, refresh, read_logs, filter'},
+  {id:'generic_action',color:'#546e7a',cx:0,cy:-25,n:16,actions:'click, wait, scroll, navigate'}
+];
+const TRANSITIONS={
+  'search_navigate':{search_navigate:.32,review_content:.28,document_edit:.12,send_message:.08,generic_action:.06,data_transfer:.05,collaborate:.04,monitor_status:.03,schedule_meeting:.02},
+  'review_content':{review_content:.22,search_navigate:.18,document_edit:.16,collaborate:.14,send_message:.10,export_publish:.08,monitor_status:.06,generic_action:.06},
+  'document_edit':{document_edit:.30,export_publish:.18,review_content:.15,search_navigate:.10,collaborate:.08,presentation_edit:.07,data_transfer:.06,generic_action:.06},
+  'collaborate':{send_message:.25,collaborate:.20,review_content:.15,schedule_meeting:.12,document_edit:.10,search_navigate:.08,monitor_status:.06,generic_action:.04},
+  'send_message':{review_content:.22,search_navigate:.18,send_message:.16,collaborate:.14,document_edit:.10,monitor_status:.08,data_transfer:.06,generic_action:.06},
+  'data_transfer':{review_content:.24,document_edit:.20,organize_files:.16,search_navigate:.12,export_publish:.10,data_transfer:.08,generic_action:.06,monitor_status:.04},
+  'presentation_edit':{presentation_edit:.28,review_content:.18,export_publish:.16,document_edit:.12,search_navigate:.08,data_transfer:.06,collaborate:.06,generic_action:.06},
+  'schedule_meeting':{collaborate:.22,send_message:.20,review_content:.16,schedule_meeting:.14,search_navigate:.10,document_edit:.08,monitor_status:.06,generic_action:.04},
+  'export_publish':{review_content:.24,search_navigate:.18,document_edit:.14,send_message:.12,export_publish:.10,data_transfer:.08,collaborate:.08,generic_action:.06},
+  'organize_files':{document_edit:.22,search_navigate:.18,review_content:.16,data_transfer:.14,organize_files:.12,export_publish:.08,generic_action:.06,collaborate:.04},
+  'monitor_status':{search_navigate:.22,review_content:.20,monitor_status:.16,collaborate:.12,send_message:.10,document_edit:.08,data_transfer:.06,generic_action:.06},
+  'generic_action':{search_navigate:.24,review_content:.18,document_edit:.16,generic_action:.12,collaborate:.08,send_message:.08,monitor_status:.08,data_transfer:.06}
+};
+const AWM_PRED={
+  'search_navigate':{search_navigate:.28,review_content:.24,document_edit:.14},
+  'review_content':{review_content:.26,document_edit:.20,search_navigate:.16},
+  'document_edit':{document_edit:.34,review_content:.18,export_publish:.14},
+  'collaborate':{send_message:.30,schedule_meeting:.18,review_content:.14},
+  'send_message':{review_content:.24,collaborate:.20,search_navigate:.16},
+  'default':{search_navigate:.22,review_content:.18,document_edit:.16}
+};
+const EXAMPLE_SEQS=[
+  ['search_navigate','search_navigate','search_navigate','review_content','review_content'],
+  ['document_edit','document_edit','review_content','export_publish','send_message'],
+  ['send_message','collaborate','schedule_meeting','collaborate','review_content']
+];
+const TRAJECTORY=[
+  {action:'goto_url("http://maps.example.com")',skill:'search_navigate',boundary:true},
+  {action:'type_search("coffee shops near campus")',skill:'search_navigate',boundary:false},
+  {action:'click_link("Search")',skill:'search_navigate',boundary:false},
+  {action:'scroll(down, 300px)',skill:'review_content',boundary:true},
+  {action:'read_text("3 results found")',skill:'review_content',boundary:false},
+  {action:'click_link("Result #1: Campus Brew")',skill:'search_navigate',boundary:true},
+  {action:'scroll(down, 200px)',skill:'review_content',boundary:true},
+  {action:'read_text("Rating: 4.5, Open until 9pm")',skill:'review_content',boundary:false},
+  {action:'verify("hours match query")',skill:'review_content',boundary:false},
+  {action:'click_link("Get Directions")',skill:'search_navigate',boundary:true},
+  {action:'read_text("0.3 mi, 6 min walk")',skill:'review_content',boundary:true},
+  {action:'verify("distance < 1 mile")',skill:'review_content',boundary:false}
+];
+
+/* ========== t-SNE SCATTER ========== */
+(function(){
+  const svg=document.getElementById('tsne-svg');const tooltip=document.getElementById('tsne-tooltip');
+  const detail=document.getElementById('tsne-detail');const legend=document.getElementById('tsne-legend');
+  const W=600,H=450,PAD=40;
+  function rand(mu,sigma){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return mu+sigma*Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+  const allDots=[];
+  SKILLS.forEach(sk=>{for(let i=0;i<sk.n;i++){allDots.push({x:rand(sk.cx,3.5),y:rand(sk.cy,3.5),skill:sk});}});
+  const xMin=-35,xMax=35,yMin=-35,yMax=35;
+  function sx(x){return PAD+(x-xMin)/(xMax-xMin)*(W-2*PAD);}
+  function sy(y){return PAD+(y-yMin)/(yMax-yMin)*(H-2*PAD);}
+  let defs='<defs>';
+  SKILLS.forEach(sk=>{defs+='<filter id="glow-'+sk.id+'" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';});
+  defs+='</defs>';
+  let bg='<rect width="'+W+'" height="'+H+'" fill="#f8fafc" rx="12"/>';
+  for(let gx=PAD;gx<=W-PAD;gx+=40){bg+='<line x1="'+gx+'" y1="'+PAD+'" x2="'+gx+'" y2="'+(H-PAD)+'" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4,4"/>';}
+  for(let gy=PAD;gy<=H-PAD;gy+=40){bg+='<line x1="'+PAD+'" y1="'+gy+'" x2="'+(W-PAD)+'" y2="'+gy+'" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="4,4"/>';}
+  let axisMarkup='<line x1="'+PAD+'" y1="'+(H-PAD)+'" x2="'+(W-PAD)+'" y2="'+(H-PAD)+'" stroke="#cbd5e1" stroke-width="1"/>';
+  axisMarkup+='<line x1="'+PAD+'" y1="'+PAD+'" x2="'+PAD+'" y2="'+(H-PAD)+'" stroke="#cbd5e1" stroke-width="1"/>';
+  axisMarkup+='<text x="'+(W/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="12" fill="#94a3b8" font-family="Inter,sans-serif" font-weight="500">t-SNE dim 1</text>';
+  axisMarkup+='<text x="14" y="'+(H/2)+'" text-anchor="middle" font-size="12" fill="#94a3b8" font-family="Inter,sans-serif" font-weight="500" transform="rotate(-90,14,'+(H/2)+')">t-SNE dim 2</text>';
+  let dotsMarkup='';
+  allDots.forEach((d,i)=>{dotsMarkup+='<circle cx="'+sx(d.x)+'" cy="'+sy(d.y)+'" r="4" fill="'+d.skill.color+'" opacity="0.75" data-i="'+i+'" class="tsne-dot" style="cursor:pointer;transition:r 0.2s,opacity 0.2s,filter 0.2s"/>';});
+  svg.innerHTML=defs+bg+axisMarkup+dotsMarkup;
+  let highlighted=null;
+  svg.addEventListener('mouseover',function(e){const t=e.target;if(t.classList.contains('tsne-dot')){t.setAttribute('r','7');t.setAttribute('filter','url(#glow-'+allDots[+t.dataset.i].skill.id+')');}});
+  svg.addEventListener('mouseout',function(e){const t=e.target;if(t.classList.contains('tsne-dot')){const d=allDots[+t.dataset.i];if(!highlighted||highlighted!==d.skill.id){t.setAttribute('r','4');}else{t.setAttribute('r','5.5');}t.removeAttribute('filter');}});
+  svg.addEventListener('mousemove',function(e){const t=e.target;if(t.classList.contains('tsne-dot')){const d=allDots[+t.dataset.i];tooltip.style.display='block';tooltip.style.left=(e.clientX+12)+'px';tooltip.style.top=(e.clientY-24)+'px';tooltip.textContent=d.skill.id+'  |  n='+d.skill.n+'  |  '+d.skill.actions.split(',').slice(0,2).join(',');}else{tooltip.style.display='none';}});
+  svg.addEventListener('click',function(e){const t=e.target;if(!t.classList.contains('tsne-dot'))return;const d=allDots[+t.dataset.i];const sid=d.skill.id;document.querySelectorAll('.tsne-dot').forEach(c=>{const dd=allDots[+c.dataset.i];c.setAttribute('opacity',dd.skill.id===sid?'1':'0.1');c.setAttribute('r',dd.skill.id===sid?'5.5':'3');});highlighted=sid;detail.innerHTML='<h4 style="color:'+d.skill.color+'">'+sid+'</h4><p><strong>Segments:</strong> '+d.skill.n+'</p><p><strong>Key actions:</strong> '+d.skill.actions+'</p><p><strong>Centroid:</strong> ('+d.skill.cx+', '+d.skill.cy+')</p><p style="margin-top:10px;font-size:.78rem;color:var(--slate-400)">Double-click to reset.</p>';});
+  svg.addEventListener('dblclick',function(){document.querySelectorAll('.tsne-dot').forEach(c=>{c.setAttribute('opacity','0.75');c.setAttribute('r','4');});highlighted=null;detail.innerHTML='<h4>Cluster Details</h4><p style="color:var(--slate-400)">Click a point to see details.</p>';});
+  SKILLS.forEach(sk=>{const sp=document.createElement('span');sp.innerHTML='<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+sk.color+';box-shadow:0 0 6px '+sk.color+'40"></span> '+sk.id;legend.appendChild(sp);});
+})();
+
+/* ========== PLAYGROUND ========== */
+(function(){
+  const palette=document.getElementById('palette');const slotRow=document.getElementById('slot-row');
+  const predBox=document.getElementById('pred-box');const predContent=document.getElementById('pred-content');
+  const exSelect=document.getElementById('example-select');const clearBtn=document.getElementById('clear-btn');
+  const NUM_SLOTS=7;let selectedSkill=null;let slots=new Array(NUM_SLOTS).fill(null);
+  SKILLS.forEach(sk=>{const btn=document.createElement('button');btn.textContent=sk.id;btn.style.borderColor=sk.color+'60';
+    btn.addEventListener('click',()=>{palette.querySelectorAll('button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');btn.style.background=sk.color;btn.style.borderColor=sk.color;selectedSkill=sk.id;});
+    palette.appendChild(btn);});
+  function renderSlots(){slotRow.innerHTML='';slots.forEach((s,i)=>{const div=document.createElement('div');div.className='slot'+(s?' filled':'');
+    if(s){const sk=SKILLS.find(k=>k.id===s);div.textContent=s;if(sk){div.style.background=sk.color;div.style.borderColor=sk.color;div.style.boxShadow='0 2px 8px '+sk.color+'40';}}else{div.textContent=i+1;}
+    div.addEventListener('click',()=>{if(selectedSkill){slots[i]=selectedSkill;renderSlots();updatePredictions();}});slotRow.appendChild(div);
+    if(i<NUM_SLOTS-1){const arrow=document.createElement('span');arrow.textContent='\u2192';arrow.style.color='#cbd5e1';arrow.style.fontSize='1rem';arrow.style.fontWeight='300';slotRow.appendChild(arrow);}});}
+  function updatePredictions(){const filled=slots.filter(Boolean);if(filled.length<2){predBox.style.display='none';return;}predBox.style.display='block';const last=filled[filled.length-1];
+    const trans=TRANSITIONS[last]||TRANSITIONS['generic_action'];const awm=AWM_PRED[last]||AWM_PRED['default'];
+    let html='<div style="margin-top:10px"><strong style="font-size:.82rem;color:var(--slate-700)">Transformer:</strong></div>';
+    const sorted=Object.entries(trans).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    sorted.forEach(([sk,p])=>{html+='<div class="pred-row"><span>'+sk+'</span><span style="font-weight:600">'+(p*100).toFixed(1)+'%</span></div><div class="pred-bar" style="width:'+(p*100)+'%"></div>';});
+    html+='<div style="margin-top:14px"><strong style="font-size:.82rem;color:var(--slate-700)">AWM baseline:</strong></div>';
+    const awmSorted=Object.entries(awm).sort((a,b)=>b[1]-a[1]).slice(0,3);
+    awmSorted.forEach(([sk,p])=>{html+='<div class="pred-row"><span>'+sk+'</span><span style="font-weight:600">'+(p*100).toFixed(1)+'%</span></div><div class="pred-bar awm" style="width:'+(p*100)+'%"></div>';});
+    html+='<div style="margin-top:14px"><strong style="font-size:.82rem;color:var(--slate-700)">SKILL.md baseline:</strong></div>';
+    html+='<div style="font-size:.8rem;color:var(--slate-400)">Uniform over {navigate, click, type, scroll, verify} = 20% each</div>';
+    predContent.innerHTML=html;}
+  clearBtn.addEventListener('click',()=>{slots.fill(null);selectedSkill=null;palette.querySelectorAll('button').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.borderColor='';});predBox.style.display='none';renderSlots();});
+  exSelect.addEventListener('change',()=>{const idx=+exSelect.value;if(isNaN(idx))return;const seq=EXAMPLE_SEQS[idx];slots.fill(null);seq.forEach((s,i)=>{if(i<NUM_SLOTS)slots[i]=s;});renderSlots();updatePredictions();});
+  renderSlots();
+})();
+
+/* ========== TRAJECTORY PLAYER ========== */
+(function(){
+  const linesDiv=document.getElementById('player-lines');const playBtn=document.getElementById('play-btn');
+  const stepBackBtn=document.getElementById('step-back-btn');const stepFwdBtn=document.getElementById('step-fwd-btn');
+  const counter=document.getElementById('step-counter');let current=-1;let playing=false;let timer=null;
+  function highlight(action){return action.replace(/^(\w+)\(/,'<span class="fn">$1</span><span class="op">(</span>').replace(/\)$/,'<span class="op">)</span>').replace(/"([^"]*)"/g,'<span class="str">"$1"</span>').replace(/(\d+(?:px)?)/g,'<span class="kw">$1</span>');}
+  function skillColor(skillId){const sk=SKILLS.find(s=>s.id===skillId);return sk?sk.color:'#64748b';}
+  function render(){linesDiv.innerHTML='';TRAJECTORY.forEach((t,i)=>{const div=document.createElement('div');div.className='player-line'+(i<=current?' active':'');let content='';
+    if(t.boundary&&i<=current)content+='<span class="boundary"></span>';const prefix=i<=current?'<span class="op">&gt;</span> ':'  ';content+=prefix+(i<=current?highlight(t.action):t.action);
+    if(i<=current){const c=skillColor(t.skill);content+='<span class="skill-tag" style="background:'+c+'22;color:'+c+';border:1px solid '+c+'44">'+t.skill+'</span>';}
+    div.innerHTML=content;div.style.opacity=i<=current?'1':'0.3';linesDiv.appendChild(div);});
+    counter.textContent='Step '+Math.max(0,current+1)+' / '+TRAJECTORY.length;}
+  function stepFwd(){if(current<TRAJECTORY.length-1){current++;render();}else{stopPlay();}}
+  function stepBack(){if(current>=0){current--;render();}}
+  function startPlay(){playing=true;playBtn.textContent='Pause';timer=setInterval(()=>{stepFwd();if(current>=TRAJECTORY.length-1)stopPlay();},800);}
+  function stopPlay(){playing=false;playBtn.textContent='Play';if(timer){clearInterval(timer);timer=null;}}
+  playBtn.addEventListener('click',()=>{playing?stopPlay():startPlay();});
+  stepFwdBtn.addEventListener('click',()=>{stopPlay();stepFwd();});
+  stepBackBtn.addEventListener('click',()=>{stopPlay();stepBack();});
+  render();
+})();
+</script>
+</body>
+</html>

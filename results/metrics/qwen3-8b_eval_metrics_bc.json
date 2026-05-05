@@ -1,0 +1,24 @@
+{
+  "model": "Qwen/Qwen3-8B",
+  "adapter": null,
+  "dataset": "bc",
+  "overall_accuracy": 0.43527803099361895,
+  "normalized_edit_distance": 0.5526190476190478,
+  "exact_sequence_match": 0.0,
+  "per_position_accuracy": {
+    "0": 0.02,
+    "1": 0.825,
+    "2": 0.27,
+    "3": 0.615,
+    "4": 0.28,
+    "5": 0.76,
+    "6": 0.335,
+    "7": 0.6633165829145728,
+    "8": 0.33668341708542715,
+    "9": 0.6717171717171717,
+    "10": 0.010101010101010102
+  },
+  "total_samples": 2194,
+  "correct": 955,
+  "num_conversations": 200
+}

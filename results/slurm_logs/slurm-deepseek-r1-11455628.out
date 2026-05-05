@@ -1,0 +1,133 @@
+=== DeepSeek-R1: Skill Prediction Evaluation ===
+Node: node3902
+GPUs: NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+NVIDIA A100 80GB PCIe, 81920 MiB
+Date: Mon Apr  6 19:53:31 EDT 2026
+
+=== Step 1: Evaluating on IW ===
+============================================================
+Model: deepseek-ai/DeepSeek-R1
+Dataset: IW (Fabricated)
+Max conversations: 50
+============================================================
+Loading tokenizer for deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Loading model (4-bit): deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 450, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 273, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 87, in load_model_and_tokenizer
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+    ...<3 lines>...
+        torch_dtype=torch.bfloat16,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 380, in from_pretrained
+    return model_class.from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/modeling_utils.py", line 4031, in from_pretrained
+    hf_quantizer, config, device_map = get_hf_quantizer(
+                                       ~~~~~~~~~~~~~~~~^
+        config, quantization_config, device_map, weights_only, user_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/quantizers/auto.py", line 328, in get_hf_quantizer
+    config.quantization_config = AutoHfQuantizer.merge_quantization_configs(
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        config.quantization_config, quantization_config
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/quantizers/auto.py", line 246, in merge_quantization_configs
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: The model is quantized with FineGrainedFP8Config but you are passing a BitsAndBytesConfig config. Please make sure to pass the same quantization config class to `from_pretrained` with different loading attributes.
+
+=== Step 2: Evaluating on WebArena ===
+============================================================
+Model: deepseek-ai/DeepSeek-R1
+Dataset: WebArena
+Max conversations: 200
+============================================================
+Loading tokenizer for deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Loading model (4-bit): deepseek-ai/DeepSeek-R1...
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 450, in <module>
+    main()
+    ~~~~^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 273, in main
+    model, tokenizer = load_model_and_tokenizer(args.model, args.adapter)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/yuexing/CUA2026/interaskill/eval_model.py", line 87, in load_model_and_tokenizer
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+    ...<3 lines>...
+        torch_dtype=torch.bfloat16,
+    )
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 380, in from_pretrained
+    return model_class.from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/modeling_utils.py", line 4031, in from_pretrained
+    hf_quantizer, config, device_map = get_hf_quantizer(
+                                       ~~~~~~~~~~~~~~~~^
+        config, quantization_config, device_map, weights_only, user_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/quantizers/auto.py", line 328, in get_hf_quantizer
+    config.quantization_config = AutoHfQuantizer.merge_quantization_configs(
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        config.quantization_config, quantization_config
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/quantizers/auto.py", line 246, in merge_quantization_configs
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: The model is quantized with FineGrainedFP8Config but you are passing a BitsAndBytesConfig config. Please make sure to pass the same quantization config class to `from_pretrained` with different loading attributes.
+
+=== Done ===
+Date: Mon Apr  6 19:54:06 EDT 2026
+
+=== Results Summary ===
+IW:
+
+WebArena:

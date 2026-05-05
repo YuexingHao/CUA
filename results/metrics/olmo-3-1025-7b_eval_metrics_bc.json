@@ -1,0 +1,24 @@
+{
+  "model": "allenai/Olmo-3-1025-7B",
+  "adapter": null,
+  "dataset": "bc",
+  "overall_accuracy": 0.6144029170464904,
+  "normalized_edit_distance": 0.3660533910533912,
+  "exact_sequence_match": 0.0,
+  "per_position_accuracy": {
+    "0": 0.14,
+    "1": 0.67,
+    "2": 0.48,
+    "3": 0.735,
+    "4": 0.46,
+    "5": 0.805,
+    "6": 0.485,
+    "7": 0.8592964824120602,
+    "8": 0.5628140703517588,
+    "9": 0.8131313131313131,
+    "10": 0.7525252525252525
+  },
+  "total_samples": 2194,
+  "correct": 1348,
+  "num_conversations": 200
+}

@@ -1,0 +1,15 @@
+{
+  "train_runtime": 203687.0067,
+  "train_samples_per_second": 0.09,
+  "train_steps_per_second": 0.023,
+  "total_flos": 0.0,
+  "train_loss": 0.00011268036262581482,
+  "method": "grpo",
+  "num_generations": 4,
+  "reward_components": [
+    "correct_skill(+1.0)",
+    "format(+0.2)",
+    "reasoning(+0.1)",
+    "invalid(-0.5)"
+  ]
+}

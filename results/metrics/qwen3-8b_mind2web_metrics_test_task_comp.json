@@ -1,0 +1,116 @@
+{
+  "model": "Qwen/Qwen3-8B",
+  "benchmark": "mind2web",
+  "level1_tcr": 0.095,
+  "level1_ci_lo": 0.055,
+  "level1_ci_hi": 0.14,
+  "level2_pts": {
+    "mean": 0.2725183248812977,
+    "per_step": [
+      0.365,
+      0.285,
+      0.29591836734693877,
+      0.22285714285714286,
+      0.24666666666666667,
+      0.288,
+      0.29523809523809524,
+      0.3103448275862069,
+      0.2916666666666667,
+      0.26666666666666666,
+      0.30612244897959184,
+      0.275,
+      0.3103448275862069,
+      0.25,
+      0.22727272727272727,
+      0.3,
+      0.15789473684210525,
+      0.26666666666666666,
+      0.2727272727272727,
+      0.25,
+      0.42857142857142855,
+      0.5,
+      0.6666666666666666,
+      0.5,
+      0.5,
+      0.0,
+      0.0
+    ]
+  },
+  "level2_skill_breakdown": {
+    "collaborate": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 18
+    },
+    "document_edit": {
+      "accuracy": 0.17134831460674158,
+      "correct": 61,
+      "total": 356
+    },
+    "generic_action": {
+      "accuracy": 0.3472222222222222,
+      "correct": 350,
+      "total": 1008
+    },
+    "monitor_status": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 4
+    },
+    "review_content": {
+      "accuracy": 0.2926829268292683,
+      "correct": 12,
+      "total": 41
+    },
+    "schedule_meeting": {
+      "accuracy": 0.07142857142857142,
+      "correct": 1,
+      "total": 14
+    },
+    "search_navigate": {
+      "accuracy": 0.28368794326241137,
+      "correct": 40,
+      "total": 141
+    },
+    "send_message": {
+      "accuracy": 0.10638297872340426,
+      "correct": 5,
+      "total": 47
+    }
+  },
+  "level3_efficiency": {
+    "avg_steps_to_complete": 6.684210526315789,
+    "median_steps_to_complete": 6.0,
+    "avg_skill_switches": 0.255,
+    "task_recovery_rate": 0.0,
+    "step_recovery_attempts": 149,
+    "step_recovery_successes": 23,
+    "step_recovery_rate": 0.15436241610738255,
+    "tasks_with_failures": 181,
+    "recovered_tasks": 0
+  },
+  "skill_prediction_accuracy": 0.10374462860650706,
+  "action_grounding_accuracy": 0.28790669122160834,
+  "n_tasks": 200,
+  "n_completed": 19,
+  "n_steps_total": 1629,
+  "split": "test_task",
+  "adapter": null,
+  "skill_mode": "llm",
+  "grounding_mode": "llm",
+  "composition": true,
+  "per_domain": {
+    "Entertainment": {
+      "tcr": 0.08771929824561403,
+      "n_tasks": 57
+    },
+    "Shopping": {
+      "tcr": 0.19047619047619047,
+      "n_tasks": 63
+    },
+    "Travel": {
+      "tcr": 0.025,
+      "n_tasks": 80
+    }
+  }
+}

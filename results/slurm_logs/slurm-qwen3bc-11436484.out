@@ -1,0 +1,82 @@
+=== Qwen/Qwen3-8B on BrowseComp-Plus ===
+Node: node3800
+Date: Sun Apr  5 19:57:28 EDT 2026
+============================================================
+Model: Qwen/Qwen3-8B
+Adapter: results/qwen3_lora/final_adapter
+Dataset: BrowseComp-Plus
+Max conversations: 200
+============================================================
+Loading tokenizer for Qwen/Qwen3-8B...
+Loading model (4-bit): Qwen/Qwen3-8B...
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/399 [00:00<?, ?it/s]Loading weights:   0%|          | 1/399 [00:00<02:16,  2.91it/s]Loading weights:   1%|          | 2/399 [00:00<02:18,  2.86it/s]Loading weights:   1%|▏         | 5/399 [00:00<00:48,  8.11it/s]Loading weights:   4%|▍         | 16/399 [00:00<00:13, 28.81it/s]Loading weights:   7%|▋         | 27/399 [00:01<00:08, 45.15it/s]Loading weights:  10%|▉         | 38/399 [00:01<00:06, 57.70it/s]Loading weights:  12%|█▏        | 49/399 [00:01<00:05, 67.87it/s]Loading weights:  15%|█▌        | 60/399 [00:01<00:04, 75.58it/s]Loading weights:  18%|█▊        | 71/399 [00:01<00:04, 81.05it/s]Loading weights:  21%|██        | 82/399 [00:01<00:03, 85.60it/s]Loading weights:  23%|██▎       | 93/399 [00:01<00:03, 89.21it/s]Loading weights:  26%|██▌       | 104/399 [00:01<00:03, 91.93it/s]Loading weights:  29%|██▉       | 115/399 [00:01<00:03, 93.55it/s]Loading weights:  32%|███▏      | 126/399 [00:02<00:02, 94.62it/s]Loading weights:  34%|███▍      | 137/399 [00:02<00:02, 95.54it/s]Loading weights:  37%|███▋      | 148/399 [00:02<00:02, 96.39it/s]Loading weights:  40%|███▉      | 159/399 [00:02<00:02, 96.18it/s]Loading weights:  43%|████▎     | 170/399 [00:02<00:02, 97.09it/s]Loading weights:  45%|████▌     | 181/399 [00:02<00:02, 97.19it/s]Loading weights:  48%|████▊     | 192/399 [00:02<00:02, 97.62it/s]Loading weights:  51%|█████     | 203/399 [00:02<00:02, 97.35it/s]Loading weights:  54%|█████▎    | 214/399 [00:02<00:01, 97.02it/s]Loading weights:  56%|█████▋    | 225/399 [00:03<00:01, 96.34it/s]Loading weights:  59%|█████▉    | 236/399 [00:03<00:01, 95.71it/s]Loading weights:  62%|██████▏   | 247/399 [00:03<00:01, 94.52it/s]Loading weights:  65%|██████▍   | 258/399 [00:03<00:01, 94.36it/s]Loading weights:  67%|██████▋   | 269/399 [00:03<00:01, 94.55it/s]Loading weights:  70%|███████   | 280/399 [00:03<00:01, 93.91it/s]Loading weights:  73%|███████▎  | 291/399 [00:03<00:01, 92.51it/s]Loading weights:  76%|███████▌  | 302/399 [00:03<00:01, 90.98it/s]Loading weights:  78%|███████▊  | 313/399 [00:04<00:00, 90.50it/s]Loading weights:  81%|████████  | 324/399 [00:04<00:00, 89.90it/s]Loading weights:  84%|████████▍ | 335/399 [00:04<00:00, 90.66it/s]Loading weights:  87%|████████▋ | 346/399 [00:04<00:00, 90.63it/s]Loading weights:  89%|████████▉ | 357/399 [00:04<00:00, 89.29it/s]Loading weights:  92%|█████████▏| 368/399 [00:04<00:00, 88.52it/s]Loading weights:  95%|█████████▍| 379/399 [00:04<00:00, 88.47it/s]Loading weights:  98%|█████████▊| 390/399 [00:04<00:00, 88.59it/s]Loading weights: 100%|██████████| 399/399 [00:04<00:00, 80.09it/s]
+Loading LoRA adapter from results/qwen3_lora/final_adapter...
+  GPU memory: 6.1 GB
+
+Loaded 200 BrowseComp-Plus conversations
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  10/200 conversations: accuracy = 0.500 (54/108)
+  20/200 conversations: accuracy = 0.477 (104/218)
+  30/200 conversations: accuracy = 0.445 (146/328)
+  40/200 conversations: accuracy = 0.461 (202/438)
+  50/200 conversations: accuracy = 0.460 (250/544)
+  60/200 conversations: accuracy = 0.466 (305/654)
+  70/200 conversations: accuracy = 0.465 (355/764)
+  80/200 conversations: accuracy = 0.463 (405/874)
+  90/200 conversations: accuracy = 0.455 (448/984)
+  100/200 conversations: accuracy = 0.456 (499/1094)
+  110/200 conversations: accuracy = 0.457 (550/1204)
+  120/200 conversations: accuracy = 0.459 (603/1314)
+  130/200 conversations: accuracy = 0.455 (648/1424)
+  140/200 conversations: accuracy = 0.455 (698/1534)
+  150/200 conversations: accuracy = 0.457 (751/1644)
+  160/200 conversations: accuracy = 0.456 (799/1754)
+  170/200 conversations: accuracy = 0.451 (840/1864)
+  180/200 conversations: accuracy = 0.448 (884/1974)
+  190/200 conversations: accuracy = 0.448 (934/2084)
+  200/200 conversations: accuracy = 0.448 (982/2194)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.4476 (982/2194)
+
+Per-position accuracy:
+  Position 0: 0.000 (0/200)
+  Position 1: 0.915 (183/200)
+  Position 2: 0.195 (39/200)
+  Position 3: 0.610 (122/200)
+  Position 4: 0.555 (111/200)
+  Position 5: 0.380 (76/200)
+  Position 6: 0.790 (158/200)
+  Position 7: 0.241 (48/199)
+  Position 8: 0.839 (167/199)
+  Position 9: 0.328 (65/198)
+  Position 10: 0.066 (13/198)
+
+Per-skill accuracy:
+  export_publish      : 0.000 (0/11)
+  review_content      : 0.475 (473/996)
+  search_navigate     : 0.429 (509/1187)
+
+Top 10 errors:
+  review_content       -> search_navigate      (482 times)
+  search_navigate      -> review_content       (452 times)
+  search_navigate      -> export_publish       (137 times)
+  search_navigate      -> document_edit        (69 times)
+  review_content       -> document_edit        (27 times)
+  search_navigate      -> generic_action       (13 times)
+  export_publish       -> search_navigate      (7 times)
+  review_content       -> export_publish       (5 times)
+  search_navigate      -> <think>              (5 times)
+  review_content       -> generic_action       (5 times)
+
+Normalized edit distance: 0.5092
+Exact sequence match: 0.0000 (0/200)
+
+Saved results to results/qwen3-8b_eval_metrics_bc.json
+Saved predictions to results/qwen3-8b_predictions_bc.json
+=== Done ===
+Date: Sun Apr  5 23:15:20 EDT 2026

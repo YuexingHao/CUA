@@ -1,0 +1,232 @@
+=== Qwen3-8B LoRA: WebArena + IW Edit Distance Evaluation ===
+Node: node3800
+GPU: NVIDIA RTX A6000, 49140 MiB
+Date: Sun Apr  5 13:15:32 EDT 2026
+
+=== Step 1: Generating WebArena conversations ===
+Loading WebArena trajectories from /orcd/home/002/yuexing/CUA2026/data/webarena_trajectories.json...
+  Loaded 1000 trajectories
+  Using 200 trajectories
+
+Saved 200 conversations to /orcd/home/002/yuexing/CUA2026/data/wa_conversations.jsonl
+
+============================================================
+WEBARENA CONVERSATION STATISTICS
+============================================================
+Turns per conversation: min=7, max=17, mean=9.3
+Skill sequence length: min=2, max=7, mean=3.0
+
+Skill distribution:
+  search_navigate     :   248 (41.0%)
+  review_content      :   224 (37.0%)
+  document_edit       :    68 (11.2%)
+  collaborate         :    25 (4.1%)
+  send_message        :    20 (3.3%)
+  export_publish      :    16 (2.6%)
+  generic_action      :     4 (0.7%)
+
+=== Step 2: Evaluating on WebArena ===
+============================================================
+Evaluating LoRA Fine-Tuned Qwen3-8B — WebArena
+============================================================
+Loading tokenizer...
+Loading base model (4-bit)...
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:02<00:10,  2.73s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:05<00:09,  3.02s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:09<00:06,  3.13s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:11<00:02,  2.94s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:12<00:00,  2.00s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:12<00:00,  2.44s/it]
+Loading LoRA adapter...
+  GPU memory: 6.1 GB
+
+Loaded 200 WebArena conversations (max 200)
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:636: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.95` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:653: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `20` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+  10/200 conversations: accuracy = 0.568 (25/44)
+  20/200 conversations: accuracy = 0.495 (45/91)
+  30/200 conversations: accuracy = 0.447 (59/132)
+  40/200 conversations: accuracy = 0.471 (82/174)
+  50/200 conversations: accuracy = 0.450 (94/209)
+  60/200 conversations: accuracy = 0.443 (113/255)
+  70/200 conversations: accuracy = 0.443 (132/298)
+  80/200 conversations: accuracy = 0.446 (153/343)
+  90/200 conversations: accuracy = 0.442 (169/382)
+  100/200 conversations: accuracy = 0.445 (189/425)
+  110/200 conversations: accuracy = 0.442 (205/464)
+  120/200 conversations: accuracy = 0.444 (224/504)
+  130/200 conversations: accuracy = 0.444 (241/543)
+  140/200 conversations: accuracy = 0.438 (259/591)
+  150/200 conversations: accuracy = 0.441 (276/626)
+  160/200 conversations: accuracy = 0.435 (292/672)
+  170/200 conversations: accuracy = 0.442 (315/713)
+  180/200 conversations: accuracy = 0.438 (330/753)
+  190/200 conversations: accuracy = 0.432 (343/794)
+  200/200 conversations: accuracy = 0.437 (364/833)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.4370 (364/833)
+
+Per-position accuracy:
+  Position 0: 0.515 (103/200)
+  Position 1: 0.265 (53/200)
+  Position 2: 0.450 (90/200)
+  Position 3: 0.474 (46/97)
+  Position 4: 0.527 (39/74)
+  Position 5: 0.615 (24/39)
+  Position 6: 0.389 (7/18)
+  Position 7: 0.400 (2/5)
+
+Per-skill accuracy:
+  collaborate         : 0.257 (9/35)
+  document_edit       : 0.230 (20/87)
+  export_publish      : 0.250 (5/20)
+  generic_action      : 0.000 (0/4)
+  review_content      : 0.372 (127/341)
+  search_navigate     : 0.592 (193/326)
+  send_message        : 0.500 (10/20)
+
+Top 10 errors:
+  review_content       → search_navigate      (172 times)
+  search_navigate      → review_content       (99 times)
+  document_edit        → search_navigate      (43 times)
+  search_navigate      → document_edit        (24 times)
+  document_edit        → review_content       (22 times)
+  collaborate          → search_navigate      (20 times)
+  review_content       → document_edit        (16 times)
+  review_content       → export_publish       (13 times)
+  export_publish       → search_navigate      (7 times)
+  send_message         → review_content       (5 times)
+
+Normalized edit distance: 0.5622
+Exact sequence match: 0.0850 (17/200)
+
+Saved results to results/qwen3_eval_metrics_wa.json
+Saved predictions to results/qwen3_predictions_wa.json
+
+=== Step 3: Evaluating on IW (with edit distance) ===
+============================================================
+Evaluating LoRA Fine-Tuned Qwen3-8B — IW (Fabricated)
+============================================================
+Loading tokenizer...
+Loading base model (4-bit)...
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:02<00:10,  2.72s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:05<00:09,  3.02s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:09<00:06,  3.13s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:11<00:02,  2.94s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:12<00:00,  2.00s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:12<00:00,  2.44s/it]
+Loading LoRA adapter...
+  GPU memory: 6.1 GB
+
+Loaded 50 IW (Fabricated) conversations (max 50)
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:636: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.95` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/home/yuexing/miniconda/lib/python3.13/site-packages/transformers/generation/configuration_utils.py:653: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `20` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+  10/50 conversations: accuracy = 0.833 (65/78)
+  20/50 conversations: accuracy = 0.861 (136/158)
+  30/50 conversations: accuracy = 0.859 (207/241)
+  40/50 conversations: accuracy = 0.843 (269/319)
+  50/50 conversations: accuracy = 0.850 (340/400)
+
+============================================================
+RESULTS
+============================================================
+
+Overall skill prediction accuracy: 0.8500 (340/400)
+
+Per-position accuracy:
+  Position 0: 0.900 (45/50)
+  Position 1: 0.860 (43/50)
+  Position 2: 0.860 (43/50)
+  Position 3: 0.800 (40/50)
+  Position 4: 0.820 (41/50)
+  Position 5: 0.833 (40/48)
+  Position 6: 0.860 (37/43)
+  Position 7: 0.903 (28/31)
+  Position 8: 0.765 (13/17)
+  Position 9: 0.889 (8/9)
+  Position 10: 1.000 (2/2)
+
+Per-skill accuracy:
+  collaborate         : 0.778 (42/54)
+  data_transfer       : 0.897 (35/39)
+  document_edit       : 0.877 (64/73)
+  export_publish      : 0.828 (24/29)
+  monitor_status      : 0.000 (0/2)
+  organize_files      : 0.950 (19/20)
+  presentation_edit   : 0.429 (3/7)
+  review_content      : 0.893 (25/28)
+  schedule_meeting    : 0.600 (6/10)
+  search_navigate     : 0.941 (48/51)
+  send_message        : 0.851 (74/87)
+
+Top 10 errors:
+  send_message         → export_publish       (5 times)
+  collaborate          → export_publish       (4 times)
+  document_edit        → data_transfer        (3 times)
+  export_publish       → document_edit        (2 times)
+  send_message         → schedule_meeting     (2 times)
+  document_edit        → organize_files       (2 times)
+  schedule_meeting     → document_edit        (2 times)
+  send_message         → collaborate          (2 times)
+  collaborate          → monitor_status       (2 times)
+  presentation_edit    → document_edit        (2 times)
+
+Normalized edit distance: 0.1485
+Exact sequence match: 0.3200 (16/50)
+
+Saved results to results/qwen3_eval_metrics.json
+Saved predictions to results/qwen3_predictions.json
+
+=== Done ===
+Date: Sun Apr  5 16:00:42 EDT 2026
+
+=== Results Summary ===
+WebArena:
+{
+  "model": "Qwen/Qwen3-8B",
+  "adapter": "results/qwen3_lora/final_adapter",
+  "dataset": "wa",
+  "overall_accuracy": 0.4369747899159664,
+  "normalized_edit_distance": 0.5622440476190479,
+  "exact_sequence_match": 0.085,
+  "per_position_accuracy": {
+    "0": 0.515,
+    "1": 0.265,
+    "2": 0.45,
+    "3": 0.4742268041237113,
+    "4": 0.527027027027027,
+    "5": 0.6153846153846154,
+    "6": 0.3888888888888889,
+    "7": 0.4
+  },
+  "total_samples": 833,
+  "correct": 364,
+  "num_conversations": 200
+}
+IW:
+{
+  "model": "Qwen/Qwen3-8B",
+  "adapter": "results/qwen3_lora/final_adapter",
+  "dataset": "iw",
+  "overall_accuracy": 0.85,
+  "normalized_edit_distance": 0.14846248196248196,
+  "exact_sequence_match": 0.32,
+  "per_position_accuracy": {
+    "0": 0.9,
+    "1": 0.86,
+    "2": 0.86,
+    "3": 0.8,
+    "4": 0.82,
+    "5": 0.8333333333333334,
+    "6": 0.8604651162790697,
+    "7": 0.9032258064516129,
+    "8": 0.7647058823529411,
+    "9": 0.8888888888888888,
+    "10": 1.0
+  },
+  "total_samples": 400,
+  "correct": 340,
+  "num_conversations": 50
+}
